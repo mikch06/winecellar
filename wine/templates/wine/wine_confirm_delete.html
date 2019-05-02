@@ -1,0 +1,12 @@
+{% extends "./base.html" %}
+{% block content %}
+<h5>Book Delete</h5>
+<div class="card-body">
+
+<form method="post">{% csrf_token %}
+    Willst du "{{ wine.winename }}" wirklich löschen?<br>
+    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
+
+</form>
+</div>
+{% endblock %}

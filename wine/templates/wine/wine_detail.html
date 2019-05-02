@@ -1,0 +1,27 @@
+{% extends "./base.html" %}
+
+{% block content %}
+<title>Winecellar - Detailview</title>
+
+<div align="center"></div>
+  <div class="card-body">
+    <h5 class="card-title">{{ wine.winename }}</h5>
+    <div class="card-text">
+      Weinname:      {{ wine.winename }}<br>
+      Produzent: {{ wine.producer }}<br>
+      Traubensorten: {{ wine.grapes }}<br><br>
+      Jahrgang: <b>{{ wine.year }}</b><br>
+       - Trinkbar ab: {{ wine.drinkfrom }}<br>
+       - Geniessbar bis: {{ wine.drinkto }}<br>
+      Anzahl Flaschen: {{ wine.nmbrbottles }}<br>
+    </p>
+    <p>gekauft: {{ wine.purchase }}<br>
+       Notiz: {{ wine.notes }}
+    </p>
+        <a href="{% url "wine_edit" wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+        <a href="{% url "wine_delete" wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+
+
+  </div>
+  </div>
+{% endblock %}

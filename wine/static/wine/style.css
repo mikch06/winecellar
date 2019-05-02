@@ -1,0 +1,18 @@
+body,html {
+    background-color: #eee;
+    }
+
+th, td, p   {
+font-size: 12px;
+}
+
+a {
+    color: black;
+    font-color: black;
+    text-decoration: none;
+}
+
+a, a:link, visited {
+    font-color: black;
+    text-decoration: none;
+}

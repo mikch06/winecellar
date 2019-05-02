@@ -1,0 +1,8 @@
+body,html {
+    background-color: #eee;
+    }
+
+a:link, visited {
+    font-color: black;
+    text-decoration: none;
+}

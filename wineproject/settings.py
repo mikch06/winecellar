@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'wine.apps.WineConfig',
     'books',
-    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

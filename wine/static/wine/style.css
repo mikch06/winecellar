@@ -3,8 +3,8 @@ body,html {
     }
 
 th, td, p   {
-font-size: 12px;
-}
+font-size: 14px;
+width: 20px}
 
 a {
     color: black;
@@ -15,4 +15,10 @@ a {
 a, a:link, visited {
     font-color: black;
     text-decoration: none;
+}
+
+
+label {
+display: inline-block;
+width: 7em;
 }

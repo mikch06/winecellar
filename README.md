@@ -12,3 +12,12 @@
     
        python3 -m venv wine-env
        
+- Activate virtual env wine-env
+
+        source wine-env/bin/activate
+        
+- Install Django
+
+        pip install django
+        
+        

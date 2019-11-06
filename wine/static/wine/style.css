@@ -3,8 +3,9 @@ body,html {
     }
 
 th, td, p   {
+padding: 2px;
 font-size: 14px;
-width: 20px}
+}
 
 a {
     color: black;

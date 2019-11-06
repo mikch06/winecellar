@@ -4,13 +4,14 @@
   <table class="table">
     <tr>
       <th><i class="fas fa-search"></i></th>
-      <th scope="col">Weinname</th>
-      <th scope="col">Produzent</th>
-      <th scope="col">Jahrgang</th>
-      <!--<th scope="col">Traubensorten</th>-->
-      <th scope="col">trinkbar von</th>
-      <th scope="col">trinkbar bis</th>
-      <th scope="col"><i class="fas fa-dolly"></i></th>
+      <th>Weinname</th>
+      <th>Produzent</th>
+      <th>Land</th>
+      <th>Region</th>
+      <th>Jahrgang</th>
+      <th>trinkbar von</th>
+      <th>trinkbar bis</th>
+      <th><i class="fas fa-dolly"></i></th>
     </tr>
 {% for wine in object_list %}
     <tr>
@@ -18,8 +19,9 @@
       <!--<td><a href="{% url "wine_edit" wine.id %}">edit</a></td>-->
       <td>{{ wine.winename }}</td>
       <td>{{ wine.producer }}</td>
+      <td>{{ wine.country }}</td>
+      <td>{{ wine.region }}</td>
       <td>{{ wine.year }}</td>
-      <!--<td> {{ wine.grapes }} </td>-->
       <td>{{ wine.drinkfrom }}</td>
       <td>{{ wine.drinkto }}</td>
       <td>{{ wine.nmbrbottles }}</td>

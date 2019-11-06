@@ -226,7 +226,7 @@ caption {
   caption-side: bottom;
 }
 
-th {
+th{
   text-align: inherit;
 }
 
@@ -1534,7 +1534,7 @@ pre code {
   border-top: 1px solid #dee2e6;
 }
 
-.table thead th {
+.table thead th{
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
@@ -1592,7 +1592,7 @@ pre code {
 }
 
 .table-hover .table-primary:hover > td,
-.table-hover .table-primary:hover > th {
+.table-hover .table-primary:hover > th{
   background-color: #9fcdff;
 }
 
@@ -1607,7 +1607,7 @@ pre code {
 }
 
 .table-hover .table-secondary:hover > td,
-.table-hover .table-secondary:hover > th {
+.table-hover .table-secondary:hover > th{
   background-color: #c8cbcf;
 }
 
@@ -1622,7 +1622,7 @@ pre code {
 }
 
 .table-hover .table-success:hover > td,
-.table-hover .table-success:hover > th {
+.table-hover .table-success:hover > th{
   background-color: #b1dfbb;
 }
 
@@ -1637,7 +1637,7 @@ pre code {
 }
 
 .table-hover .table-info:hover > td,
-.table-hover .table-info:hover > th {
+.table-hover .table-info:hover > th{
   background-color: #abdde5;
 }
 
@@ -1652,7 +1652,7 @@ pre code {
 }
 
 .table-hover .table-warning:hover > td,
-.table-hover .table-warning:hover > th {
+.table-hover .table-warning:hover > th{
   background-color: #ffe8a1;
 }
 
@@ -1667,7 +1667,7 @@ pre code {
 }
 
 .table-hover .table-danger:hover > td,
-.table-hover .table-danger:hover > th {
+.table-hover .table-danger:hover > th{
   background-color: #f1b0b7;
 }
 

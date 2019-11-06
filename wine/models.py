@@ -1,7 +1,5 @@
 import datetime
-
 from django.db import models
-
 
 class Wine(models.Model):
     winename = models.CharField(max_length=200)
@@ -17,20 +15,3 @@ class Wine(models.Model):
     nmbrbottles = models.IntegerField()
     entrydate = models.DateTimeField('date published', null=True,)
     editdate = models.DateTimeField(null=True,)
-
-    def get_absolute_url(self):
-        return reverse('wine_edit', kwargs={'pk': self.pk})
-
-
-
-    # Forms
-from django.urls import reverse
-from django.db import models
-from django.contrib.auth.models import User
-
-# class Author(models.Model):
-#     name = models.CharField(max_length=200)
-#     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-
-    # def get_absolute_url(self):
-    #     return reverse('author-detail', kwargs={'pk': self.pk})

@@ -23,6 +23,7 @@
         
        
 - Install Watson Search engine
+    https://github.com/etianen/django-watson/wiki   
 
         pip install django-watson
         python manage.py runserver

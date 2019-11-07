@@ -21,3 +21,11 @@
         pip install django
         
         
+       
+- Install Watson Search engine
+
+        pip install django-watson
+        python manage.py runserver
+        python manage.py migrate
+        python manage.py installwatson
+        python manage.py buildwatson

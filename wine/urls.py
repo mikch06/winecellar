@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 
 from wine.views import WineListView, WineDeleteView
 from wine.views import WineDetailView
@@ -9,4 +9,6 @@ urlpatterns = [
     path('wine/<int:pk>', WineDetailView.as_view(), name='wine_detail'),
     path('edit/<int:pk>', WineUpdateView.as_view(), name='wine_edit'),
     path('delete/<int:pk>', WineDeleteView.as_view(), name='wine_delete'),
+
+    path('r"^search/"', include('watson.urls')),
 ]

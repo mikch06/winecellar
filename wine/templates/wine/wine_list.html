@@ -8,11 +8,12 @@
       <th>Produzent</th>
       <th>Land</th>
       <th>Region</th>
-      <th>Jahrgang</th>
+      <th scope="col">Jahrgang</th>
       <th>trinkbar von</th>
       <th>trinkbar bis</th>
       <th><i class="fas fa-dolly"></i></th>
     </tr>
+
 {% for wine in object_list %}
     <tr>
       <td><a href="/wine/{{ wine.id }}"><i class="fas fa-search"></i></a></td>

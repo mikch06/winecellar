@@ -10,5 +10,5 @@ urlpatterns = [
     path('edit/<int:pk>', WineUpdateView.as_view(), name='wine_edit'),
     path('delete/<int:pk>', WineDeleteView.as_view(), name='wine_delete'),
 
-    path('r"^search/"', include('watson.urls')),
+    #path('r"^search/"', include('watson.urls')),
 ]

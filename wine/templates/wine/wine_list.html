@@ -1,22 +1,23 @@
 {% extends "./base.html" %}
 {% block content %}
-<div class="table-responsive table-striped">
-  <table class="table">
+<table class="table table-hover">
+  <thead>
     <tr>
-      <th><i class="fas fa-search"></i></th>
-      <th>Weinname</th>
-      <th>Produzent</th>
-      <th>Land</th>
-      <th>Region</th>
+      <th scope="col"><i class="fas fa-search"></i></th>
+      <th scope="col">Weinname</th>
+      <th scope="col">Produzent</th>
+      <th scope="col">Land</th>
+      <th scope="col">Region</th>
       <th scope="col">Jahrgang</th>
-      <th>trinkbar von</th>
-      <th>trinkbar bis</th>
-      <th><i class="fas fa-dolly"></i></th>
+      <th scope="col">trinkbar von</th>
+      <th scope="col">trinkbar bis</th>
+      <th scope="col"><i class="fas fa-dolly"></i></th>
     </tr>
-
+  </thead>
+  <tbody>
 {% for wine in object_list %}
     <tr>
-      <td><a href="/wine/{{ wine.id }}"><i class="fas fa-search"></i></a></td>
+      <th scope="row"><a href="/wine/{{ wine.id }}"><i class="fas fa-search"></i></a></th>
       <td>{{ wine.winename }}</td>
       <td>{{ wine.producer }}</td>
       <td>{{ wine.country }}</td>
@@ -29,7 +30,7 @@
 {% empty %}
     No data yet.
 {% endfor %}
+  </tbody>
+</table>
 {% endblock %}
-    ...
-  </table>
-</div>
+

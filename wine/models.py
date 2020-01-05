@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+from django.db.models import Sum
 
 class Wine(models.Model):
     winename = models.CharField(max_length=200)
@@ -15,3 +16,7 @@ class Wine(models.Model):
     nmbrbottles = models.IntegerField()
     entrydate = models.DateTimeField('date published', null=True,)
     editdate = models.DateTimeField(null=True,)
+
+
+    #todo: try to insert sum of nmbrbottles
+    #bottles = nmbrbottles.objects.aggregate(Sum('nmbrbottles'))

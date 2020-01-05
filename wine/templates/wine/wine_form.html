@@ -1,12 +1,8 @@
 {% extends "./base.html" %}
 {% block content %}
-
 <div class="card-body">
         <h5 class="card-title">{{ wine.winename }}</h5>
-
 <form method="post">{% csrf_token %}
-    <!--{{ form.as_p }}-->
-
     <label for="winename">Weinname:</label>
     <input id="winename" type="text" name="winename" value="{{ wine.winename }}"><br>
     <label for="producer">Produzent:</label>
@@ -29,7 +25,7 @@
     <input id="drinkto" type="text" name="drinkto" value="{{ wine.drinkto }}"><br>
     <label for="nmbrbottles">Anz. Flaschen:</label>
     <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}"><br>
-    <!--<input type="submit" value="safe" class="fas fa-trash" />-->
+    <a href="/wine/{{ wine.id }}" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
 </form>
 </div>

@@ -4,6 +4,8 @@
 
      python manage.py runserver
 
+     run from remote: python3 manage.py runserver 0.0.0.0:8000
+    
 # Install Django project on IDE from github repo
 
 - Clone repo

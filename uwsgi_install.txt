@@ -1,0 +1,2 @@
+- pip3 install uwsgi
+(yum install gcc, python3-devel)

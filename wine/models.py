@@ -1,5 +1,6 @@
 import datetime
 from django.db import models
+from django.forms import ModelForm
 from django.db.models import Sum
 
 class Wine(models.Model):
@@ -20,3 +21,11 @@ class Wine(models.Model):
 
     #todo: try to insert sum of nmbrbottles
     #bottles = nmbrbottles.objects.aggregate(Sum('nmbrbottles'))
+
+
+class NewWineForm(ModelForm):
+    class Meta:
+        model = Wine
+        fields = ['winename', 'producer']
+
+form = NewWineForm()

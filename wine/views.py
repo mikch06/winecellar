@@ -26,3 +26,6 @@ class WineUpdateView(UpdateView):
 class WineDeleteView(DeleteView):
     model = Wine
     success_url = reverse_lazy('wine_list')
+
+class WineCreateView(CreateView):
+    model = Wine

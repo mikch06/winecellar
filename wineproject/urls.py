@@ -8,7 +8,6 @@ urlpatterns = [
 
     path('', include('wine.urls')),
     path('admin/', admin.site.urls),
-    path('books/', include('books.urls')),
 
 ]
 

@@ -1,12 +1,12 @@
 {% extends "./base.html" %}
 {% block content %}
-<h5>Book Delete</h5>
+<h5>WineDelete</h5>
 <div class="card-body">
 
 <form method="post">{% csrf_token %}
-    Willst du "{{ wine.winename }}" wirklich löschen?<br>
+    "{{ wine.winename }}" wirklich löschen?<br><br>
+    <a href="/" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
     <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
-
 </form>
 </div>
 {% endblock %}

@@ -1,3 +1,6 @@
 # gitignore
 .idea
 wine-env
+__pycache__
+*__pycache__
+

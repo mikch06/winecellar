@@ -7,6 +7,8 @@ from django.http import HttpResponse
 # If template loading is used
 from django.template import loader
 from django.shortcuts import render
+# import generic views
+from django.views import generic
 
 # Wine List (lists all wines in a view
 class WineListView(ListView):
@@ -35,7 +37,8 @@ class WineDeleteView(DeleteView):
 class WineNewView(CreateView):
     model = Wine
 
-
+## hint: https://docs.djangoproject.com/en/3.0/intro/tutorial04/#amend-views
+#todo: amend views
 
 # Simple start page index, with its html code
 def index(request):
@@ -47,3 +50,6 @@ def index(request):
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')
+
+# class IndexView(generic.ListView):
+#     template_name = 'polls/index.html'

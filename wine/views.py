@@ -2,6 +2,11 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from wine.models import Wine
+# Only used if 'view def index' is used, see below
+from django.http import HttpResponse
+# If template loading is used
+from django.template import loader
+from django.shortcuts import render
 
 # Wine List (lists all wines in a view
 class WineListView(ListView):
@@ -29,3 +34,16 @@ class WineDeleteView(DeleteView):
 
 class WineNewView(CreateView):
     model = Wine
+
+
+
+# Simple start page index, with its html code
+def index(request):
+    #return HttpResponse("Hello, world. You're at the polls index.")
+    #template = loader.get_template('wine/index.html')
+    return render(request, 'wine/index.html')
+
+# 'About' page
+def about(request):
+    #return HttpResponse("This is all about...")
+    return render(request, 'wine/about.html')

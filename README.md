@@ -32,3 +32,9 @@
         python manage.py migrate
         python manage.py installwatson
         python manage.py buildwatson
+
+
+
+Links/Helps/Tutorials:
+- User Authentication
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication

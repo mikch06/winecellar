@@ -11,7 +11,7 @@ urlpatterns = [
     path('wine/<int:pk>', views.DetailView.as_view(), name='wine_detail'),
     path('edit/<int:pk>', views.EditView.as_view(), name='wine_edit'),
     path('delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
-    path('create/', views.CreateView.as_view(), name='wine_edit'),
+    path('new/', views.CreateView.as_view(), name='wine_create'),
 
     path('about/', views.about, name='about'),
 

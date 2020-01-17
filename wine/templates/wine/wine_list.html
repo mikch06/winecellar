@@ -17,7 +17,7 @@
   <tbody>
 {% for wine in object_list %}
     <tr>
-      <td><a href="/wine/{{ wine.id }}"><i class="fas fa-search"></i></a></td>
+      <td><a href="{% url 'wine:wine_detail' wine.id %}"><i class="fas fa-search"></i></a></td>
       <td>{{ wine.winename }}</td>
       <td>{{ wine.producer }}</td>
       <td>{{ wine.country }}</td>

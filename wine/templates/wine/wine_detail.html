@@ -19,9 +19,10 @@
         <b>Kaufdatum:</b> {{ wine.purchase }}<br>
         <b>Notiz:</b> {{ wine.notes }}
       <br><br>
-        <a href="/" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
-        <a href="{% url "wine_edit" wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-        <a href="{% url "wine_delete" wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+        <a href="/wine" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
+        <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+
   </div>
   </div>
 {% endblock %}

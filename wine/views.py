@@ -1,4 +1,3 @@
-from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from wine.models import Wine
@@ -10,46 +9,57 @@ from django.shortcuts import render
 # import generic views
 from django.views import generic
 
-# Wine List (lists all wines in a view
-class WineListView(ListView):
-    model = Wine
-    paginate_by = 100  # if pagination is desired
 
 # Wine Detail View
 from django.views.generic import DetailView
 from wine.models import Wine
 
-class WineDetailView(DetailView):
-    model = Wine
-
-# Wine Update View
-class WineUpdateView(UpdateView):
-    model = Wine
-    fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles']
-    success_url = reverse_lazy('wine_list')
-
-# Wine Delete View
-class WineDeleteView(DeleteView):
-    model = Wine
-    success_url = reverse_lazy('wine_list')
-
-class WineNewView(CreateView):
-    model = Wine
-
 ## hint: https://docs.djangoproject.com/en/3.0/intro/tutorial04/#amend-views
 #todo: amend views
 
-# Simple start page index, with its html code
-def index(request):
-    #return HttpResponse("Hello, world. You're at the polls index.")
-    #template = loader.get_template('wine/index.html')
-    return render(request, 'wine/index.html')
+
+
+
+## Real and right generic view code
+
+
+class IndexView(generic.ListView):
+    template_name = 'wine/index.html'
+
+    def get_queryset(self):
+        """Return the last five published questions."""
+        return Wine.objects
+
+
+class WineView(generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_list.html'
+
+
+class DetailView(generic.DetailView):
+    model = Wine
+    template_name = 'wine/wine_detail.html'
+
+class EditView(UpdateView):
+    model = Wine
+    template_name = 'wine/wine_form.html'
+    fields = ['winename', 'producer', 'grapes', 'year', 'country',
+              'region', 'purchase', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles']
+    success_url = reverse_lazy('wine:wine_list')
+
+# Wine Delete View
+class DeleteView(DeleteView):
+    model = Wine
+    success_url = reverse_lazy('wine:wine_list')
+
+# Wine Create View
+class CreateView(CreateView):
+    model = Wine
+    template_name = 'wine/wine_create.html'
+    fields = ['winename', 'nmbrbottles']
+    success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')
-
-# class IndexView(generic.ListView):
-#     template_name = 'polls/index.html'

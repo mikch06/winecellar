@@ -56,7 +56,7 @@ class DeleteView(DeleteView):
 class CreateView(CreateView):
     model = Wine
     template_name = 'wine/wine_create.html'
-    fields = ['winename', 'nmbrbottles']
+    fields = ['winename', 'producer', 'year', 'country', 'nmbrbottles']
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page

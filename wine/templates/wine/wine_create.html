@@ -12,7 +12,7 @@
     <label for="country">Land: </label>
     <input id="country" type="text" name="country" value="{{ wine.country }}"><br>
     <label for="nmbrbottles">Anz. Flaschen:</label>
-    <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}"><br>
+    <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}" value="0"><br>
     <a href="/wine/{{ wine.id }}" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
 </form>

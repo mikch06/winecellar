@@ -38,3 +38,9 @@
 Links/Helps/Tutorials:
 - User Authentication
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
+
+
+# Not implemented:
+~- Search~
+- Column filter
+

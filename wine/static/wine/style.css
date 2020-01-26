@@ -3,14 +3,13 @@ body,html {
     margin-left: 10px;
     }
 
-.table {
+.container {
 width: 100%;
-max-width: 1200px;
+max-width: 1400px;
 margin: auto;
 }
 
 th, td   {
-padding: 2px;
 font-size: 14px;
 }
 
@@ -28,4 +27,9 @@ a, a:link, visited {
 label {
 display: inline-block;
 width: 7em;
+}
+
+.dates {
+font-size: 10px;
+
 }

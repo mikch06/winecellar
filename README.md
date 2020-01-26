@@ -44,7 +44,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 - ~Search~
 - Column filter
 - Auth -> Users / Group users
-- Edit date in detail view
+- ~Edit date in detail view~
 - PDF export 
 - Excel export
 - ...

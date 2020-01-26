@@ -16,17 +16,8 @@ class Wine(models.Model):
     drinkfrom = models.CharField(max_length=200, blank=True,)
     drinkto = models.CharField(max_length=200, blank=True,)
     nmbrbottles = models.IntegerField(default=0)
-    #entrydate = models.DateTimeField('date published', null=True,)
-    #editdate = models.DateTimeField(null=True,)
+    editdate = models.DateField(auto_now=True,)
 
 
     #todo: try to insert sum of nmbrbottles
     #bottles = nmbrbottles.aggregate(Sum('nmbrbottles'))
-
-
-# class NewWineForm(ModelForm):
-#     class Meta:
-#         model = Wine
-#         fields = ['winename', 'producer']
-#
-# form = NewWineForm()

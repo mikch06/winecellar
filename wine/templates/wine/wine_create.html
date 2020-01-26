@@ -8,13 +8,15 @@
     <label for="producer">Produzent:</label>
     <input id="producer" type="text" name="producer" value="{{ wine.producer }}"><br>
     <label for="year">Jahrgang: </label>
-    <input id="year" type="number" name="year" value="{{ wine.year }}"><br>
+    <input id="year" type="number" name="year" value="{{ wine.year|default:"2015" }}"><br>
     <label for="country">Land: </label>
     <input id="country" type="text" name="country" value="{{ wine.country }}"><br>
     <label for="nmbrbottles">Anz. Flaschen:</label>
-    <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}" value="0"><br>
+    <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles|default:"6" }}"><br>
+    <br>
     <a href="/wine/{{ wine.id }}" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
     <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
+
 </form>
 </div>
 {% endblock %}

@@ -16,9 +16,9 @@
     <label for="region">Region: </label>
     <input id="region" type="text" name="region" value="{{ wine.region }}"><br>
     <label for="purchase">Gekauft: </label>
-    <input id="purchase" type="text" name="purchase" value="{{ wine.purchase }}"><br>
+    <input id="purchase" type="date" name="purchase" value="{{ wine.purchase }}"><br>
     <label for="notes">Notes: </label>
-    <input id="notes" type="text" name="notes" value="{{ wine.notes }}"><br>
+    <textarea id="notes" name="notes" rows="4" >{{ wine.notes }}</textarea><br>
     <label for="drinkfrom">Trinkreif ab: </label>
     <input id="drinkfrom" type="text" name="drinkfrom" value="{{ wine.drinkfrom }}"><br>
     <label for="drinkto">Austrinken bis: </label>

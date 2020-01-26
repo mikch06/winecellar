@@ -4,7 +4,6 @@ from django.forms import ModelForm
 from django.db.models import Sum
 
 class Wine(models.Model):
-
     winename = models.CharField(max_length=200, blank=True,)
     producer = models.CharField(max_length=200, blank=True,)
     grapes = models.CharField(max_length=200, blank=True,)
@@ -18,6 +17,4 @@ class Wine(models.Model):
     nmbrbottles = models.IntegerField(default=0)
     editdate = models.DateField(auto_now=True,)
 
-
-    #todo: try to insert sum of nmbrbottles
-    #bottles = nmbrbottles.aggregate(Sum('nmbrbottles'))
+bottles = Wine.objects.aggregate(Sum('nmbrbottles'))

@@ -23,6 +23,7 @@
   </thead>
   <tbody>
 {% for wine in object_list %}
+
     <tr>
       <td><a href="{% url 'wine:wine_detail' wine.id %}"><i class="fas fa-search"></i></a></td>
       <td>{{ wine.winename }}</td>

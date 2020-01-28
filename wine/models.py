@@ -16,5 +16,9 @@ class Wine(models.Model):
     drinkto = models.CharField(max_length=200, blank=True,)
     nmbrbottles = models.IntegerField(default=0)
     editdate = models.DateField(auto_now=True,)
+    
+    class Meta:
+        ordering = ["winename"]
+
 
 bottles = Wine.objects.aggregate(Sum('nmbrbottles'))

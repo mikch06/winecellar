@@ -20,4 +20,7 @@ class Wine(models.Model):
     class Meta:
         ordering = ["country","region"]
 
-bottles = Wine.objects.aggregate(Sum('nmbrbottles'))
+    def bottles(self):
+        """Calculates the total number of votes for this poll."""
+        #return self.choice_set.aggregate(Sum('votes'))['votes__sum']
+        return Wine.objects.aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']

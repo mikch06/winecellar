@@ -6,7 +6,6 @@ from . import views
 # App Namespace for app 'wine'
 app_name = 'wine'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
     path('wine/', views.WineView.as_view(), name='wine_list'),
     path('wine/<int:pk>', views.DetailView.as_view(), name='wine_detail'),
     path('edit/<int:pk>', views.EditView.as_view(), name='wine_edit'),
@@ -14,6 +13,7 @@ urlpatterns = [
     path('new/', views.CreateView.as_view(), name='wine_create'),
 
     path('about/', views.about, name='about'),
+    path('', views.home, name='index'),
 
     ##  path('new/<int:pk>', WineNewView.as_view(), name='wine_edit'), # Create entries
 

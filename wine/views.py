@@ -17,24 +17,10 @@ from wine.models import Wine
 ## hint: https://docs.djangoproject.com/en/3.0/intro/tutorial04/#amend-views
 #todo: amend views
 
-
-
-
 ## Real and right generic view code
-
-
-class IndexView(generic.ListView):
-    template_name = 'wine/index.html'
-
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Wine.objects
-
-
 class WineView(generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
-
 
 class DetailView(generic.DetailView):
     model = Wine
@@ -63,3 +49,6 @@ class CreateView(CreateView):
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')
+
+def home(request):
+    return render(request, 'wine/index.html')

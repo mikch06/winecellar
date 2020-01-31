@@ -6,6 +6,7 @@
           <input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" placeholder="clear" onClick="window.location.reload()">
     </form>
 <br>
+Bottles: -{{ wine.bottles }}- <br><br>
 <table class="table table-hover table-responsive" id="wineTable">
   <thead>
     <tr>
@@ -24,7 +25,7 @@
   <tbody>
 
   {% for wine in object_list %}
- |{{ wine.bottles|cut:""}}|
+ |{{ wine.bottles }}|
 
   <tr>
       <td><a href="{% url 'wine:wine_detail' wine.id %}"><i class="fas fa-search"></i></a></td>

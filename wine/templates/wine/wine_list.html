@@ -6,7 +6,14 @@
           <input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" placeholder="clear" onClick="window.location.reload()">
     </form>
 <br>
+
 Bottles: -{{ wine.bottles }}- <br><br>
+{% now "jS F Y H:i" %}
+  {% for wine in object_list %}
+    {{ wine.bottles }}
+{% endfor %}
+
+
 <table class="table table-hover table-responsive" id="wineTable">
   <thead>
     <tr>
@@ -25,8 +32,6 @@ Bottles: -{{ wine.bottles }}- <br><br>
   <tbody>
 
   {% for wine in object_list %}
- |{{ wine.bottles }}|
-
   <tr>
       <td><a href="{% url 'wine:wine_detail' wine.id %}"><i class="fas fa-search"></i></a></td>
       <td>{{ wine.winename }}</td>

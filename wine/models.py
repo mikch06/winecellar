@@ -2,6 +2,7 @@ import datetime
 from django.db import models
 from django.forms import ModelForm
 from django.db.models import Sum, Count
+from django import template
 
 class Wine(models.Model):
     winename = models.CharField(max_length=200, blank=True,)

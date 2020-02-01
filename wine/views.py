@@ -8,23 +8,21 @@ from django.template import loader
 from django.shortcuts import render
 # import generic views
 from django.views import generic
+from django.db.models import Sum, Count
+
 
 
 # Wine Detail View
 from django.views.generic import DetailView
 from wine.models import Wine
 
-## hint: https://docs.djangoproject.com/en/3.0/intro/tutorial04/#amend-views
-#todo: amend views
-
 ## Real and right generic view code
-class WineView(generic.ListView):
+class WinesView(generic.ListView):
     model = Wine
-    template_name = 'wine/wine_list.html'
+    context_object_name = "wines"
 
 class DetailView(generic.DetailView):
     model = Wine
-    template_name = 'wine/wine_detail.html'
 
 class EditView(UpdateView):
     model = Wine
@@ -32,6 +30,7 @@ class EditView(UpdateView):
     fields = ['winename', 'producer', 'grapes', 'year', 'country',
               'region', 'purchase', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles']
     success_url = reverse_lazy('wine:wine_list')
+
 
 # Wine Delete View
 class DeleteView(DeleteView):

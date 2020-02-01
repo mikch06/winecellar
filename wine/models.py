@@ -16,11 +16,12 @@ class Wine(models.Model):
     drinkto = models.CharField(max_length=200, blank=True,)
     nmbrbottles = models.IntegerField(default=0)
     editdate = models.DateField(auto_now=True,)
-    
+
     class Meta:
         ordering = ["country","region"]
 
+    def __str__(self):
+        return self.name
+
     def bottles(self):
-        #return self.choice_set.aggregate(Sum('votes'))['votes__sum']
-        #return Wine.objects.aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
         return Wine.objects.aggregate(bottles=Sum('nmbrbottles'))

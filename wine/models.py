@@ -25,4 +25,6 @@ class Wine(models.Model):
         return self.name
 
     def bottles(self):
-        return Wine.objects.aggregate(bottles=Sum('nmbrbottles'))
+        #return Wine.objects.aggregate(bottles=Sum('nmbrbottles'))
+        result = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
+        return result['bottles_sum']

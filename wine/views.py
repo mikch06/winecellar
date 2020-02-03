@@ -16,7 +16,7 @@ from django.db.models import Sum, Count
 from django.views.generic import DetailView
 from wine.models import Wine
 
-## Real and right generic view code
+# Real and right generic view code
 class WinesView(generic.ListView):
     model = Wine
     context_object_name = "wines"

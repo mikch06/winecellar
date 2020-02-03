@@ -19,7 +19,13 @@ from wine.models import Wine
 # Real and right generic view code
 class WinesView(generic.ListView):
     model = Wine
-    context_object_name = "wines"
+
+    def get_context_data(self, **kwargs):
+        context = super(WinesView, self).get_context_data(**kwargs)
+        context['bottles_sum'] = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
+        #context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))
+        return context
+
 
 class DetailView(generic.DetailView):
     model = Wine

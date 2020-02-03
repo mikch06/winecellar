@@ -10,11 +10,9 @@
 
 
 Bottles:
-{{ total_paid.nmbrbottles__sum }}
-{{ wine.bottles }}
 
-{{ number_of_questions }}
-{% now "jS F Y H:i" %}
+{{ bottles_sum|default:"0" }}<br>
+{% now "d.m.Y H:i" %}
 
 
 
@@ -36,9 +34,7 @@ Bottles:
   <tbody>
 
   {% for wine in object_list %}
-  {{ wine.bottles }}
-{{ number_of_questions }}
-
+  <br>{{ wine.bottles }}
 
 
   <tr>

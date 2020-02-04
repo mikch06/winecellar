@@ -21,9 +21,6 @@ class Wine(models.Model):
     class Meta:
         ordering = ["country","region"]
 
-    def __str__(self):
-        return self.name
-
-    def bottles(self):
-        result = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
-        return result['bottles_sum']
+    # def bottles(self):
+    #     result = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
+    #     return result['bottles_sum']

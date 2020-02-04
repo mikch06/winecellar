@@ -9,7 +9,7 @@ from django.shortcuts import render
 # import generic views
 from django.views import generic
 from django.db.models import Sum, Count
-
+from django.contrib.auth.decorators import login_required
 
 
 # Wine Detail View
@@ -23,9 +23,13 @@ class WinesView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super(WinesView, self).get_context_data(**kwargs)
         context['bottles_sum'] = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
-        #context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))
         return context
 
+
+
+    # def bottles(self):
+    #     result = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
+    #     return result['bottles_sum']
 
 class DetailView(generic.DetailView):
     model = Wine

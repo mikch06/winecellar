@@ -6,10 +6,10 @@ from .models import Wine
 class WineAdmin(admin.ModelAdmin):
     fieldsets = [
         (None,               {'fields': ['winename']}),
-        ('Date information', {'fields': ['entrydate'], 'classes': ['collapse']}),
+        (None, {'fields': ['producer']}),
+        (None, {'fields': ['year']}),
     ]
-    list_display = ('winename', 'producer', 'year')
-    list_filter = ['year', 'winename']
-    search_fields = ['winename', 'producer']
+    list_display = ('winename', 'producer', 'year', 'purchase', 'nmbrbottles')
+    search_fields = ['winename', 'producer', 'year', 'purchase', 'nmbrbottles']
 
 admin.site.register(Wine, WineAdmin)

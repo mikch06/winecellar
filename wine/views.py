@@ -19,6 +19,7 @@ from wine.models import Wine
 # Real and right generic view code
 class WinesView(generic.ListView):
     model = Wine
+    template_name = 'wine/wine_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(WinesView, self).get_context_data(**kwargs)

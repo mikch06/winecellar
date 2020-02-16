@@ -16,11 +16,11 @@
         <br>
         <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
       <br>
-        <b>Kaufdatum:</b> {{ wine.purchase }}<br>
+        <b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}<br>
         <b>Notiz:</b> {{ wine.notes }}
       <br><br>
         <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
-      <br><br>
+      <br>
         <a href="/wine" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
         <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
         <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>

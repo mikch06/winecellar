@@ -18,11 +18,11 @@
     <label for="purchase">Gekauft: </label>
     <input id="purchase" type="date" name="purchase" value="{{ wine.purchase }}"><br>
     <label for="notes">Notes: </label>
-    <textarea id="notes" name="notes" rows="4" >{{ wine.notes }}</textarea><br>
+    <textarea id="notes" name="notes" rows="4" cols="30">{{ wine.notes }}</textarea><br>
     <label for="drinkfrom">Trinkreif ab: </label>
-    <input id="drinkfrom" type="text" name="drinkfrom" value="{{ wine.drinkfrom }}"><br>
+    <input id="drinkfrom" type="number" name="drinkfrom" value="{{ wine.drinkfrom }}"><br>
     <label for="drinkto">Austrinken bis: </label>
-    <input id="drinkto" type="text" name="drinkto" value="{{ wine.drinkto }}"><br>
+    <input id="drinkto" type="number" name="drinkto" value="{{ wine.drinkto }}"><br>
     <label for="nmbrbottles">Anz. Flaschen:</label>
     <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}"><br><br><br>
     <a href="/wine/{{ wine.id }}" class="btn btn-primary"><i class="fas fa-window-close"></i></a>

@@ -1,19 +1,8 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from wine.models import Wine
-# Only used if 'view def index' is used, see below
-from django.http import HttpResponse
-# If template loading is used
-from django.template import loader
 from django.shortcuts import render
-# import generic views
 from django.views import generic
-from django.db.models import Sum, Count
-from django.contrib.auth.decorators import login_required
-
-
-# Wine Detail View
-from django.views.generic import DetailView
+from django.db.models import Sum
 from wine.models import Wine
 
 # Real and right generic view code
@@ -25,12 +14,6 @@ class WinesView(generic.ListView):
         context = super(WinesView, self).get_context_data(*args, **kwargs)
         context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
         return context
-
-
-
-    # def bottles(self):
-    #     result = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
-    #     return result['bottles_sum']
 
 class DetailView(generic.DetailView):
     model = Wine

@@ -21,9 +21,9 @@ class WinesView(generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(WinesView, self).get_context_data(**kwargs)
-        context['bottles_sum'] = Wine.objects.aggregate(bottles_sum=Sum('nmbrbottles'))
+    def get_context_data(self, *args, **kwargs):
+        context = super(WinesView, self).get_context_data(*args, **kwargs)
+        context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
         return context
 
 

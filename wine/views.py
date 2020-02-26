@@ -13,6 +13,7 @@ class WinesView(generic.ListView):
     def get_context_data(self, *args, **kwargs):
         context = super(WinesView, self).get_context_data(*args, **kwargs)
         context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
+        context['wines_sum'] = Wine.objects.count()
         return context
 
 class DetailView(generic.DetailView):

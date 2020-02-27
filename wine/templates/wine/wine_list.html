@@ -7,20 +7,19 @@
     </form>
 <br>
 <p>Your Cellar: <b>{{bottles_sum|default:"0"}}</b> Bottles of {{wines_sum}} wines.</p>
-
 <table class="table table-hover table-responsive" id="wineTable">
   <thead>
     <tr>
       <th scope="col"><i class="fas fa-search"></i></th>
-      <th scope="col">Weinname</th>
-      <th scope="col">Produzent</th>
-      <th scope="col">Land</th>
-      <th scope="col">Region</th>
-      <th scope="col">Jahrgang</th>
+      <th scope="col" style="cursor:pointer">Weinname</th>
+      <th scope="col" style="cursor:pointer">Produzent</th>
+      <th scope="col" style="cursor:pointer">Land</th>
+      <th scope="col" style="cursor:pointer">Region</th>
+      <th scope="col" style="cursor:pointer">Jahrgang</th>
       <th scope="col">Trauben</th>
-      <th scope="col">trinkbar von</th>
-      <th scope="col">trinkbar bis</th>
-      <th scope="col"><i class="fas fa-dolly"></i></th>
+      <th scope="col" style="cursor:pointer">trinkbar von</th>
+      <th scope="col" style="cursor:pointer">trinkbar bis</th>
+      <th scope="col" style="cursor:pointer"><i class="fas fa-dolly"></i></th>
     </tr>
   </thead>
   <tbody>
@@ -53,5 +52,18 @@ $(document).ready(function(){
   });
 });
 </script>
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script>
+$(function () {
+    $('#wineTable').DataTable({
+      "pageLength": 0,
+      "paging": false,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": false,
+      "autoWidth": false
+      });
+  });
+</script>
 {% endblock %}

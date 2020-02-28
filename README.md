@@ -42,7 +42,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 
 # Not implemented:
 - ~Search~
-- Column filter
+- ~Column filter~
 - Auth -> Users / Group users
 - ~Edit date in detail view~
 - PDF export 

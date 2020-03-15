@@ -1,46 +1,44 @@
-# Wine App Project with Django
+### Wine App Project with Django
 
-### Run testserver
+#### Run testserver
 
      python manage.py runserver
 
      run from remote: python3 manage.py runserver 0.0.0.0:8000
     
-# Install Django project on IDE from github repo
+#### Install Django project on IDE from github repo
+    # Clone repo
 
-- Clone repo
+    # Create virutal env
+    python3 -m venv wine-env
+       
+    # Activate virtual env wine-env
+    source wine-env/bin/activate
+        
+    # Install Django
+    pip install django
 
-- Create virutal env
+#### Run app with gunicorn / wsgi package
+    # Install gunicorn package
+    pip install gunicorn
     
-       python3 -m venv wine-env
-       
-- Activate virtual env wine-env
-
-        source wine-env/bin/activate
+    # Copy wsgi.py file into repo directory
+    cd /opt/django-winecellar
+    cp wineproject/wsgi.py .
+    
+    # Activate virtual env
+    source wine-env/bin/activate
+    
+    # Start gunicorn server
+    cd /opt/django-winecellar
+    gunicorn -b 0.0.0.0:8000 wsgi:application &
         
-- Install Django
-
-        pip install django
-        
-        
-       
-- Install Watson Search engine
-    https://github.com/etianen/django-watson/wiki   
-
-        pip install django-watson
-        python manage.py runserver
-        python manage.py migrate
-        python manage.py installwatson
-        python manage.py buildwatson
-
-
-
-Links/Helps/Tutorials:
+#### Links/Helps/Tutorials:
 - User Authentication
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 
 
-# Not implemented:
+#### Not implemented:
 - ~Search~
 - ~Column filter~
 - Auth -> Users / Group users

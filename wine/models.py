@@ -11,10 +11,12 @@ class Wine(models.Model):
     country = models.CharField(max_length=200, blank=True,)
     region = models.CharField(max_length=200, blank=True,)
     purchase = models.DateField(max_length=200, blank=True, null=True,)
-    notes = models.CharField(max_length=400, blank=True,)
+    price = models.IntegerField()
+    dealer = models.CharField(max_length=200, blank=True,)
     drinkfrom = models.CharField(max_length=200, blank=True,)
     drinkto = models.CharField(max_length=200, blank=True,)
     nmbrbottles = models.IntegerField(default=0)
+    notes = models.CharField(max_length=400, blank=True,)
     editdate = models.DateField(auto_now=True,)
 
     class Meta:

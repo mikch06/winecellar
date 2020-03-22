@@ -14,3 +14,4 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('', views.home, name='index'),
+]

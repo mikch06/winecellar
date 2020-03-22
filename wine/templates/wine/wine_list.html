@@ -66,9 +66,12 @@ MODAL CHECK
             <br><br>
        <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
         <br>
-        <a href="/wine" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></a>
+
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
+
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"  data-toggle="modal" data-target="#deleteModal{{ wine.id }}"><i class="fas fa-trash"></i></a>
+
         <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
   </div>
   </div>
 
@@ -87,8 +90,14 @@ MODAL CHECK
           <div class="card-text">
 <form method="post">{% csrf_token %}
     "{{ wine.winename }}" wirklich löschen?<br><br>
-    <a href="/" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
+    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
     <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
+    xxx
+    <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary" type="submit"><i class="fas fa-check"></i></a>
+
+    zzz
+    <a href="/wine" class="btn btn-primary" type="submit"><i class="fas fa-check"></i></a>
+
 </form>
   </div>
   </div>

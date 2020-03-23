@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.db.models import Sum
 from wine.models import Wine
+from django.contrib.auth.decorators import login_required
 
 # Real and right generic view code
 class WinesView(generic.ListView):
@@ -40,6 +41,7 @@ class CreateView(CreateView):
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
+@login_required
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')

@@ -41,7 +41,6 @@ class CreateView(CreateView):
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
-@login_required
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')

@@ -1,5 +1,6 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
+drop table "wine_wine";
 CREATE TABLE IF NOT EXISTS "wine_wine" (
 	"id"	integer NOT NULL PRIMARY KEY AUTOINCREMENT,
 	"winename"	varchar(200) NOT NULL,

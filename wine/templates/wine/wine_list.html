@@ -66,41 +66,14 @@ MODAL CHECK
             <br><br>
        <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
         <br>
-
+        <!-- close detail -->
         <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
-
-        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"  data-toggle="modal" data-target="#deleteModal{{ wine.id }}"><i class="fas fa-trash"></i></a>
-
+        <!-- delete wine -->
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+        <!-- edit wine -->
         <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
   </div>
   </div>
-
-  <!-- delete Modal-->
-  <div class="modal fade" id="deleteModal{{ wine.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ wine.winename }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <h3 class="card-title"><b>{{ wine.winename }}</b></h3>
-          <div class="card-text">
-<form method="post">{% csrf_token %}
-    "{{ wine.winename }}" wirklich löschen?<br><br>
-    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
-    <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i></button>
-    xxx
-    <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary" type="submit"><i class="fas fa-check"></i></a>
-
-    zzz
-    <a href="/wine" class="btn btn-primary" type="submit"><i class="fas fa-check"></i></a>
-    new
-    <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#wine_confirm_delete"><i class="fas fa-check"></i></a>
-
-
 </form>
   </div>
   </div>

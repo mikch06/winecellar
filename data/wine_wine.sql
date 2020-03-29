@@ -26,4 +26,5 @@ INSERT INTO wine_wine VALUES(167,'Chateau La Garde','Chateau La Garde','2023','2
 INSERT INTO wine_wine VALUES(168,'Astrales Ribera del Duero','Bodegas Los Astrales','2020','2030','100% Tempranillo',6,'2016','SP','Rabatt, wäre 36.00','Ribera del Duero','2020-03-20',NULL);
 INSERT INTO wine_wine VALUES(169,'Vernaccia di San Gimignano','Bonacchi','2018','2020','',1,'2018','IT','In der Toscana gekauft','Toscana','2020-03-20','2019-08-07');
 INSERT INTO wine_wine VALUES(170,'Big John Cuvee Reserve','Scheibelhofer','2020','2025','60% Zweigelt, 20% Cabernet Sauvignon, 20% Pinot Noir',6,'2017','AT','Wäre 21.00 CHF','Burgenland','2020-03-20','2020-01-02');
+
 COMMIT;

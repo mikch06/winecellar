@@ -7,6 +7,7 @@
     </form>
 <br>
 <p>Dein Weinkeller beinhaltet: <b>{{bottles_sum|default:"0"}}</b> Flaschen aus {{wines_sum|default:"0"}} Weinen.</p>
+MODAL CHECK
 <table class="table table-hover table-responsive" id="wineTable">
   <thead>
     <tr>
@@ -25,7 +26,7 @@
   <tbody>
   {% for wine in object_list %}
   <tr>
-      <td><a href="{% url 'wine:wine_detail' wine.id %}"><i class="fas fa-search"></i></a></td>
+      <td><a href="{% url 'wine:wine_detail' wine.id %}" data-toggle="modal" data-target="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
       <td>{{ wine.winename }}</td>
       <td>{{ wine.producer }}</td>
       <td>{{ wine.country }}</td>
@@ -36,12 +37,53 @@
       <td>{{ wine.drinkto }}</td>
       <td>{{ wine.nmbrbottles }}</td>
     </tr>
+
+  <!-- detail Modal-->
+  <div class="modal fade" id="detailModal{{ wine.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ wine.producer }} - {{ wine.winename }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 class="card-title"><b>{{ wine.winename }}</b></h3>
+          <div class="card-text">
+            <b>Weinname:</b> {{ wine.winename }}<br>
+            <b>Produzent:</b> {{ wine.producer }}<br>
+            <b>Trauben:</b> {{ wine.grapes }}<br><br>
+            <b>Jahrgang: {{ wine.year }}</b><br>
+             - Trinkreif ab: {{ wine.drinkfrom }}<br>
+             - Austrinken bis: {{ wine.drinkto }}<br>
+            <br>
+            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+            <br>
+            <b>Händler:</b> {{ wine.dealer }}<br>
+            <b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}<br>
+            <b>Notiz:</b> {{ wine.notes }}
+            <br><br>
+       <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
+        <br>
+        <!-- close detail -->
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fas fa-window-close"></i></button>
+        <!-- delete wine -->
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+        <!-- edit wine -->
+        <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+  </div>
+  </div>
+</form>
+  </div>
+  </div>
 {% empty %}
     No data yet.
 {% endfor %}
   </tbody>
 </table>
 
+<!-- Scritps -->
 <script>
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {

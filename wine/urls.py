@@ -14,9 +14,4 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('', views.home, name='index'),
-
-    ##  path('new/<int:pk>', WineNewView.as_view(), name='wine_edit'), # Create entries
-
-    # watson search engine
-    #path('r"^search/"', include('watson.urls')),
 ]

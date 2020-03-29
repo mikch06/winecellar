@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.db.models import Sum
 from wine.models import Wine
+from django.contrib.auth.decorators import login_required
 
 # Real and right generic view code
 class WinesView(generic.ListView):

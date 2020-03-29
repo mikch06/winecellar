@@ -1,12 +1,11 @@
-body,html {
-    /* background-color: #c6747e; */
-    margin-left: 10px;
-    }
-
 .container {
 width: 100%;
 max-width: 1400px;
 margin: auto;
+}
+
+.content    {
+margin: 20px;
 }
 
 th, td   {

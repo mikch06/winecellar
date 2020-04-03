@@ -1,3 +1,4 @@
+[TOC]
 ### Wine App Project with Django
 
 #### Run testserver

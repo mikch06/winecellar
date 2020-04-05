@@ -17,26 +17,20 @@
         
     # Install Django
     pip install django
-
-#### Run app with gunicorn / wsgi package
-    # Install gunicorn package
-    pip install gunicorn
-    
-    # Copy wsgi.py file into repo directory
-    cd /opt/django-winecellar
-    cp wineproject/wsgi.py .
-    
-    # Activate virtual env
-    source wine-env/bin/activate
-    
-    # Start gunicorn server
-    cd /opt/django-winecellar
-    gunicorn -b 0.0.0.0:8000 wsgi:application &
-        
+     
 #### Links/Helps/Tutorials:
 - User Authentication
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 
+
+#### Doc
+Find documentation topics:
+- gunicorn deployment
+- nginx config
+- sqlite version increase on CentOS
+
+in 
+[doc](doc)
 
 #### Not implemented:
 - ~Search~
@@ -46,19 +40,3 @@ https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
 - PDF export 
 - Excel export
 - ...
-
-#### Increase sqlite version on CentOS
-    # Get the current sqlite version on CentOS:
-    cd /tmp
-    wget https://www.sqlite.org/2019/sqlite-tools-linux-x86-3300100.zip
-    unzip sqlite-tools-linux-x86-3300100.zip
-    which sqlite3
-    cd /tmp/sqlite-tools-linux-x86-3300100
-    cp sqlite3 /usr/bin/sqlite3
-
-    yum install glibc.i686
-    yum -y install libz.so.1
-
-    # Check:
-    sqlite3
-    SQLite version 3.30.1 2019-10-10 20:19:45

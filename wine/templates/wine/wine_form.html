@@ -12,7 +12,20 @@
     <label for="year">Jahrgang: </label>
     <input id="year" type="number" name="year" value="{{ wine.year }}"><br>
     <label for="country">Land: </label>
-    <input id="country" type="text" name="country" value="{{ wine.country }}"><br>
+        <select id="country" name="country" value="{{ wine.country }}">
+        <option value="-">-</option>
+        <option value="Australien">Australien</option>
+        <option value="Frankreich">Frankreich</option>
+        <option value="Deutschland">Deutschland</option>
+        <option value="Italien">Italien</option>
+        <option value="Österreich">Österreich</option>
+        <option value="Portugal">Portugal</option>
+        <option value="Schweiz">Schweiz</option>
+        <option value="Spanien">Spanien</option>
+        <option value="Südafrika">Südafrika</option>
+        <option value="USA">USA</option>
+    </select>
+    <br>
     <label for="region">Region: </label>
     <input id="region" type="text" name="region" value="{{ wine.region }}"><br>
     <label for="purchase">Gekauft: </label>

@@ -9,7 +9,7 @@ class WineAdmin(admin.ModelAdmin):
         (None, {'fields': ['producer']}),
         (None, {'fields': ['year']}),
     ]
-    list_display = ('winename', 'producer', 'year', 'purchase', 'nmbrbottles')
-    search_fields = ['winename', 'producer', 'year', 'purchase', 'nmbrbottles']
+    list_display = ('winename', 'producer', 'year', 'country', 'purchase', 'nmbrbottles')
+    search_fields = ['winename', 'producer', 'year', 'country', 'purchase', 'nmbrbottles']
 
 admin.site.register(Wine, WineAdmin)

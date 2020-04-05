@@ -13,5 +13,6 @@ urlpatterns = [
     path('new/', views.CreateView.as_view(), name='wine_create'),
 
     path('about/', views.about, name='about'),
-    path('', views.home, name='index'),
+    #path('', views.home, name='index'), remove startpage
+    path('', views.WinesView.as_view(), name='wine_list'),
 ]

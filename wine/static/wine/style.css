@@ -9,6 +9,12 @@ margin: auto;
 margin: 20px;
 }
 
+.navbar {
+width: 100%;
+max-width: 1400px;
+margin: auto;
+}
+
 th, td   {
 font-size: 14px;
 }

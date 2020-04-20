@@ -1,0 +1,10 @@
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '[database name]',
+        'USER': '[database user with remote access privilege]',
+        'PASSWORD': '[password]',
+        'HOST': '[server ip address]',
+        'PORT': '',
+    }
+}

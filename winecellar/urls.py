@@ -11,6 +11,5 @@ urlpatterns = [
 
     path('', include('wine.urls')),
     path('admin/', admin.site.urls),
-
 ]
 

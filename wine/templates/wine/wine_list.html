@@ -25,16 +25,16 @@
   <tbody>
   {% for wine in object_list %}
   <tr>
-      <td><a href="{% url 'wine:wine_detail' wine.id %}" data-toggle="modal" data-target="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
-      <td data-label="winename">{{ wine.winename }}</td>
-      <td data-label="producer">{{ wine.producer }}</td>
-      <td data-label="country">{{ wine.country }}</td>
-      <td data-label="region">{{ wine.region }}</td>
-      <td data-label="year">{{ wine.year }}</td>
-      <td data-label="grapes">{{ wine.grapes }}</td>
-      <td data-label="drinkfrom">{{ wine.drinkfrom }}</td>
-      <td data-label="drinkto">{{ wine.drinkto }}</td>
-      <td data-label="nmbrbottles">{{ wine.nmbrbottles }}</td>
+      <td data-label="search"><a href="{% url 'wine:wine_detail' wine.id %}" data-toggle="modal" data-target="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
+      <td data-label="Weinname">{{ wine.winename }}</td>
+      <td data-label="Produzent">{{ wine.producer }}</td>
+      <td data-label="Land">{{ wine.country }}</td>
+      <td data-label="Region">{{ wine.region }}</td>
+      <td data-label="Jahrgang">{{ wine.year }}</td>
+      <td data-label="Trauben">{{ wine.grapes }}</td>
+      <td data-label="trinkbar von">{{ wine.drinkfrom }}</td>
+      <td data-label="trinkbar bis">{{ wine.drinkto }}</td>
+      <td data-label="Anz. Flaschen">{{ wine.nmbrbottles }}</td>
     </tr>
 {% empty %}
     No data yet.

@@ -19,15 +19,16 @@
   <div class="top-bar-left">
     <ul class="dropdown menu" data-dropdown-menu>
       <li class="menu-text">🍷 Mein Weinkeller</li>
-
+      <li><a href="/">Home</a></li>
       <li><a href="/new">New</a></li>
       <li><a href="/about">About</a></li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
+      <li><input type="search" id="wineSearch" placeholder="search&filter"></li>
+      <li><button type="reset" class="button" onClick="window.location.reload()">Reset</button></li>
+
     </ul>
   </div>
 </div>

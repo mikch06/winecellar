@@ -7,7 +7,7 @@
     </form>
 <br>
 <p>Mein Weinkeller beinhaltet: <b>{{bottles_sum|default:"0"}}</b> Flaschen aus {{wines_sum|default:"0"}} Weinen.</p>
-<table id="wineTable" class="responsive-card-table unstriped">
+<table id="wineTable" class="stack unstriped hover">
   <thead>
     <tr>
       <th width="50" scope="col"><i class="fas fa-search"></i></th>
@@ -41,6 +41,17 @@
 {% endfor %}
   </tbody>
 </table>
+<!-- Detail Modal -->
+<div class="reveal" id="detailModal" data-reveal>
+  <h1>Awesome. I Have It.</h1>
+  <p class="lead">Your couch. It is mine.</p>
+  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+  <button class="close-button" data-close aria-label="Close modal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
 
 <!-- Scritps -->
 <script>

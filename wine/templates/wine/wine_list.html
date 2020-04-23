@@ -37,6 +37,45 @@
       <td>{{ wine.nmbrbottles }}</td>
     </tr>
 
+<table class="responsive-card-table unstriped">
+  <thead>
+    <tr>
+      <th width="50"><i class="fas fa-search"></i></th>
+      <th style="cursor:pointer">Weinname</th>
+      <th>Hero Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="First Name"><a href="{% url 'wine:wine_detail' wine.id %}" data-toggle="modal" data-target="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
+      <td data-label="Last Name">Wayne</td>
+      <td data-label="Hero Title">Batman</td>
+    </tr>
+    <tr>
+      <td data-label="First Name">Peter</td>
+      <td data-label="Last Name">Parker</td>
+      <td data-label="Hero Title">Spiderman</td>
+    </tr>
+    <tr>
+      <td data-label="First Name">Bruce</td>
+      <td data-label="Last Name">Banner</td>
+      <td data-label="Hero Title">The Hulk</td>
+    </tr>
+    <tr>
+      <td data-label="First Name">Clark</td>
+      <td data-label="Last Name">Kent</td>
+      <td data-label="Hero Title">Superman</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
   <!-- detail Modal-->
   <div class="modal fade" id="detailModal{{ wine.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

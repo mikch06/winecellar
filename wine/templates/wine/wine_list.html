@@ -1,13 +1,12 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-    <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="search & filter" id="wineSearch">
-          <input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" placeholder="clear" onClick="window.location.reload()">
-    </form>
-<br>
+<!--    <form class="form-inline my-2 my-lg-0">-->
+<!--          <input class="form-control mr-sm-2" type="search" placeholder="search & filter" id="wineSearch">-->
+<!--          <input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" placeholder="clear" onClick="window.location.reload()">-->
+<!--    </form>-->
 <p>Mein Weinkeller beinhaltet: <b>{{bottles_sum|default:"0"}}</b> Flaschen aus {{wines_sum|default:"0"}} Weinen.</p>
-<table id="wineTable" class="stack unstriped hover">
+<table id="wineTable" class="unstriped hover">
   <thead>
     <tr>
       <th width="50" scope="col"><i class="fas fa-search"></i></th>
@@ -50,8 +49,6 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-
-
 
 <!-- Scritps -->
 <script>

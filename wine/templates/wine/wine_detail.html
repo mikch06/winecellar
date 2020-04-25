@@ -1,12 +1,22 @@
 {% extends "./base.html" %}
 
 {% block content %}
-
-<div id="myModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <h2 id="modalTitle">Awesome. I have it.</h2>
-  <p class="lead">Your couch.  It is mine.</p>
-  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-</div>
-
+        <b>Weinname:</b>      {{ wine.winename }}<br>
+        <b>Produzent:</b> {{ wine.producer }}<br>
+        <b>Trauben:</b> {{ wine.grapes }}<br><br>
+        <b>Jahrgang: {{ wine.year }}</b><br>
+           - Trinkreif ab: {{ wine.drinkfrom }}<br>
+           - Austrinken bis: {{ wine.drinkto }}<br>
+        <br>
+        <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+      <br>
+        <b>Händler:</b> {{ wine.dealer }}<br>
+        <b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}<br>
+        <b>Notiz:</b> {{ wine.notes }}
+      <br><br>
+        <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
+      <br>
+        <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
+        <a href="{% url 'wine:wine_edit' wine.id %}" class="button"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>
 {% endblock %}

@@ -24,7 +24,7 @@
   <tbody>
   {% for wine in object_list %}
   <tr>
-      <td data-label="search"><a href="{% url 'wine:wine_detail' wine.id %}" data-toggle="modal" data-target="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
+      <td data-label="search"><a href="{% url 'wine:wine_detail' wine.id %}" data-open="#detailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
       <td data-label="Weinname">{{ wine.winename }}</td>
       <td data-label="Produzent">{{ wine.producer }}</td>
       <td data-label="Land">{{ wine.country }}</td>
@@ -41,6 +41,7 @@
   </tbody>
 </table>
 <!-- Detail Modal -->
+<p><button class="button" data-open="detailModal">exampleModal</button></p>
 <div class="reveal" id="detailModal" data-reveal>
   <h1>Awesome. I Have It.</h1>
   <p class="lead">Your couch. It is mine.</p>
@@ -50,7 +51,12 @@
   </button>
 </div>
 
+
+
 <!-- Scritps -->
+
+
+
 <script>
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {

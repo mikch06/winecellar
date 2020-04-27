@@ -9,10 +9,8 @@ margin: auto;
 margin: 20px;
 }
 
-.navbar {
-width: 100%;
-max-width: 1400px;
-margin: auto;
+.top-bar, .top-bar ul {
+background-color: #f8f9fa;
 }
 
 th, td   {

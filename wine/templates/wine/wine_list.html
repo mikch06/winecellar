@@ -1,16 +1,12 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-<!--    <form class="form-inline my-2 my-lg-0">-->
-<!--          <input class="form-control mr-sm-2" type="search" placeholder="search & filter" id="wineSearch">-->
-<!--          <input class="btn btn-outline-secondary my-2 my-sm-0" type="reset" placeholder="clear" onClick="window.location.reload()">-->
-<!--    </form>-->
 <p>Mein Weinkeller beinhaltet: <b>{{bottles_sum|default:"0"}}</b> Flaschen aus {{wines_sum|default:"0"}} Weinen.</p>
-<table id="wineTable" class="unstriped hover stack">
+<table id="wineTable" class="sortable display unstriped hover stack">
   <thead>
     <tr>
       <th width="50" scope="col"><i class="fas fa-search"></i></th>
-      <th scope="col" style="cursor:pointer">Weinname</th>
+      <th style="cursor:pointer">Weinname</th>
       <th scope="col" style="cursor:pointer">Produzent</th>
       <th scope="col" style="cursor:pointer">Land</th>
       <th scope="col" style="cursor:pointer">Region</th>
@@ -40,9 +36,9 @@
 {% endfor %}
   </tbody>
 </table>
-
 <!-- Scritps -->
 <script>
+// search&filter
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
@@ -51,19 +47,5 @@ $(document).ready(function(){
     });
   });
 });
-</script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script>
-$(function () {
-    $('#wineTable').DataTable({
-      "pageLength": 0,
-      "paging": false,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": false,
-      "autoWidth": false
-      });
-  });
 </script>
 {% endblock %}

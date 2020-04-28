@@ -1,35 +1,35 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-<p>Mein Weinkeller beinhaltet: <b>{{bottles_sum|default:"0"}}</b> Flaschen aus {{wines_sum|default:"0"}} Weinen.</p>
+<p>Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.</p>
 <table id="wineTable" class="sortable display unstriped hover stack">
   <thead>
     <tr>
-      <th width="50" scope="col"><i class="fas fa-search"></i></th>
+      <th width="50" ><i class="fas fa-search"></i></th>
       <th style="cursor:pointer">Weinname</th>
-      <th scope="col" style="cursor:pointer">Produzent</th>
-      <th scope="col" style="cursor:pointer">Land</th>
-      <th scope="col" style="cursor:pointer">Region</th>
-      <th scope="col" style="cursor:pointer">Jahrgang</th>
-      <th scope="col">Trauben</th>
-      <th scope="col" style="cursor:pointer">trinkbar von</th>
-      <th scope="col" style="cursor:pointer">trinkbar bis</th>
-      <th scope="col" style="cursor:pointer"><i class="fas fa-dolly"></i></th>
+      <th style="cursor:pointer">Produzent</th>
+      <th style="cursor:pointer">Land</th>
+      <th style="cursor:pointer">Region</th>
+      <th style="cursor:pointer">Jahrgang</th>
+      <th>Trauben</th>
+      <th style="cursor:pointer">trinkbar von</th>
+      <th style="cursor:pointer">trinkbar bis</th>
+      <th style="cursor:pointer"><i class="fas fa-dolly"></i></th>
     </tr>
   </thead>
   <tbody>
   {% for wine in object_list %}
   <tr>
-      <td data-label="search"><a href="{% url 'wine:wine_detail' wine.id %}" ><i class="fas fa-search"></i></a></td>
-      <td data-label="Weinname">{{ wine.winename }}</td>
-      <td data-label="Produzent">{{ wine.producer }}</td>
-      <td data-label="Land">{{ wine.country }}</td>
-      <td data-label="Region">{{ wine.region }}</td>
-      <td data-label="Jahrgang">{{ wine.year }}</td>
-      <td data-label="Trauben">{{ wine.grapes }}</td>
-      <td data-label="trinkbar von">{{ wine.drinkfrom }}</td>
-      <td data-label="trinkbar bis">{{ wine.drinkto }}</td>
-      <td data-label="Anz. Flaschen">{{ wine.nmbrbottles }}</td>
+      <td><a href="{% url 'wine:wine_detail' wine.id %}" ><i class="fas fa-search"></i></a></td>
+      <td>{{ wine.winename }}</td>
+      <td>{{ wine.producer }}</td>
+      <td>{{ wine.country }}</td>
+      <td>{{ wine.region }}</td>
+      <td>{{ wine.year }}</td>
+      <td>{{ wine.grapes }}</td>
+      <td>{{ wine.drinkfrom }}</td>
+      <td>{{ wine.drinkto }}</td>
+      <td>{{ wine.nmbrbottles }}</td>
     </tr>
 {% empty %}
     No data yet.

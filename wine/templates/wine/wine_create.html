@@ -44,13 +44,12 @@
           <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles|default:"6" }}">
         </label>
       </div>
-      </div>
     </div>
-    <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">
+        <label>
         <a href="/wine/{{ wine.id }}" class="button"><i class="fas fa-window-close"></i></a>
         <button type="submit" class="button"><i class="fas fa-save"></i></button>
+        </label>
       </div>
-    </div>
 </form>
 {% endblock %}

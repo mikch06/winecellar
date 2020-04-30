@@ -9,7 +9,7 @@ class Wine(models.Model):
     country = models.CharField(max_length=200, blank=True,)
     region = models.CharField(max_length=200, blank=True,)
     purchase = models.DateField(max_length=200, blank=True, null=True,)
-    price = models.IntegerField(blank=True,)
+    price = models.IntegerField(blank=True, default=0)
     dealer = models.CharField(max_length=200, blank=True, null=True,)
     drinkfrom = models.CharField(max_length=200, blank=True,)
     drinkto = models.CharField(max_length=200, blank=True,)

@@ -1,7 +1,10 @@
+body    {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 .container {
 width: 100%;
 max-width: 1400px;
-padding-top: 40px;
 margin: auto;
 }
 
@@ -9,30 +12,33 @@ margin: auto;
 margin: 20px;
 }
 
-.navbar {
-width: 100%;
-max-width: 1400px;
-margin: auto;
+.top-bar, .top-bar ul {
+background-color: #f8f9fa;
+line-height: 1.5;
+font-size: 1.25rem;
+
 }
 
 th, td   {
 font-size: 14px;
 }
 
+table.hover tbody tr:hover {
+background-color: #f60;
+}
+
 a {
     color: black;
-    font-color: black;
     text-decoration: none;
 }
 
 a, a:link, visited {
-    font-color: black;
     text-decoration: none;
 }
 
+
 label {
-display: inline-block;
-width: 7em;
+font-size: 1rem;
 }
 
 .dates {

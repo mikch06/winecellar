@@ -1,0 +1,77 @@
+{% extends "./base.html" %}
+
+{% block content %}
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+                <title>Winecellar - Detailview</title>
+
+<div align="center"></div>
+  <div class="card-body">
+      <h2 class="card-title"><b>{{ wine.winename }}</b></h2>
+    <div class="card-text">
+        <b>Weinname:</b>      {{ wine.winename }}<br>
+        <b>Produzent:</b> {{ wine.producer }}<br>
+        <b>Trauben:</b> {{ wine.grapes }}<br><br>
+        <b>Jahrgang: {{ wine.year }}</b><br>
+           - Trinkreif ab: {{ wine.drinkfrom }}<br>
+           - Austrinken bis: {{ wine.drinkto }}<br>
+        <br>
+        <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+      <br>
+        <b>Händler:</b> {{ wine.dealer }}<br>
+        <b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}<br>
+        <b>Notiz:</b> {{ wine.notes }}
+      <br><br>
+        <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
+      <br>
+        <a href="/wine" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
+        <a href="{% url 'wine:wine_edit' wine.id %}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-primary"><i class="fas fa-trash"></i></a>
+  </div>
+</div>
+
+
+
+
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

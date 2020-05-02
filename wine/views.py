@@ -5,9 +5,10 @@ from django.views import generic
 from django.db.models import Sum
 from wine.models import Wine
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Real and right generic view code
-class WinesView(generic.ListView):
+class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
@@ -17,10 +18,10 @@ class WinesView(generic.ListView):
         context['wines_sum'] = Wine.objects.count()
         return context
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Wine
 
-class EditView(UpdateView):
+class EditView(LoginRequiredMixin, UpdateView):
     model = Wine
     template_name = 'wine/wine_form.html'
     fields = ['winename', 'producer', 'grapes', 'year', 'country',
@@ -34,16 +35,18 @@ class DeleteView(DeleteView):
     success_url = reverse_lazy('wine:wine_list')
 
 # Wine Create View
-class CreateView(CreateView):
+class CreateView(LoginRequiredMixin, CreateView):
     model = Wine
     template_name = 'wine/wine_create.html'
     fields = ['winename', 'producer', 'year', 'country', 'nmbrbottles']
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
+@login_required
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')
 
+login_required
 def home(request):
     return render(request, 'wine/index.html')

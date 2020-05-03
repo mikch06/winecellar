@@ -13,7 +13,7 @@
     <input id="year" type="number" name="year" value="{{ wine.year }}"><br>
     <label for="country">Land: </label>
         <select id="country" name="country" value="{{ wine.country }}">
-        <option value="-">-</option>
+        <option value="{{ wine.country }}">{{ wine.country }}</option>
         <option value="Australien">Australien</option>
         <option value="Frankreich">Frankreich</option>
         <option value="Deutschland">Deutschland</option>

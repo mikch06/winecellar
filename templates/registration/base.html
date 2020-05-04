@@ -12,22 +12,6 @@
 <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 <title>Weinkeller</title>
 </head>
-<body>
-  <div class="container">
-    <div class="top-bar" id="example-animated-menu" data-animate="hinge-in-from-top spin-out">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li><li><a href="/"> 🍷 Mein Weinkeller</a></li>
-      <li><a href="/about">About</a></li>
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter"></li>
-      <li><button type="reset" class="button" onClick="window.location.reload()">Reset</button></li>
-    </ul>
-  </div>
-</div>
 {% block content %}
 {% endblock %}
 </div>

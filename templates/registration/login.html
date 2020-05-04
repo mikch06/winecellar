@@ -2,49 +2,29 @@
 
 {% block content %}
 <br>
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
+<div class="grid-container fluid">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-4"></div>
+    <div class="cell small-4">
+     <h1 align="center"> 🍷 Mein Weinkeller</h1>
+      <br>
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
         <label>{{ form.username.label_tag }}
-        <td>{{ form.username }}</td>
+          <td>{{ form.username }}</td>
         </label>
-      </div>
-    </div>
-  </div>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
         <label>{{ form.password.label_tag }}
-        <td>{{ form.password }}</td>
+          <td>{{ form.password }}</td>
         </label>
-      </div>
-    </div>
-  </div>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
         <input type="submit" class="button" value="login" />
         <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+      {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
       </div>
-    </div>
+    <div class="cell small-4"></div>
   </div>
-</form>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
-        <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-      </div>
-    </div>
-  </div>
-  <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
-        {% if form.errors %}
-          <p>Your username and password didn't match. Please try again.</p>
-        {% endif %}
-      </div>
-    </div>
-  </div>
+</div>
 {% endblock %}

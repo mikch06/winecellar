@@ -1,22 +1,62 @@
 {% extends "./base.html" %}
-
 {% block content %}
-        <b>Weinname:</b>      {{ wine.winename }}<br>
-        <b>Produzent:</b> {{ wine.producer }}<br>
-        <b>Trauben:</b> {{ wine.grapes }}<br><br>
-        <b>Jahrgang: {{ wine.year }}</b><br>
-           - Trinkreif ab: {{ wine.drinkfrom }}<br>
-           - Austrinken bis: {{ wine.drinkto }}<br>
-        <br>
-        <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-      <br>
-        <b>Händler:</b> {{ wine.dealer }}<br>
-        <b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}<br>
-        <b>Notiz:</b> {{ wine.notes }}
-      <br><br>
-        <div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div>
-      <br>
-        <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
-        <a href="{% url 'wine:wine_edit' wine.id %}" class="button"><i class="fas fa-edit"></i></a>
-        <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><b>Weinname:</b> {{ wine.winename }}</div>
+  <div class="cell small-4"><b>Produzent:</b> {{ wine.producer }}</div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><b>Jahrgang:</b> {{ wine.year }}</div>
+  <div class="cell small-4"><b>Trauben:</b> {{ wine.grapes }}</div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">Trinkreif ab: {{ wine.drinkfrom }}</div>
+  <div class="cell small-4">Austrinken bis: {{ wine.drinkto }}</div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"></div>
+  <div class="cell small-4"></div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}</div>
+  <div class="cell small-4"></div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><b>Händler:</b> {{ wine.dealer }}</div>
+  <div class="cell small-4"><b>Kaufdatum:</b> {{ wine.purchase|date:"d.m.Y" }}</div>
+</div>
+
+
+
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><b>Notiz:</b> {{ wine.notes }}</div>
+  <div class="cell small-4">    </div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4"><div class="dates">update: {{ wine.editdate|date:"d.m.Y"}}</div></div>
+  <div class="cell small-4"></div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">    </div>
+  <div class="cell small-4">    </div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">    </div>
+  <div class="cell small-4">    </div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">---</div>
+  <div class="cell small-4">---</div>
+</div>
+<div class="grid-x grid-padding-x align-center"> <!-- Aligned to the center -->
+  <div class="cell small-4">
+    <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
+    <a href="{% url 'wine:wine_edit' wine.id %}" class="button"><i class="fas fa-edit"></i></a>
+    <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>
+  </div>
+  <div class="cell small-4"></div>
+</div>
+
+
+
+
 {% endblock %}

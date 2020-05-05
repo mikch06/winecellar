@@ -1,46 +1,100 @@
 {% extends "./base.html" %}
 {% block content %}
-<div class="card-body">
 <form method="post">{% csrf_token %}
-    <label for="winename">Weinname:</label>
-    <input id="winename" type="text" name="winename" value="{{ wine.winename }}"><br>
-    <label for="producer">Produzent:</label>
-    <input id="producer" type="text" name="producer" value="{{ wine.producer }}"><br>
-    <label for="grapes">Traubensorten: </label>
-    <input id="grapes" type="text" name="grapes" value="{{ wine.grapes }}"><br>
-    <label for="year">Jahrgang: </label>
-    <input id="year" type="number" name="year" value="{{ wine.year }}"><br>
-    <label for="country">Land: </label>
-        <select id="country" name="country" value="{{ wine.country }}">
-        <option value="{{ wine.country }}">{{ wine.country }}</option>
-        <option value="Australien">Australien</option>
-        <option value="Frankreich">Frankreich</option>
-        <option value="Deutschland">Deutschland</option>
-        <option value="Italien">Italien</option>
-        <option value="Österreich">Österreich</option>
-        <option value="Portugal">Portugal</option>
-        <option value="Schweiz">Schweiz</option>
-        <option value="Spanien">Spanien</option>
-        <option value="Südafrika">Südafrika</option>
-        <option value="USA">USA</option>
-    </select>
-    <br>
-    <label for="region">Region: </label>
-    <input id="region" type="text" name="region" value="{{ wine.region }}"><br>
-    <label for="purchase">Gekauft: </label>
-    <input id="purchase" type="datetime-local" name="purchase" placeholder="YYYY-MM-DD" value="{{ wine.purchase }}"><br>
-    <label for="dealer">Händler: </label>
-    <input id="dealer" type="text" name="dealer" value="{{ wine.dealer }}"><br>
-    <label for="notes">Notes: </label>
-    <textarea id="notes" name="notes" rows="4" cols="30">{{ wine.notes }}</textarea><br>
-    <label for="drinkfrom">Trinkreif ab: </label>
-    <input id="drinkfrom" name="drinkfrom" value="{{ wine.drinkfrom|default:"" }}"><br>
-    <label for="drinkto">Austrinken bis: </label>
-    <input id="drinkto" name="drinkto" value="{{ wine.drinkto|default:""  }}"><br>
-    <label for="nmbrbottles">Anz. Flaschen:</label>
-    <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles }}"><br><br><br>
-    <a href="/wine" class="btn btn-primary"><i class="fas fa-window-close"></i></a>
-    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
+    <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Weinname:
+          <input id="winename" type="text" name="winename" value="{{ wine.winename }}" placeholder="Weinname">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Produzent:
+          <input id="producer" type="text" name="producer" value="{{ wine.producer }}" placeholder="Produzent">
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Jahrgang:
+          <input id="year" type="number" name="year" value="{{ wine.year|default:"2015" }}">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Land:
+            <select id="country" name="country" value="{{ wine.country }}">
+                <option value="-">-</option>
+                <option value="Australien">Australien</option>
+                <option value="Frankreich">Frankreich</option>
+                <option value="Deutschland">Deutschland</option>
+                <option value="Italien">Italien</option>
+                <option value="Österreich">Österreich</option>
+                <option value="Portugal">Portugal</option>
+                <option value="Schweiz">Schweiz</option>
+                <option value="Spanien">Spanien</option>
+                <option value="Südafrika">Südafrika</option>
+                <option value="USA">USA</option>
+            </select>
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Anz. Flaschen:
+          <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles|default:"6" }}">
+        </label>
+      </div>
+              <div class="medium-6 cell">
+        <label>Region:
+          <input id="region" type="text" name="region" value="{{ wine.region }}" placeholder="Region">
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Kaufdatum:
+          <input id="purchase" type="text" name="purchase" placeholder="06.06.2018" value="{{ wine.purchase|date:"d.m.Y" }}">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Preis: (~ CHF)
+          <input id="price" type="text" name="price" value="{{ wine.price|default:"0" }}">
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Händler:
+          <input id="dealer" type="text" name="dealer" value="{{ wine.dealer }}" placeholder="Händler">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trauben:
+          <input id="grapes" type="text" name="grapes" value="{{ wine.grapes }}" >
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Trinkreif von:
+          <input id="drinkfrom" type="number" name="drinkfrom" value="{{ wine.drinkfrom }}" placeholder="Trinkreife">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trinkreif bis:
+          <input id="drinkto" type="number" name="drinkto" value="{{ wine.drinkto }}" placeholder="Trinkreife">
+        </label>
+      </div>
+    </div>
+    <label>Notes:
+      <textarea name="notes" id="notes" rows="4" cols="30">{{ wine.notes }}</textarea></p>
+    </label>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>
+        <a href="/wine/{{ wine.id }}" class="button"><i class="fas fa-window-close"></i></a>
+        <button type="submit" class="button"><i class="fas fa-save"></i></button>
+        </label>
+    </div>
 </form>
-</div>
 {% endblock %}

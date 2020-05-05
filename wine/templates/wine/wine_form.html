@@ -1,7 +1,6 @@
 {% extends "./base.html" %}
 {% block content %}
 <div class="card-body">
-        <h5 class="card-title">{{ wine.winename }}</h5>
 <form method="post">{% csrf_token %}
     <label for="winename">Weinname:</label>
     <input id="winename" type="text" name="winename" value="{{ wine.winename }}"><br>
@@ -29,7 +28,7 @@
     <label for="region">Region: </label>
     <input id="region" type="text" name="region" value="{{ wine.region }}"><br>
     <label for="purchase">Gekauft: </label>
-    <input id="purchase" type="date" name="purchase" value="{{ wine.purchase }}"><br>
+    <input id="purchase" type="datetime-local" name="purchase" placeholder="YYYY-MM-DD" value="{{ wine.purchase }}"><br>
     <label for="dealer">Händler: </label>
     <input id="dealer" type="text" name="dealer" value="{{ wine.dealer }}"><br>
     <label for="notes">Notes: </label>

@@ -44,6 +44,47 @@
           <input id="nmbrbottles" type="number" name="nmbrbottles" value="{{ wine.nmbrbottles|default:"6" }}">
         </label>
       </div>
+              <div class="medium-6 cell">
+        <label>Region:
+          <input id="region" type="text" name="region" value="{{ wine.region }}" placeholder="Region">
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Kaufdatum:
+          <input id="purchase" type="datetime-local" name="purchase" placeholder="YYYY-MM-DD" value="{{ wine.purchase }}" placeholder="Kaufdatum">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Preis: (~ CHF)
+          <input id="price" type="text" name="price" value="{{ wine.price|default:"0" }}">
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Händler:
+          <input id="dealer" type="text" name="dealer" value="{{ wine.dealer }}" placeholder="Händler">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trauben:
+          <input id="grapes" type="text" name="grapes" value="{{ wine.grapes }}" >
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Trinkreif von:
+          <input id="drinkfrom" type="number" name="drinkfrom" value="{{ wine.drinkfrom }}" placeholder="Trinkreife">
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trinkreif bis:
+          <input id="drinkto" type="number" name="drinkto" value="{{ wine.drinkto }}" placeholder="Trinkreife">
+        </label>
+      </div>
     </div>
       <div class="medium-6 cell">
         <label>

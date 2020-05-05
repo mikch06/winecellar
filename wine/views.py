@@ -25,7 +25,7 @@ class EditView(LoginRequiredMixin, UpdateView):
     model = Wine
     template_name = 'wine/wine_form.html'
     fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles']
+              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
     success_url = reverse_lazy('wine:wine_list')
 
 
@@ -38,7 +38,8 @@ class DeleteView(LoginRequiredMixin, DeleteView):
 class CreateView(LoginRequiredMixin, CreateView):
     model = Wine
     template_name = 'wine/wine_create.html'
-    fields = ['winename', 'producer', 'year', 'country', 'nmbrbottles']
+    fields = ['winename', 'producer', 'grapes', 'year', 'country',
+              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page

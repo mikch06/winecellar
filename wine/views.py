@@ -37,7 +37,7 @@ class DeleteView(LoginRequiredMixin, DeleteView):
 # Wine Create View
 class CreateView(LoginRequiredMixin, CreateView):
     model = Wine
-    template_name = 'wine/wine_create.html'
+    template_name = 'wine/wine_form.html'
     fields = ['winename', 'producer', 'grapes', 'year', 'country',
               'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
     success_url = reverse_lazy('wine:wine_list')

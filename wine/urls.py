@@ -1,6 +1,4 @@
 from django.urls import path
-
-#from wine.views import WineListView
 from . import views
 
 # App Namespace for app 'wine'

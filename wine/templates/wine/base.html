@@ -31,8 +31,8 @@
     </ul>
   </div>
 </div>
-<div class="callout warning">
-  <h5>Userlogin</h5>
+<div class="callout small warning" data-closable>
+  <h6>Userlogin</h6>
     <!-- Testing introduced auth -->
     {% if user.is_authenticated %}
     <li>User: {{ user.get_username }}</li>
@@ -40,6 +40,7 @@
     {% else %}
     <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
     {% endif %}
+      <cite>Userlogin will be soon implemented in Navigation</cite>
 </div>
 <!-- not used anymore ?? 28.04.2020 -->
 <!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>-->

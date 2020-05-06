@@ -1,52 +1,56 @@
 {% extends "./base.html" %}
 {% block content %}
-<br>
-<p>Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.</p>
-<table id="wineTable" class="sortable display unstriped hover">
-  <thead>
-    <tr>
-      <th width="50" ><i class="fas fa-search"></i></th>
-      <th style="cursor:pointer">Weinname</th>
-      <th style="cursor:pointer">Produzent</th>
-      <th style="cursor:pointer">Land</th>
-      <th style="cursor:pointer">Region</th>
-      <th style="cursor:pointer">Jahrgang</th>
-      <th>Trauben</th>
-      <th style="cursor:pointer">trinkbar von</th>
-      <th style="cursor:pointer">trinkbar bis</th>
-      <th style="cursor:pointer"><i class="fas fa-dolly"></i></th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for wine in object_list %}
-  <tr>
-      <td><a href="{% url 'wine:wine_detail' wine.id %}" ><i class="fas fa-search"></i></a></td>
-      <td>{{ wine.winename }}</td>
-      <td>{{ wine.producer }}</td>
-      <td>{{ wine.country }}</td>
-      <td>{{ wine.region }}</td>
-      <td>{{ wine.year }}</td>
-      <td>{{ wine.grapes }}</td>
-      <td>{{ wine.drinkfrom }}</td>
-      <td>{{ wine.drinkto }}</td>
-      <td>{{ wine.nmbrbottles }}</td>
-{% endfor %}
-  </tr>
+<div class="grid-x">
+  <div class="cell">
+    <br>
+    <p>Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.</p>
+    <table id="wineTable" class="sortable display unstriped hover">
+      <thead>
+        <tr>
+          <th width="50" ><i class="fas fa-search"></i></th>
+          <th style="cursor:pointer">Weinname</th>
+          <th style="cursor:pointer">Produzent</th>
+          <th style="cursor:pointer">Land</th>
+          <th style="cursor:pointer">Region</th>
+          <th style="cursor:pointer">Jahrgang</th>
+          <th>Trauben</th>
+          <th style="cursor:pointer">trinkbar von</th>
+          <th style="cursor:pointer">trinkbar bis</th>
+          <th style="cursor:pointer"><i class="fas fa-dolly"></i></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for wine in object_list %}
+      <tr>
+          <td><a href="{% url 'wine:wine_detail' wine.id %}" ><i class="fas fa-search"></i></a></td>
+          <td>{{ wine.winename }}</td>
+          <td>{{ wine.producer }}</td>
+          <td>{{ wine.country }}</td>
+          <td>{{ wine.region }}</td>
+          <td>{{ wine.year }}</td>
+          <td>{{ wine.grapes }}</td>
+          <td>{{ wine.drinkfrom }}</td>
+          <td>{{ wine.drinkto }}</td>
+          <td>{{ wine.nmbrbottles }}</td>
+    {% endfor %}
+      </tr>
 
-  </tbody>
-</table>
-<!-- Scritps -->
-<!-- search&filter -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script>
-// search&filter
-$(document).ready(function(){
-  $("#wineSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#wineTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      </tbody>
+    </table>
+    <!-- Scritps -->
+    <!-- search&filter -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script>
+    // search&filter
+    $(document).ready(function(){
+      $("#wineSearch").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#wineTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
     });
-  });
-});
-</script>
-{% endblock %}
+    </script>
+    {% endblock %}
+  </div>
+</div>

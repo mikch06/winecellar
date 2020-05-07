@@ -12,4 +12,7 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('', views.WinesView.as_view(), name='wine_list'),
+
+    path('form/', views.wineform),
+
 ]

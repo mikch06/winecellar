@@ -1,20 +1,22 @@
 import datetime
 from django.db import models
+from django import forms
 
+COUNTRY = [
+    ('x', 'x'),
+    ('Australien', 'Australien'),
+    ('Frankreich', 'Frankreich'),
+    ('Deutschland', 'Deutschland'),
+    ('Italien', 'Italien'),
+    ('Österreich', 'Österreich'),
+    ('Portugal', 'Portugal'),
+    ('Schweiz', 'Schweiz'),
+    ('Spanien', 'Spanien'),
+    ('Südafrika', 'Südafrika'),
+    ('USA', 'USA'),
+]
 class Wine(models.Model):
-    COUNTRY = [
-        ('x', 'x'),
-        ('Australien', 'Australien'),
-        ('Frankreich', 'Frankreich'),
-        ('Deutschland', 'Deutschland'),
-        ('Italien', 'Italien'),
-        ('Österreich', 'Österreich'),
-        ('Portugal', 'Portugal'),
-        ('Schweiz', 'Schweiz'),
-        ('Spanien', 'Spanien'),
-        ('Südafrika', 'Südafrika'),
-        ('USA', 'USA'),
-    ]
+
 
     winename = models.CharField(max_length=200, blank=True)
     producer = models.CharField(max_length=200, blank=True)
@@ -33,3 +35,11 @@ class Wine(models.Model):
 
     class Meta:
         ordering = ["country", "region", "year"]
+
+class WineForm(forms.Form):
+    winename = forms.CharField(max_length=100)
+    producer = forms.CharField(max_length=100)
+
+    country = forms.CharField(
+        max_length=12,
+        widget=forms.Select(choices=COUNTRY),)

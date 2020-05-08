@@ -1,6 +1,7 @@
 import datetime
 from django.db import models
 from django import forms
+from django.forms import ModelForm
 
 COUNTRY = [
     ('x', 'x'),
@@ -36,10 +37,10 @@ class Wine(models.Model):
     class Meta:
         ordering = ["country", "region", "year"]
 
-class WineForm(forms.Form):
-    winename = forms.CharField(max_length=100)
-    producer = forms.CharField(max_length=100)
-
-    country = forms.CharField(
-        max_length=12,
-        widget=forms.Select(choices=COUNTRY),)
+class WineForm(ModelForm):
+    class Meta:
+        model = Wine
+        fields = ['winename', 'producer', 'country', 'purchase']
+        widgets = {
+            'purchase': forms.SelectDateWidget()
+        }

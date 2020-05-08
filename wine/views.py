@@ -61,6 +61,7 @@ def wineform(request):
         form = WineForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
+            form.save()
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:

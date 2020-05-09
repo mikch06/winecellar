@@ -8,7 +8,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
-
 # Real and right generic view code
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
@@ -23,12 +22,12 @@ class WinesView(LoginRequiredMixin, generic.ListView):
 class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Wine
 
-class EditView(LoginRequiredMixin, UpdateView):
-    model = Wine
-    template_name = 'wine/wine_form.html'
-    fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
-    success_url = reverse_lazy('wine:wine_list')
+# class EditView(LoginRequiredMixin, UpdateView):
+#     model = Wine
+#     template_name = 'wine/wine_form.html'
+#     fields = ['winename', 'producer', 'grapes', 'year', 'country',
+#               'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
+#     success_url = reverse_lazy('wine:wine_list')
 
 
 # Wine Delete View
@@ -37,12 +36,12 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('wine:wine_list')
 
 # Wine Create View
-class CreateView(LoginRequiredMixin, CreateView):
-    model = Wine
-    template_name = 'wine/wine_form.html'
-    fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
-    success_url = reverse_lazy('wine:wine_list')
+# class CreateView(LoginRequiredMixin, CreateView):
+#     model = Wine
+#     template_name = 'wine/wine_form.html'
+#     fields = ['winename', 'producer', 'grapes', 'year', 'country',
+#               'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
+#     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
 def about(request):
@@ -71,4 +70,8 @@ def wineform(request):
     else:
         form = WineForm()
 
-    return render(request, 'wine/form.html', {'form': form})
+    return render(request, 'wine/create_form.html', {'form': form})
+
+class WineUpdate(UpdateView):
+    model = Wine
+    fields = ['winename']

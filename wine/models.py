@@ -1,7 +1,9 @@
 import datetime
 from django.db import models
+from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 COUNTRY = [
     ('x', 'x'),
@@ -37,10 +39,16 @@ class Wine(models.Model):
     class Meta:
         ordering = ["country", "region", "year"]
 
+    def get_absolute_url(self):
+        return reverse('wine-detail', kwargs={'pk': self.pk})
+
+
+
 class WineForm(ModelForm):
     class Meta:
         model = Wine
-        fields = ['winename', 'producer', 'country', 'purchase']
+        fields = ['winename', 'producer', 'country', 'region', 'year', 'purchase', 'dealer',
+                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
         widgets = {
             'purchase': forms.SelectDateWidget()
         }

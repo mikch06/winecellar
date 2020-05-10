@@ -57,8 +57,21 @@ def wineform(request):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-class WineUpdate(UpdateView):
-    model = Wine
-    fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles', 'price']
-    template_name = 'wine/create_form.html'
+def editform(request, id):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = WineForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = WineForm()
+
+    return render(request, 'wine/create_form.html', {'form': form})

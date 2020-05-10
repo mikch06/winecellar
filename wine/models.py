@@ -49,6 +49,21 @@ class WineForm(ModelForm):
         model = Wine
         fields = ['winename', 'producer', 'country', 'region', 'year', 'purchase', 'dealer',
                   'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
+        labels = {
+            'winename': 'Weinname',
+            'producer': 'Produzent',
+            'grapes': 'Trauben',
+            'year': 'Jahrgang',
+            'country': 'Land',
+            'region': 'Region',
+            'purchase': 'Kaufdatum',
+            'price': 'Preis (~CHF)',
+            'dealer': 'Verkäufer',
+            'drinkfrom': 'Trinkbar ab',
+            'drinkto': 'Trinkbar bis',
+            'nmbrbottles': 'Anzahl Flaschen',
+            }
+
         widgets = {
-            'purchase': forms.SelectDateWidget()
+            'purchase': forms.SelectDateWidget(years=range(2010, 2020),empty_label=("Tag", "Monat", "Jahr"))
         }

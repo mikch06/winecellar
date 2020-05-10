@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from wine.views import WineUpdate
 
 # App Namespace for app 'wine'
 app_name = 'wine'
@@ -10,7 +9,7 @@ urlpatterns = [
     path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
 
     path('new/', views.wineform),
-    path('wine/edit/<int:pk>/', WineUpdate.as_view(), name='wine-update'),
+    #path('wine/edit/<int:pk>/', WineUpdate.as_view(), name='wine-update'),
 
 
 

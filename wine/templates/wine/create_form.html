@@ -9,7 +9,7 @@
 <body>
 <form method="post">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_table }}
 <button type="submit" class="button"><i class="fas fa-save"></i></button>
 </body>
 </html>

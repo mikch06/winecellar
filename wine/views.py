@@ -57,7 +57,7 @@ def wineform(request):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-def editform(request, id):
+def update_view(request, pk):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:

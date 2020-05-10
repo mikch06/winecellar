@@ -7,10 +7,15 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_table }}
-<button type="submit" class="button"><i class="fas fa-save"></i></button>
+    <div class="grid-container">
+    <div class="grid-x grid-padding-x">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+        <button type="submit" class="button"><i class="fas fa-save"></i></button>
+        </form>
+    </div>
+    </div>
 </body>
 </html>
 {% endblock %}

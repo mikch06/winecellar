@@ -5,7 +5,7 @@ from django import forms
 from django.forms import ModelForm
 
 COUNTRY = [
-    ('x', 'x'),
+    ('-', '-'),
     ('Australien', 'Australien'),
     ('Frankreich', 'Frankreich'),
     ('Deutschland', 'Deutschland'),
@@ -18,18 +18,17 @@ COUNTRY = [
     ('USA', 'USA'),
 ]
 class Wine(models.Model):
-
     winename = models.CharField(max_length=200, blank=True)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
-    year = models.CharField(max_length=200, blank=True)
+    year = models.IntegerField(blank=True, null=True)
     country = models.CharField(max_length=12, choices=COUNTRY)
     region = models.CharField(max_length=200, blank=True)
     purchase = models.DateField(blank=True, null=True)
     price = models.FloatField(blank=True, default=0)
     dealer = models.CharField(max_length=200, blank=True)
     drinkfrom = models.IntegerField(blank=True, null=True)
-    drinkto = models.CharField(max_length=200, blank=True)
+    drinkto = models.IntegerField(blank=True, null=True)
     nmbrbottles = models.IntegerField(default=0)
     notes = models.CharField(max_length=400, blank=True)
     editdate = models.DateField(auto_now=True)
@@ -61,6 +60,6 @@ class WineForm(ModelForm):
             }
 
         widgets = {
-            'purchase': forms.SelectDateWidget(years=range(2010, 2030),empty_label=("Jahr", "Monat", "Tag")),
+            'purchase': forms.SelectDateWidget(years=range(2010, 2030), empty_label=("Jahr", "Monat", "Tag")),
             'notes': forms.Textarea(attrs={'cols': 300, 'rows': 5}),
         }

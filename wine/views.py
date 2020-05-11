@@ -37,8 +37,8 @@ def about(request):
 def home(request):
     return render(request, 'wine/index.html')
 
-
-def wineform(request):
+@login_required
+def createWine(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
@@ -57,11 +57,13 @@ def wineform(request):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-def update_view(request, pk):
-    # if this is a POST request we need to process the form data
+@login_required
+def updateWine(request, pk):
+    update = Wine.objects.get(id=pk)
+    form = WineForm(instance=update)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = WineForm(request.POST)
+        form = WineForm(request.POST, instance=update)
         # check whether it's valid:
         if form.is_valid():
             form.save()
@@ -69,9 +71,5 @@ def update_view(request, pk):
             # ...
             # redirect to a new URL:
             return HttpResponseRedirect('/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = WineForm()
 
     return render(request, 'wine/create_form.html', {'form': form})

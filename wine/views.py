@@ -5,9 +5,12 @@ from django.views import generic
 from django.db.models import Sum
 from wine.models import Wine
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponse, HttpResponseRedirect
+from wine.models import WineForm
 
 # Real and right generic view code
-class WinesView(generic.ListView):
+class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
@@ -17,33 +20,57 @@ class WinesView(generic.ListView):
         context['wines_sum'] = Wine.objects.count()
         return context
 
-class DetailView(generic.DetailView):
+class DetailView(LoginRequiredMixin, generic.DetailView):
     model = Wine
-
-class EditView(UpdateView):
-    model = Wine
-    template_name = 'wine/wine_form.html'
-    fields = ['winename', 'producer', 'grapes', 'year', 'country',
-              'region', 'purchase', 'dealer', 'notes', 'drinkfrom', 'drinkto', 'nmbrbottles']
-    success_url = reverse_lazy('wine:wine_list')
-
 
 # Wine Delete View
-class DeleteView(DeleteView):
+class DeleteView(LoginRequiredMixin, DeleteView):
     model = Wine
-    success_url = reverse_lazy('wine:wine_list')
-
-# Wine Create View
-class CreateView(CreateView):
-    model = Wine
-    template_name = 'wine/wine_create.html'
-    fields = ['winename', 'producer', 'year', 'country', 'nmbrbottles']
     success_url = reverse_lazy('wine:wine_list')
 
 # 'About' page
+@login_required
 def about(request):
     #return HttpResponse("This is all about...")
     return render(request, 'wine/about.html')
 
+@login_required
 def home(request):
     return render(request, 'wine/index.html')
+
+@login_required
+def createWine(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = WineForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = WineForm()
+
+    return render(request, 'wine/create_form.html', {'form': form})
+
+@login_required
+def updateWine(request, pk):
+    update = Wine.objects.get(id=pk)
+    form = WineForm(instance=update)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = WineForm(request.POST, instance=update)
+        # check whether it's valid:
+        if form.is_valid():
+            form.save()
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            return HttpResponseRedirect('/')
+
+    return render(request, 'wine/create_form.html', {'form': form})

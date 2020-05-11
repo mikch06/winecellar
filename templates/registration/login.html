@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+
+{% block content %}
+<br>
+<div class="grid-container fluid">
+  <div class="grid-x grid-margin-x">
+    <div class="cell small-4"></div>
+    <div class="cell small-4">
+     <h2 align="center"> 🍷 Mein Weinkeller</h2>
+      <br>
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+        <label>{{ form.username.label_tag }}
+          <td>{{ form.username }}</td>
+        </label>
+        <label>{{ form.password.label_tag }}
+          <td>{{ form.password }}</td>
+        </label>
+        <input type="submit" class="button" value="login" />
+        <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
+      {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
+      </div>
+    <div class="cell small-4"></div>
+  </div>
+</div>
+{% endblock %}

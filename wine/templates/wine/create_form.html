@@ -12,6 +12,7 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_table }}
+        <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
         <button type="submit" class="button"><i class="fas fa-save"></i></button>
         </form>
     </div>

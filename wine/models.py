@@ -3,7 +3,6 @@ from django.db import models
 from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User
 
 COUNTRY = [
     ('x', 'x'),
@@ -20,7 +19,6 @@ COUNTRY = [
 ]
 class Wine(models.Model):
 
-
     winename = models.CharField(max_length=200, blank=True)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
@@ -30,7 +28,7 @@ class Wine(models.Model):
     purchase = models.DateField(blank=True, null=True)
     price = models.FloatField(blank=True, default=0)
     dealer = models.CharField(max_length=200, blank=True)
-    drinkfrom = models.CharField(max_length=200, blank=True)
+    drinkfrom = models.IntegerField(blank=True, null=True)
     drinkto = models.CharField(max_length=200, blank=True)
     nmbrbottles = models.IntegerField(default=0)
     notes = models.CharField(max_length=400, blank=True)
@@ -45,7 +43,7 @@ class Wine(models.Model):
 class WineForm(ModelForm):
     class Meta:
         model = Wine
-        fields = ['winename', 'producer', 'country', 'region', 'year', 'purchase', 'dealer',
+        fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
                   'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
         labels = {
             'winename': 'Weinname',
@@ -63,5 +61,6 @@ class WineForm(ModelForm):
             }
 
         widgets = {
-            'purchase': forms.SelectDateWidget(years=range(2010, 2020),empty_label=("Tag", "Monat", "Jahr"))
+            'purchase': forms.SelectDateWidget(years=range(2010, 2030),empty_label=("Jahr", "Monat", "Tag")),
+            'notes': forms.Textarea(attrs={'cols': 300, 'rows': 5}),
         }

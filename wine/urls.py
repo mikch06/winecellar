@@ -8,9 +8,9 @@ urlpatterns = [
     path('wine/<int:pk>', views.DetailView.as_view(), name='wine_detail'),
     path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
 
-    path('new/', views.wineform),
+    path('new/', views.createWine, name='create_wine'),
 
-    path('wine/edit/<int:pk>', views.update_view, name='wine_update'),
+    path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
 
 
 

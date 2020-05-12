@@ -23,7 +23,7 @@ class Wine(models.Model):
     year = models.IntegerField(blank=True, null=True)
     country = models.CharField(max_length=12, choices=COUNTRY)
     region = models.CharField(max_length=200, blank=True)
-    purchase = models.DateField(null=True)
+    purchase = models.DateField(blank=True, auto_now=False, auto_now_add=False)
     price = models.CharField(max_length=12, blank=True, default=0)
     dealer = models.CharField(max_length=200, blank=True)
     drinkfrom = models.IntegerField(blank=True, null=True)

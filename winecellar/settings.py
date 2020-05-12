@@ -109,7 +109,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
-DATE_FORMAT = 'd.m.Y.'
-DATE_INPUT_FORMATS = '%d.%m.%Y'
-
 from winecellar.settings_dev import *

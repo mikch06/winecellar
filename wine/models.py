@@ -17,13 +17,13 @@ COUNTRY = [
     ('USA', 'USA'),
 ]
 class Wine(models.Model):
-    winename = models.CharField(max_length=200, blank=True)
+    winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
     year = models.IntegerField(blank=True, null=True)
-    country = models.CharField(max_length=12, choices=COUNTRY)
+    country = models.CharField(max_length=12, blank=True, choices=COUNTRY)
     region = models.CharField(max_length=200, blank=True)
-    purchase = models.DateField(blank=True, auto_now=False, auto_now_add=False)
+    purchase = models.DateField(blank=True, null=True, auto_now=False, auto_now_add=False)
     price = models.CharField(max_length=12, blank=True, default=0)
     dealer = models.CharField(max_length=200, blank=True)
     drinkfrom = models.IntegerField(blank=True, null=True)
@@ -59,6 +59,6 @@ class WineForm(ModelForm):
             }
 
         widgets = {
-            'purchase': forms.SelectDateWidget(years=range(2010, 2030), empty_label=("Jahr", "Monat", "Tag")),
+            'purchase': forms.SelectDateWidget(years=range(2010, 2030),empty_label=("Jahr", "Monat", "Tag")),
             'notes': forms.Textarea(attrs={'cols': 300, 'rows': 5}),
         }

@@ -18,8 +18,8 @@
       <div class="medium-6 cell">&nbsp;</div>
     </div>
     <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Trinkreif ab:</b> {{ wine.drinkfrom }}</div>
-      <div class="medium-6 cell"><b>Austrinken bis:</b> {{ wine.drinkto }}</div>
+      <div class="medium-6 cell"><b>Trinkreif ab:</b> {{ wine.drinkfrom|default_if_none:'' }}</div>
+      <div class="medium-6 cell"><b>Austrinken bis:</b> {{ wine.drinkto|default_if_none:'' }}</div>
     </div>
     <div class="grid-x grid-padding-x">
       <div class="medium-6 cell">&nbsp;</div>
@@ -34,7 +34,7 @@
       <div class="medium-6 cell">&nbsp;</div>
     </div>
     <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Kaufdatum:</b> {{ wine.purchase }}</div>
+      <div class="medium-6 cell"><b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}</div>
       <div class="medium-6 cell"><b>Preis:</b> {{ wine.price }}</div>
     </div>
     <div class="grid-x grid-padding-x">

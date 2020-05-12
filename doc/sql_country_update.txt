@@ -1,0 +1,3 @@
+UPDATE wine_wine
+SET country='Australien'
+WHERE country='AU';

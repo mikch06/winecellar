@@ -47,15 +47,9 @@ def createWine(request):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
             return HttpResponseRedirect('/')
-
-    # if a GET (or any other method) we'll create a blank form
     else:
         form = WineForm()
-
     return render(request, 'wine/create_form.html', {'form': form})
 
 @login_required
@@ -68,9 +62,6 @@ def updateWine(request, pk):
         # check whether it's valid:
         if form.is_valid():
             form.save()
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})

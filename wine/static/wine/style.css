@@ -41,6 +41,12 @@ label {
 font-size: 1rem;
 }
 
+#id_purchase_year,
+#id_purchase_month,
+#id_purchase_day    {
+    max-width: 180px;
+}
+
 .dates {
 font-size: 10px;
 }

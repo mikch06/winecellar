@@ -7,16 +7,87 @@
     <title>Title</title>
 </head>
 <body>
+<form method="post">{% csrf_token %}
     <div class="grid-container">
     <div class="grid-x grid-padding-x">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_table }}
-        <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
+      <div class="medium-6 cell">
+            <label>Weinname:
+                {{ form.winename }}
+            </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Produzent:
+                {{ form.producer }}
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Jahrgang:
+                {{ form.year }}
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Land:
+                {{ form.country }}
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Anz. Flaschen:
+                {{ form.nmbrbottles }}
+        </label>
+      </div>
+              <div class="medium-6 cell">
+        <label>Region:
+                {{ form.region }}
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Kaufdatum:<br>
+                {{ form.purchase }}
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Preis: (~ CHF)
+                {{ form.price }}
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Händler:
+                {{ form.dealer }}
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trauben:
+                {{ form.grapes }}
+        </label>
+      </div>
+    </div>
+    <div class="grid-x grid-padding-x">
+      <div class="medium-6 cell">
+        <label>Trinkreif von:
+                {{ form.drinkfrom }}
+        </label>
+      </div>
+      <div class="medium-6 cell">
+        <label>Trinkreif bis:
+                {{ form.drinkto }}
+        </label>
+      </div>
+    </div>
+      <div class="medium-6 cell">
+        <label>
+        <a href="/wine/{{ wine.id }}" class="button"><i class="fas fa-window-close"></i></a>
         <button type="submit" class="button"><i class="fas fa-save"></i></button>
-        </form>
-    </div>
-    </div>
+        </label>
+      </div>
+</form>
 </body>
 </html>
 {% endblock %}

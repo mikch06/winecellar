@@ -22,7 +22,7 @@
       <tbody>
       {% for wine in object_list %}
       <tr>
-          <td><button class="fas fa-search" data-open="exampleModal1">Click me for a modal</button><a href="" data-open="exampleModal1"><i class="fas fa-search"></i></a></td>
+          <td><a href="{% url 'wine:wine_detail' wine.id %}" ><i class="fas fa-search"></i></a></td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>
@@ -33,72 +33,6 @@
           <td>{{ wine.drinkto }}</td>
           <td>{{ wine.nmbrbottles }}</td>
 
-<div class="reveal" id="exampleModal1" data-reveal>
-      <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Weinname:</b> {{ wine.winename }}</div>
-      <div class="medium-6 cell"><b>Produzent:</b> {{ wine.producer }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Jahrgang:</b> {{ wine.year }}</div>
-      <div class="medium-6 cell"><b>Trauben:</b> {{ wine.grapes }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Land:</b> {{ wine.country }}</div>
-      <div class="medium-6 cell"><b>Region:</b> {{ wine.region }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Trinkreif ab:</b> {{ wine.drinkfrom|default_if_none:'' }}</div>
-      <div class="medium-6 cell"><b>Austrinken bis:</b> {{ wine.drinkto|default_if_none:'' }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}</div>
-      <div class="medium-6 cell"><b>Händler:</b> {{ wine.dealer }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}</div>
-      <div class="medium-6 cell"><b>Preis:</b> {{ wine.price }}</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><b>Notiz:</b> {{ wine.notes }}</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell"><div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div></div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">&nbsp;</div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
-        <a href="/wine" class="button"><i class="fas fa-window-close"></i></a>
-        <a href="{% url 'wine:update_wine' wine.id %}" class="button"><i class="fas fa-edit"></i></a>
-        <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>
-      </div>
-      <div class="medium-6 cell">&nbsp;</div>
-    </div>
-</div>
 
     {% endfor %}
       </tr>

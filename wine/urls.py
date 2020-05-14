@@ -12,9 +12,6 @@ urlpatterns = [
 
     path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
 
-
-
-
     path('about/', views.about, name='about'),
     path('', views.WinesView.as_view(), name='wine_list'),
 

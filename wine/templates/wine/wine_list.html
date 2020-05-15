@@ -3,10 +3,10 @@
 <div class="grid-x">
   <div class="cell">
     <br>
-    <p>Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.
+    Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.
           <input type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter">
       <button type="reset" class="button" onClick="window.location.reload()">Reset</button>
-    </p>
+
     <table id="wineTable" class="sortable display unstriped hover">
       <thead>
         <tr>
@@ -35,8 +35,6 @@
           <td>{{ wine.drinkfrom }}</td>
           <td>{{ wine.drinkto }}</td>
           <td>{{ wine.nmbrbottles }}</td>
-
-
     {% endfor %}
       </tr>
       </tbody>

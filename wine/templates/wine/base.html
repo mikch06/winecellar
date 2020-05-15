@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
@@ -20,27 +19,24 @@
       <li><a href="/"> 🍷 Mein Weinkeller</a></li>
       <li><a href="/new">New</a></li>
       <li><a href="/about">About</a></li>
-      <li></li>
-      <li></li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
     </ul>
   </div>
   <div class="top-bar-right">
     <ul class="menu">
+      <a class="button success" href="{% url 'logout'%}?next={{request.path}}">Logout {{ user.get_username }}</a>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
+      <li>&nbsp;</li>
       <li><input type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter"></li>
       <li><button type="reset" class="button" onClick="window.location.reload()">Reset</button></li>
     </ul>
   </div>
-</div>
-<div class="callout small warning" data-closable>
-  <h6>Userlogin</h6>
-    <!-- Testing introduced auth -->
-    {% if user.is_authenticated %}
-    <li>User: {{ user.get_username }}</li>
-    <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>
-    {% else %}
-    <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
-    {% endif %}
-      <cite>Userlogin will be soon implemented in Navigation</cite>
 </div>
 {% block content %}
 {% endblock %}

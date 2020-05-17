@@ -20,9 +20,6 @@ class WinesView(LoginRequiredMixin, generic.ListView):
         context['wines_sum'] = Wine.objects.count()
         return context
 
-class DetailView(LoginRequiredMixin, generic.DetailView):
-    model = Wine
-
 # Wine Delete View
 class DeleteView(LoginRequiredMixin, DeleteView):
     model = Wine

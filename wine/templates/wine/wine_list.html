@@ -46,7 +46,7 @@
                 <h3>{{ wine.winename }}</h3>
                 <h4>{{ wine.producer }}</h4>
                     <b>Jahrgang:</b> {{ wine.year }}<br>
-                    <b>Trauben:</b> {{ wine.grapes }}<br>
+                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
                     <b>Land:</b> {{ wine.country }}<br>
                     <b>Region:</b> {{ wine.region }}<br>
                     <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>

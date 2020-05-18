@@ -40,6 +40,10 @@ label {
 font-size: 1rem;
 }
 
+.reveal {
+    top: 100px !important;
+}
+
 #id_purchase_year,
 #id_purchase_month,
 #id_purchase_day    {

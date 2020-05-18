@@ -40,6 +40,10 @@ label {
 font-size: 1rem;
 }
 
+input[type="search"] {
+	max-width: 300px;
+}
+
 .reveal {
     top: 100px !important;
 }

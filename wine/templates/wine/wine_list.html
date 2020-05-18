@@ -4,8 +4,18 @@
   <div class="cell">
     <br>
     Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.
-      <input type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter">
-      <button type="reset" class="button" onClick="window.location.reload()">Reset</button>
+
+
+    <div class="input-group">
+      <input class="input-group-field" type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter">
+      <div class="input-group-button">
+        <button type="reset" class="button" onClick="window.location.reload()">Reset</button>
+      </div>
+    </div>
+
+
+
+
 
     <table id="wineTable" class="sortable display unstriped hover">
       <thead>

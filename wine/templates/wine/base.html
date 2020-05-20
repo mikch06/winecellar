@@ -23,14 +23,14 @@
             <div class="navbar-nav">
               <a class="nav-item nav-link active" href="/new">New</a>
               <a class="nav-item nav-link active" href="/about">About</a>
-              <a class="nav-item nav-link active" href="{% url 'logout'%}?next={{request.path}}"><button type="button" class="btn btn-outline-success btn-sm">Logout {{ user.get_username }}</button></a>
             </div>
+            <a class="nav-item nav-link active" href="{% url 'logout'%}?next={{request.path}}"><button type="button" class="btn btn-outline-success btn-sm">Logout {{ user.get_username }}</button></a>
           </div>
         </nav>
 
 {% block content %}
 {% endblock %}
-       </div><!-- Close Container -->
+      </div><!-- Close Container -->
     </body>
 </html>
 <script src="{% static 'wine/bootstrap/js/bootstrap.min.js' %}"></script>

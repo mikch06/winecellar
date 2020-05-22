@@ -85,6 +85,32 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         {% endfor %}
       </tbody>
     </table>
+
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+    </div>
+  </div>
+</div>
+
+<!-- Create book button -->
+<button class="create-book btn btn-primary" type="button" name="button">Create Book</button>
+
+
+
+       <button type="button" class="read-book btn btn-sm btn-primary" data-id="{% url 'read_wine' wine.id %}">
+                          <span class="fa fa-eye"></span>
+                        </button>
+
+
+
+
+
+
         <!-- Scritps -->
         <!-- search&filter -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -99,13 +125,17 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           });
         });
         </script>
-        <script type="text/javascript">
-        $('#myModal').on('show.bs.modal', function (e) {
-  if (!data) {
-    return e.preventDefault() // stops modal from being shown
-  }
-})
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $(".read_wine").WineDetailView({
+        formURL: "{% url 'read_wine' %}"
+    });
+
+});
 </script>
+
+
 
         {% endblock %}
   </div>

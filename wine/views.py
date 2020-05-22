@@ -9,6 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
 
+
+
 # Real and right generic view code
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
@@ -62,3 +64,9 @@ def updateWine(request, pk):
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})
+
+
+class WineReadView(generic.DetailView):
+    model = Wine
+    template_name = 'wine/modal.html'
+    success_message = 'SchubiDubi'

@@ -11,4 +11,6 @@ urlpatterns = [
 
     path('about/', views.about, name='about'),
     path('', views.WinesView.as_view(), name='wine_list'),
+
+    path('wine/read/<int:px>', views.WineReadView.as_view(), name='read_wine')
 ]

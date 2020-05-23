@@ -69,10 +69,10 @@ def updateWine(request, pk):
 
 # class WineReadView(generic.DetailView):
 #     model = Wine
-#     template_name = 'wine/modal.html'
+#     template_name = 'wine/wine_detail.html'
 #     success_message = 'SchubiDubi'
 
 class WineDetailView(DetailView):
     model = Wine
-    template_name = 'wine/modal.html'
+    template_name = 'wine/wine_detail.html'
     success_message = 'SchubiDubi'

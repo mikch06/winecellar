@@ -28,7 +28,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
       <tbody>
        {% for wine in object_list %}
         <tr>
-          <td><a href="#" data-toggle="modal" data-target="#wineDetailModal{{ wine.id }}" ><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></a></td>
+          <td><a href="#" data-toggle="modal" data-target="#wineDetailModal{{ wine.id }}" ><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></a>
+              <a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm">m</a>
+          </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>
@@ -65,9 +67,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                         <br><br>
                             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
                         <br>
-                        <a href="/" class="button"><i class="fas fa-window-close"></i></a>
-                        <a href="{% url 'wine:update_wine' wine.id %}" class="button">e<i class="fas fa-edit"></i></a>
-                        <a href="{% url 'wine:wine_delete' wine.id %}" class="button">x<i class="fas fa-trash"></i></a>
+                        <a href="/" class="button"><img src="/static/wine/bootstrap/icons/x-circle.svg" alt="Schliessen" width="16" height="16" title="Schliessen"></a>
+                        <a href="{% url 'wine:update_wine' wine.id %}" class="button"><img src="/static/wine/bootstrap/icons/screwdriver.svg" alt="Edit" width="16" height="16" title="Edit"></a>
+                        <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><img src="/static/wine/bootstrap/icons/trash-fill.svg" alt="Löschen" width="16" height="16" title="Löschen"></a>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

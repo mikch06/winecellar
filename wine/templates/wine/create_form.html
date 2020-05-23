@@ -10,6 +10,18 @@
 <form method="post">{% csrf_token %}
     <div class="grid-container">
 
+            <label>Weinname:</label>
+      {{ form.winename }}
+  </div>
+  <div class="form-group">
+    <label>Jahrgang:</label>
+      {{ form.year }}
+  </div>
+
+
+
+
+
       <div class="medium-6 cell">
         <label>Land:
                 {{ form.country }}

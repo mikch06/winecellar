@@ -60,7 +60,7 @@ class WineForm(ModelForm):
 
         widgets = {
             'purchase': forms.SelectDateWidget(years=range(2010, 2030),empty_label=("Jahr", "Monat", "Tag")),
-            'notes': forms.Textarea(attrs={'cols': 300, 'rows': 5}),
+            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
             'year': forms.NumberInput(attrs={'min': '2005', 'max': '2019', 'type': 'number'}),
             'drinkfrom': forms.NumberInput(attrs={'min': '2015','max': '2060','type': 'number'}),
             'drinkto': forms.NumberInput(attrs={'min': '2018', 'max': '2060', 'type': 'number'}),

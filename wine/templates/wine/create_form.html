@@ -9,24 +9,7 @@
 <body>
 <form method="post">{% csrf_token %}
     <div class="grid-container">
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
-            <label>Weinname:
-                {{ form.winename }}
-            </label>
-      </div>
-      <div class="medium-6 cell">
-        <label>Produzent:
-                {{ form.producer }}
-        </label>
-      </div>
-    </div>
-    <div class="grid-x grid-padding-x">
-      <div class="medium-6 cell">
-        <label>Jahrgang:
-                {{ form.year }}
-        </label>
-      </div>
+
       <div class="medium-6 cell">
         <label>Land:
                 {{ form.country }}
@@ -89,12 +72,54 @@
       </div>
     </div>
       <div class="medium-6 cell">
-        <label>
-        <a href="/wine/{{ wine.id }}" class="button"><i class="fas fa-window-close"></i></a>
-        <button type="submit" class="button"><i class="fas fa-save"></i></button>
-        </label>
-      </div>
+        <a href="/wine/{{ wine.id }}" class="button"><img src="/static/wine/bootstrap/icons/x-square.svg" alt="Cancel" width="32" height="32" title="Cancel"></a>
+        <button type="submit" class="btn btn-link" data-toggle="button" aria-pressed="false">
+         <img src="/static/wine/bootstrap/icons/lock.svg" alt="Save" width="32" height="32" title="Save">
+        </button>
 </form>
+<br><br><br><br>
+
+<form>
+  <div class="form-group">
+    <label>Weinname:</label>
+      {{ form.winename }}
+  </div>
+  <div class="form-group">
+    <label>Jahrgang:</label>
+      {{ form.year }}
+  </div>
+  <div class="form-group">
+    <label>Land:</label>
+      {{ form.country }}
+  </div>
+    <div class="form-group">
+    <label>Region:</label>
+      {{ form.region }}
+  </div>
+    <div class="form-group">
+    <label>Anz. Flaschen:</label>
+      {{ form.nmbrbottles }}
+  </div>
+    <div class="form-group">
+    <label>Kaufdatum:</label>
+      {{ form.purchase }}
+  </div>
+    <div class="form-group">
+    <label>Produzent</label>
+      {{ form.producer }}
+  </div>
+
+        <a href="/wine/{{ wine.id }}" class="button"><img src="/static/wine/bootstrap/icons/x-square.svg" alt="Cancel" width="32" height="32" title="Cancel"></a>
+        <button type="submit" class="btn btn-link" data-toggle="button" aria-pressed="false">
+         <img src="/static/wine/bootstrap/icons/lock.svg" alt="Save" width="32" height="32" title="Save">
+        </button>
+
+
+</form>
+
+
+
+
 </body>
 </html>
 {% endblock %}

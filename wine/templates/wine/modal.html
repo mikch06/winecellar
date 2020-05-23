@@ -1,0 +1,39 @@
+  {% csrf_token %}
+        <!-- Modal -->
+        <div class="modal fade" id="#wineDetailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="wineDetailModal">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                        <h3>{{ wine.winename }}</h3>
+                        <h4>{{ wine.producer }}</h4>
+                            <b>Jahrgang:</b> {{ wine.year }}<br>
+                            <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
+                            <b>Land:</b> {{ wine.country }}<br>
+                            <b>Region:</b> {{ wine.region }}<br>
+                            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>
+                            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+                            <b>Händler:</b> {{ wine.dealer }}<br>
+                            <b>Notiz:</b><br>{{ wine.notes }}
+                        <br><br>
+                            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+                        <br>
+                        <a href="/" class="button"><i class="fas fa-window-close"></i></a>
+                        <a href="{% url 'wine:update_wine' wine.id %}" class="button">e<i class="fas fa-edit"></i></a>
+                        <a href="{% url 'wine:wine_delete' wine.id %}" class="button">x<i class="fas fa-trash"></i></a>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal -->

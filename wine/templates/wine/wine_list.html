@@ -1,21 +1,19 @@
 {% extends "./base.html" %}
 {% block content %}
-<div class="grid-x">
-  <div class="cell">
-    <br>
-    Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.
+<br>
+Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
 
-    <div class="input-group">
-      <input class="input-group-field" type="search" id="wineSearch" onfocus="this.value=''" placeholder="search&filter">
-      <div class="input-group-button">
-        <button type="reset" class="button" onClick="window.location.reload()">Reset</button>
-      </div>
-    </div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-secondary" type="reset" id="button-addon1" onClick="window.location.reload()">Reset</button>
+  </div>
+  <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
+</div>
 
-    <table id="wineTable" class="sortable display unstriped hover">
+    <table class="table table-hover sortable" id="wineTable" >
       <thead>
         <tr>
-          <th width="50" ><i class="fas fa-search"></i></th>
+          <th width="50" ><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></th>
           <th style="cursor:pointer">Weinname</th>
           <th style="cursor:pointer">Produzent</th>
           <th style="cursor:pointer">Land</th>
@@ -24,13 +22,13 @@
           <th>Trauben</th>
           <th style="cursor:pointer">trinkbar von</th>
           <th style="cursor:pointer">trinkbar bis</th>
-          <th style="cursor:pointer"><i class="fas fa-dolly"></i></th>
+          <th style="cursor:pointer"><img src="/static/wine/bootstrap/icons/bag-fill.svg" alt="Detail" width="16" height="16" title="Detail"></th>
         </tr>
       </thead>
       <tbody>
-      {% for wine in object_list %}
-      <tr>
-          <td><a href="#" data-open="wineDetailModal{{ wine.id }}" ><i class="fas fa-search"></i></a></td>
+       {% for wine in object_list %}
+        <tr>
+          <td><a href="#" data-toggle="modal" data-target="#wineDetailModal{{ wine.id }}" ><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></a></td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>
@@ -41,48 +39,113 @@
           <td>{{ wine.drinkto }}</td>
           <td>{{ wine.nmbrbottles }}</td>
 
-            <!-- Modal-reveal -->
-            <div class="reveal" id="wineDetailModal{{ wine.id }}" data-reveal>
-                <h3>{{ wine.winename }}</h3>
-                <h4>{{ wine.producer }}</h4>
-                    <b>Jahrgang:</b> {{ wine.year }}<br>
-                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
-                    <b>Land:</b> {{ wine.country }}<br>
-                    <b>Region:</b> {{ wine.region }}<br>
-                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>
-                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-                    <b>Händler:</b> {{ wine.dealer }}<br>
-                    <b>Notiz:</b><br>{{ wine.notes }}
-                <br><br>
-                    <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-                <br>
-                <a href="/" class="button"><i class="fas fa-window-close"></i></a>
-                <a href="{% url 'wine:update_wine' wine.id %}" class="button"><i class="fas fa-edit"></i></a>
-                <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>
-                <button class="close-button" data-close aria-label="Close modal" type="button">
-                    <span aria-hidden="true">&times;</span>
+        <!-- Modal -->
+        <div class="modal fade" id="wineDetailModal{{ wine.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="wineDetailModal{{ wine.id }}">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
                 </button>
+              </div>
+              <div class="modal-body">
+                        <h3>{{ wine.winename }}</h3>
+                        <h4>{{ wine.producer }}</h4>
+                            <b>Jahrgang:</b> {{ wine.year }}<br>
+                            <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
+                            <b>Land:</b> {{ wine.country }}<br>
+                            <b>Region:</b> {{ wine.region }}<br>
+                            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>
+                            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+                            <b>Händler:</b> {{ wine.dealer }}<br>
+                            <b>Notiz:</b><br>{{ wine.notes }}
+                        <br><br>
+                            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+                        <br>
+                        <a href="/" class="button"><i class="fas fa-window-close"></i></a>
+                        <a href="{% url 'wine:update_wine' wine.id %}" class="button">e<i class="fas fa-edit"></i></a>
+                        <a href="{% url 'wine:wine_delete' wine.id %}" class="button">x<i class="fas fa-trash"></i></a>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
             </div>
-    {% endfor %}
-      </tr>
+          </div>
+        </div>
+        <!-- Modal -->
+
+
+
+        </tr>
+
+        {% endfor %}
       </tbody>
     </table>
-    <!-- Scritps -->
-    <!-- search&filter -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script>
-    // search&filter
-    $(document).ready(function(){
-      $("#wineSearch").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#wineTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-        });
-      });
-    });
-    </script>
-    {% endblock %}
+
+
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+    </div>
   </div>
 </div>
+
+
+
+
+
+
+        <!-- Scritps -->
+        <!-- search&filter -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script>
+        // search&filter
+        $(document).ready(function(){
+          $("#wineSearch").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#wineTable tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+        </script>
+
+
+
+        {% endblock %}
+  </div>
+</div>
+
+
+            <!-- Modal-reveal -->
+<!--            <div class="reveal" id="wineDetailModal{{ wine.id }}" data-reveal>-->
+<!--                <h3>{{ wine.winename }}</h3>-->
+<!--                <h4>{{ wine.producer }}</h4>-->
+<!--                    <b>Jahrgang:</b> {{ wine.year }}<br>-->
+<!--                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>-->
+<!--                    <b>Land:</b> {{ wine.country }}<br>-->
+<!--                    <b>Region:</b> {{ wine.region }}<br>-->
+<!--                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>-->
+<!--                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>-->
+<!--                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>-->
+<!--                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>-->
+<!--                    <b>Händler:</b> {{ wine.dealer }}<br>-->
+<!--                    <b>Notiz:</b><br>{{ wine.notes }}-->
+<!--                <br><br>-->
+<!--                    <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>-->
+<!--                <br>-->
+<!--                <a href="/" class="button"><i class="fas fa-window-close"></i></a>-->
+<!--                <a href="{% url 'wine:update_wine' wine.id %}" class="button"><i class="fas fa-edit"></i></a>-->
+<!--                <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>-->
+<!--                <button class="close-button" data-close aria-label="Close modal" type="button">-->
+<!--                    <span aria-hidden="true">&times;</span>-->
+<!--                </button>-->
+<!--            </div>-->
+

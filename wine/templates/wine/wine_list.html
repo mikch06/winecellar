@@ -97,15 +97,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
   </div>
 </div>
 
-<!-- Create book button -->
-<button class="create-book btn btn-primary" type="button" name="button">Create Book</button>
-
-
-
-       <button type="button" class="read-book btn btn-sm btn-primary" data-id="{% url 'read_wine' wine.id %}">
-                          <span class="fa fa-eye"></span>
-                        </button>
-
 
 
 
@@ -125,15 +116,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           });
         });
         </script>
-<script type="text/javascript">
-$(document).ready(function() {
-
-    $(".read_wine").WineDetailView({
-        formURL: "{% url 'read_wine' %}"
-    });
-
-});
-</script>
 
 
 

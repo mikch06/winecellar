@@ -1,4 +1,5 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
@@ -66,7 +67,12 @@ def updateWine(request, pk):
     return render(request, 'wine/create_form.html', {'form': form})
 
 
-class WineReadView(generic.DetailView):
+# class WineReadView(generic.DetailView):
+#     model = Wine
+#     template_name = 'wine/modal.html'
+#     success_message = 'SchubiDubi'
+
+class WineDetailView(DetailView):
     model = Wine
     template_name = 'wine/modal.html'
     success_message = 'SchubiDubi'

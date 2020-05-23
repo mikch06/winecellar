@@ -3,32 +3,32 @@
 
 <form method="post">{% csrf_token %}
 
-<div class="container">
-  <div class="row row-cols-1 row-cols-sm-2">
-    <div class="col"><label>Weinname:</label><br> {{ form.winename }}</div>
-    <div class="col"><label>Produzent:</label><br> {{ form.producer }}</div>
-    <div class="col"><label>Land:</label><br> {{ form.country }}</div>
-    <div class="col"><label>Region:</label><br> {{ form.region }}</div>
-  </div>
-  <div class="row row-cols-1 row-cols-sm-2">
-    <div class="col"><label>Jahrgang:</label><br> {{ form.year }}</div>
-    <div class="col"><label>Trauben:</label><br> {{ form.grapes }}</div>
-    <div class="col"><label>Kaufdatum:</label><br> {{ form.purchase }}</div>
-    <div class="col"><label>Preis (~ CHF):</label><br> {{ form.price }}</div>
-  </div>
-  <div class="row row-cols-1 row-cols-sm-2">
-    <div class="col"><label>Händler:</label><br> {{ form.dealer }}</div>
-    <div class="col"><label>Anz. Flaschen:</label><br> {{ form.nmbrbottles }}</div>
-    <div class="col"><label>Trinkreif von:</label><br> {{ form.drinkfrom }}</div>
-    <div class="col"><label>Trinkbar bis:</label><br>{{ form.drinkto }}</div>
-  </div>
-  <div class="row row-cols-1 row-cols-sm-2">
-    <div class="col"><label>Notes:</label>{{ form.notes }}</div>
-  </div>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col"><label>Weinname:</label><br> {{ form.winename }}</div>
+      <div class="col"><label>Produzent:</label><br> {{ form.producer }}</div>
+      <div class="col"><label>Land:</label><br> {{ form.country }}</div>
+      <div class="col"><label>Region:</label><br> {{ form.region }}</div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col"><label>Jahrgang:</label><br> {{ form.year }}</div>
+      <div class="col"><label>Trauben:</label><br> {{ form.grapes }}</div>
+      <div class="col"><label>Kaufdatum:</label><br> {{ form.purchase }}</div>
+      <div class="col"><label>Preis (~ CHF):</label><br> {{ form.price }}</div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col"><label>Händler:</label><br> {{ form.dealer }}</div>
+      <div class="col"><label>Anz. Flaschen:</label><br> {{ form.nmbrbottles }}</div>
+      <div class="col"><label>Trinkreif von:</label><br> {{ form.drinkfrom }}</div>
+      <div class="col"><label>Trinkbar bis:</label><br>{{ form.drinkto }}</div>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2">
+      <div class="col"><label>Notes:</label>{{ form.notes }}</div>
+    </div>
 
-        <a href="/" class="button"><img src="/static/wine/bootstrap/icons/x-square.svg" alt="Cancel" width="32" height="32" title="Cancel"></a>
-        <button type="submit" class="btn btn-link" data-toggle="button" aria-pressed="false">
-         <img src="/static/wine/bootstrap/icons/lock.svg" alt="Save" width="32" height="32" title="Save">
-        </button>
+      <a href="/" class="button"><img src="/static/wine/bootstrap/icons/x-square.svg" alt="Cancel" width="32" height="32" title="Cancel"></a>
+      <button type="submit" class="btn btn-link" data-toggle="button" aria-pressed="false">
+       <img src="/static/wine/bootstrap/icons/lock.svg" alt="Save" width="32" height="32" title="Save">
+      </button>
 </form>
 {% endblock %}

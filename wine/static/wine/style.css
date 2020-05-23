@@ -39,6 +39,10 @@ label {
 font-size: 1rem;
 }
 
+input, select, textarea   {
+width: 100%;
+}
+
 input[type="search"] {
 	max-width: 300px;
 }

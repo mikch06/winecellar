@@ -1,12 +1,17 @@
 {% extends "./base.html" %}
 
 {% block content %}
-<br>
-<div class="grid-container fluid">
-  <div class="grid-x grid-margin-x">
-    <div class="cell small-4"></div>
-    <div class="cell small-4">
-     <h2 align="center"> 🍷 Mein Weinkeller</h2>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-6">
+
+                     <h2 align="center"> 🍷 Mein Weinkeller</h2>
       <br>
       <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
@@ -23,8 +28,38 @@
       {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
       {% endif %}
-      </div>
-    <div class="cell small-4"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-5">
+    </div>
+    <div class="col">
+    </div>
   </div>
 </div>
+
+
+
+
+
 {% endblock %}

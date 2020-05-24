@@ -1,19 +1,20 @@
 {% extends "./base.html" %}
 
 {% block content %}
+
+<div class="logincontainer">
 <br>
-    <div align="center">
      <h2 align="center"> 🍷 Mein Weinkeller</h2>
       <br>
       <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
-        <label>{{ form.username.label_tag }}</label><br>
+        <label>{{ form.username.label_tag }}</label>
           {{ form.username }}
-          <br>
-          <label>{{ form.password.label_tag }}</label><br>
+          <br><br>
+          <label>{{ form.password.label_tag }}</label>
           {{ form.password }}
-
-        <input type="submit" class="button" value="login" />
+        <br><br>
+        <input type="submit" class="btn btn-success btn-sm" value="Login" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
       <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
@@ -22,3 +23,4 @@
       {% endif %}
 </div>
 {% endblock %}
+

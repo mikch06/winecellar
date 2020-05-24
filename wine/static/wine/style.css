@@ -8,6 +8,12 @@ max-width: 1400px;
 margin: auto;
 }
 
+.logincontainer {
+max-width: 300px;
+margin: auto;
+width: 50%;
+}
+
 .content    {
 margin: 20px;
 }

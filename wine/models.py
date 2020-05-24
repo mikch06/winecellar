@@ -64,4 +64,5 @@ class WineForm(ModelForm):
             'year': forms.NumberInput(attrs={'min': '2005', 'max': '2019', 'type': 'number'}),
             'drinkfrom': forms.NumberInput(attrs={'min': '2015','max': '2060','type': 'number'}),
             'drinkto': forms.NumberInput(attrs={'min': '2018', 'max': '2060', 'type': 'number'}),
+
         }

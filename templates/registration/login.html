@@ -2,20 +2,17 @@
 
 {% block content %}
 <br>
-<div class="grid-container fluid">
-  <div class="grid-x grid-margin-x">
-    <div class="cell small-4"></div>
-    <div class="cell small-4">
+    <div align="center">
      <h2 align="center"> 🍷 Mein Weinkeller</h2>
       <br>
       <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
-        <label>{{ form.username.label_tag }}
-          <td>{{ form.username }}</td>
-        </label>
-        <label>{{ form.password.label_tag }}
-          <td>{{ form.password }}</td>
-        </label>
+        <label>{{ form.username.label_tag }}</label><br>
+          {{ form.username }}
+          <br>
+          <label>{{ form.password.label_tag }}</label><br>
+          {{ form.password }}
+
         <input type="submit" class="button" value="login" />
         <input type="hidden" name="next" value="{{ next }}" />
       </form>
@@ -23,8 +20,5 @@
       {% if form.errors %}
         <p>Your username and password didn't match. Please try again.</p>
       {% endif %}
-      </div>
-    <div class="cell small-4"></div>
-  </div>
 </div>
 {% endblock %}

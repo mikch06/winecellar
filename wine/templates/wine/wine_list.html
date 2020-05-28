@@ -36,10 +36,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>
           <td>{{ wine.region }}</td>
-          <td>{{ wine.year }}</td>
+          <td>{{ wine.year|default_if_none:'' }}</td>
           <td>{{ wine.grapes }}</td>
-          <td>{{ wine.drinkfrom }}</td>
-          <td>{{ wine.drinkto }}</td>
+          <td>{{ wine.drinkfrom|default_if_none:''}}</td>
+          <td>{{ wine.drinkto|default_if_none:'' }}</td>
           <td>{{ wine.nmbrbottles }}</td>
 
         <!-- Modal -->
@@ -68,7 +68,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                         <br><br>
                             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
                         <br>
-
               </div>
               <div class="modal-footer">
                 <a href="/" class="button"><img src="/static/wine/bootstrap/icons/x-circle.svg" alt="Schliessen" width="32" height="32" title="Schliessen"></a>
@@ -79,17 +78,11 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           </div>
         </div>
         <!-- Modal -->
-
-                <button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
-
-
         </tr>
-
         {% endfor %}
       </tbody>
     </table>
 </div>
-
         <!-- Scritps -->
         <!-- search&filter -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -108,40 +101,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         <script>
             $('#myModal').modal(options)
         </script>
-
-
-
-
-
-
-
         {% endblock %}
   </div>
 </div>
-
-
-            <!-- Modal-reveal -->
-<!--            <div class="reveal" id="wineDetailModal{{ wine.id }}" data-reveal>-->
-<!--                <h3>{{ wine.winename }}</h3>-->
-<!--                <h4>{{ wine.producer }}</h4>-->
-<!--                    <b>Jahrgang:</b> {{ wine.year }}<br>-->
-<!--                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>-->
-<!--                    <b>Land:</b> {{ wine.country }}<br>-->
-<!--                    <b>Region:</b> {{ wine.region }}<br>-->
-<!--                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>-->
-<!--                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>-->
-<!--                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>-->
-<!--                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>-->
-<!--                    <b>Händler:</b> {{ wine.dealer }}<br>-->
-<!--                    <b>Notiz:</b><br>{{ wine.notes }}-->
-<!--                <br><br>-->
-<!--                    <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>-->
-<!--                <br>-->
-<!--                <a href="/" class="button"><i class="fas fa-window-close"></i></a>-->
-<!--                <a href="{% url 'wine:update_wine' wine.id %}" class="button"><i class="fas fa-edit"></i></a>-->
-<!--                <a href="{% url 'wine:wine_delete' wine.id %}" class="button"><i class="fas fa-trash"></i></a>-->
-<!--                <button class="close-button" data-close aria-label="Close modal" type="button">-->
-<!--                    <span aria-hidden="true">&times;</span>-->
-<!--                </button>-->
-<!--            </div>-->
-

@@ -1,15 +1,6 @@
-  {% csrf_token %}
-        <!-- Modal -->
-        <div class="modal fade" id="#myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="myModal">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
+{% extends "./base.html" %}
+{% block content %}
+{% csrf_token %}
                         <h3>{{ wine.winename }}</h3>
                         <h4>{{ wine.producer }}</h4>
                             <b>Jahrgang:</b> {{ wine.year }}<br>
@@ -26,15 +17,13 @@
                             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
                         <br>
 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-                <a href="/" class="button"><i class="fas fa-window-close"></i>c</a>
-                <a href="{% url 'wine:update_wine' wine.id %}" class="button">e<i class="fas fa-edit"></i></a>
-                <a href="{% url 'wine:wine_delete' wine.id %}" class="button">x<i class="fas fa-trash"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Modal -->
+              <a href="/" class="btn btn-info btn-sm">
+              <img src="/static/wine/bootstrap/icons/x-square.svg" alt="Schliessen" width="16" height="16" title="Schliessen">
+              </a>
+              <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
+              <img src="/static/wine/bootstrap/icons/screwdriver.svg" alt="Edit" width="16" height="16" title="Edit">
+              </a>
+              <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
+              <img src="/static/wine/bootstrap/icons/trash-fill.svg" alt="Löschen" width="16" height="16" title="Löschen">
+              </a>
+{% endblock %}

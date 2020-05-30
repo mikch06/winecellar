@@ -6,6 +6,7 @@ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica N
 width: 100%;
 max-width: 1400px;
 margin: auto;
+background-color: magenta;
 }
 
 .logincontainer {

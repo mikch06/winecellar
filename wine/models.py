@@ -18,7 +18,7 @@ COUNTRY = [
     ('USA', 'USA'),
 ]
 class Wine(models.Model):
-    #owner = models.ForeignKey(Group, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
@@ -44,7 +44,7 @@ class WineForm(ModelForm):
     class Meta:
         model = Wine
         fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
-                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
+                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes', 'owner']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',

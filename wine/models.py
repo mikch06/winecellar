@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.models import User, Group
 
 COUNTRY = [
     ('-', '-'),
@@ -17,6 +18,7 @@ COUNTRY = [
     ('USA', 'USA'),
 ]
 class Wine(models.Model):
+    #owner = models.ForeignKey(Group, on_delete=models.CASCADE)
     winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)

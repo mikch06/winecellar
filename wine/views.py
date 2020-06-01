@@ -46,6 +46,7 @@ def createWine(request):
         form = WineForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
+
             form.save()
             return HttpResponseRedirect('/')
     else:

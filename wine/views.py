@@ -63,7 +63,9 @@ def updateWine(request, pk):
         form = WineForm(request.POST, instance=update)
         # check whether it's valid:
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.owner = request.user
+            instance.save()
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})

@@ -46,7 +46,9 @@ def createWine(request):
         form = WineForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.owner = request.user
+            instance.save()
             return HttpResponseRedirect('/')
     else:
         form = WineForm()

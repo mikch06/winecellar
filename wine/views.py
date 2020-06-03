@@ -73,12 +73,6 @@ def updateWine(request, pk):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-
-# class WineReadView(generic.DetailView):
-#     model = Wine
-#     template_name = 'wine/wine_detail.html'
-#     success_message = 'SchubiDubi'
-
 class WineDetailView(DetailView):
     model = Wine
     template_name = 'wine/wine_detail.html'

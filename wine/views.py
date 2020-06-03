@@ -23,7 +23,7 @@ class WinesView(LoginRequiredMixin, generic.ListView):
 
     # Filter user data only
     def get_queryset(self):
-        query_set=super().get_queryset()
+        query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
 
 # Wine Delete View

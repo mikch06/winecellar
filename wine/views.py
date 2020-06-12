@@ -10,18 +10,23 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
 
-
-
-# Real and right generic view code
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
+    # Show nmbr. of bottles
     def get_context_data(self, *args, **kwargs):
         context = super(WinesView, self).get_context_data(*args, **kwargs)
         context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
         context['wines_sum'] = Wine.objects.count()
         return context
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user)
+
+
 
 # Wine Delete View
 class DeleteView(LoginRequiredMixin, DeleteView):
@@ -44,9 +49,11 @@ def createWine(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = WineForm(request.POST)
-        # check whether it's valid:
+        # Create instance for user data entry
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.owner = request.user
+            instance.save()
             return HttpResponseRedirect('/')
     else:
         form = WineForm()
@@ -59,20 +66,15 @@ def updateWine(request, pk):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = WineForm(request.POST, instance=update)
-        # check whether it's valid:
+        # Create instance for user data entry
         if form.is_valid():
-            form.save()
+            instance = form.save(commit=False)
+            instance.owner = request.user
+            instance.save()
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-
-# class WineReadView(generic.DetailView):
-#     model = Wine
-#     template_name = 'wine/wine_detail.html'
-#     success_message = 'SchubiDubi'
-
 class WineDetailView(DetailView):
     model = Wine
     template_name = 'wine/wine_detail.html'
-    success_message = 'SchubiDubi'

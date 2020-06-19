@@ -12,7 +12,7 @@ from wine.models import WineForm
 
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
-    template_name = 'wine/wine_modal.html'
+    template_name = 'wine/wine_list.html'
 
     # Show nmbr. of bottles
     def get_context_data(self, *args, **kwargs):
@@ -77,4 +77,4 @@ def updateWine(request, pk):
 
 class WineDetailView(DetailView):
     model = Wine
-    template_name = 'wine/wine_detail.html'
+    template_name = 'wine/wine_modal.html'

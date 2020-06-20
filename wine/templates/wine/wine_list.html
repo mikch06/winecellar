@@ -10,6 +10,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
   <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
 </div>
 
+<script>
+    $('#exampleModal').modal('toggle')
+</script>
+
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
       <thead>
@@ -31,9 +35,15 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         <tr>
           <td>
 
-              <a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="{% url 'wine:detail_wine' wine.id %}">
+
+
+
+             <a href="% url 'wine:detail_wine' wine.id %}" class="btn btn-warning btn-sm" data-target="#exampleModal">test</a>
+
+              <a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-warning btn-sm" data-target="{% url 'wine:detail_wine' wine.id %}">
               <img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail">
               </a>
+              <!-- data-toggle="modal" -->
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
@@ -59,6 +69,50 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
 
 
 
+<!-- Button trigger modal -->
+<a href="asdfasdf" data-toggle="modal" data-target="#exampleModal">test</a>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </div>
@@ -77,9 +131,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         });
         </script>
 
-        <script>
-            $('#{{ wine.id }}').modal('options')
-        </script>
         {% endblock %}
   </div>
 </div>

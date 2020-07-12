@@ -26,14 +26,11 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <th style="cursor:pointer"><img src="/static/wine/bootstrap/icons/basket-fill.svg" alt="Detail" width="16" height="16" title="Detail"></th>
         </tr>
       </thead>
-      <tbody>
        {% for wine in object_list %}
+              <tbody>
+
         <tr>
-          <td>
-              <a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#wineDetail">
-              <img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail">
-              </a>
-          </td>
+          <td><a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#wineDetail"><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></a></td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>
@@ -43,7 +40,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>{{ wine.drinkfrom|default_if_none:''}}</td>
           <td>{{ wine.drinkto|default_if_none:'' }}</td>
           <td>{{ wine.nmbrbottles }}</td>
-
         </tr>
       </tbody>
     </table>
@@ -99,7 +95,24 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
 
         {% endfor %}
 
+{% for wine in wine_list %}
+     <tbody>
+        <tr>
+          <td><a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm" data-toggle="modal" data-target="#wineDetail"><img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail"></a></td>
+          <td>{{ wine.winename }}</td>
+          <td>{{ wine.producer }}</td>
+          <td>{{ wine.country }}</td>
+          <td>{{ wine.region }}</td>
+          <td>{{ wine.year|default_if_none:'' }}</td>
+          <td>{{ wine.grapes }}</td>
+          <td>{{ wine.drinkfrom|default_if_none:''}}</td>
+          <td>{{ wine.drinkto|default_if_none:'' }}</td>
+          <td>{{ wine.nmbrbottles }}</td>
+        </tr>
+     </tbody>
 
+<p></p>
+{% endfor %}
         <!-- Scritps -->
         <!-- search&filter -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

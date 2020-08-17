@@ -14,7 +14,7 @@ class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
-    # Show nmbr. of bottles and different wines for each user
+    # Show number of bottles and different wines for each user
     def get_context_data(self, *args, **kwargs):
         context = super(WinesView, self).get_context_data(*args, **kwargs)
         context['bottles_sum'] = Wine.objects.filter(owner=self.request.user).aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']

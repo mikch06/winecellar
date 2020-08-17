@@ -14,19 +14,17 @@ class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'
 
-    # Show nmbr. of bottles
+    # Show number of bottles and different wines for each user
     def get_context_data(self, *args, **kwargs):
         context = super(WinesView, self).get_context_data(*args, **kwargs)
-        context['bottles_sum'] = Wine.objects.all().aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
-        context['wines_sum'] = Wine.objects.count()
+        context['bottles_sum'] = Wine.objects.filter(owner=self.request.user).aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
+        context['wines_sum'] = Wine.objects.filter(owner=self.request.user).count()
         return context
 
     # Filter user data only
     def get_queryset(self):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
-
-
 
 # Wine Delete View
 class DeleteView(LoginRequiredMixin, DeleteView):
@@ -77,4 +75,4 @@ def updateWine(request, pk):
 
 class WineDetailView(DetailView):
     model = Wine
-    template_name = 'wine/wine_detail.html'
+    template_name = 'wine/wine_modal.html'

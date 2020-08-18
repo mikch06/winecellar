@@ -29,15 +29,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
       <tbody>
        {% for wine in object_list %}
         <tr>
-          <td>
-
-
-
-
-             <a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-warning btn-sm" data-target="#wineDetail">test</a>
+          <td><a href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm" data-target="#myModal">
               <img src="/static/wine/bootstrap/icons/search.svg" alt="Detail" width="16" height="16" title="Detail">
-              </a>
-              <!-- data-toggle="modal" -->
+              </a>  
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
@@ -50,11 +44,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>{{ wine.nmbrbottles }}</td>
        </div>
         </tr>
-
-
-
-
-
         {% endfor %}
       </tbody>
     </table>
@@ -74,11 +63,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           });
         });
         </script>
-<script>
-var wineDetail = new bootstrap.Modal(document.getElementById('wineDetail'), options)
 
-</script>
-
-
-
+        <script>
+            $('#myModal').modal(options)
+        </script>
         {% endblock %}
+  </div>
+</div>

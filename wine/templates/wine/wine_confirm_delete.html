@@ -4,11 +4,11 @@
 <form method="post">{% csrf_token %}
     {{ wine.winename }} wirklich löschen?<br><br>
     <a href="/" class="btn btn-info btn-sm">
-        <img src="/static/wine/bootstrap/icons/x-circle.svg" alt="Schliessen" width="16" height="16" title="Schliessen">
+        {% load static %}
+        <img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Schliessen" width="16" height="16" title="Schliessen">
     </a>
-
     <button type="submit" class="btn btn-info btn-sm" data-toggle="button" aria-pressed="false">
-       <img src="/static/wine/bootstrap/icons/check-circle.svg" alt="Save" width="16" height="16" title="Save">
+       <img src="{% static "wine/bootstrap/icons/check-circle.svg" %}" alt="Save" width="16" height="16" title="Save">
      </button>
 </form>
  </div>

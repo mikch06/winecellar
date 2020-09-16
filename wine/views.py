@@ -75,4 +75,4 @@ def updateWine(request, pk):
 
 class WineDetailView(DetailView):
     model = Wine
-    template_name = 'wine/wine_modal.html'
+    template_name = 'wine/wine_detail.html'

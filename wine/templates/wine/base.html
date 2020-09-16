@@ -24,7 +24,7 @@
               <a class="nav-item nav-link active" href="/new">New</a>
               <a class="nav-item nav-link active" href="/about">About</a>
             </div>
-            <a class="nav-item nav-link active" href="{% url 'logout'%}?next={{request.path}}"><button type="button" class="btn btn-success btn-sm"><img src="/static/wine/bootstrap/icons/power.svg" alt="Detail" width="16" height="16" title="Detail"> {{ user.get_username }}</button></a>
+            <a class="nav-item nav-link active" href="{% url 'logout'%}?next={{request.path}}"><button type="button" class="btn btn-success btn-sm"><img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Detail"> {{ user.get_username }}</button></a>
           </div>
         </nav>
 

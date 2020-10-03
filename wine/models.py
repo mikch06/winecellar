@@ -40,6 +40,9 @@ class Wine(models.Model):
     def get_absolute_url(self):
         return reverse('wine-detail', kwargs={'pk': self.pk})
 
+    def __str__(self):
+        return self.text
+
 class WineForm(ModelForm):
     class Meta:
         model = Wine

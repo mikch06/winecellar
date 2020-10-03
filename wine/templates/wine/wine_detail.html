@@ -12,6 +12,7 @@
                             <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
                             <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
                             <b>Händler:</b> {{ wine.dealer }}<br>
+                            <b>Preis:</b> {{ wine.price }}<br>
                             <b>Notiz:</b><br>{{ wine.notes }}
                         <br><br>
                             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>

@@ -73,7 +73,6 @@ def updateWine(request, pk):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
-@login_required
-class WineDetailView(DetailView):
+
+class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
-    template_name = 'wine/wine_detail.html'

@@ -1,5 +1,6 @@
 {% extends "./base.html" %}
 {% block content %}
+
 <br>
 Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
 
@@ -31,12 +32,13 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
        {% for wine in object_list %}
         <tr>
         {% load static %}
+ {% include "wine/wine_modal.html" %}
+
           <td><a data-toggle="modal" href="#detail{{ wine.pk }}" class="btn btn-info btn-sm">
-<!--              <a href="{% url 'wine:detail_wine' wine.id %}"-->
+            <!-- <a href="{% url 'wine:detail_wine' wine.id %}"-->
               <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail">
               </a>
 
-              {% include "wine/wine_modal.html" %}
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
@@ -52,6 +54,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         {% endfor %}
       </tbody>
     </table>
+
 </div>
 
         <!-- Scritps -->
@@ -72,6 +75,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         <script>
             $('#myModal').modal(options)
         </script>
+
         {% endblock %}
   </div>
 </div>

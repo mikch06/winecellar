@@ -76,3 +76,4 @@ def updateWine(request, pk):
 
 class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
+    template_name = 'wine/wine_modal.html'

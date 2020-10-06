@@ -4,5 +4,4 @@ wine-env
 __pycache__
 *__pycache__
 winecellar/prod_db_connection_set.txt
-winecellar/settings.py
 db.sqlite3

@@ -34,6 +34,7 @@ class Wine(models.Model):
     notes = models.CharField(max_length=400, blank=True)
     editdate = models.DateField(auto_now=True)
 
+
     class Meta:
         ordering = ["country", "region", "year"]
 

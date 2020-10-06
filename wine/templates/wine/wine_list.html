@@ -35,6 +35,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
 <!--              <a href="{% url 'wine:detail_wine' wine.id %}"-->
               <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail">
               </a>
+
               {% include "wine/wine_modal.html" %}
           </td>
           <td>{{ wine.winename }}</td>

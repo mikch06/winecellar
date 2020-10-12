@@ -1,6 +1,8 @@
 {% extends "./base.html" %}
 {% block content %}
-
+<script xmlns:display="http://www.w3.org/1999/xhtml">
+$('#myModal').modal(options)
+</script>
 <br>
 Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
 
@@ -10,6 +12,8 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
   </div>
   <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
 </div>
+
+
 
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
@@ -32,13 +36,44 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
        {% for wine in object_list %}
         <tr>
         {% load static %}
- {% include "wine/wine_modal.html" %}
 
-          <td><a data-toggle="modal" href="#detail{{ wine.pk }}" class="btn btn-info btn-sm">
+
+          <td><a data-toggle="modal" href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm">
             <!-- <a href="{% url 'wine:detail_wine' wine.id %}"-->
               <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail">
               </a>
+            <a tabindex="0" class="btn btn-sm btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="{{ wine.winename }}"
+               data-content="
 
+
+
+<h4>{{ wine.producer }}</h4>
+                            <b>Jahrgang:</b> {{ wine.year }}<br>
+                            <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
+                            <b>Land:</b> {{ wine.country }}<br>
+                            <b>Region:</b> {{ wine.region }}<br>
+                            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>
+                            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+                            <b>Händler:</b> {{ wine.dealer }}<br>
+                            <b>Preis:</b> {{ wine.price }}<br>
+                            <b>Notiz:</b><br>{{ wine.notes }}
+
+
+
+
+
+               Das ist der Content.">
+
+
+
+
+
+
+
+
+                <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a>
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
@@ -54,27 +89,27 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         {% endfor %}
       </tbody>
     </table>
-
 </div>
 
-        <!-- Scritps -->
-        <!-- search&filter -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script>
-        // search&filter
-        $(document).ready(function(){
-          $("#wineSearch").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#wineTable tr").filter(function() {
-              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
-          });
-        });
-        </script>
-
-        <script>
-            $('#myModal').modal(options)
-        </script>
+<!-- Scritps -->
+<!-- search&filter -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>
+// search&filter
+$(document).ready(function(){
+  $("#wineSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#wineTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+</script>
 
         {% endblock %}
   </div>

@@ -66,11 +66,3 @@ input[type="search"] {
 .dates {
 font-size: 10px;
 }
-
-#footer {
-  font-size: 8pt;
-  position: absolute;
-  margin-left: 20px;
-  bottom: 0;
-  width: 100%;
-}

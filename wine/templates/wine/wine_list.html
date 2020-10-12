@@ -1,8 +1,5 @@
 {% extends "./base.html" %}
 {% block content %}
-<script xmlns:display="http://www.w3.org/1999/xhtml">
-$('#myModal').modal(options)
-</script>
 <br>
 Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
 
@@ -36,18 +33,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
        {% for wine in object_list %}
         <tr>
         {% load static %}
-
-
-          <td><a data-toggle="modal" href="{% url 'wine:detail_wine' wine.id %}" class="btn btn-info btn-sm">
-            <!-- <a href="{% url 'wine:detail_wine' wine.id %}"-->
-              <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail">
-              </a>
-            <a tabindex="0" class="btn btn-sm btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="{{ wine.winename }}"
+          <td>
+            <a tabindex="0" class="btn btn-sm btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="<h5>{{ wine.winename }}</h5>"
                data-content="
-
-
-
-<h4>{{ wine.producer }}</h4>
+                            <h5>{{ wine.producer }}</h5>
                             <b>Jahrgang:</b> {{ wine.year }}<br>
                             <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
                             <b>Land:</b> {{ wine.country }}<br>
@@ -59,16 +48,25 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Händler:</b> {{ wine.dealer }}<br>
                             <b>Preis:</b> {{ wine.price }}<br>
                             <b>Notiz:</b><br>{{ wine.notes }}
+                            <br><br>
+                            <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}</div>
 
 
 
 
 
-               Das ist der Content.">
 
 
 
 
+
+
+
+
+
+
+
+                ">
 
 
 

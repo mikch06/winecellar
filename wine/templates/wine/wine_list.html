@@ -51,12 +51,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Notiz:</b><br>{{ wine.notes }}
                             <br><br>
                             <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
+                            <br>
+
                             ">
-
-
-
-
-                <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a>
+                            <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a>
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
@@ -76,6 +74,15 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
       </tbody>
     </table>
 </div>
+
+
+
+
+
+
+
+
+
 
 <!-- Scritps -->
 <!-- search&filter -->

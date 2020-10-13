@@ -27,6 +27,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <th style="cursor:pointer">trinkbar von</th>
           <th style="cursor:pointer">trinkbar bis</th>
           <th style="cursor:pointer"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
+          <th><img src="{% static "wine/bootstrap/icons/gear-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,7 +35,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         <tr>
         {% load static %}
           <td>
-            <a tabindex="0" class="btn btn-sm btn-danger" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="<h5>{{ wine.winename }}</h5>"
+            <a tabindex="0" class="btn btn-sm btn-info" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="<h5>{{ wine.winename }}</h5>"
                data-content="
                             <h5>{{ wine.producer }}</h5>
                             <b>Jahrgang:</b> {{ wine.year }}<br>
@@ -49,16 +50,8 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Preis:</b> {{ wine.price }}<br>
                             <b>Notiz:</b><br>{{ wine.notes }}
                             <br><br>
-                            <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-
-                            <!--
-                            <a href={% url 'wine:wine_delete' wine.id %} class=&quot;btn btn-info btn-sm&quot;>
-                            <img src=&quot;{% static "wine/bootstrap/icons/trash-fill.svg" %}&quot; alt="Löschen" width="16" height="16" title="Löschen&quot;>
-                            </a>
-                            -->
-
-
-                ">
+                            <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
+                            ">
 
 
 
@@ -74,6 +67,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>{{ wine.drinkfrom|default_if_none:''}}</td>
           <td>{{ wine.drinkto|default_if_none:'' }}</td>
           <td>{{ wine.nmbrbottles }}</td>
+          <td><a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-warning btn-sm">
+              <img src="{% static "wine/bootstrap/icons/gear-fill.svg" %}" alt="Edit" width="16" height="16" title="Edit">
+              </a></td>
        </div>
         </tr>
         {% endfor %}

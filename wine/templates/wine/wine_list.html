@@ -45,9 +45,10 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Händler:</b> {{ wine.dealer }}<br>
                             <b>Preis:</b> {{ wine.price }}<br>
                             <b>Notiz:</b><br>{{ wine.notes }}
-                            <br><br>
+                            <br>
+                            <a href="http://www.kissel.ch">kissel.ch</a>
                             <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
-                            <br><br><br>
+                            <br><br>
                             <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
                             <img src="{% static "wine/bootstrap/icons/screwdriver.svg" %}" alt="Edit" width="16" height="16" title="Edit">
                             </a>
@@ -87,7 +88,10 @@ $(document).ready(function(){
 </script>
 <script>
 $(function () {
-  $('[data-toggle="popover"]').popover()
+  $('[data-toggle="popover"]').popover({
+    delay: {hide: 100}
+
+  });
 })
 </script>
 

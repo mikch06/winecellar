@@ -27,9 +27,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         </tr>
       </thead>
       <tbody>
-       {% for wine in object_list %}
+{% for wine in object_list %}
         <tr>
-        {% load static %}
+{% load static %}
           <td>
             <a tabindex="0" class="btn btn-sm btn-info" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="<h5>{{ wine.winename }}</h5>"
                data-content='
@@ -66,7 +66,6 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>{{ wine.drinkfrom|default_if_none:''}}</td>
           <td>{{ wine.drinkto|default_if_none:'' }}</td>
           <td>{{ wine.nmbrbottles }}</td>
-       </div>
         </tr>
         {% endfor %}
       </tbody>

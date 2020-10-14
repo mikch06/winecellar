@@ -45,8 +45,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Händler:</b> {{ wine.dealer }}<br>
                             <b>Preis:</b> {{ wine.price }}<br>
                             <b>Notiz:</b><br>{{ wine.notes }}
-                            <br>
-                            <a href="http://www.kissel.ch">kissel.ch</a>
+                            <br><br>
                             <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
                             <br><br>
                             <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">

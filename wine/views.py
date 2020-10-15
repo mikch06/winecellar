@@ -72,8 +72,4 @@ def updateWine(request, pk):
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})
-
-
-class WineDetailView(LoginRequiredMixin, DetailView):
-    model = Wine
-    template_name = 'wine/wine_modal.html'
+late_name = 'wine/wine_modal.html'

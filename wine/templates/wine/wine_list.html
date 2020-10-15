@@ -39,7 +39,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <b>Land:</b> {{ wine.country }}<br>
                             <b>Region:</b> {{ wine.region }}<br>
                             <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:'' }}<br>
+                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
                             <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
                             <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
                             <b>Händler:</b> {{ wine.dealer }}<br>

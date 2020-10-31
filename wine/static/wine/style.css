@@ -12,6 +12,9 @@ margin: auto;
 max-width: 300px;
 margin: auto;
 width: 50%;
+border: 1px solid #ccc;
+border-radius: 25px;
+padding: 10px;
 }
 
 .content    {

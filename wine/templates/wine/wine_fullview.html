@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+{% block content %}
+<br>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-secondary" type="reset" id="button-addon1" onClick="window.location.reload()">Reset</button>
+  </div>
+  <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
+</div>
+    <table id="wineTable" >
+            {% load static %}
+{% for wine in object_list %}
+        <tr>
+{% load static %}
+            <td>{{ wine.winename }}</td><td>{{ wine.producer }} {{ wine.year }}</td><td>{{ wine.grapes|default_if_none:'' }}</td><td>{{ wine.country }}</td><td>{{ wine.region }}</td><td>{{ wine.nmbrbottles }}</td><td>{{ wine.purchase|default_if_none:''|date:'d.m.Y'}}
+            {{ wine.drinkfrom|default_if_none:'' }}</td><td> {{ wine.drinkto|default_if_none:'' }}</td><td>{{ wine.dealer }}</td><td>{{ wine.price }}</td><td>{{ wine.notes }}</td><td>{{ wine.editdate|date:"d.m.Y"}}</td><br>
+
+        {% endfor %}
+
+    </table>
+</div>
+<!-- Scritps -->
+<!-- search&filter -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script>
+// search&filter
+$(document).ready(function(){
+  $("#wineSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#wineTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover({
+    delay: {hide: 100}
+
+  });
+})
+</script>
+
+{% endblock %}
+  </div>
+</div>

@@ -73,3 +73,13 @@ def updateWine(request, pk):
 
     return render(request, 'wine/create_form.html', {'form': form})
 late_name = 'wine/wine_modal.html'
+
+
+class FullView(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_fullview.html'
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user)

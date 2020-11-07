@@ -72,4 +72,3 @@ def updateWine(request, pk):
             return HttpResponseRedirect('/')
 
     return render(request, 'wine/create_form.html', {'form': form})
-late_name = 'wine/wine_modal.html'

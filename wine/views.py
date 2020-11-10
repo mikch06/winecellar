@@ -31,6 +31,10 @@ class DeleteView(LoginRequiredMixin, DeleteView):
     model = Wine
     success_url = reverse_lazy('wine:wine_list')
 
+# Homepage
+def index(request):
+    return render(request, 'wine/home.html')
+
 # 'About' page
 @login_required
 def about(request):

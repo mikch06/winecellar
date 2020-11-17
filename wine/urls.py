@@ -9,4 +9,6 @@ urlpatterns = [
     path('new/', views.createWine, name='create_wine'),
     path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
     path('about/', views.about),
+    path('full/', views.FullView.as_view(), name='wine_fullview'),
+
 ]

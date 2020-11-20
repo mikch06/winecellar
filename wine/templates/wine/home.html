@@ -1,0 +1,35 @@
+{% load static %}
+{% load static %}
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'wine/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'wine/style.css' %}" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <title>Mein Weinkeller</title>
+  </head>
+    <body>
+      <div class="container">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+          <a class="navbar-brand" href="/"> 🍷 Mein Weinkeller</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+<!--          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+<!--            <div class="navbar-nav">-->
+<!--              <a class="nav-item nav-link active" href="/wine">Login</a>-->
+<!--            </div>-->
+<!--          </div>-->
+        </nav>
+        <div class="text-center">
+          <a href="/wine">
+        <img src="{% static 'images/front_collage.jpg' %}" class="img-fluid mx-auto">
+          </a>
+          <br>
+          <a href="/wine" class="btn btn-success" role="button" aria-disabled="true">Login</a>
+        </div>
+      </div>

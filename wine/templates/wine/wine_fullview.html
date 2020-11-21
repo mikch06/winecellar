@@ -1,15 +1,13 @@
 {% extends "./base.html" %}
 {% block content %}
-
-    <table id="wineTable" >
-            {% load static %}
-{% for wine in object_list %}
-        <tr>
+<table id="wineTable" >
 {% load static %}
-            <td>{{ wine.winename }}</td><td>{{ wine.producer }} {{ wine.year }}</td><td>{{ wine.grapes|default_if_none:'' }}</td><td>{{ wine.country }}</td><td>{{ wine.region }}</td><td>{{ wine.nmbrbottles }}</td><td>{{ wine.purchase|default_if_none:''|date:'d.m.Y'}}
-            {{ wine.drinkfrom|default_if_none:'' }}</td><td> {{ wine.drinkto|default_if_none:'' }}</td><td>{{ wine.dealer }}</td><td>{{ wine.price }}</td><td>{{ wine.notes }}</td><td>{{ wine.editdate|date:"d.m.Y"}}</td><br>
-        </tr>
-        {% endfor %}
-
-    </table>
+    {% for wine in object_list %}
+        <tr>
+        {% load static %}
+            <td>{{ wine.winename }} {{ wine.producer }} {{ wine.year }} {{ wine.grapes }} {{ wine.country }} {{ wine.region }} {{ wine.nmbrbottles }} {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}
+                {{ wine.drinkfrom|default_if_none:'' }} {{ wine.drinkto|default_if_none:'' }} {{ wine.dealer }} {{ wine.price }} {{ wine.notes }} {{ wine.editdate|date:"d.m.Y"}}</td>
+            </tr>
+    {% endfor %}
+</table>
 {% endblock %}

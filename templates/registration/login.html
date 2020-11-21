@@ -1,28 +1,33 @@
 {% extends "./base.html" %}
 
 {% block content %}
-<br><br>
-<div class="logincontainer">
-
-     <h2 align="center"> 🍷 Mein Weinkeller</h2>
-      <br>
-      <form method="post" action="{% url 'login' %}">
-      {% csrf_token %}
-                Benutzername:
-                {{ form.username }}
-                <br><br>
-                Passwort:
-                {{ form.password }}
-      <br><br>
-      <input type="submit" class="btn btn-success btn-sm" value="Login" />
-      <input type="hidden" name="next" value="{{ next }}" />
-      </form>
-      <p>
-      <a href="{% url 'password_reset' %}">Lost password?</a></p>
-      {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
-      {% endif %}
-            </div>
+<div class="container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+  <a class="navbar-brand" href="/"> 🍷 Mein Weinkeller</a>
+</nav>
 </div>
+<br><br>
+    <div class="logincontainer">
+
+         <h2 align="center"> 🍷 Mein Weinkeller</h2>
+          <br>
+          <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+                    Benutzername:
+                    {{ form.username }}
+                    <br><br>
+                    Passwort:
+                    {{ form.password }}
+          <br><br>
+          <input type="submit" class="btn btn-success btn-sm" value="Login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+          </form>
+          <p>
+          <a href="{% url 'password_reset' %}">Lost password?</a></p>
+          {% if form.errors %}
+            <p>Your username and password didn't match. Please try again.</p>
+          {% endif %}
+                </div>
+    </div>
 {% endblock %}
 

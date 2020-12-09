@@ -56,7 +56,7 @@ def createWine(request):
             instance = form.save(commit=False)
             instance.owner = request.user
             instance.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/wine')
     else:
         form = WineForm()
     return render(request, 'wine/create_form.html', {'form': form})
@@ -73,7 +73,7 @@ def updateWine(request, pk):
             instance = form.save(commit=False)
             instance.owner = request.user
             instance.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/wine')
 
     return render(request, 'wine/create_form.html', {'form': form})
 

@@ -3,7 +3,7 @@
 <div class="content">
 <form method="post">{% csrf_token %}
     {{ wine.winename }} wirklich löschen?<br><br>
-    <a href="/" class="btn btn-info btn-sm">
+    <a href="/wine" class="btn btn-info btn-sm">
         {% load static %}
         <img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Schliessen" width="16" height="16" title="Schliessen">
     </a>

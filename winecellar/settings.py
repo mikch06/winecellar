@@ -124,6 +124,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'mail.cyon.ch'
 EMAIL_PORT = '465'
 EMAIL_HOST_USER = 'wein@kissel.ch'
-EMAIL_HOST_PASSWORD = 'XmqT-CZBH*n{uQ'
+EMAIL_HOST_PASSWORD = 'dhdagnmk'
 #EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True

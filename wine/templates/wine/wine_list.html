@@ -31,7 +31,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
         <tr>
 {% load static %}
           <td>
-              <details><summary></summary>
+              <details><summary><img src="{% static "wine/bootstrap/icons/search.svg" %}" class="btn btn-sm btn-info"></summary>
                             <h5>{{ wine.producer }}</h5>
                             <b>Jahrgang:</b> {{ wine.year }}<br>
                             <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
@@ -53,37 +53,8 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                             <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
                             <img src="{% static "wine/bootstrap/icons/trash-fill.svg" %}" alt="Löschen" width="16" height="16" title="Löschen">
                             </a>
-                            '>
-                            <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a>
+                            <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a></details>
 
-              </details>
-
-
-            <a tabindex="0" class="btn btn-sm btn-info" role="button" data-toggle="popover" data-trigger="focus" data-html="true" title="<h5>{{ wine.winename }}</h5>"
-               data-content='
-                            <h5>{{ wine.producer }}</h5>
-                            <b>Jahrgang:</b> {{ wine.year }}<br>
-                            <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
-                            <b>Land:</b> {{ wine.country }}<br>
-                            <b>Region:</b> {{ wine.region }}<br>
-                            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
-                            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-                            <b>Händler:</b> {{ wine.dealer }}<br>
-                            <b>Preis:</b> {{ wine.price }}<br>
-                            <b>Notiz:</b><br>{{ wine.notes }}
-                            <br><br>
-                            <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
-                            <br><br>
-                            <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
-                            <img src="{% static "wine/bootstrap/icons/screwdriver.svg" %}" alt="Edit" width="16" height="16" title="Edit">
-                            </a>
-                            <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
-                            <img src="{% static "wine/bootstrap/icons/trash-fill.svg" %}" alt="Löschen" width="16" height="16" title="Löschen">
-                            </a>
-                            '>
-                            <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></a>
           </td>
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>

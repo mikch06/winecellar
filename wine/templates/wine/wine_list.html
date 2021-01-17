@@ -33,15 +33,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>
               <details>
                   <summary><img src="{% static "wine/bootstrap/icons/search.svg" %}" class="btn btn-sm btn-info"></summary>
-                  <table>
-                      <tr><td><h5>{{ wine.producer }}</h5><b>Jahrgang:</b> {{ wine.year }}</td></tr>
+                      <h5>{{ wine.producer }}</h5><b>Jahrgang:</b> {{ wine.year }}<b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
 
-
-
-                  </table>
-
-                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
-                    <b>Land:</b> {{ wine.country }}
+                   <b>Land:</b> {{ wine.country }}
                     <b>Region:</b> {{ wine.region }}
                     <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}
                     <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}

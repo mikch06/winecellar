@@ -33,17 +33,17 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>
               <details>
                   <summary><img src="{% static "wine/bootstrap/icons/search.svg" %}" class="btn btn-sm btn-info"></summary>
-                      <h5>{{ wine.producer }}</h5><br><b>Jahrgang:</b> {{ wine.year }}<br><b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
+                      <h5>{{ wine.producer }}</h5><b>Jahrgang:</b> {{ wine.year }}<b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
 
-                    <b>Land:</b> {{ wine.country }}<br>
-                    <b>Region:</b> {{ wine.region }}<br>
-                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
-                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-                    <b>Händler:</b> {{ wine.dealer }}<br>
-                    <b>Preis:</b> {{ wine.price }}<br>
-                    <b>Notiz:</b>{{ wine.notes }}<br><br>
+                   <b>Land:</b> {{ wine.country }}
+                    <b>Region:</b> {{ wine.region }}
+                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}
+                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}
+                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}
+                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}
+                    <b>Händler:</b> {{ wine.dealer }}
+                    <b>Preis:</b> {{ wine.price }}
+                    <b>Notiz:</b>{{ wine.notes }}
                     <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
                     <br><br>
                     <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
@@ -53,7 +53,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                     <img src="{% static "wine/bootstrap/icons/trash-fill.svg" %}" alt="Löschen" width="16" height="16" title="Löschen">
                     </a>
               </details>
-          </td>
+
           <td>{{ wine.winename }}</td>
           <td>{{ wine.producer }}</td>
           <td>{{ wine.country }}</td>

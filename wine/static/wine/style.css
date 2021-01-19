@@ -77,7 +77,6 @@ details {
 }
 
 details > summary {
-  padding: 2px 6px;
   border: none;
   list-style: none;
 
@@ -89,9 +88,20 @@ details > summary::-webkit-details-marker {
 
 details > p {
 
+
 }
 
+
+
 details[open] > summary {
-  border-bottom: dotted;
-  width: 600px;
+ border-bottom: dotted;
+ border-width: 1px;
+ width: 350px;
+}
+
+details[open] {
+padding: 5px;
+padding-left: 50px;
+ background-color: #eee;
+
 }

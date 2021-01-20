@@ -47,7 +47,9 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                     <b>Jahrgang:</b> {{ wine.year }}<br>
                     <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
                     <br>
-                    <b>Notiz:</b>{{ wine.notes }}<br><br>
+                    <b>Notiz:</b>
+                    <br>
+                    {{ wine.notes }}<br><br>
                     <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
                     <br><br>
                     <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">

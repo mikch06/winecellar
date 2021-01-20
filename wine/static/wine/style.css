@@ -33,7 +33,6 @@ font-size: 14px;
 }
 
 table.hover tbody tr:hover {
-background-color: #f60;
 }
 
 a {
@@ -68,4 +67,36 @@ input[type="search"] {
 
 .dates {
 font-size: 10px;
+}
+
+details {
+    list-style: none;
+}
+
+summary {
+    text-decoration: none;
+}
+
+details > summary {
+    border: none;
+    list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+    display: none;
+}
+
+details > p {
+}
+
+details[open] > summary {
+ border-bottom: dotted;
+ border-width: 1px;
+ width: 300px;
+}
+
+details[open] {
+    padding: 5px;
+    padding-left: 20px;
+    background-color: #ececec;
 }

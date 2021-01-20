@@ -33,16 +33,20 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
           <td>
               <details>
                   <summary><img src="{% static "wine/bootstrap/icons/search.svg" %}" class="btn btn-sm btn-info"></summary>
-                      <h5>{{ wine.producer }}</h5><br><b>Jahrgang:</b> {{ wine.year }}<br><b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
-
+                    <h6>{{ wine.winename }}</h6>
+                    <h6>{{ wine.producer }}</h6><br>
                     <b>Land:</b> {{ wine.country }}<br>
                     <b>Region:</b> {{ wine.region }}<br>
-                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
+                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
                     <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
                     <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
                     <b>Händler:</b> {{ wine.dealer }}<br>
+                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
                     <b>Preis:</b> {{ wine.price }}<br>
+                    <br>
+                    <b>Jahrgang:</b> {{ wine.year }}<br>
+                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
+                    <br>
                     <b>Notiz:</b>{{ wine.notes }}<br><br>
                     <div class=&quot;dates&quot;>Update: {{ wine.editdate|date:"d.m.Y"}}
                     <br><br>

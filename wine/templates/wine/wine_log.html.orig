@@ -1,32 +1,12 @@
 {% extends "./base.html" %}
 {% block content %}
-<br>
-<div class="container">
-
+<table id="wineTable" >
 {% load static %}
     {% for wine in object_list %}
+        <tr>
         {% load static %}
-            {{ wine.editdate|date:"d.m.Y"}}, {{ wine.winename }} {{ wine.producer }}<br>
-
+            <td>{{ wine.winename }}, {{ wine.producer }},{{ wine.editdate|date:"d.m.Y"}}</td>
+            </tr>
     {% endfor %}
+</table>
 {% endblock %}
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

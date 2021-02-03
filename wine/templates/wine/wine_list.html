@@ -50,7 +50,7 @@ Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|defaul
                     <b>Notiz:</b>
                     <br>
                     {{ wine.notes }}<br><br>
-                    <div class="dates";>Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+                    <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
                     <br><br>
                     <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
                     <img src="{% static "wine/bootstrap/icons/screwdriver.svg" %}" alt="Edit" width="16" height="16" title="Edit">

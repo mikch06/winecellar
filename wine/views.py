@@ -85,3 +85,12 @@ class FullView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
+
+class WineLog(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_log.html'
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user).order_by('-editdate')

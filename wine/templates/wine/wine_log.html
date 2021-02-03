@@ -1,0 +1,32 @@
+{% extends "./base.html" %}
+{% block content %}
+<br>
+<div class="container">
+
+{% load static %}
+    {% for wine in object_list %}
+        {% load static %}
+            {{ wine.editdate|date:"d.m.Y"}}, {{ wine.winename }} {{ wine.producer }}<br>
+
+    {% endfor %}
+{% endblock %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

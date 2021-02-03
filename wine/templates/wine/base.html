@@ -13,21 +13,27 @@
   </head>
     <body>
       <div class="container">
-
         <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
           <a class="navbar-brand" href="/wine"> 🍷 Mein Weinkeller</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="/new">New</a>
-              <a class="nav-item nav-link active" href="/about">About</a>
-            </div>
-            <a class="nav-item nav-link active" href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm"><img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Detail"> {{ user.get_username }}</button></a>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/new">New</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+            </ul>
+            <span class="navbar-text">
+                Benuter: {{ user.get_full_name }} <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
+                <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Detail"></button></a>
+
+            </span>
           </div>
         </nav>
-
 {% block content %}
 {% endblock %}
       </div><!-- Close Container -->

@@ -7,8 +7,7 @@
 {% load static %}
     {% for wine in object_list %}
         {% load static %}
-            {{ wine.editdate|date:"d.m.Y"}}, {{ wine.winename }} {{ wine.producer }}<br>
-
+        <div class="dates">{{ wine.editdate|date:"d.m.Y"}}, {{ wine.winename }} {{ wine.producer }}<br></div>
     {% endfor %}
 {% endblock %}
 </div>

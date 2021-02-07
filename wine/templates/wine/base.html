@@ -28,7 +28,7 @@
               </li>
             </ul>
             <span class="navbar-text">
-                Benutzer: {% if user.last_name %} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
+                Benutzer: {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
                 <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Detail"></button></a>
 
             </span>

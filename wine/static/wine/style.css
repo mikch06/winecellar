@@ -69,6 +69,9 @@ input[type="search"] {
 font-size: 10px;
 }
 
+.winelog {
+font-size: 11px;
+}
 details {
     list-style: none;
 }

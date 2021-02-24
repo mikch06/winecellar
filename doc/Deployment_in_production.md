@@ -1,7 +1,7 @@
 # Deployment in production
 
 # Backup django settings.py
-cp settings.py settings.py
+cp settings.py settings.py.bak
 
 # Release
 ## Fetch tag's

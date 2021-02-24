@@ -1,18 +1,21 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-<form method="post">
-    {% csrf_token %}
-     <div class="col-md-6">
-        {{ form }}
-     </div>
-        <br>
-        <a href="/wine" class="btn btn-info btn-sm">
-        {% load static %}
-            <img src="{% static "wine/bootstrap/icons/x-square.svg" %}" alt="Schliessen" width="18" height="18" title="Schliessen">
-        </a>
-        <button type="submit" class="btn btn-info btn-sm" data-toggle="button" aria-pressed="false">
-            <img src="{% static "wine/bootstrap/icons/lock.svg" %}" alt="Save" width="18" height="18" title="Save">
-        </button>
-</form>
+<div id="container">
+    <form method="post">
+        {% csrf_token %}
+         <div class="col-md-12">
+            {{ form }}
+         </div>
+            <br>
+            <a href="/wine" class="btn btn-info btn-sm">
+            {% load static %}
+                <img src="{% static "wine/bootstrap/icons/x-square.svg" %}" alt="Schliessen" width="18" height="18" title="Schliessen">
+            </a>
+            <button type="submit" class="btn btn-info btn-sm" data-toggle="button" aria-pressed="false">
+                <img src="{% static "wine/bootstrap/icons/lock.svg" %}" alt="Save" width="18" height="18" title="Save">
+            </button>
+    </form>
+</div>
+<br><br>
 {% endblock %}

@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 
 COUNTRY = [
     ('-', '-'),
@@ -48,7 +48,7 @@ class WineForm(ModelForm):
     class Meta:
         model = Wine
         fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
-                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes', 'owner']
+                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',
@@ -65,10 +65,18 @@ class WineForm(ModelForm):
             }
 
         widgets = {
-            'purchase': forms.SelectDateWidget(years=range(2010, 2022), empty_label=("Jahr", "Monat", "Tag")),
-            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
-            'year': forms.NumberInput(attrs={'min': '1990', 'max': '2020', 'type': 'number'}),
-            'drinkfrom': forms.NumberInput(attrs={'min': '2000', 'max': '2060', 'type': 'number'}),
-            'drinkto': forms.NumberInput(attrs={'min': '2018', 'max': '2060', 'type': 'number'}),
+            'winename': forms.TextInput(attrs={'class': "form-control"}),
+            'producer': forms.TextInput(attrs={'class': "form-control"}),
+            'grapes': forms.TextInput(attrs={'class': "form-control"}),
+            'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2021', 'value': '2021'}),
+            'country': forms.Select(attrs={'class': "form-control"}),
+            'region': forms.TextInput(attrs={'class': "form-control"}),
+            'purchase': forms.SelectDateWidget(attrs={'class': "form-control"}, years=range(2010, 2022), empty_label=("Jahr", "Monat", "Tag")),
+            'price': forms.TextInput(attrs={'class': "form-control"}),
+            'dealer': forms.TextInput(attrs={'class': "form-control"}),
+            'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),
+            'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060', 'value': '2021'}),
+            'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
+            'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
 
         }

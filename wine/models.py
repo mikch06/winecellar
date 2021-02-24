@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import User
 
 COUNTRY = [
     ('-', '-'),
@@ -75,7 +75,7 @@ class WineForm(ModelForm):
             'price': forms.TextInput(attrs={'class': "form-control"}),
             'dealer': forms.TextInput(attrs={'class': "form-control"}),
             'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),
-            'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060', 'type': 'number'}),
+            'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060', 'value': '2021'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
             'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
 

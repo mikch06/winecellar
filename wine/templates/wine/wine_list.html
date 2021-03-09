@@ -1,19 +1,24 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-Mein Weinkeller: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
+MyBottles: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
+{% load static %}
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button class="btn btn-secondary" type="reset" id="button-addon1" onClick="window.location.reload()">Reset</button>
   </div>
   <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
+        &nbsp&nbsp
+        <a href="/wine/log">
+                <img src="{% static "wine/bootstrap/icons/file-earmark-diff.svg" %}" alt="Detail" width="32" height="32" title="Changes in Stock"></a>
+
 </div>
 
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
       <thead>
         <tr>
-            {% load static %}
           <th width="50" ><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
           <th style="cursor:pointer">Weinname</th>
           <th style="cursor:pointer">Produzent</th>

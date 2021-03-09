@@ -3,18 +3,18 @@
 {% block content %}
 <div class="container">
 <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-  <a class="navbar-brand" href="/"> 🍷 Mein Weinkeller</a>
+  <a class="navbar-brand" href="/"> 🍷 MyBottles</a>
 </nav>
 </div>
 <br><br>
     <div class="logincontainer">
 
-         <h2 align="center"> 🍷 Mein Weinkeller</h2>
+         <h2 align="center"> 🍷 MyBottles</h2>
           <br>
           <form method="post" action="{% url 'login' %}">
           {% csrf_token %}
                     Benutzername:
-                    {{ form.username }}
+                   {{ form.username }}
                     <br><br>
                     Passwort:
                     {{ form.password }}

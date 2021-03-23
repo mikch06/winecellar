@@ -93,8 +93,6 @@ details > p {
 }
 
 details[open] > summary {
- border-bottom: dotted;
- border-width: 1px;
  width: 300px;
 }
 
@@ -102,4 +100,10 @@ details[open] {
     padding: 5px;
     padding-left: 20px;
     background-color: #ececec;
+    animation: sliding 0.5s forwards;
+}
+
+@keyframes sliding {
+  0%   {top: 0px; width: 100px;}
+  100% {width: 300px;}
 }

@@ -1,8 +1,10 @@
 {% extends "./base.html" %}
 {% block content %}
 <br>
-<div class="container">
-<b>Last 20 stock changes:</b>
+    <div class="container">
+MyBottles: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} verschiedene Weine.<br><br>
+{% load static %}
+<b>Letzte 25 Veränderungen im Keller:</b>
 <br><br>
 {% load static %}
     {% for wine in object_list %}

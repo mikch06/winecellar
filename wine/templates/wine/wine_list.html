@@ -2,15 +2,32 @@
 {% block content %}
 <br>
 {% load static %}
+
+
 <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <button class="btn btn-secondary" type="reset" id="button-addon1" onClick="window.location.reload()">Reset</button>
+    <button class="btn btn-secondary" type="button" id="button-addon1" onClick="window.location.reload()">
+        <img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset"></a>
+    </button>
   </div>
-  <input type="search" class="form-control"  id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
-        &nbsp&nbsp
+  <input type="search" class="form-control" id="wineSearch" placeholder="search&filter" onfocus="this.value=''" aria-label="Reset" aria-describedby="button-addon1">
+  <div class="input-group-append">
+    <span class="input-group-text">
         <a href="/wine/log">
-                <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="32" height="32" title="Changes in Stock"></a>
+                <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
+    </span>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
       <thead>

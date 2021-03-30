@@ -70,6 +70,23 @@ def updateWine(request, pk):
 
     return render(request, 'wine/create_form.html', {'form': form})
 
+@login_required
+def copyWine(request, pk):
+    update = Wine.objects.get(id=pk)
+    form = WineForm(instance=update)
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = WineForm(request.POST)
+        # Create instance for user data entry
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.owner = request.user
+            instance.save()
+            return HttpResponseRedirect('/wine')
+    else:
+        form = WineForm()
+    return render(request, 'wine/create_form.html', {'form': form})
+
 class FullView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_fullview.html'

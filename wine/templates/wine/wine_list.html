@@ -19,15 +19,6 @@
   </div>
 </div>
 
-
-
-
-
-
-
-
-
-
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
       <thead>
@@ -75,6 +66,9 @@
                     </a>
                     <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
                     <img src="{% static "wine/bootstrap/icons/trash-fill.svg" %}" alt="Löschen" width="20" height="20" title="Löschen">
+                    </a>
+                    <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-danger btn-sm">
+                    <img src="{% static "wine/bootstrap/icons/bell.svg" %}" alt="Edit" width="20" height="20" title="Edit">
                     </a>
               </details>
           </td>

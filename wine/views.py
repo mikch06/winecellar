@@ -76,7 +76,7 @@ def copyWine(request, pk):
     form = WineForm(instance=update)
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
-        form = WineForm(request.POST, instance=update)
+        form = WineForm(request.POST)
         # Create instance for user data entry
         if form.is_valid():
             instance = form.save(commit=False)

@@ -16,6 +16,81 @@
     </span>
   </div>
 </div>
+
+<div class="d-none d-lg-block">hide on screens smaller than lg</div>
+
+<div class="container table table-hover" id="wineTable">
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">foo</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+  <div class="row">
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">foo</div>
+    <div class="col d-none d-sm-block">weg</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+    <div class="col">col</div>
+  </div>
+</div>
+
+
+
+
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
 
@@ -92,7 +167,7 @@
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#wineTable tr").filter(function() {
+    $("#wineTable div").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

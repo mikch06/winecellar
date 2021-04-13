@@ -29,10 +29,13 @@ def index(request):
     return render(request, 'wine/home.html')
 
 # 'About' page
-@login_required
 def about(request):
-    #return HttpResponse("This is all about...")
-    return render(request, 'wine/about.html')
+    return render(request, '/registration/about.html')
+
+# 'Info' page
+@login_required
+def info(request):
+    return render(request, 'wine/info.html')
 
 @login_required
 def home(request):

@@ -24,15 +24,38 @@
   </head>
     <body>
       <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+                <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
           <a class="navbar-brand" href="/"> 🍷 MyBottles</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+              </li>
+              <li class="nav-item active">
+              </li>
+            </ul>
+            <span class="navbar-text">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/about">About</a>
+              </li>
+              <li class="nav-item active">
+              </li>
+              <li class="nav-item active">
+                <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
+              </li>
+            </ul>
+           </span>
+          </div>
         </nav>
+
         <div class="text-center">
           <br>
           <a href="/wine">
             <img src="{% static 'images/front_collage.jpg' %}" class="img-fluid mx-auto">
           </a>
           <br><br>
-          <a href="/wine" class="btn btn-success" role="button" aria-disabled="true">Login</a>
         </div>
       </div>

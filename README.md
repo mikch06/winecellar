@@ -32,11 +32,3 @@ Find documentation topics:
 in 
 [doc](doc)
 
-#### Not implemented:
-- ~Search~
-- ~Column filter~
-- Auth -> Users / Group users
-- ~Edit date in detail view~
-- PDF export 
-- Excel export
-- ...

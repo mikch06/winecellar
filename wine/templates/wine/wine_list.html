@@ -27,7 +27,7 @@
         <tr>
           <th width="50" ><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
           <th style="cursor:pointer">Weinname</th>
-          <th style="cursor:pointer">Produzent</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">Produzent</th>
           <th class="d-none d-sm-table-cell" style="cursor:pointer">Land</th>
           <th class="d-none d-sm-table-cell" style="cursor:pointer">Region</th>
           <th style="cursor:pointer">Jahrgang</th>
@@ -75,7 +75,7 @@
               </details>
           </td>
           <td>{{ wine.winename }}</td>
-          <td>{{ wine.producer }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
           <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
           <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
           <td>{{ wine.year|default_if_none:'' }}</td>

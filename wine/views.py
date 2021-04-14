@@ -30,7 +30,7 @@ def index(request):
 
 # 'About' page
 def about(request):
-    return render(request, 'registration/about.html')
+    return render(request, 'wine/about.html')
 
 # 'Info' page
 @login_required

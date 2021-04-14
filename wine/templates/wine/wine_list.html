@@ -17,9 +17,6 @@
   </div>
 </div>
 
-<!--class="d-none d-sm-block"-->
-
-
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
 
@@ -96,7 +93,7 @@
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#wineTable div").filter(function() {
+    $("#wineTable tr").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

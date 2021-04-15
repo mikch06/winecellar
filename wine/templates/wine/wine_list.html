@@ -16,19 +16,24 @@
     </span>
   </div>
 </div>
+
+<!--class="d-none d-sm-block"-->
+
+
 <div class="table-responsive">
     <table class="table table-hover sortable" id="wineTable" >
+
       <thead>
         <tr>
           <th width="50" ><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
           <th style="cursor:pointer">Weinname</th>
-          <th style="cursor:pointer">Produzent</th>
-          <th style="cursor:pointer">Land</th>
-          <th style="cursor:pointer">Region</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">Produzent</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">Land</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">Region</th>
           <th style="cursor:pointer">Jahrgang</th>
-          <th>Trauben</th>
-          <th style="cursor:pointer">trinkbar von</th>
-          <th style="cursor:pointer">trinkbar bis</th>
+          <th class="d-none d-sm-table-cell">Trauben</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar von</th>
+          <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar bis</th>
           <th style="cursor:pointer"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
         </tr>
       </thead>
@@ -70,13 +75,13 @@
               </details>
           </td>
           <td>{{ wine.winename }}</td>
-          <td>{{ wine.producer }}</td>
-          <td>{{ wine.country }}</td>
-          <td>{{ wine.region }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
           <td>{{ wine.year|default_if_none:'' }}</td>
-          <td>{{ wine.grapes }}</td>
-          <td>{{ wine.drinkfrom|default_if_none:''}}</td>
-          <td>{{ wine.drinkto|default_if_none:'' }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
+          <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
           <td>{{ wine.nmbrbottles }}</td>
         </tr>
         {% endfor %}

@@ -1,22 +1,16 @@
 {% extends "./base.html" %}
 {% block content %}
 {% load static %}
-
-
-        <div class="text-center">
-          <br>
-          <a href="/wine">
-            <img src="{% static 'images/front_collage.jpg' %}" class="img-fluid mx-auto">
-          </a>
-          <br><br>
-        </div>
-      </div>
+<div class="text-center">
+  <br>
+  <a href="/wine">
+    <img src="{% static 'images/front_collage.jpg' %}" class="img-fluid mx-auto">
+  </a>
+  <br>
     {% if user.is_authenticated %}
-    <p>Your account doesn't have access to this page. To proceed,
-    please login with an account that has access.</p>
     {% else %}
-    <p>Please login to see this page.</p>
+    Du musst eingeloggt sein, um Deinen Weinkeller zu sehen.
     {% endif %}
-
-
+</div>
+</div>
 {% endblock %}

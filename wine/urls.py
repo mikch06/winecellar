@@ -11,6 +11,7 @@ urlpatterns = [
     path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
     path('wine/copy/<int:pk>', views.copyWine, name='copy_wine'),
     path('about/', views.about),
+    path('info/', views.info),
     path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
     path('wine/log/', views.WineLog.as_view(), name='wine_log'),
 

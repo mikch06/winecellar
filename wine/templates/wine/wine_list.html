@@ -51,15 +51,15 @@
             <td>{{ wine.nmbrbottles }}</td>
         </tr>
         <tr>
-            <td colspan="10">
+            <td colspan="4">
                                 <!-- Collapse -->
                 <div class="collapse" id="wine{{ wine.id }}">
                     <div class="card card-body">
                         <table>
                             <tr>
                                 <td>
-                                <h6>{{ wine.winename }}</h6>
-                                <h6>{{ wine.producer }}</h6><br>
+                                <td></td><h6>{{ wine.winename }}</h6></td>
+                                <td><h6>{{ wine.producer }}</h6><br>
                                 <b>Land:</b> {{ wine.country }}<br>
                                 <b>Region:</b> {{ wine.region }}<br>
                                 <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
@@ -99,7 +99,6 @@
 </table>
 
 
-{% endblock %}
 </div>
 
 <!-- Scritps -->
@@ -115,4 +114,5 @@ $(document).ready(function(){
     });
   });
 });
-
+</script>
+{% endblock %}

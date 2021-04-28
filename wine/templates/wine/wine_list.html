@@ -51,12 +51,9 @@
         </tr>
         <tr class="noBorder">
             <td colspan="3" class="hiddenRow">
-                                <!-- Collapse -->
+                <!-- Collapse -->
                 <div class="collapse" id="wine{{ wine.id }}">
                     <div class="card card-body">
-                        <table>
-                            <tr>
-                                <td>
                                     <h6>{{ wine.winename }}</h6>
                                     <br>
                                     <h6>{{ wine.producer }}</h6>
@@ -98,9 +95,6 @@
                                     <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-info btn-sm">
                                     <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
                                     </a>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
                 </div>
             </td>

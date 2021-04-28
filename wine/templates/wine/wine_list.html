@@ -38,7 +38,7 @@
    {% for wine in object_list %}
     {% load static %}
         <tr>
-            <th scope="row"><button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+            <th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
                 <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></button></th>
             <td>{{ wine.winename }}</td>
             <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
@@ -50,42 +50,68 @@
             <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
             <td>{{ wine.nmbrbottles }}</td>
         </tr>
-        <tr>
-            <td colspan="4">
+        <tr class="noBorder">
+            <td colspan="3" class="hiddenRow">
                                 <!-- Collapse -->
                 <div class="collapse" id="wine{{ wine.id }}">
                     <div class="card card-body">
                         <table>
                             <tr>
+                                <td><h6>{{ wine.winename }}</h6></td><td><h6>{{ wine.producer }}</h6>
+                            </tr>
+                            <tr>
+                                <td><b>Land:</b> {{ wine.country }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Region:</b> {{ wine.region }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Händler:</b> {{ wine.dealer }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Preis:</b> {{ wine.price }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Jahrgang:</b> {{ wine.year }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}</td>
+                            </tr>
+                            <tr>
+                                <td><b>Notiz:</b></td>
+                            </tr>
+                            <tr>
+                                <td>{{ wine.notes }}</td>
+                            </tr>
+                            <tr>
                                 <td>
-                                <td></td><h6>{{ wine.winename }}</h6></td>
-                                <td><h6>{{ wine.producer }}</h6><br>
-                                <b>Land:</b> {{ wine.country }}<br>
-                                <b>Region:</b> {{ wine.region }}<br>
-                                <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}<br>
-                                <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-                                <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-                                <b>Händler:</b> {{ wine.dealer }}<br>
-                                <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y'}}<br>
-                                <b>Preis:</b> {{ wine.price }}<br>
-                                <br>
-                                <b>Jahrgang:</b> {{ wine.year }}<br>
-                                <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}<br>
-                                <br>
-                                <b>Notiz:</b>
-                                <br>
-                                {{ wine.notes }}<br><br>
                                 <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-                                <br><br>
-                                <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
-                                <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
-                                </a>
-                                <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
-                                <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
-                                </a>
-                                <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-info btn-sm">
-                                <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
-                                </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
+                                    <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
+                                    </a>
+
+                                    <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
+                                    <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
+                                    </a>
+                                    <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-info btn-sm">
+                                    <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
+                                    </a>
                                 </td>
                             </tr>
                         </table>

@@ -64,9 +64,9 @@
                                     <br>
                                     <b>Land:</b> {{ wine.country }}
                                     <br>
-                                    <b>Land:</b> {{ wine.country }}
+                                    <b>Region:</b> {{ wine.region }}
                                     <br>
-
+                                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
 
 
 
@@ -75,10 +75,10 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Region:</b> {{ wine.region }}</td>
+                                <td></td>
                             </tr>
                             <tr>
-                                <td><b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td><b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}</td>

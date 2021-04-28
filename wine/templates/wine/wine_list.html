@@ -33,7 +33,6 @@
               <th style="cursor:pointer"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
             </tr>
           </thead>
-
           <tbody>
    {% for wine in object_list %}
     {% load static %}
@@ -67,57 +66,32 @@
                                     <b>Region:</b> {{ wine.region }}
                                     <br>
                                     <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
-
-
-
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td><b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Händler:</b> {{ wine.dealer }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Preis:</b> {{ wine.price }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Jahrgang:</b> {{ wine.year }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}</td>
-                            </tr>
-                            <tr>
-                                <td><b>Notiz:</b></td>
-                            </tr>
-                            <tr>
-                                <td>{{ wine.notes }}</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
+                                    <br>
+                                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}
+                                    <br>
+                                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}
+                                    <br>
+                                    <b>Händler:</b> {{ wine.dealer }}
+                                    <br>
+                                    <b>Händler:</b> {{ wine.dealer }}
+                                    <br>
+                                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}
+                                    <br>
+                                    <b>Preis:</b> {{ wine.price }}
+                                    <br>
+                                    <b>Jahrgang:</b> {{ wine.year }}
+                                    <br>
+                                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}
+                                    <br>
+                                    <b>Notiz:</b>
+                                    <br>
+                                    {{ wine.notes }}
+                                    <br>
+                                    <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+                                    <br>
                                     <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
                                     <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
                                     </a>
-
                                     <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
                                     <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
                                     </a>
@@ -132,13 +106,9 @@
             </td>
         </tr>
 {% endfor %}
-
     </tbody>
 </table>
-
-
 </div>
-
 <!-- Scritps -->
 <!-- search&filter -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

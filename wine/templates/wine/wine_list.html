@@ -16,7 +16,6 @@
     </span>
   </div>
 </div>
-
 <div class="table-responsive">
 <table class="table table-hover sortable" id="wineTable">
           <thead>
@@ -37,7 +36,7 @@
    {% for wine in object_list %}
     {% load static %}
         <tr>
-            <th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+             <th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
                 <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></button></th>
             <td>{{ wine.winename }}</td>
             <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
@@ -50,10 +49,13 @@
             <td>{{ wine.nmbrbottles }}</td>
         </tr>
         <tr class="noBorder">
-            <td colspan="3" class="hiddenRow">
+            <td colspan="4" class="hiddenRow">
                 <!-- Collapse -->
                 <div class="collapse" id="wine{{ wine.id }}">
                     <div class="card card-body">
+                        <table>
+                            <tr>
+                                <td>
                                     <h6>{{ wine.winename }}</h6>
                                     <br>
                                     <h6>{{ wine.producer }}</h6>
@@ -95,6 +97,9 @@
                                     <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-info btn-sm">
                                     <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
                                     </a>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </td>
@@ -111,7 +116,7 @@
 $(document).ready(function(){
   $("#wineSearch").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#wineTable tr").filter(function() {
+    $("#wineTable tr div").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });

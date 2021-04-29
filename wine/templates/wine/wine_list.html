@@ -16,6 +16,10 @@
     </span>
   </div>
 </div>
+           <form action="{% url 'wine:search' %}" method="get">
+            <input name="q" type="text" onfocus="this.value='' placeholder="Search...">
+            </form>
+
 
 <div class="table-responsive">
 <table class="table table-hover sortable" id="wineTable">
@@ -37,7 +41,7 @@
    {% for wine in object_list %}
     {% load static %}
         <tr>
-            <th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+             <th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
                 <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></button></th>
             <td>{{ wine.winename }}</td>
             <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>

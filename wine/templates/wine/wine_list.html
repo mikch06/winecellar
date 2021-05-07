@@ -38,81 +38,6 @@
 {% for wine in object_list %}
 {% load static %}
 <tr>
-<th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
-<img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></button></th>
-<td>{{ wine.winename }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.country }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.region }}</td>
-<td>{{ wine.year|default_if_none:'' }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
-<td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
-<td>{{ wine.nmbrbottles }}</td>
-</tr>
-<tr class="noBorder">
-    <td colspan="4" class="hiddenRow">
-        <div class="collapse" id="wine{{ wine.id }}">
-            <div class="card card-body">
-                            <h6>{{ wine.winename }}</h6>
-                            <br>
-                            <h6>{{ wine.producer }}</h6>
-                            <br>
-                            <b>Land:</b> {{ wine.country }}
-                            <br>
-                            <b>Region:</b> {{ wine.region }}
-                            <br>
-                            <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
-                            <br>
-                            <b>Trinkreif von:<!-- Michi --></b> {{ wine.drinkfrom|default_if_none:'' }}
-                            <br>
-                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}
-                            <br>
-                            <b>Händler:</b> {{ wine.dealer }}
-                            <br>
-                            <b>Händler:</b> {{ wine.dealer }}
-                            <br>
-                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}
-                            <br>
-                            <b>Preis:</b> {{ wine.price }}
-                            <br>
-                            <b>Jahrgang:</b> {{ wine.year }}
-                            <br>
-                            <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}
-                            <br>
-                            <b>Notiz:</b>
-                            <br>
-                            {{ wine.notes }}
-                            <br>
-                            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-                            <br>
-                            <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-info btn-sm">
-                            <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
-                            </a>
-                            <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-info btn-sm">
-                            <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
-                            </a>
-                            <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-info btn-sm">
-                            <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
-                            </a>
-            </div>
-        </div>
-    </td>
-</tr>
-<tr>
-<th scope="row"><button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
-<img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></button></th>
-<td>{{ wine.winename }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.country }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.region }}</td>
-<td>{{ wine.year|default_if_none:'' }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
-<td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
-<td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
-<td>{{ wine.nmbrbottles }}</td>
-</tr>
-<tr>
     <th scope="row"> <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details">
         </button>
@@ -177,14 +102,10 @@
     </td>
 </tr>
 
-
-
-
 {% endfor %}
 </tbody>
 </table>
 </div>
-
 
 <!-- close Container -->
 </div>
@@ -202,24 +123,10 @@ $(document).ready(function(){
   });
 });
 </script>
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[2];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
 {% endblock %}
+
+
+<!-- donf forget
+<tr class="noBorder">
+tr from collapse row
+-->

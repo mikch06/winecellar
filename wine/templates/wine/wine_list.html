@@ -38,8 +38,8 @@
 {% for wine in object_list %}
 {% load static %}
 <tr>
-    <th scope="row"> <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
-        <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details">
+    <th scope="row"> <button class="btn btn-sm btn-info" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+        <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </th>
     <td>{{ wine.winename }}</td>
@@ -51,9 +51,7 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
-
-
-    <td colspan="4" class="hiddenRow"><div class="collapse" id="wine{{ wine.id }}">
+    <td colspan="8" class="hiddenRow noBoarder"><div class="collapse" id="wine{{ wine.id }}">
         <div class="card card-body">
         Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
         <h6>{{ wine.winename }}</h6>

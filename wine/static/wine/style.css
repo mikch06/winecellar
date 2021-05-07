@@ -111,6 +111,6 @@ details[open] {
     padding: 0 !important;
 }
 
-tr.noBorder td {
+tr.noBoarder td {
   border: 0;
 }

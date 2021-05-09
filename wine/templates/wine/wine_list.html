@@ -42,18 +42,9 @@
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </th>
-    <td>{{ wine.winename }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
-    <td>{{ wine.year|default_if_none:'' }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
-    <td>{{ wine.nmbrbottles }}</td>
-    <td colspan="8" class="hiddenRow noBoarder"><div class="collapse" id="wine{{ wine.id }}">
+    <td>{{ wine.winename }}
+    <div class="collapse" id="wine{{ wine.id }}">
         <div class="card card-body">
-        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
         <h6>{{ wine.winename }}</h6>
         <br>
         <h6>{{ wine.producer }}</h6>
@@ -97,6 +88,16 @@
         </a>
     </div>
     </div>
+    </td><!-- Close td winename -->
+    <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
+    <td>{{ wine.year|default_if_none:'' }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
+    <td>{{ wine.nmbrbottles }}</td>
+    <td>
     </td>
 </tr>
 

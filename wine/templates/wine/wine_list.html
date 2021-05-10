@@ -1,8 +1,8 @@
 {% extends "./base.html" %}
 {% block content %}
-<br>
 <!-- open Container -->
 <div class="container">
+<br>
 {% load static %}
 <div class="input-group mb-3">
   <div class="input-group-prepend">
@@ -14,7 +14,7 @@
   <div class="input-group-append">
     <span class="input-group-text">
         <a href="/wine/log">
-                <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
+        <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
     </span>
   </div>
 </div>
@@ -22,7 +22,7 @@
 <table class="table table-hover sortable" id="wineTable">
   <thead>
     <tr>
-      <th width="50" ><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
+      <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
       <th style="cursor:pointer">Weinname</th>
       <th class="d-none d-sm-table-cell" style="cursor:pointer">Produzent</th>
       <th class="d-none d-sm-table-cell" style="cursor:pointer">Land</th>
@@ -97,15 +97,11 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
-    <td>
-    </td>
 </tr>
-
 {% endfor %}
 </tbody>
 </table>
 </div>
-
 <!-- close Container -->
 </div>
 <!-- Scritps -->
@@ -122,10 +118,6 @@ $(document).ready(function(){
   });
 });
 </script>
+</body>
+</html>
 {% endblock %}
-
-
-<!-- donf forget
-<tr class="noBorder">
-tr from collapse row
--->

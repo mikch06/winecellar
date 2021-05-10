@@ -110,3 +110,12 @@ details[open] {
 .hiddenRow {
     padding: 0 !important;
 }
+
+.wineDetail {
+margin-left: -50px;
+margin-top:50px;
+min-width: 300px;
+max-width: 800px;
+float: auto;
+z-index: 5;
+}

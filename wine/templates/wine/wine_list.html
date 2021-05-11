@@ -98,50 +98,14 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
 </tr>
-<tr>
-    <td>
-          <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle second element</button>
-
-            <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-        Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-    </td>
-
-</tr>
 
 <!-- close Container -->
 </div>
-
-
 
 {% endfor %}
 </tbody>
 </table>
 </div>
-
-<!-- -->
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample1" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle second element</button>
-
-    <div class="row">
-  <div class="col">
-    <div class="collapse multi-collapse" id="multiCollapseExample1">
-      <div class="card card-body">
-        Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
-      </div>
-    </div>
-  </div>
-<br><br><br>
-
-
-<script>
-    var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'))
-var collapseList = collapseElementList.map(function (collapseEl) {
-    toggle: false
-    })
-
-</script>
 
 <!-- Scritps -->
 <!-- search&filter -->

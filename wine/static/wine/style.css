@@ -107,6 +107,14 @@ details[open] {
   100% {width: 300px;}
 }
 
+td[colspan="2"] {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  z-index: 1;
+  background: white;
+}
+
 .wineDetail {
 margin-left: -50px;
 margin-top:25px;

@@ -18,8 +18,104 @@
     </span>
   </div>
 </div>
+
+    <table id="wineTable">
+	<thead>
+		<tr>
+			<th>Regian</th>
+			<th>Q1 2010</th>
+			<th>Q2 2010</th>
+			<th>Q3 2010</th>
+			<th>Q4 2010</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tbody class="labels">
+			<tr>
+				<td colspan="5">
+					<label for="accounting">Accounting</label>
+					<input type="checkbox" name="accounting" id="accounting" data-bs-toggle="collapse" aria-expanded="false">
+				</td>
+			</tr>
+		</tbody>
+		<tbody class="hide">
+			<tr>
+				<td>Australia</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+			<tr>
+				<td>Central America</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+		</tbody>
+		<tbody class="labels">
+			<tr>
+				<td colspan="5">
+					<label for="management">Management</label>
+					<input type="checkbox" name="management" id="management" data-bs-toggle="collapse">
+				</td>
+			</tr>
+		</tbody>
+		<tbody class="hide">
+			<tr>
+				<td>Australia</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+			<tr>
+				<td>Central America</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+			<tr>
+				<td>Europe</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+			<tr>
+				<td>Middle East</td>
+				<td>$7,685.00</td>
+				<td>$3,544.00</td>
+				<td>$5,834.00</td>
+				<td>$10,583.00</td>
+			</tr>
+		</tbody>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="table-responsive">
-<table class="table table-hover sortable" id="wineTable">
+<table class="table table-hover sortable" >
   <thead>
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
@@ -98,19 +194,15 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
 </tr>
-<tr>
-    <td colspan="11">
-
-    </td>
-</tr>
-
 <!-- close Container -->
-</div>
-
 {% endfor %}
 </tbody>
 </table>
 </div>
+
+
+
+
 
 <!-- Scritps -->
 <!-- search&filter -->
@@ -126,6 +218,14 @@ $(document).ready(function(){
   });
 });
 </script>
+<script>
+    $(document).ready(function() {
+	$('[data-bs-toggle="collapse"]').change(function(){
+		$(this).parents().next('.hide').toggle();
+	});
+});
+</script>
+
 </body>
 </html>
 {% endblock %}

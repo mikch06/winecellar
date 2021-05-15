@@ -71,84 +71,14 @@ font-size: 10px;
 .winelog {
 font-size: 14px;
 }
-details {
-    list-style: none;
-}
 
-summary {
-    text-decoration: none;
-}
-
-details > summary {
-    border: none;
-    list-style: none;
-}
-
-details > summary::-webkit-details-marker {
-    display: none;
-}
-
-details > p {
-}
-
-details[open] > summary {
- width: 300px;
-}
-
-details[open] {
-    padding: 5px;
-    padding-left: 20px;
-    background-color: #ececec;
-    animation: sliding 0.5s forwards;
-}
-
-@keyframes sliding {
-  0%   {top: 0px; width: 100px;}
-  100% {width: 300px;}
-}
-
-td[colspan="2"] {
-  position: absolute;
-  left: 2px;
-  right: 2px;
-  z-index: 1;
-  background: white;
-}
-
-.wineDetail {
-margin-left: -50px;
-margin-top:25px;
-  position: relative;
-  z-index: 5;
-}
-
-
-
-table {
-	width: 750px;
-	border-collapse: collapse;
-	margin:50px auto;
-	}
-
-th {
-	background: #3498db;
-	color: white;
-	font-weight: bold;
-	}
-
-td, th {
-	padding: 10px;
-	border: 1px solid #ccc;
-	text-align: left;
-	font-size: 18px;
-	}
-
-
-.label tr td label {
-	display: block;
-}
-
-
-[data-toggle="collapse"] {
-	display: none;
+td.wineDetail {
+padding-left: 50px;
+background-clip: border-box;
+border: 1px solid rgba(0,0,0,.125);
+border-top-color: rgba(0, 0, 0, 0.125);
+border-style: solid;
+border-left-width: 3px;
+border-top-width: 1px;
+border-radius: .25rem;
 }

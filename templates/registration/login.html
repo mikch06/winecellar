@@ -1,0 +1,28 @@
+{% extends "../wine/base.html" %}
+{% block content %}
+{% load static %}
+
+<br>
+    <div class="logincontainer">
+
+         <h2 align="center"> 🍷 MyBottles</h2>
+          <br>
+          <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+                    Benutzername:
+                   {{ form.username }}
+                    <br><br>
+                    Passwort:
+                    {{ form.password }}
+          <br><br>
+          <input type="submit" class="btn btn-success btn-sm" value="Login" />
+          <input type="hidden" name="next" value="{{ next }}" />
+          </form>
+          <p>
+          <a href="{% url 'password_reset' %}">Lost password?</a></p>
+          {% if form.errors %}
+            <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>
+          {% endif %}
+                </div>
+    </div>
+{% endblock %}

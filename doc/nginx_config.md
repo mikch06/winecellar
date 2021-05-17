@@ -27,7 +27,7 @@
                     proxy_pass http://127.0.0.1:8000;
             }
 
-        location = /favicon.ico {
-                alias /opt/wine/django-winecellar/static/favicon.ico;
-        }
+            location = /favicon.ico {
+                    alias /opt/wine/django-winecellar/static/favicon.ico;
+            }
 

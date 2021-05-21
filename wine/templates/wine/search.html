@@ -1,0 +1,48 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="container">
+<br>
+<div class="container">
+<h4>Search</h4>
+
+  <ul>
+  {% for wine in object_list %}
+    <li>
+                                    <h6>{{ wine.winename }}</h6>
+                                    <br>
+                                    <h6>{{ wine.producer }}</h6>
+                                    <br>
+                                    <b>Land:</b> {{ wine.country }}
+                                    <br>
+                                    <b>Region:</b> {{ wine.region }}
+                                    <br>
+                                    <b>Trauben:</b> {{ wine.grapes|default_if_none:'' }}
+                                    <br>
+                                    <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}
+                                    <br>
+                                    <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}
+                                    <br>
+                                    <b>Händler:</b> {{ wine.dealer }}
+                                    <br>
+                                    <b>Händler:</b> {{ wine.dealer }}
+                                    <br>
+                                    <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}
+                                    <br>
+                                    <b>Preis:</b> {{ wine.price }}
+                                    <br>
+                                    <b>Jahrgang:</b> {{ wine.year }}
+                                    <br>
+                                    <b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}
+                                    <br>
+                                    <b>Notiz:</b>
+                                    <br>
+                                    {{ wine.notes }}
+                                    <br>    </li>
+  {% endfor %}
+</ul>
+
+
+</div>
+
+
+{% endblock %}

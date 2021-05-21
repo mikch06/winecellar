@@ -119,7 +119,6 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 #todo: Security -> LoginRequiredMixin
 class SearchResultsView(generic.ListView):
     model = Wine
-    template_name = 'wine/search.html'
 
     def get_queryset(self):  # new
         query = self.request.GET.get('q')

@@ -17,6 +17,26 @@
     </span>
   </div>
 </div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button class="btn btn-secondary" type="button" onClick="window.location.reload()">
+        <img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset">
+    </button>
+  </div>
+               <form action="{% url 'wine:search' %}" method="get">
+            <input name="q" class="form-control" type="text" placeholder="search&filter --NEW Search--" onfocus="this.value=''">
+            </form>  <div class="input-group-append">
+    <span class="input-group-text">
+        <a href="/wine/log">
+        <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
+    </span>
+  </div>
+</div>
+
+               <form action="{% url 'wine:search' %}" method="get">
+            <input name="q" type="text" onfocus="this.value='' placeholder="Search...">
+            </form>
+
 <div class="table-responsive">
 <table class="table table-hover sortable" id="wineTable">
   <thead>
@@ -104,17 +124,17 @@
 <!-- Scritps -->
 <!-- search&filter -->
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script>
-// search&filter
-$(document).ready(function(){
-  $("#wineSearch").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#wineTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
+<!--<script>-->
+<!--// search&filter-->
+<!--$(document).ready(function(){-->
+<!--  $("#wineSearch").on("keyup", function() {-->
+<!--    var value = $(this).val().toLowerCase();-->
+<!--    $("#wineTable tr").filter(function() {-->
+<!--      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
+<!--    });-->
+<!--  });-->
+<!--});-->
+<!--</script>-->
 </body>
 </html>
 {% endblock %}

@@ -117,14 +117,17 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 
 #### Search
 #todo: Security -> LoginRequiredMixin
-class SearchResultsView(generic.ListView):
+class SearchResultsView(LoginRequiredMixin, generic.ListView):
     model = Wine
 
     def get_queryset(self):  # new
         query = self.request.GET.get('q')
         object_list = Wine.objects.filter(
-            Q(country__icontains=query) | Q(producer__icontains=query)|
-            Q(region__icontains=query) | Q(year__icontains=query)|
+            Q(winename__icontains=query) | Q(producer__icontains=query) |
+            Q(country__icontains=query) | Q(region__icontains=query) |
+            Q(year__icontains=query) | Q(grapes__icontains=query) |
+            Q(country__icontains=query) | Q(producer__icontains=query) |
+            Q(drinkfrom__icontains=query) | Q(drinkto__icontains=query)|
             Q(notes__icontains=query)
         )
         return object_list

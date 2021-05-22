@@ -57,7 +57,7 @@
         <div class="card card-body">
             <table>
                 <tr>
-                    <td><h6>{{ wine.winename }}</h6></td>
+                    <td><h5>{{ wine.winename }}</h5></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -113,7 +113,12 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td><b>Anzahl Flaschen:</b> {{ wine.nmbrbottles }}</td>
+                    <td><b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -122,21 +127,35 @@
                     <td></td>
                     <td></td>
                 </tr>
-
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td></td>
+                </tr>
                 <tr>
                     <td><a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
                         <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
                         </a>
+                        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-success btn-sm">
+                        <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
+                        </a>
+                        <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-success btn-sm">
+                        <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
+                        </a>
                     </td>
-                                        <td>
-                                                    <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-success btn-sm">
-            <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
-            </a>
-                                        </td>
                     <td>
-                                 <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-success btn-sm">
-            <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
-            </a>
+                    </td>
+                    <td>
                     </td>
                 </tr>
             </table>

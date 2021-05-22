@@ -2,6 +2,7 @@
 {% block content %}
 <div class="container">
 <br>
+<div class="content">
 <form method="post">{% csrf_token %}
     {{ wine.winename }} wirklich löschen?<br><br>
     <a href="/wine" class="btn btn-info btn-sm">
@@ -12,5 +13,6 @@
        <img src="{% static "wine/bootstrap/icons/check-circle.svg" %}" alt="Save" width="16" height="16" title="Save">
      </button>
 </form>
+</div>
  </div>
 {% endblock %}

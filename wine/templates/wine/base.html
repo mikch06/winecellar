@@ -24,72 +24,45 @@
 </head>
 <body>
   <div class="container">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar w/ text</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
-    </div>
-  </div>
-</nav>
-
-
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
-      {% if user.is_authenticated %}
-      <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
-      {% else %}
-      <a class="navbar-brand" href="/"> 🍷 MyBottles</a>
-      {% endif %}
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          {% if user.is_authenticated %}
-          <li class="nav-item active">
-          <a class="nav-link" href="/wine/new">New</a>
-          </li>
-          <li class="nav-item active">
-          <a class="nav-link" href="/info">Info</a>
-          </li>
-          {% endif %}
-          <li class="nav-item active">
-          <a class="nav-link" href="/about">About</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-            {% if user.is_authenticated %}
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-            </svg>
-            {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
-            <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button></a>
-            {% else %}
-            <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
+      <div class="container-fluid">
+       {% if user.is_authenticated %}
+        <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
+       {% else %}
+        <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
+       {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/wine/new">New</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/info">Info</a>
+            </li>
             {% endif %}
-        </span>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+          {% if user.is_authenticated %}
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+          </svg>
+          {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
+          <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button></a>
+          {% else %}
+          <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
+          {% endif %}
+          </span>
+        </div>
       </div>
     </nav>
-  </div>
-<!-- Close Container -->
 <script src="{% static 'wine/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
 </script>

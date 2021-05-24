@@ -3,20 +3,26 @@
 <div class="container">
 <br>
 {% load static %}
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <a class="btn btn-secondary" href="/wine" role="button"><img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset">
-    </a>
+
+<form class="row g-3" action="{% url 'wine:search' %}" method="get">
+  <div class="col-md-6">
+    <div class="input-group">
+      <span class="input-group-text">
+          <a href="/wine"><img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset">
+            </a>
+      </span>
+      <input type="search" name="q" class="form-control" aria-describedby="inputGroupPrepend">
+      <span class="input-group-text" id="inputGroupPrepend">
+        <button class="btn btn-secondary btn-sm" type="submit">Search</button>
+      </span>
+      <span class="input-group-text">
+        <a href="/wine/log"><img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock">
+            </a>
+      </span>
+    </div>
   </div>
-               <form action="{% url 'wine:search' %}" method="get">
-            <input name="q" class="form-control" type="search" placeholder="search&filter">
-            </form>  <div class="input-group-append">
-    <span class="input-group-text">
-        <a href="/wine/log">
-        <img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
-    </span>
-  </div>
-</div>
+</form>
+<br>
 <div class="table-responsive">
 <table class="table table-hover sortable" id="wineTable">
   <thead>

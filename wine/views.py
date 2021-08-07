@@ -128,6 +128,6 @@ class SearchResultsView(LoginRequiredMixin, generic.ListView):
             Q(year__icontains=query) | Q(grapes__icontains=query) |
             Q(country__icontains=query) | Q(producer__icontains=query) |
             Q(drinkfrom__icontains=query) | Q(drinkto__icontains=query)|
-            Q(notes__icontains=query)
+            Q(dealer__icontains=query) | Q(notes__icontains=query)
         )
         return object_list

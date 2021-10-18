@@ -11,7 +11,7 @@ git fetch --tag
 git tag
 
 ## Checkout release
-git checkout <tag>
+git checkout ´tag´
 
 ## Restart app
 sudo systemctl restart wine

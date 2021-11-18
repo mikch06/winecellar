@@ -12,12 +12,13 @@
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.css">
   </head>
   <body>
-    <table data-toggle="table" data-filter-control="true" data-filter-control-visible="false" data-show-search-clear-button="true" data-show-filter-control-switch="true">
+  
+    <table id="table" data-toggle="table" data-filter-control="true" data-filter-control-visible="false" data-show-search-clear-button="true" data-show-filter-control-switch="true">
       <thead>
         <tr>
-          <th data-field="producer" data-filter-control="input" data-filter-control-placeholder="z.B. Brangero">Produzent</th>
-          <th data-field="grapes" data-filter-control="input" data-filter-control-placeholder="z.B. Syrah">Trauben</th>
-          <th data-field="year" data-filter-control="select">Jahrgang</th>
+          <th data-sortable="true" data-field="producer" data-filter-control="input" data-filter-control-placeholder="z.B. Brangero">Produzent</th>
+          <th data-sortable="true" data-field="grapes" data-filter-control="input" data-filter-control-placeholder="z.B. Syrah">Trauben</th>
+          <th data-sortable="true" data-field="year" data-filter-control="select">Jahrgang</th>
         </tr>
       </thead>
       <tbody>

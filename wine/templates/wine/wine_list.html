@@ -4,8 +4,8 @@
 <br>
 {% load static %}
 <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.css">
 
-<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
 
 
 
@@ -29,19 +29,26 @@
 </form>
 <br>
 <div class="table-responsive">
-<table class="table table-hover sortable" id="wineTable" data-filter-control="true">
+<table
+    data-toggle="table"
+    data-classes="table table-borderless table-hover"
+    id="wineTable"
+    data-filter-control="true"
+    data-filter-control-visible="false"
+    data-show-search-clear-button="true"
+    data-show-filter-control-switch="true">
   <thead>
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
-      <th style="cursor:pointer">Weinname</th>
-      <th class="d-none d-sm-table-cell" data-field="name" data-filter-control="input" style="cursor:pointer">Produzent</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">Land</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">Region</th>
-      <th style="cursor:pointer">Jahrgang</th>
-      <th class="d-none d-sm-table-cell">Trauben</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar von</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar bis</th>
-      <th style="cursor:pointer"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
+      <th data-sortable="true" data-field="winename" data-filter-control="input">Weinname</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-filter-control="input">Region</th>
+      <th data-sortable="true" data-field="year" data-filter-control="select">Jahrgang</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="input">trinkbar bis</th>
+      <th data-sortable="true" data-field="nmbrbottles"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
     </tr>
   </thead>
 <tbody>
@@ -196,40 +203,7 @@
 
 </body>
 </html>
-    <link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
-
-<script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
-
-<div class="toolbar">
-  <label>
-    <input type="checkbox" id="sortable" /> sortable
-  </label>
-</div>
-
-<table
-  id="table"
-  data-toggle="table"
-  data-toolbar=".toolbar"
-  data-sortable="false"
-  data-height="460"
-  data-url="json/data1.json">
-  <thead>
-    <tr>
-      <th data-field="state" data-checkbox="true">ID</th>
-      <th data-field="id" data-sortable="true">ID</th>
-      <th data-field="name" data-sortable="true">Item Name</th>
-      <th data-field="price" data-sortable="true">Item Price</th>
-    </tr>
-  </thead>
-</table>
-
-<script>
-  $(function() {
-    $('#sortable').change(function () {
-      $('#table').bootstrapTable('refreshOptions', {
-        sortable: $('#sortable').prop('checked')
-      })
-    })
-  })
-</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.js"></script>
 {% endblock %}

@@ -24,7 +24,14 @@ margin: 20px;
 background-color: #f8f9fa;
 line-height: 1.5;
 font-size: 1.25rem;
+}
 
+.bootstrap-table.bootstrap5 .float-right {
+float: left;
+}
+
+thead {
+  border-bottom: 1px solid;
 }
 
 th, td   {
@@ -32,6 +39,10 @@ font-size: 14px;
 }
 
 table.hover tbody tr:hover {
+}
+
+.trlist {
+  border-bottom: 1px solid #ccc;
 }
 
 a {

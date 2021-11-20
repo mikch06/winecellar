@@ -3,11 +3,6 @@
 <div class="container">
 <br>
 {% load static %}
-<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.css">
-
-
-
 
 <form class="row g-3" action="{% url 'wine:search' %}" method="get">
   <div class="col-md-6">
@@ -36,6 +31,7 @@
     data-filter-control="true"
     data-filter-control-visible="false"
     data-show-search-clear-button="true"
+    filterControlSwitchHide: 'glyphicon-zoom-out icon-zoom-out'
     data-show-filter-control-switch="true">
   <thead>
     <tr>
@@ -54,7 +50,7 @@
 <tbody>
 {% for wine in object_list %}
 {% load static %}
-<tr>
+<tr class="trlist">
     <th scope="row"> <button class="btn btn-sm btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>

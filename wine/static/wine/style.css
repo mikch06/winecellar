@@ -28,6 +28,7 @@ font-size: 1.25rem;
 
 .bootstrap-table.bootstrap5 .float-right {
 float: left;
+margin-left: 5px;
 }
 
 thead {

@@ -24,25 +24,33 @@
 </form>
 <br>
 <div class="table-responsive">
-<table class="table table-hover sortable" id="wineTable">
+<table
+    class="table"
+    data-toggle="table"
+    data-classes="table table-borderless table-hover"
+    id="wineTable"
+    data-filter-control="true"
+    data-filter-control-visible="false"
+    data-show-search-clear-button="true"
+    data-show-filter-control-switch="true">
   <thead>
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
-      <th style="cursor:pointer">Weinname</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">Produzent</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">Land</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">Region</th>
-      <th style="cursor:pointer">Jahrgang</th>
-      <th class="d-none d-sm-table-cell">Trauben</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar von</th>
-      <th class="d-none d-sm-table-cell" style="cursor:pointer">trinkbar bis</th>
-      <th style="cursor:pointer"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
+      <th data-sortable="true" data-field="winename" data-filter-control="input">Wein</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-filter-control="input">Region</th>
+      <th data-sortable="true" data-field="year" data-filter-control="select">Jahrgang</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
+      <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
     </tr>
   </thead>
 <tbody>
 {% for wine in object_list %}
 {% load static %}
-<tr>
+<tr class="trlist">
     <th scope="row"> <button class="btn btn-sm btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
@@ -178,6 +186,7 @@
 </tbody>
 </table>
 </div>
+
 </body>
 </html>
 {% endblock %}

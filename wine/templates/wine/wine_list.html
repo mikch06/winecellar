@@ -4,24 +4,31 @@
 <br>
 {% load static %}
 
-<form class="row g-3" action="{% url 'wine:search' %}" method="get">
-  <div class="col-md-6">
-    <div class="input-group">
-      <span class="input-group-text">
-          <a href="/wine"><img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset">
-            </a>
-      </span>
-      <input type="search" name="q" class="form-control" aria-describedby="inputGroupPrepend">
-      <span class="input-group-text" id="inputGroupPrepend">
-        <button class="btn btn-secondary btn-sm" type="submit">Search</button>
-      </span>
-      <span class="input-group-text">
+<!-- Disable old search
+
+<form class="row g-3" action="{% url 'wine:search' %}" method="get">-->
+<!--  <div class="col-md-6">-->
+<!--    <div class="input-group">-->
+<!--      <span class="input-group-text">-->
+<!--          <a href="/wine"><img src="{% static "wine/bootstrap/icons/x-circle.svg" %}" alt="Detail" width="" height="" title="Reset">-->
+<!--            </a>-->
+<!--      </span>-->
+<!--      <input type="search" name="q" class="form-control" aria-describedby="inputGroupPrepend">-->
+<!--      <span class="input-group-text" id="inputGroupPrepend">-->
+<!--        <button class="btn btn-secondary btn-sm" type="submit">Search</button>-->
+<!--      </span>-->
+<!--      <span class="input-group-text">-->
+<!--        <a href="/wine/log"><img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock">-->
+<!--            </a>-->
+<!--      </span>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+
         <a href="/wine/log"><img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock">
             </a>
-      </span>
-    </div>
-  </div>
-</form>
+
+
 <br>
 <div class="table-responsive">
 <table
@@ -32,7 +39,7 @@
     data-pagination="true"
     data-page-size="50"
     data-search="true"
-      data-remember-order="true"
+    data-detail-view="true"
     data-filter-control="true"
     data-filter-control-visible="false"
     data-show-search-clear-button="true"
@@ -48,9 +55,10 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
 
       <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
+
     </tr>
   </thead>
 <tbody>

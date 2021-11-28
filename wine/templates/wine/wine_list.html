@@ -29,6 +29,10 @@
     data-toggle="table"
     data-classes="table table-borderless table-hover"
     id="wineTable"
+    data-pagination="true"
+    data-page-size="50"
+    data-search="true"
+      data-remember-order="true"
     data-filter-control="true"
     data-filter-control-visible="false"
     data-show-search-clear-button="true"
@@ -37,13 +41,15 @@
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
       <th data-sortable="true" data-field="winename" data-filter-control="input">Wein</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-visible="false" data-filter-control="input">Produzent</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-filter-control="input">Region</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-visible="false" data-filter-control="input">Region</th>
       <th data-sortable="true" data-field="year" data-filter-control="select">Jahrgang</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
+
       <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
     </tr>
   </thead>
@@ -64,6 +70,8 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
+    <td>{{ wine.notes }}</td>
+
 </tr>
 <tr>
     <td colspan="10" class="hiddenRow">

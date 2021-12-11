@@ -24,23 +24,22 @@
   <thead>
     <tr>
       <th data-sortable="true" data-field="Wein" data-filter-control="input">Wein</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-filter-control="input">Region</th>
-      <th data-sortable="true" data-field="year" data-filter-control="select">Jg.</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
-      <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Produzent" data-filter-control="input">Produzent</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Land" data-filter-control="select" >Land</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Region" data-filter-control="input">Region</th>
+      <th data-sortable="true" data-field="Jahrgang" data-filter-control="select">Jg.</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Trauben" data-filter-control="input">Trauben</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Trinkreif von" data-filter-control="select">trinkbar von</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Trinkbar bis" data-filter-control="select">trinkbar bis</th>
+      <th data-sortable="true" data-field="Anzahl Flaschen" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="Notiz" data-visible="false" data-filter-control="input"></th>
     </tr>
   </thead>
 <tbody>
 {% for wine in object_list %}
 {% load static %}
 <tr class="trlist">
-
-    <td data-field="Wein">{{ wine.winename }}</td>
+    <td>{{ wine.winename }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
@@ -58,13 +57,32 @@
 
 </body>
 </html>
+<!--<script>-->
+<!--  function detailFormatter(index, row) {-->
+<!--    var html = []-->
+<!--    $.each(row, function (key, value) {-->
+<!--      html.push('<p><b>' + key + ':</b> ' + value + '</p><br>')-->
+<!--    })-->
+<!--    return html.join('')-->
+<!--  }-->
+<!--</script>-->
 <script>
-  function detailFormatter(index, row) {
-    var html = []
-    $.each(row, function (key, value) {
-      html.push('<p><b>' + key + ':</b> ' + value + '</p><br>')
-    })
-    return html.join('')
-  }
+function detailFormatter(index, row) {
+  var html = []
+  var indexs = 0
+
+  $.each(row, function(key, value) {
+    //index +1 because first column is for `+`
+    //and data-field is column a ,column b..etc
+    var columns = $("th:eq(" + (indexs + 1) + ")").data("field")
+    if (columns != undefined) {
+      html.push('<p><b>' + columns + ':</b> ' + row[columns] + '</p>')
+      indexs++;
+    }
+  })
+  //here columnC matches with data-field value.
+   html.push('<p><b> columnC :</b> ' + row['columnC'] + '</p>')
+  return html;
+}
 </script>
 {% endblock %}

@@ -76,12 +76,12 @@ function detailFormatter(index, row) {
     //and data-field is column a ,column b..etc
     var columns = $("th:eq(" + (indexs + 1) + ")").data("field")
     if (columns != undefined) {
-      html.push('<p><b>' + columns + ':</b> ' + row[columns] + '</p>')
+      html.push('<b>' + columns + ':</b> ' + row[columns] + '</br>')
       indexs++;
     }
   })
   //here columnC matches with data-field value.
-   html.push('<p><b> columnC :</b> ' + row['columnC'] + '</p>')
+   html.push(row['Produzent'] + '</p>')
   return html;
 }
 </script>

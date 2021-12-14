@@ -90,6 +90,9 @@ font-size: 14px;
 }
 
 .modal  {
-background-color: red;
-z-index: auto;
+z-index 1;
+}
+
+.modal-backdrop{
+  position: relative;
 }

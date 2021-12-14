@@ -37,8 +37,7 @@
   </thead>
 <tbody>
 {% for wine in object_list %}
-{% load static %}
-<tr class="trlist">
+ <tr class="trlist">
     <td scope="row"> <!-- Button trigger modal -->
         <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
@@ -101,7 +100,6 @@
 </tbody>
 </table>
 </div>
-
 </body>
 </html>
 {% endblock %}

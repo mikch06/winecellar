@@ -88,3 +88,11 @@ font-size: 14px;
     padding: 0 !important;
     border: none;
 }
+
+.modal  {
+z-index 1;
+}
+
+.modal-backdrop{
+  position: relative;
+}

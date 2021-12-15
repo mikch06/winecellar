@@ -14,5 +14,4 @@ urlpatterns = [
     path('info/', views.info),
     path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
     path('wine/log/', views.WineLog.as_view(), name='wine_log'),
-    path('wine/search/', views.SearchResultsView.as_view(), name='search')
 ]

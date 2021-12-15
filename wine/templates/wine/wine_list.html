@@ -7,7 +7,6 @@
 <div id="toolbar">
     <a class="btn btn-secondary" href="/wine/log" role="button"><img src="{% static "wine/bootstrap/icons/card-list.svg" %}" alt="Detail" width="" height="" title="Changes in Stock"></a>
 </div>
-
 <table
     class="table"
     data-toggle="table"
@@ -51,25 +50,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                            <h6>{{ wine.producer }}</h6><br>
-                            <b>Land:</b> {{ wine.country }}<br>
-                            <b>Region:</b> {{ wine.region }}<br>
-                            <b>Trauben:</b> {{ wine.grapes }}<br>
-                            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-                            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-                            <b>Händler:</b> {{ wine.dealer }}<br>
-                            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
-                            <b>Preis:</b> {{ wine.price }}<br>
-                            <b>Jahrgang:</b> {{ wine.year }}<br>
-                            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br>
-                            <b>Notiz:</b><br>
-                            {{ wine.notes }}
-                            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+                <h6>{{ wine.producer }}</h6>
+                <b>Land:</b> {{ wine.country }}<br>
+                <b>Region:</b> {{ wine.region }}<br>
+                <b>Trauben:</b> {{ wine.grapes }}<br>
+                <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+                <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+                <b>Händler:</b> {{ wine.dealer }}<br>
+                <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
+                <b>Preis:</b> {{ wine.price }}<br>
+                <b>Jahrgang:</b> {{ wine.year }}<br>
+                <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
+                <b>Notiz:</b><br>
+                {{ wine.notes }}
+                <br><br>
+                <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
               </div>
-
               <div class="modal-footer">
-        <!--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-        <!--        <button type="button" class="btn btn-primary">Save changes</button>-->
                 <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
                 <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
                 </a>
@@ -95,7 +92,6 @@
     <td>{{ wine.nmbrbottles }}</td>
     <td>{{ wine.notes }}</td>
 </tr>
-
 {% endfor %}
 </tbody>
 </table>

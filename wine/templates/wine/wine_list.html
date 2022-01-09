@@ -32,6 +32,7 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
       <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="dealer" data-visible="false" data-filter-control="input"></th>
     </tr>
   </thead>
 <tbody>
@@ -52,6 +53,8 @@
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
     <td>{{ wine.nmbrbottles }}</td>
     <td>{{ wine.notes }}</td>
+    <td>{{ wine.dealer }}</td>
+     
 </tr>
 <!-- Modal -->
 <div class="modal fade" id="wine{{ wine.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

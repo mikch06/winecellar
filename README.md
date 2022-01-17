@@ -18,17 +18,12 @@
     # Install Django
     pip install django
      
-#### Links/Helps/Tutorials:
-- User Authentication
-https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Authentication
-
-
 #### Doc
 Find documentation topics:
 - gunicorn deployment
 - nginx config
 - sqlite version increase on CentOS
 
-in 
-[doc](doc)
+view
+[doc](docs)
 

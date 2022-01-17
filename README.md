@@ -25,5 +25,5 @@ Find documentation topics:
 - sqlite version increase on CentOS
 
 view
-[doc](docs)
+[docs](doc)
 

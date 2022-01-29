@@ -31,6 +31,7 @@ class Wine(models.Model):
     drinkfrom = models.IntegerField(blank=True, null=True)
     drinkto = models.IntegerField(blank=True, null=True)
     nmbrbottles = models.IntegerField(default=0)
+    warehouse = models.CharField(max_length=200, blank=True)
     notes = models.CharField(max_length=400, blank=True)
     editdate = models.DateField(auto_now=True)
 
@@ -48,7 +49,7 @@ class WineForm(ModelForm):
     class Meta:
         model = Wine
         fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
-                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'notes']
+                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'warehouse', 'notes']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',
@@ -61,6 +62,7 @@ class WineForm(ModelForm):
             'dealer': 'Verkäufer',
             'drinkfrom': 'Trinkbar ab',
             'drinkto': 'Trinkbar bis',
+            'warehouse': 'Lagerort',
             'nmbrbottles': 'Anzahl Flaschen',
             }
 
@@ -77,5 +79,6 @@ class WineForm(ModelForm):
             'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
+            'warehouse': forms.TextInput(attrs={'class': "form-control"}),
             'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
         }

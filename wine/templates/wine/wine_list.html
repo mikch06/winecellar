@@ -33,6 +33,8 @@
       <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="dealer" data-visible="false" data-filter-control="input"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="warehouse" data-visible="false" data-filter-control="input"></th>
+
     </tr>
   </thead>
 <tbody>
@@ -54,6 +56,8 @@
     <td>{{ wine.nmbrbottles }}</td>
     <td>{{ wine.notes }}</td>
     <td>{{ wine.dealer }}</td>
+    <td>{{ wine.warehouse }}</td>
+
      
 </tr>
 <!-- Modal -->
@@ -74,6 +78,7 @@
         <b>Händler:</b> {{ wine.dealer }}<br>
         <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
         <b>Preis:</b> {{ wine.price }}<br>
+        <b>Lagerort:</b> {{ wine.warehouse }}<br>
         <b>Jahrgang:</b> {{ wine.year }}<br>
         <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
         <b>Notiz:</b><br>

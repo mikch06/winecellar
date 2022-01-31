@@ -41,7 +41,7 @@
 {% for wine in object_list %}
  <tr class="trlist">
     <td scope="row"> <!-- Button trigger modal -->
-        <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+        <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-backdrop="true" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </td>
@@ -60,7 +60,16 @@
 
      
 </tr>
-<!-- Modal -->
+
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+
+{% for wine in object_list %}
+
+    <!-- Modal -->
 <div class="modal fade" id="wine{{ wine.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -101,10 +110,13 @@
   </div>
 </div>
 <!-- End Modal -->
-{% endfor %}
-</tbody>
-</table>
-</div>
+
+    {% endfor %}
+
+
+
+
 </body>
 </html>
+
 {% endblock %}

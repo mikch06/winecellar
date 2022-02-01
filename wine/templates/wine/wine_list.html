@@ -34,14 +34,13 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="dealer" data-visible="false" data-filter-control="input"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="warehouse" data-visible="false" data-filter-control="input"></th>
-
     </tr>
   </thead>
 <tbody>
 {% for wine in object_list %}
  <tr class="trlist">
-    <td scope="row"> <!-- Button trigger modal -->
-        <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-backdrop="true" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+    <td scope="row">
+        <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </td>
@@ -57,66 +56,54 @@
     <td>{{ wine.notes }}</td>
     <td>{{ wine.dealer }}</td>
     <td>{{ wine.warehouse }}</td>
-
-     
 </tr>
-
 {% endfor %}
 </tbody>
 </table>
 </div>
-
-
+</body>
+</html>
 {% for wine in object_list %}
-
-    <!-- Modal -->
-<div class="modal fade" id="wine{{ wine.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal -->
+<div class="modal fade" id="wine{{ wine.id }}" tabindex="-1" aria-labelledby="wine{{ wine.id }}Label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ wine.winename }}</h5>
+        <h5 class="modal-title" id="wine{{ wine.id }}Label">{{ wine.winename }}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        <h6>{{ wine.producer }}</h6>
-        <b>Land:</b> {{ wine.country }}<br>
-        <b>Region:</b> {{ wine.region }}<br>
-        <b>Trauben:</b> {{ wine.grapes }}<br>
-        <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-        <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-        <b>Händler:</b> {{ wine.dealer }}<br>
-        <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
-        <b>Preis:</b> {{ wine.price }}<br>
-        <b>Lagerort:</b> {{ wine.warehouse }}<br>
-        <b>Jahrgang:</b> {{ wine.year }}<br>
-        <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
-        <b>Notiz:</b><br>
-        {{ wine.notes }}
-        <br><br>
-        <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-      </div>
-      <div class="modal-footer">
-        <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
-        <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
-        </a>
-        <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-success btn-sm">
-        <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
-        </a>
-        <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-success btn-sm">
-        <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
-        </a>
-      </div>
-    </div>
+          <div class="modal-body">
+            <h6>{{ wine.producer }}</h6>
+            <b>Land:</b> {{ wine.country }}<br>
+            <b>Region:</b> {{ wine.region }}<br>
+            <b>Trauben:</b> {{ wine.grapes }}<br>
+            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+            <b>Händler:</b> {{ wine.dealer }}<br>
+            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
+            <b>Preis:</b> {{ wine.price }}<br>
+            <b>Lagerort:</b> {{ wine.warehouse }}<br>
+            <b>Jahrgang:</b> {{ wine.year }}<br>
+            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
+            <b>Notiz:</b><br>
+            {{ wine.notes }}
+            <br><br>
+            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+            </div>
+              <div class="modal-footer">
+                <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
+                <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
+                </a>
+                <a href="{% url 'wine:wine_delete' wine.id %}" class="btn btn-success btn-sm">
+                <img src="{% static "wine/bootstrap/icons/trash.svg" %}" alt="Löschen" width="" height="" title="Wein löschen">
+                </a>
+                <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-success btn-sm">
+                <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
+                </a>
+              </div>
+        </div>
   </div>
 </div>
 <!-- End Modal -->
-
-    {% endfor %}
-
-
-
-
-</body>
-</html>
-
+{% endfor %}
 {% endblock %}

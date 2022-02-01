@@ -88,17 +88,3 @@ font-size: 14px;
     padding: 0 !important;
     border: none;
 }
-
-.modal  {
-    z-index 1;
-}
-
-.modal-backdrop {
-    position: relative;
-    z-index -1;
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: #ddd;
-  }

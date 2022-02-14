@@ -10,6 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
 from django.db.models import Q # new
+#todo: remove Q
+import csv
+
 
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
@@ -124,6 +127,18 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 #         context["winedata"] = Wine.objects.all()
 #         return context
 
-
-
-
+# Data export
+@login_required
+def export(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    wines = Wine.objects.all()
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="wine_export.csv"'},
+    )
+    writer = csv.writer(response)
+    writer.writerow(['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl'])
+    wines = wines.values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
+    for w in wines:
+        writer.writerow(w)
+    return response

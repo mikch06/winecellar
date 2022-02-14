@@ -50,6 +50,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
+           {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/wine/tools">Tools</a>
+            </li>
+           {% endif %}
           </ul>
           <span class="navbar-text">
           {% if user.is_authenticated %}

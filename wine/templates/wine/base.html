@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>MyBottles</title>
 <link rel="stylesheet" type="text/css" href="{% static 'wine/bootstrap/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 <link rel="stylesheet" type="text/css" href="{% static 'wine/bootstrap-table/css/bootstrap-table.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'wine/bootstrap-table/css/bootstrap-table-filter-control.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'wine/style.css' %}">
@@ -29,15 +29,16 @@
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
       <div class="container-fluid">
-       {% if user.is_authenticated %}
-        <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
-       {% else %}
-        <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
-       {% endif %}
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
+      <a class="navbar-brand" href="/wine"> 🍷 MyBottles</a>
+     {% if user.is_authenticated %}
+      <a class="navbar-brand" href="/wine/log">
+        <i class="bi-gear" style="color: white;"></i>
+      </a>
+    {% endif %}
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            {% if user.is_authenticated %}
             <li class="nav-item">
@@ -50,11 +51,6 @@
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
-           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/wine/tools">Tools</a>
-            </li>
-           {% endif %}
           </ul>
           <span class="navbar-text">
           {% if user.is_authenticated %}

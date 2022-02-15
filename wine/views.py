@@ -136,7 +136,7 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 @login_required
 def export(request):
     # Create the HttpResponse object with the appropriate CSV header.
-    wines = Wine.objects.all()
+    wines = Wine.objects.filter(owner=request.user)
     response = HttpResponse(
         content_type='text/csv',
         headers={'Content-Disposition': 'attachment; filename="wine_export.csv"'},

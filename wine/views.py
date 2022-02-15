@@ -41,11 +41,6 @@ def about(request):
 def info(request):
     return render(request, 'wine/info.html')
 
-# 'Tools' page
-@login_required
-def tools(request):
-    return render(request, 'wine/tools.html')
-
 @login_required
 def home(request):
     return render(request, 'wine/index.html')
@@ -121,7 +116,7 @@ class WineLog(LoginRequiredMixin, generic.ListView):
     # Filter user data only
     def get_queryset(self):
         query_set = super().get_queryset()
-        return query_set.filter(owner=self.request.user).order_by('-editdate')[:25]
+        return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
 
 # class EditorChartView(generic.ListView):
 #     model = Wine

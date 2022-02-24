@@ -12,6 +12,7 @@ from wine.models import WineForm
 from django.db.models import Q # new
 #todo: remove Q
 import csv
+import xlwt
 
 
 class WinesView(LoginRequiredMixin, generic.ListView):
@@ -129,7 +130,7 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 
 # Data export
 @login_required
-def export(request):
+def export_csv(request):
     # Create the HttpResponse object with the appropriate CSV header.
     wines = Wine.objects.filter(owner=request.user)
     response = HttpResponse(
@@ -141,4 +142,35 @@ def export(request):
     wines = wines.values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
     for w in wines:
         writer.writerow(w)
+    return response
+
+@login_required
+def export_xls(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="wine_export.xls"'
+
+    wb = xlwt.Workbook(encoding='utf-8')
+    ws = wb.add_sheet('MyBottles')
+
+    # Sheet header, first row
+    row_num = 0
+
+    font_style = xlwt.XFStyle()
+    font_style.font.bold = True
+
+    columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+
+    for col_num in range(len(columns)):
+        ws.write(row_num, col_num, columns[col_num], font_style)
+
+    # Sheet body, remaining rows
+    font_style = xlwt.XFStyle()
+
+    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
+    for row in rows:
+        row_num += 1
+        for col_num in range(len(row)):
+            ws.write(row_num, col_num, row[col_num], font_style)
+
+    wb.save(response)
     return response

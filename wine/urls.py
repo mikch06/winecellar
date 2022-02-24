@@ -12,7 +12,8 @@ urlpatterns = [
     path('wine/copy/<int:pk>', views.copyWine, name='copy_wine'),
     path('about/', views.about),
     path('info/', views.info),
-    path('wine/export/', views.export),
+    path('wine/export/', views.export_csv),
+    path('wine/export_xls/', views.export_xls),
     path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
     path('wine/log/', views.WineLog.as_view(), name='wine_log'),
     #path('charts/', views.EditorChartView.as_view(), name='charts')

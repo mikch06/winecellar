@@ -168,3 +168,5 @@ def export_xls(request):
     output.close()
 
     return response
+
+#todo: Check this: https://bravelab.io/blog/how-to-export-orders-in-saleor-io-to-xlsx-file/

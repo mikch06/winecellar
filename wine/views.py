@@ -12,10 +12,9 @@ from wine.models import WineForm
 from django.db.models import Q # new
 #todo: remove Q
 import csv
-import xlwt
-import datetime
-from datetime import datetime
-
+import io
+import xlsxwriter
+from xlsxwriter.workbook import Workbook
 
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
@@ -147,37 +146,25 @@ def export_csv(request):
     return response
 
 @login_required
+    #columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+    #rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
 def export_xls(request):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="wine_export.xls"'
+    data = Wine.objects.filter(owner=request.user)
 
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('MyBottles', cell_overwrite_ok=True)
+    output = io.BytesIO()
 
+    workbook = Workbook(output, {'in_memory': True})
+    worksheet = workbook.add_worksheet()
 
-    # Sheet header, first row
-    row_num = 0
+    worksheet.write(0, 0, 'Hello, world!')
+    workbook.close()
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
-    date_style = xlwt.XFStyle()
+    output.seek(0)
 
-    columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+    response = HttpResponse(output.read(),
+                            content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response['Content-Disposition'] = "attachment; filename=wine_export.xlsx"
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
+    output.close()
 
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
-    date_style.num_format_str = "dd.mm.YYYY"
-
-    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
-    for row in rows:
-        row_num += 1
-        for col_num in range(len(row)):
-
-            ws.write(row_num, col_num, row[col_num], font_style)
-            ws.write(row_num, 6, datetime.now(), date_style)
-
-    wb.save(response)
     return response

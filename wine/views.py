@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
 from django.db.models import Sum
+
+import wine.views
 from wine.models import Wine
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -149,24 +151,40 @@ def export_csv(request):
     #columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
     #rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
 def export_xls(request):
-    data = Wine.objects.filter(owner=request.user)
+    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
+
 
     output = io.BytesIO()
 
-    workbook = Workbook(output, {'in_memory': True})
+    workbook = xlsxwriter.Workbook(output)
     worksheet = workbook.add_worksheet()
+    worksheet.write('A1', 'Some Data')
+    columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
 
-    worksheet.write(0, 0, 'Hello, world!')
+    bold = workbook.add_format({'bold': True})
+    row = 0
+    for i, elem in enumerate(columns):
+        worksheet.write(row, i, elem, bold)
+
+    row += 1
+    for row in rows:
+        worksheet.write(row, 0, "winename")
+
+#todo: https://impythonist.wordpress.com/2016/08/05/building-an-excel-file-dump-service-in-django/
+
+
     workbook.close()
 
-    output.seek(0)
+    # create a response
+    response = HttpResponse(content_type='application/vnd.ms-excel')
 
-    response = HttpResponse(output.read(),
-                            content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    response['Content-Disposition'] = "attachment; filename=wine_export.xlsx"
+    # tell the browser what the file is named
+    response['Content-Disposition'] = 'attachment;filename="some_file_name.xlsx"'
 
-    output.close()
+    # put the spreadsheet data into the response
+    response.write(output.getvalue())
 
+    # return the response
     return response
 
 #todo: Check this: https://bravelab.io/blog/how-to-export-orders-in-saleor-io-to-xlsx-file/

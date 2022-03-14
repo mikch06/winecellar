@@ -167,8 +167,6 @@ def export_xls(request):
         worksheet.write(row, i, elem, bold)
 
 
-
-
     workbook.close()
 
     # create a response

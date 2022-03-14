@@ -166,11 +166,7 @@ def export_xls(request):
     for i, elem in enumerate(columns):
         worksheet.write(row, i, elem, bold)
 
-    row += 1
-    for row in rows:
-        worksheet.write(row, 0, "winename")
 
-#todo: https://impythonist.wordpress.com/2016/08/05/building-an-excel-file-dump-service-in-django/
 
 
     workbook.close()
@@ -186,5 +182,3 @@ def export_xls(request):
 
     # return the response
     return response
-
-#todo: Check this: https://bravelab.io/blog/how-to-export-orders-in-saleor-io-to-xlsx-file/

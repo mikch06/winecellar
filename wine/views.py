@@ -9,11 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
-from django.db.models import Q # new
-#todo: remove Q
 import csv
 import xlwt
-import datetime
 from datetime import datetime
 
 

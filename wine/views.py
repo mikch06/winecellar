@@ -11,12 +11,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
 from wine.models import WineForm
-from django.db.models import Q # new
-#todo: remove Q
 import csv
-import io
-import xlsxwriter
-from xlsxwriter.workbook import Workbook
+import xlwt
+from datetime import datetime
 
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine

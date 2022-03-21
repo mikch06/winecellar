@@ -14,7 +14,6 @@ import xlwt
 import datetime
 from datetime import datetime
 
-
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_list.html'

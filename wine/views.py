@@ -4,6 +4,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
 from django.db.models import Sum
+
+import wine.views
 from wine.models import Wine
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,7 +14,6 @@ from wine.models import WineForm
 import csv
 import xlwt
 from datetime import datetime
-
 
 class WinesView(LoginRequiredMixin, generic.ListView):
     model = Wine
@@ -144,37 +145,35 @@ def export_csv(request):
     return response
 
 @login_required
+    #columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+    #rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
 def export_xls(request):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="wine_export.xls"'
-
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('MyBottles', cell_overwrite_ok=True)
+    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
 
 
-    # Sheet header, first row
-    row_num = 0
+    output = io.BytesIO()
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
-    date_style = xlwt.XFStyle()
-
+    workbook = xlsxwriter.Workbook(output)
+    worksheet = workbook.add_worksheet()
+    worksheet.write('A1', 'Some Data')
     columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
+    bold = workbook.add_format({'bold': True})
+    row = 0
+    for i, elem in enumerate(columns):
+        worksheet.write(row, i, elem, bold)
 
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
-    date_style.num_format_str = "dd.mm.YYYY"
 
-    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
-    for row in rows:
-        row_num += 1
-        for col_num in range(len(row)):
+    workbook.close()
 
-            ws.write(row_num, col_num, row[col_num], font_style)
-            ws.write(row_num, 6, datetime.now(), date_style)
+    # create a response
+    response = HttpResponse(content_type='application/vnd.ms-excel')
 
-    wb.save(response)
+    # tell the browser what the file is named
+    response['Content-Disposition'] = 'attachment;filename="some_file_name.xlsx"'
+
+    # put the spreadsheet data into the response
+    response.write(output.getvalue())
+
+    # return the response
     return response

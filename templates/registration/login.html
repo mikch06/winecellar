@@ -2,27 +2,73 @@
 {% block content %}
 {% load static %}
 
-<br>
-    <div class="logincontainer">
+<!--<br>-->
+<!--    <div class="logincontainer">-->
 
-         <h2 align="center"> 🍷 MyBottles</h2>
-          <br>
-          <form method="post" action="{% url 'login' %}">
-          {% csrf_token %}
-                    Benutzername:
-                   {{ form.username }}
-                    <br><br>
-                    Passwort:
-                    {{ form.password }}
-          <br><br>
-          <input type="submit" class="btn btn-success btn-sm" value="Login" />
-          <input type="hidden" name="next" value="{{ next }}" />
-          </form>
-          <p>
-          <a href="{% url 'password_reset' %}">Lost password?</a></p>
-          {% if form.errors %}
-            <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>
-          {% endif %}
+<!--         <h2 align="center"> 🍷 MyBottles</h2>-->
+<!--          <br>-->
+<!--          <form method="post" action="{% url 'login' %}">-->
+<!--          {% csrf_token %}-->
+<!--                   Benutzername:-->
+<!--              <div class="form-control">{{ form.username }}</div>-->
+<!--                    <br><br>-->
+<!--                    Passwort:-->
+<!--                    {{ form.password }}-->
+<!--          <br><br>-->
+<!--          <input type="submit" class="btn btn-success btn-sm" value="Login" />-->
+<!--          <input type="hidden" name="next" value="{{ next }}" />-->
+<!--          </form>-->
+<!--          <p>-->
+<!--          <a href="{% url 'password_reset' %}">Lost password?</a></p>-->
+<!--          {% if form.errors %}-->
+<!--            <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>-->
+<!--          {% endif %}-->
+<!--                </div>-->
+<!--    </div>-->
+
+
+<div class="container">
+    <div class="login">
+<br><br>
+
+             <h2 align="center"> 🍷 MyBottles</h2>
+        <br>
+        <br>
+                        <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+
+              <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+
+
+                <div class="form-floating">
+
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username">
+                  <label for="floatingInput">Username</label>
                 </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+                <p></p>
+
+               <input type="submit" class="w-100 btn btn-lg btn-success" value="Login" />
+                            <input type="hidden" name="next" value="{{ next }}" />
+
+                  <a href="{% url 'password_reset' %}">Lost password?</a></p>
+                  {% if form.errors %}
+                    <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>
+                  {% endif %}
+
+
+                <p align="center" class="mt-5 mb-3 text-muted">&copy; 2020 – {% now 'Y' %}</p>
+
+
+
+              </form>
+
     </div>
+</div>
+
+
 {% endblock %}

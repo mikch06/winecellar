@@ -21,11 +21,11 @@
                         <input type="submit" class="w-100 btn btn-lg btn-success" value="Login" />
                         <input type="hidden" name="next" value="{{ next }}" />
                         <a href="{% url 'password_reset' %}">Lost password?</a></p>
-                  {% if form.errors %}
-                  <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>
-                  {% endif %}
+                {% if form.errors %}
+                <p>Dein Benutzername und Passwort stimmen nicht überein, bitte versuche es noch einmal.</p>
+                {% endif %}
                 <div align="center" class="mt-5 mb-3 text-muted">&copy; 2020 – {% now 'Y' %}</div
-              </form>
+                </form>
     </div>
 </div>
 {% endblock %}

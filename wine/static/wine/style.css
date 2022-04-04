@@ -7,13 +7,9 @@ max-width: 1400px;
 margin: auto;
 }
 
-.logincontainer {
-max-width: 300px;
+.login {
+max-width: 400px;
 margin: auto;
-width: 50%;
-border: 1px solid #ccc;
-border-radius: 25px;
-padding: 10px;
 }
 
 .content    {

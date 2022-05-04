@@ -128,6 +128,9 @@ EMAIL_HOST_PASSWORD = ''
 #EMAIL_USE_TLS = True
 EMAIL_USE_SSL = True
 
+# todo:
+# https://github.com/mikch06/winecellar/issues/73
+
 # wine.Wine: (models.W042) Auto-created primary key used when not defining a primary key type, by default 'django.db.models.AutoField'.
 # HINT: Configure the DEFAULT_AUTO_FIELD setting or the AppConfig.default_auto_field attribute to point to a subclass of AutoField, e.g. 'django.db.models.BigAutoField'.
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'

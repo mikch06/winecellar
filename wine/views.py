@@ -118,6 +118,16 @@ class WineLog(LoginRequiredMixin, generic.ListView):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
 
+class WineLogDetail(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_log_detail.html'
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user)
+
+
 # class EditorChartView(generic.ListView):
 #     model = Wine
 #     template_name = 'wine/charts.html'

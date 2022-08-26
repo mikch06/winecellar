@@ -121,6 +121,8 @@ class WineLog(LoginRequiredMixin, generic.ListView):
 class WineLogDetail(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_log_detail.html'
+    #detail = Wine.objects.get(id=pk)
+
 
     # Filter user data only
     def get_queryset(self):

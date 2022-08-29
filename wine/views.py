@@ -1,5 +1,4 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
@@ -148,7 +147,6 @@ def export_xls(request):
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('MyBottles', cell_overwrite_ok=True)
-
 
     # Sheet header, first row
     row_num = 0

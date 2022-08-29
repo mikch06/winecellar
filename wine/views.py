@@ -118,26 +118,12 @@ class WineLog(LoginRequiredMixin, generic.ListView):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
 
-class WineLogDetail(LoginRequiredMixin, generic.ListView):
-    model = Wine
-    template_name = 'wine/wine_log_detail.html'
-    #detail = Wine.objects.get(id=pk)
+# Detail view in 'Last changes'
+@login_required
+def WineLogDetail(request, pk):
+    wine = Wine.objects.get(id=pk)
 
-
-    # Filter user data only
-    def get_queryset(self):
-        query_set = super().get_queryset()
-        return query_set.filter(owner=self.request.user)
-
-
-# class EditorChartView(generic.ListView):
-#     model = Wine
-#     template_name = 'wine/charts.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["winedata"] = Wine.objects.all()
-#         return context
+    return render(request, 'wine/wine_log_detail.html', {'wine': wine})
 
 # Data export
 @login_required

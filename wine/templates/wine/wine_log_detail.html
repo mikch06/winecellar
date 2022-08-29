@@ -2,12 +2,12 @@
 {% block content %}
 <div class="container">
     <div class="content">
-    {% load static %}
-<div class="container">
+{% load static %}
 <br><br>
   <div class="row">
-    <div class="col">asdf
-            <h6>{{ wine.producer }}</h6>
+    <div class="col">
+        <h2>{{ wine.winename }}</h2><br>
+        <b>Prouzent:</b> {{ wine.producer }}<br>
             <b>Land:</b> {{ wine.country }}<br>
             <b>Region:</b> {{ wine.region }}<br>
             <b>Trauben:</b> {{ wine.grapes }}<br>
@@ -23,14 +23,16 @@
             {{ wine.notes }}
             <br><br>
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-
-
-
-
-
+            <br><br>
+            <a href="/wine/log" class="btn btn-primary btn-sm">
+                <img src="{% static "wine/bootstrap/icons/skip-backward.svg" %}" alt="Back" width="" height="" title="Back">
+            </a>
+            <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
+                <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">
+            </a>
+            <br><br><br><br>
     </div>
-    <div class="col">
-    </div>
+
   </div>
 </div>
 {% endblock %}

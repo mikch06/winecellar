@@ -24,8 +24,8 @@
             <br><br>
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
             <br><br>
-            <a href="/wine/log" class="btn btn-primary btn-sm">
-                <img src="{% static "wine/bootstrap/icons/skip-backward.svg" %}" alt="Back" width="" height="" title="Back">
+            <a href="/wine/log" class="btn btn-info btn-sm">
+                <img src="{% static "wine/bootstrap/icons/arrow-left-circle.svg" %}" alt="Back" width="" height="" title="Back">
             </a>
             <a href="{% url 'wine:update_wine' wine.id %}" class="btn btn-success btn-sm">
                 <img src="{% static "wine/bootstrap/icons/pencil.svg" %}" alt="Edit" width="" height="" title="Wein editieren">

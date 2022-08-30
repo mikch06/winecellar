@@ -17,7 +17,6 @@
     </p>
     </div>
   </div>
-<br><br>
   <div class="row">
     <div class="col">
         <b>Letzte 30 Veränderungen im Keller:</b>
@@ -25,7 +24,7 @@
         {% load static %}
         {% for wine in object_list %}
         {% load static %}
-        <div class="winelog">{{ wine.editdate|date:"d.m.Y"}}, <a href="{% url 'wine:update_wine' wine.id %}">{{ wine.winename }}</a> {{ wine.producer }}<br></div>
+        <div class="winelog">{{ wine.editdate|date:"d.m.Y"}}, <a href="{% url 'wine:wine_log_detail' wine.id %}">{{ wine.winename }}</a> {{ wine.producer }}<br></div>
         {% endfor %}
         {% endblock %}
     </div>

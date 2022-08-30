@@ -1,5 +1,4 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic.detail import DetailView
 from django.urls import reverse_lazy
 from django.shortcuts import render
 from django.views import generic
@@ -118,14 +117,12 @@ class WineLog(LoginRequiredMixin, generic.ListView):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
 
-# class EditorChartView(generic.ListView):
-#     model = Wine
-#     template_name = 'wine/charts.html'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context["winedata"] = Wine.objects.all()
-#         return context
+# Detail view in 'Last changes'
+@login_required
+def WineLogDetail(request, pk):
+    wine = Wine.objects.get(id=pk)
+
+    return render(request, 'wine/wine_log_detail.html', {'wine': wine})
 
 # Data export
 @login_required
@@ -150,7 +147,6 @@ def export_xls(request):
 
     wb = xlwt.Workbook(encoding='utf-8')
     ws = wb.add_sheet('MyBottles', cell_overwrite_ok=True)
-
 
     # Sheet header, first row
     row_num = 0

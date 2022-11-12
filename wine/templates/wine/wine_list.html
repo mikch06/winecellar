@@ -40,7 +40,7 @@
 {% for wine in object_list %}
  <tr class="trlist">
     <td scope="row">
-        <button class="btn btn-sm btn-success" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
+        <button class="btn btn-sm btn-link" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#wine{{ wine.id }}" aria-expanded="false" aria-controls="wine{{ wine.id }}">
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </td>

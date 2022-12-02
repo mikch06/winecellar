@@ -54,7 +54,7 @@
     <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
     <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
-    <td>{{ wine.nmbrbottles }}</td>
+    <td>{% if wine.nmbrbottles == 0 %} <b style="color:red">{{ wine.nmbrbottles }}</b>{% elif wine.nmbrbottles %}{{ wine.nmbrbottles }}{% endif %}</td>
     <td>{{ wine.notes }}</td>
     <td>{{ wine.dealer }}</td>
     <td>{{ wine.warehouse }}</td>

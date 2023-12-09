@@ -4,6 +4,12 @@ import os
 import sys
 
 
+os.environ.setdefault(
+  'DJANGO_SETTINGS_MODULE',
+  'winecellar.settings'
+)
+
+
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'winecellar.settings')
     try:

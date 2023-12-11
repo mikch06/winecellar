@@ -103,6 +103,19 @@
                 <a href="{% url 'wine:copy_wine' wine.id %}" class="btn btn-success btn-sm">
                 <img src="{% static "wine/bootstrap/icons/clipboard-plus.svg" %}" alt="Edit" width="" height="" title="Wein kopieren">
                 </a>
+                <button class="btn btn-danger" 
+                style="cursor: pointer;"
+                hx-delete="{% url 'wine:wine_delete' wine.id %}"
+                hx-target="wine_list.html"
+                hx-confirm="Are you sure you wish to delete?">X</button>
+
+                <button hx-post="{% url 'wine:wine_delete' wine.id %}"
+                hx-trigger="click"
+                hx-target="#parent-div"
+                hx-swap="outerHTML"
+                >
+                Click Me!
+                
               </div>
         </div>
   </div>

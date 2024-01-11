@@ -3,6 +3,7 @@ from django.urls import reverse
 from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.models import User
+from datetime import datetime
 
 COUNTRY = [
     ('-', '-'),
@@ -48,6 +49,7 @@ class Wine(models.Model):
 class WineForm(ModelForm):
     class Meta:
         model = Wine
+        current_year = datetime.now().year
         fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
                   'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'warehouse', 'notes']
         labels = {
@@ -73,7 +75,7 @@ class WineForm(ModelForm):
             'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2023'}),
             'country': forms.Select(attrs={'class': "form-control"}),
             'region': forms.TextInput(attrs={'class': "form-control"}),
-            'purchase': forms.SelectDateWidget(attrs={'class': "form-control"}, years=range(2024, 2009, -1), empty_label=("Jahr", "Monat", "Tag")),
+            'purchase': forms.SelectDateWidget(attrs={'class': "form-control"}, years=range(current_year, 2009, -1), empty_label=("Jahr", "Monat", "Tag")),
             'price': forms.TextInput(attrs={'class': "form-control"}),
             'dealer': forms.TextInput(attrs={'class': "form-control"}),
             'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),

@@ -37,7 +37,7 @@ class Wine(models.Model):
 
 
     class Meta:
-        ordering = ["country", "region", "year"]
+        ordering = ["drinkto", "country", "region", "year"]
 
     def get_absolute_url(self):
         return reverse('wine-detail', kwargs={'pk': self.pk})

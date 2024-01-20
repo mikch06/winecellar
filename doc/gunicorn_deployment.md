@@ -1,9 +1,9 @@
 #### Run app with gunicorn / wsgi package
-    # Install gunicorn package
-    pip install gunicorn
-      
     # Activate virtual env
     source wine-env/bin/activate
+
+    # Install gunicorn package
+    pip install gunicorn
     
     # Start gunicorn server
     cd /opt/django-winecellar

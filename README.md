@@ -24,6 +24,6 @@ Find documentation topics:
 - nginx config
 - sqlite version increase on CentOS
 
-view
+view in:
 [docs](doc)
 

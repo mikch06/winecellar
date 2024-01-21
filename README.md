@@ -1,4 +1,5 @@
 ### Wine App Project with Django
+For my personal Winecellar i created this app for python / django training and personal use to manage my cellar!
 
 #### Run testserver
 

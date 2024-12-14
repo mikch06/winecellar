@@ -1,6 +1,7 @@
 # gitignore
 .idea
 venv-wine
+venv
 __pycache__
 *__pycache__
 winecellar/prod_db_connection_set.txt

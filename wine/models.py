@@ -20,7 +20,7 @@ COUNTRY = [
 ]
 
 WINETYPE = [
-        ('-', '-'),
+    ('-', '-'),
     ('red', 'Rot'),
     ('white', 'Weiss'),
     ('rose', 'Rosé'),
@@ -34,6 +34,7 @@ class Wine(models.Model):
     winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
+    winetype = models.CharField(max_length=12, blank=True, choices=WINETYPE)
     year = models.IntegerField(blank=True, null=True)
     country = models.CharField(max_length=12, blank=True, choices=COUNTRY)
     region = models.CharField(max_length=200, blank=True)

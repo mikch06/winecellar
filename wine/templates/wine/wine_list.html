@@ -79,6 +79,7 @@
             <h6>{{ wine.producer }}</h6>
             <b>Land:</b> {{ wine.country }}<br>
             <b>Region:</b> {{ wine.region }}<br>
+            <b>Typ:</b> {{ wine.winetype }}<br>
             <b>Trauben:</b> {{ wine.grapes }}<br>
             <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
             <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>

@@ -27,11 +27,11 @@
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
       <th data-sortable="true" data-field="winename" data-filter-control="input">Wein</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-search-highlight-formatter="customSearchFormatter" data-filter-control="input">Produzent</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="region" data-filter-control="input">Region</th>
       <th data-sortable="true" data-field="year" data-filter-control="select">Jg.</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-search-highlight-formatter="customSearchFormatter" data-filter-control="input">Trauben</th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="grapes" data-filter-control="input">Trauben</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkfrom" data-filter-control="select">trinkbar von</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="drinkto" data-filter-control="select">trinkbar bis</th>
       <th data-sortable="true" data-field="nmbrbottles" data-filter-control="select"><img src="{% static "wine/bootstrap/icons/basket-fill.svg" %}" alt="Detail" width="16" height="16" title="Detail"></th>
@@ -64,11 +64,7 @@
 {% endfor %}
 </tbody>
 </table>
-<script>
-  window.customSearchFormatter = function(value, searchText) {
-    return value.toString().replace(new RegExp('(' + searchText + ')', 'gim'), '<span style="background-color: pink;border: 1px solid red;border-radius:90px;padding:4px">$1</span>')
-  }
-</script>
+
 </div>
 </body>
 </html>

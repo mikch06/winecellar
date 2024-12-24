@@ -85,3 +85,10 @@ font-size: 14px;
     padding: 0 !important;
     border: none;
 }
+
+mark {
+    background-color: pink;
+    border: 1px solid red;
+    border-radius: 90px;
+    padding:4px
+}

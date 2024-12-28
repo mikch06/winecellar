@@ -18,11 +18,23 @@ COUNTRY = [
     ('Südafrika', 'Südafrika'),
     ('USA', 'USA'),
 ]
+
+WINETYPE = {
+    "-": "-",
+    "red": "Rot",
+    "white": "Weiss",
+    "rose": "Rosé",
+    "bubbles": "Bubbles",
+    "sweet": "Süsswein",
+    "spirit": "Spirituosen",
+}
+
 class Wine(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
     grapes = models.CharField(max_length=200, blank=True,)
+    winetype = models.CharField(max_length=12, blank=True, choices=WINETYPE, default='-')
     year = models.IntegerField(blank=True, null=True)
     country = models.CharField(max_length=12, blank=True, choices=COUNTRY)
     region = models.CharField(max_length=200, blank=True)
@@ -50,11 +62,12 @@ class WineForm(ModelForm):
     class Meta:
         model = Wine
         current_year = datetime.now().year
-        fields = ['winename', 'producer', 'country', 'region', 'year', 'grapes', 'purchase', 'dealer',
+        fields = ['winename', 'producer', 'country', 'region', 'year', 'winetype', 'grapes', 'purchase', 'dealer',
                   'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'warehouse', 'notes']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',
+            'winetype': 'Weintyp',
             'grapes': 'Trauben',
             'year': 'Jahrgang',
             'country': 'Land',
@@ -72,6 +85,7 @@ class WineForm(ModelForm):
             'winename': forms.TextInput(attrs={'class': "form-control"}),
             'producer': forms.TextInput(attrs={'class': "form-control"}),
             'grapes': forms.TextInput(attrs={'class': "form-control"}),
+            'winetype': forms.Select(attrs={'class': "form-control"}),
             'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2023'}),
             'country': forms.Select(attrs={'class': "form-control"}),
             'region': forms.TextInput(attrs={'class': "form-control"}),

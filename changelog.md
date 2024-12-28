@@ -1,4 +1,8 @@
 ### Changes in der Webapp:
+#### 28.12.2024
+- Neues Formfeld: Winetype
+- Erfassung Weintyp für Filter und Übersicht
+  
 #### 24.12.2024
 - Insert Search Format Highlighter
 - Django Version increase -> 5.1.4

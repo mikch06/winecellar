@@ -29,8 +29,6 @@ WINETYPE = {
     "spirit": "Spirituosen",
 }
 
-
-
 class Wine(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     winename = models.CharField(max_length=200)

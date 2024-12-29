@@ -38,6 +38,7 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="dealer" data-visible="false" data-filter-control="input"></th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="warehouse" data-visible="false" data-filter-control="input"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="winetype" data-visible="false" data-filter-control="input"></th>
     </tr>
   </thead>
 <tbody>
@@ -60,7 +61,8 @@
     <td>{{ wine.notes }}</td>
     <td>{{ wine.dealer }}</td>
     <td>{{ wine.warehouse }}</td>
-</tr>
+    <td>{{ wine.winetype }}</td>
+  </tr>
 {% endfor %}
 </tbody>
 </table>

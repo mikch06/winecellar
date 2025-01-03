@@ -89,7 +89,7 @@ class WineForm(ModelForm):
             'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2023'}),
             'country': forms.Select(attrs={'class': "form-control"}),
             'region': forms.TextInput(attrs={'class': "form-control"}),
-            'purchase': forms.SelectDateWidget(attrs={'class': "form-control"}, years=range(current_year, 2009, -1), empty_label=("Jahr", "Monat", "Tag")),
+            'purchase': forms.DateInput(format=('%Y-%m-%d'), attrs={"type": "date", 'class': "form-control"}),
             'price': forms.TextInput(attrs={'class': "form-control"}),
             'dealer': forms.TextInput(attrs={'class': "form-control"}),
             'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),

@@ -27,6 +27,7 @@
   <thead>
     <tr>
       <th width="50"><img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
+      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="winetype" data-visible="false" data-filter-control="input">Weintyp</th>
       <th data-sortable="true" data-field="winename" data-filter-control="input">Wein</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="producer" data-filter-control="input">Produzent</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="country" data-filter-control="select" >Land</th>
@@ -39,7 +40,6 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="notes" data-visible="false" data-filter-control="input">Notiz</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="dealer" data-visible="false" data-filter-control="input">Händler</th>
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="warehouse" data-visible="false" data-filter-control="input">Lagerort</th>
-      <th class="d-none d-sm-table-cell" data-sortable="true" data-field="winetype" data-visible="false" data-filter-control="input">Weintyp</th>
     </tr>
   </thead>
 <tbody>
@@ -50,6 +50,7 @@
         <img src="{% static "wine/bootstrap/icons/search.svg" %}" alt="Detail">
         </button>
     </td>
+    <td>{{ wine.get_winetype_display }}</td>
     <td>{{ wine.winename }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
@@ -62,7 +63,6 @@
     <td>{{ wine.notes }}</td>
     <td>{{ wine.dealer }}</td>
     <td>{{ wine.warehouse }}</td>
-    <td>{{ wine.get_winetype_display }}</td>
   </tr>
 {% endfor %}
 </tbody>

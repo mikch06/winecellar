@@ -96,5 +96,5 @@ class WineForm(ModelForm):
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
             'warehouse': forms.TextInput(attrs={'class': "form-control"}),
-            'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
+            'nmbrbottles': forms.NumberInput(attrs={'class': "form-range", 'type': 'range', 'min': '0', 'max': '18'}),
         }

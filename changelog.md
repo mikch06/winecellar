@@ -1,4 +1,8 @@
 ### Changes in der Webapp:
+#### 03.01.2025
+- Liste: Zusätzliche Spalten können eingeblendet werden.
+- Sortierung nach Weintyp
+
 #### 28.12.2024
 - Neues Formfeld: Winetype
 - Erfassung Weintyp für Filter und Übersicht

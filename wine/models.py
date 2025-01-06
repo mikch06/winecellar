@@ -63,7 +63,7 @@ class WineForm(ModelForm):
         model = Wine
         current_year = datetime.now().year
         fields = ['winename', 'producer', 'country', 'region', 'year', 'winetype', 'grapes', 'purchase', 'dealer',
-                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'warehouse', 'notes']
+                  'price', 'drinkfrom', 'drinkto', 'warehouse', 'notes', 'nmbrbottles']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',
@@ -96,5 +96,7 @@ class WineForm(ModelForm):
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
             'warehouse': forms.TextInput(attrs={'class': "form-control"}),
-            'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
+            'nmbrbottles': forms.NumberInput(attrs={'class': "form-range", 'type': 'range', "oninput": "this.nextElementSibling.value = this.value"}),
         }
+
+# https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value

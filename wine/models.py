@@ -96,7 +96,7 @@ class WineForm(ModelForm):
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
             'warehouse': forms.TextInput(attrs={'class': "form-control"}),
-            'nmbrbottles': forms.NumberInput(attrs={'class': "form-range", 'type': 'range', "oninput": "this.nextElementSibling.value = this.value"}),
+            'nmbrbottles': forms.NumberInput(attrs={'class': "form-range", 'type': 'range', 'min': '0', 'max': '18', "oninput": "this.nextElementSibling.value = this.value"}),
         }
 
 # https://stackoverflow.com/questions/10004723/html5-input-type-range-show-range-value

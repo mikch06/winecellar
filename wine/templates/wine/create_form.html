@@ -6,8 +6,9 @@
         {% csrf_token %}
          <div class="col-md-12">
             {{ form }}
-         </div>
-            <br>
+            <span id="nmbrbottles" class="nmbrb-stlye"></span>
+            <br><br>
+        </div>
             <a href="/wine" class="btn btn-info btn-sm">
             {% load static %}
                 <img src="{% static "wine/bootstrap/icons/x-square.svg" %}" alt="Schliessen" width="" height="" title="Schliessen">
@@ -18,4 +19,12 @@
     </form>
 </div>
 <br><br>
+<script>
+    var slider = document.getElementById("id_nmbrbottles");
+    var output = document.getElementById("nmbrbottles");
+    output.innerHTML = slider.value;
+        slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+</script>
 {% endblock %}

@@ -1,4 +1,7 @@
 ### Changes in der Webapp:
+#### 07.01.2025
+- Implementierung "range slider" für Anzahl Flaschen im Formular
+  
 #### 03.01.2025
 - Liste: Zusätzliche Spalten können eingeblendet werden.
 - Sortierung nach Weintyp

@@ -36,7 +36,7 @@ class Wine(models.Model):
     grapes = models.CharField(max_length=200, blank=True,)
     winetype = models.CharField(max_length=12, blank=True, choices=WINETYPE, default='-')
     year = models.IntegerField(blank=True, null=True)
-    country = models.CharField(max_length=12, blank=True, choices=COUNTRY)
+    country = models.CharField(max_length=12, blank=True, choices=COUNTRY, default='-')
     region = models.CharField(max_length=200, blank=True)
     purchase = models.DateField(blank=True, null=True, auto_now=False, auto_now_add=False)
     price = models.CharField(max_length=12, blank=True, default=0)
@@ -63,7 +63,7 @@ class WineForm(ModelForm):
         model = Wine
         current_year = datetime.now().year
         fields = ['winename', 'producer', 'country', 'region', 'year', 'winetype', 'grapes', 'purchase', 'dealer',
-                  'price', 'drinkfrom', 'drinkto', 'nmbrbottles', 'warehouse', 'notes']
+                  'price', 'drinkfrom', 'drinkto', 'warehouse', 'notes', 'nmbrbottles']
         labels = {
             'winename': 'Weinname',
             'producer': 'Produzent',
@@ -96,5 +96,5 @@ class WineForm(ModelForm):
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2060', 'type': 'number'}),
             'warehouse': forms.TextInput(attrs={'class': "form-control"}),
-            'nmbrbottles': forms.NumberInput(attrs={'class': "form-control"}),
+            'nmbrbottles': forms.NumberInput(attrs={'class': "form-range", 'type': 'range', 'min': '0', 'max': '18'}),
         }

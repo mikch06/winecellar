@@ -86,7 +86,7 @@ class WineForm(ModelForm):
             'producer': forms.TextInput(attrs={'class': "form-control"}),
             'grapes': forms.TextInput(attrs={'class': "form-control"}),
             'winetype': forms.Select(attrs={'class': "form-control"}),
-            'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2023'}),
+            'year': forms.NumberInput(attrs={'class': "form-control", 'min': '1990', 'max': '2025'}),
             'country': forms.Select(attrs={'class': "form-control"}),
             'region': forms.TextInput(attrs={'class': "form-control"}),
             'purchase': forms.DateInput(format=('%Y-%m-%d'), attrs={"type": "date", 'class': "form-control"}),

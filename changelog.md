@@ -1,4 +1,8 @@
 ### Changes in der Webapp:
+
+#### 20.05.2025
+- Fix year 2023 --> 2025 for new wines and subscription
+  
 #### 07.01.2025
 - Implementierung "range slider" für Anzahl Flaschen im Formular
   

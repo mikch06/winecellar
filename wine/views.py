@@ -176,6 +176,6 @@ def export_xls(request):
     return response
 
 # Logout
-def logout_view(request):
-    logout(request)
-    return redirect('/') 
+#def logout_view(request):
+ #   logout(request)
+  #  return redirect('/') 

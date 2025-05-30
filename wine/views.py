@@ -174,3 +174,8 @@ def export_xls(request):
 
     wb.save(response)
     return response
+
+# Logout
+def logout_view(request):
+    logout(request)
+    return redirect('/') 

@@ -17,6 +17,7 @@ urlpatterns = [
     path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
     path('wine/log/', views.WineLog.as_view(), name='wine_log'),
     path('wine/detail/<int:pk>', views.WineLogDetail, name='wine_log_detail'),
+    path('logout/', logout_view, name='logout'),
 
     #path('charts/', views.EditorChartView.as_view(), name='charts')
 ]

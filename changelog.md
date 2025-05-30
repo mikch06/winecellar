@@ -3,6 +3,7 @@
 #### 30.05.2025
 - New bar chart icon replaces gear for last changes and overview
 - Insert winetype in detail log
+- Fix logout function
 
 #### 20.05.2025
 - Fix year 2023 --> 2025 for new wines and subscription

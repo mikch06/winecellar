@@ -1,5 +1,9 @@
 ### Changes in der Webapp:
 
+#### 30.05.2025
+- New bar chart icon replaces gear for last changes and overview
+- Insert winetype in detail log
+
 #### 20.05.2025
 - Fix year 2023 --> 2025 for new wines and subscription
   
@@ -7,7 +11,7 @@
 - Implementierung "range slider" für Anzahl Flaschen im Formular
   
 #### 03.01.2025
-- Liste: Zusätzliche Spalten können eingeblendet werden.
+- Liste: Zusätzliche Spalten können eingeblendet werden
 - Sortierung nach Weintyp
 
 #### 28.12.2024

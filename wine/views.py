@@ -7,6 +7,7 @@ from wine.models import Wine
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth import logout
 from wine.models import WineForm
 import csv
 import xlwt
@@ -174,3 +175,8 @@ def export_xls(request):
 
     wb.save(response)
     return response
+
+
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.    

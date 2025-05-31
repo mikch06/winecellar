@@ -176,7 +176,14 @@ def export_xls(request):
     wb.save(response)
     return response
 
+<<<<<<< HEAD
 
 def logout_view(request):
     logout(request)
     # Redirect to a success page.    
+=======
+# Logout
+#def logout_view(request):
+ #   logout(request)
+  #  return redirect('/') 
+>>>>>>> ac030cabe5d19cd88bb608a561938dd9d659d7b9

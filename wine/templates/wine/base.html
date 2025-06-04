@@ -61,6 +61,15 @@
           </svg>
           {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
           <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button></a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="button" class="btn btn-success btn-sm">
+              <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout">
+            </button>
+          </form>
+          
+          
+          
           {% else %}
           <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
           {% endif %}
@@ -68,6 +77,9 @@
         </div>
       </div>
     </nav>
+
+
+
 <script src="{% static 'wine/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
 </script>

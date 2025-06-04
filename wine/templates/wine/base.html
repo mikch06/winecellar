@@ -59,17 +59,25 @@
             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
           </svg>
-          {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp <a href="{% url 'logout'%}"><button type="button" class="btn btn-success btn-sm">
-          <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button></a>
-          <form action="{% url 'logout' %}" method="post">
+          {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp 
+
+                      <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="button" class="btn btn-success btn-sm">
               <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout">
             </button>
           </form>
-          
-          
-          
+
+
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+</form>
+
+
+
+
+
           {% else %}
           <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
           {% endif %}
@@ -77,9 +85,6 @@
         </div>
       </div>
     </nav>
-
-
-
 <script src="{% static 'wine/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
 </script>

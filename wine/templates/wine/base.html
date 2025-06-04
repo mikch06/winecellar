@@ -61,22 +61,10 @@
           </svg>
           {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp 
 
-                      <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="button" class="btn btn-success btn-sm">
-              <img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout">
-            </button>
-          </form>
-
-
         <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-success btn-sm"><img src="{% static "wine/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button>
         </form>
-
-
-
-
 
           {% else %}
           <a href="/wine" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>

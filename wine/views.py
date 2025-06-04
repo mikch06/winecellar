@@ -176,7 +176,7 @@ def export_xls(request):
     wb.save(response)
     return response
 
-
+# Logout view
 def logout_view(request):
     logout(request)
     # Redirect to a success page.    

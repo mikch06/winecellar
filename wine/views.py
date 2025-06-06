@@ -179,4 +179,3 @@ def export_xls(request):
 # Logout view
 def logout_view(request):
     logout(request)
-    # Redirect to a success page.    

@@ -1,5 +1,8 @@
 ### Changes in der Webapp:
 
+#### 04.06.2025
+- Fix Logout process
+
 #### 30.05.2025
 - New bar chart icon replaces gear for last changes and overview
 - Insert winetype in detail log

@@ -33,3 +33,12 @@ def wine_delete(request, pk):
         wines = Wine.objects.all()
         return render(request, "wines/list.html", {"wines": wines})
     return render(request, "wines/_delete_confirm.html", {"wine": wine})
+
+# 'About' page
+def about(request):
+    return render(request, 'wine/about.html')
+
+# 'Info' page
+@login_required
+def info(request):
+    return render(request, 'wine/info.html')    

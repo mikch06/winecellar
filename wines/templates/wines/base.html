@@ -12,7 +12,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'wines/bootstrap-table/css/bootstrap-table-filter-control.css' %}">
 <link rel="stylesheet" href="https://unpkg.com/unpoly@3.6.0/unpoly.min.css">
 <script src="https://unpkg.com/unpoly@3.6.0/unpoly.min.js"></script>
-
 <link rel="stylesheet" type="text/css" href="{% static 'wines/style.css' %}">
 <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
 <link rel="apple-touch-icon" sizes="57x57" href="{% static 'apple-icon-57x57.png' %}">
@@ -32,10 +31,8 @@
 </head>
 <body>
   <header
-        <h1><a href="{% url 'wine_list' %}" up-follow>🍷 Weindatenbank</a></h1>
+        <a href="{% url 'wine_list' %}" up-follow>🍷 Weindatenbank</a>
   </header>
-
-
 
   <main up-main id="main-content">
     {% block content %}{% endblock %}
@@ -88,6 +85,12 @@
         </div>
       </div>
     </nav>
+
+
+  </div>
+      <footer class="mt-8 text-center text-sm text-gray-500">
+      &copy; {{ now|date:"Y" }} MyBottles.ch
+    </footer>
 <script src="{% static 'wines/bootstrap/js/bootstrap.min.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
 </script>
@@ -95,3 +98,5 @@
 <script src="{% static 'wines/bootstrap-table/js/bootstrap-table.min.js' %}"></script>
 <script src="{% static 'wines/bootstrap-table/js/bootstrap-table-filter-control.js' %}"></script>
 <script src="{% static 'wines/bootstrap/js/bootstrap.bundle.js' %}"></script>
+</body>
+</html>

@@ -46,12 +46,10 @@
           {% for wine in wines %}
  <tr class="trlist">
     <td scope="row">
-                    <button up-layer="new modal" type="button" up-href="{% url 'wine_detail' wine.pk %}">
-                Details <img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail">
-              </button>
-
-
-                
+      <button class="btn btn-sm btn-link"up-layer="new modal" type="button" up-href="{% url 'wine_detail' wine.pk %}">
+        <img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail">
+      </button>
+   </td>        
     <td>{{ wine.get_winetype_display }}</td>
     <td>{{ wine.winename }}</td>
     <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>

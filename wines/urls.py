@@ -1,9 +1,9 @@
 from django.urls import path
 from . import views
+from .views import *
 
 # App Namespace for app 'wine'
 # !remove this namespace
-app_name = 'wine'
 urlpatterns = [
     #path('wine/', views.WinesView.as_view(), name='wine_list'),
     #path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),

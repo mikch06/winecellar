@@ -5,7 +5,6 @@ from . import views
 # !remove this namespace
 app_name = 'wine'
 urlpatterns = [
-    path('', views.index),
     path('wine/', views.WinesView.as_view(), name='wine_list'),
     path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
     path('wine/new/', views.createWine, name='create_wine'),

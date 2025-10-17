@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Wine
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 class WineListView(ListView):
     model = Wine
@@ -41,4 +42,20 @@ def about(request):
 # 'Info' page
 @login_required
 def info(request):
-    return render(request, 'wine/info.html')    
+    return render(request, 'wine/info.html')
+
+# Data export
+@login_required
+def export_csv(request):
+    # Create the HttpResponse object with the appropriate CSV header.
+    wines = Wine.objects.filter(owner=request.user)
+    response = HttpResponse(
+        content_type='text/csv',
+        headers={'Content-Disposition': 'attachment; filename="wine_export.csv"'},
+    )
+    writer = csv.writer(response)
+    writer.writerow(['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl'])
+    wines = wines.values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
+    for w in wines:
+        writer.writerow(w)
+    return response    

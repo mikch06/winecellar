@@ -1,0 +1,22 @@
+<div up-main="modal" class="p-4">
+  <h3>{{ wine.name }} ({{ wine.year }})</h3>
+  <p><strong>Region:</strong> {{ wine.region }}</p>
+  <p><strong>Rebsorte:</strong> {{ wine.grape }}</p>
+  <p><strong>Notizen:</strong> {{ wine.notes|linebreaksbr }}</p>
+
+  <button
+    up-target=".up-modal-content"
+    up-href="{% url 'wine_edit' wine.pk %}">
+    ✏️ Bearbeiten
+  </button>
+
+  <a 
+    up-layer="new modal"
+    up-href="{% url 'wine_delete' wine.pk %}"
+    class="text-red-600">
+    🗑️ Löschen
+  </a>
+
+
+  <button up-dismiss>Schließen</button>
+</div>

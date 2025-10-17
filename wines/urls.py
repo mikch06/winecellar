@@ -15,7 +15,9 @@ urlpatterns = [
     path('info/', views.info),
     path('wine/export/', views.export_csv),
     path('wine/export_xls/', views.export_xls),
-    path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
+    #TODO: Fix as_view
+    #path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
+    #TODO: Fix as_view
     path('wine/log/', views.WineLog.as_view(), name='wine_log'),
     path('wine/detail/<int:pk>', views.WineLogDetail, name='wine_log_detail'),
     path('/logout/', views.logout_view),

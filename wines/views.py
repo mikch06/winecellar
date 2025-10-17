@@ -4,6 +4,9 @@ from .models import Wine
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
+
 
 class WineListView(ListView):
     model = Wine
@@ -93,4 +96,14 @@ def export_xls(request):
             ws.write(row_num, 6, datetime.now(), date_style)
 
     wb.save(response)
-    return response    
+    return response
+
+@login_required
+class FullView(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_fullview.html'
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user)

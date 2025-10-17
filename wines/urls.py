@@ -5,11 +5,12 @@ from . import views
 # !remove this namespace
 app_name = 'wine'
 urlpatterns = [
-    path('wine/', views.WinesView.as_view(), name='wine_list'),
-    path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
-    path('wine/new/', views.createWine, name='create_wine'),
-    path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
-    path('wine/copy/<int:pk>', views.copyWine, name='copy_wine'),
+    #path('wine/', views.WinesView.as_view(), name='wine_list'),
+    #path('wine/delete/<int:pk>', views.DeleteView.as_view(), name='wine_delete'),
+    #path('wine/new/', views.createWine, name='create_wine'),
+    #path('wine/edit/<int:pk>', views.updateWine, name='update_wine'),
+    #TODO: copy View
+    #path('wine/copy/<int:pk>', views.copyWine, name='copy_wine'),
     path('about/', views.about),
     path('info/', views.info),
     path('wine/export/', views.export_csv),

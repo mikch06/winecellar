@@ -130,3 +130,7 @@ def WineLogDetail(request, pk):
     wine = Wine.objects.get(id=pk)
 
     return render(request, 'wine/wine_log_detail.html', {'wine': wine})        
+
+# Logout view
+def logout_view(request):
+    logout(request)    

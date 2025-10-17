@@ -98,7 +98,6 @@ def export_xls(request):
     wb.save(response)
     return response
 
-@login_required
 class FullView(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wine/wine_fullview.html'

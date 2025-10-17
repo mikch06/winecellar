@@ -1,0 +1,15 @@
+<div up-main="modal" class="p-4 text-center">
+  <h3>Soll der Wein <strong>{{ wine.name }}</strong> wirklich gelöscht werden?</h3>
+
+  <form 
+    method="post"
+    up-submit
+    up-target="#list-content"
+    up-layer="root">
+    {% csrf_token %}
+    <div class="mt-4 space-x-3">
+      <button type="submit" class="text-red-600">Ja, löschen</button>
+      <button type="button" up-dismiss>Abbrechen</button>
+    </div>
+  </form>
+</div>

@@ -106,3 +106,27 @@ class FullView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
+
+class WineLog(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wine/wine_log.html'
+
+    # Show number of bottles and different wines for each user
+    def get_context_data(self, *args, **kwargs):
+        context = super(WineLog, self).get_context_data(*args, **kwargs)
+        context['bottles_sum'] = Wine.objects.filter(owner=self.request.user).aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
+        context['wines_sum'] = Wine.objects.filter(owner=self.request.user).count()
+        return context
+
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]        
+
+#TODO: Maybe not used anymore with new modal
+# Detail view in 'Last changes'
+@login_required
+def WineLogDetail(request, pk):
+    wine = Wine.objects.get(id=pk)
+
+    return render(request, 'wine/wine_log_detail.html', {'wine': wine})        

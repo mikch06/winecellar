@@ -3,6 +3,30 @@
   <p><strong>Region:</strong> {{ wine.region }}</p>
   <p><strong>Rebsorte:</strong> {{ wine.grape }}</p>
   <p><strong>Notizen:</strong> {{ wine.notes|linebreaksbr }}</p>
+            <div class="modal-body">
+            <h6>{{ wine.producer }}</h6>
+            <b>Land:</b> {{ wine.country }}<br>
+            <b>Region:</b> {{ wine.region }}<br>
+            <b>Typ:</b> {{ wine.get_winetype_display }}<br>
+            <b>Trauben:</b> {{ wine.grapes }}<br>
+            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+            <b>Händler:</b> {{ wine.dealer }}<br>
+            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
+            <b>Preis:</b> {{ wine.price }}<br>
+            <b>Lagerort:</b> {{ wine.warehouse }}<br>
+            <b>Jahrgang:</b> {{ wine.year }}<br>
+            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
+            <b>Notiz:</b><br>
+            {{ wine.notes }}
+            <br><br>
+            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+
+
+
+
+
+
 
   <button
     up-target=".up-modal-content"
@@ -20,3 +44,25 @@
 
   <button up-dismiss>Schließen</button>
 </div>
+
+
+      </div>
+          <div class="modal-body">
+            <h6>{{ wine.producer }}</h6>
+            <b>Land:</b> {{ wine.country }}<br>
+            <b>Region:</b> {{ wine.region }}<br>
+            <b>Typ:</b> {{ wine.get_winetype_display }}<br>
+            <b>Trauben:</b> {{ wine.grapes }}<br>
+            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+            <b>Händler:</b> {{ wine.dealer }}<br>
+            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
+            <b>Preis:</b> {{ wine.price }}<br>
+            <b>Lagerort:</b> {{ wine.warehouse }}<br>
+            <b>Jahrgang:</b> {{ wine.year }}<br>
+            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
+            <b>Notiz:</b><br>
+            {{ wine.notes }}
+            <br><br>
+            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+            </div>

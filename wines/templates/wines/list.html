@@ -42,8 +42,35 @@
       <th class="d-none d-sm-table-cell" data-sortable="true" data-field="warehouse" data-visible="false" data-filter-control="input">Lagerort</th>
     </tr>
   </thead>
-<tbody>
+        <tbody>
+          {% for wine in wines %}
+ <tr class="trlist">
+    <td scope="row">
+                    <button up-layer="new modal" type="button" up-href="{% url 'wine_detail' wine.pk %}">
+                Details <img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail">
+              </button>
 
+
+                
+    <td>{{ wine.get_winetype_display }}</td>
+    <td>{{ wine.winename }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
+    <td>{{ wine.year|default_if_none:'' }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
+    <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
+    <td>{% if wine.nmbrbottles == 0 %} <b style="color:red">{{ wine.nmbrbottles }}</b>{% elif wine.nmbrbottles %}{{ wine.nmbrbottles }}{% endif %}</td>
+    <td>{{ wine.notes }}</td>
+    <td>{{ wine.dealer }}</td>
+    <td>{{ wine.warehouse }}</td>
+  </tr>
+          {% empty %}
+          <tr><td colspan="5">Keine Weine vorhanden.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
 
 
 

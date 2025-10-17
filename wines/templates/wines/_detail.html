@@ -1,8 +1,5 @@
 <div up-main="modal" class="p-4">
-  <h3>{{ wine.name }} ({{ wine.year }})</h3>
-  <p><strong>Region:</strong> {{ wine.region }}</p>
-  <p><strong>Rebsorte:</strong> {{ wine.grape }}</p>
-  <p><strong>Notizen:</strong> {{ wine.notes|linebreaksbr }}</p>
+  <h3>{{ wine.winename }} {{ wine.year|default_if_none:'' }}</h3>
             <div class="modal-body">
             <h6>{{ wine.producer }}</h6>
             <b>Land:</b> {{ wine.country }}<br>
@@ -18,15 +15,9 @@
             <b>Jahrgang:</b> {{ wine.year }}<br>
             <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
             <b>Notiz:</b><br>
-            {{ wine.notes }}
+            {{ wine.notes|linebreaksbr }}
             <br><br>
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-
-
-
-
-
-
 
   <button
     up-target=".up-modal-content"

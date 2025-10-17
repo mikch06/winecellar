@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="UTF-8">
-    <title>Weindatenbank</title>
-    <link rel="stylesheet" href="https://unpkg.com/unpoly@3.6.0/unpoly.min.css">
-    <script src="https://unpkg.com/unpoly@3.6.0/unpoly.min.js"></script>
-  </head>
-  <body>
-    <!-- up-main definiert den Hauptbereich, den Unpoly ersetzen darf -->
+{% extends "./base.html" %}
+{% block content %}
     <main up-main id="list-content" up-hungry>
       <h2>Weine</h2>
 
@@ -15,7 +7,7 @@
         ➕ Neuer Wein
       </a>
 
-      <table border="1" cellpadding="6">
+      <table cellpadding="6">
         <thead>
           <tr>
             <th>Name</th>
@@ -44,14 +36,4 @@
         </tbody>
       </table>
     </main>
-
-    <!-- Optional: Modal schließen → Liste reload -->
-    <script>
-      up.on('up:layer:closed', function(event) {
-        if (event.layer.mode === 'modal') {
-          up.reload('#list-content');
-        }
-      });
-    </script>
-  </body>
-</html>
+{% endblock %}

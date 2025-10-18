@@ -8,19 +8,45 @@
     {% csrf_token %}
          <div class="col-md-12">
             {{ form }}
-            <span id="nmbrbottles" class="nmbrb-stlye"></span>
             <br><br>
         </div>
-      <button type="submit">💾 Speichern</button>
-      <button type="button" up-dismiss>Abbrechen</button>
-    </form>
-</div>
-</div>
+
+
+  <!-- nmbrbottles Slider mit Live-Update -->
+  <div class="mb-3">
+    <label class="form-label">
+      Anzahl Flaschen: <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
+    </label>
+  </div>
+
+  <div class="text-end mt-3">
+    <button type="submit" class="btn btn-success me-2">💾 Speichern</button>
+    <button type="button" class="btn btn-secondary" up-dismiss>Abbrechen</button>
+  </div>
+</form>
+
 <script>
-    var slider = document.getElementById("id_nmbrbottles");
-    var output = document.getElementById("nmbrbottles");
-    output.innerHTML = slider.value;
-        slider.oninput = function() {
-      output.innerHTML = this.value;
-    }
-</script>
+function initNmbrBottles() {
+  const slider = document.getElementById('id_nmbrbottles'); // Django generiert ID automatisch
+  const display = document.getElementById('nmbrbottles-value');
+  if (!slider || !display) return;
+
+  // Initialwert
+  display.textContent = slider.value;
+
+  // Live-Update
+  slider.addEventListener('input', () => {
+    display.textContent = slider.value;
+  });
+}
+
+// Für Unpoly: neu geladenes Modal
+document.addEventListener('up:fragment:inserted', function(event) {
+  initNmbrBottles();
+});
+
+// Falls Modal schon beim Laden da
+document.addEventListener('DOMContentLoaded', function() {
+  initNmbrBottles();
+});
+</script>        

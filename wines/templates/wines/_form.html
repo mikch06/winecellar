@@ -1,13 +1,26 @@
 <div up-main="modal" class="p-4">
+  <div class="container">
   <form 
     method="post"
     up-submit
     up-target="#list-content"
     up-layer="parent">
     {% csrf_token %}
-    {{ form.as_p }}
-
-    <button type="submit">💾 Speichern</button>
-    <button type="button" up-dismiss>Abbrechen</button>
-  </form>
+         <div class="col-md-12">
+            {{ form }}
+            <span id="nmbrbottles" class="nmbrb-stlye"></span>
+            <br><br>
+        </div>
+      <button type="submit">💾 Speichern</button>
+      <button type="button" up-dismiss>Abbrechen</button>
+    </form>
 </div>
+</div>
+<script>
+    var slider = document.getElementById("id_nmbrbottles");
+    var output = document.getElementById("nmbrbottles");
+    output.innerHTML = slider.value;
+        slider.oninput = function() {
+      output.innerHTML = this.value;
+    }
+</script>

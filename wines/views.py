@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
+from .forms import WineForm
 
 
 class WineListView(ListView):
@@ -20,8 +21,7 @@ class WineDetailView(DetailView):
 
 class WineCreateView(CreateView):
     model = Wine
-    fields = ['winename', 'producer', 'country', 'region', 'year', 'winetype', 'grapes', 'purchase', 'dealer',
-                'price', 'drinkfrom', 'drinkto', 'warehouse', 'notes', 'nmbrbottles']    
+    form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
 

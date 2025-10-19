@@ -14,10 +14,13 @@ class WineListView(ListView):
     template_name = "wines/list.html"
     context_object_name = "wines"
 
-class WineDetailView(DetailView):
+
+class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
     template_name = "wines/_detail.html"
     context_object_name = "wine"
+    login_url = "login"
+    redirect_field_name = "next"
 
 class WineCreateView(CreateView):
     model = Wine
@@ -131,6 +134,10 @@ def WineLogDetail(request, pk):
     wine = Wine.objects.get(id=pk)
 
     return render(request, 'wine/wine_log_detail.html', {'wine': wine})        
+
+# Homepage
+def index(request):
+    return render(request, 'wines/home.html')
 
 # Logout view
 def logout_view(request):

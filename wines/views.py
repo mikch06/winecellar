@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .forms import WineForm
-
+from django.http import HttpResponse
 
 class WineListView(ListView):
     model = Wine
@@ -30,6 +30,11 @@ class WineUpdateView(UpdateView):
     form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
+
+    def form_valid(self, form):
+        form.save()
+        # Event an Unpoly → Liste reloaden
+        return HttpResponse(status=204, headers={"X-Up-Events": "wine:changed"})
 
 def wine_delete(request, pk):
     wine = get_object_or_404(Wine, pk=pk)

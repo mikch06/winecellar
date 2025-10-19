@@ -1,5 +1,5 @@
 <div up-main="modal" class="p-4 text-center">
-  <h3>Soll der Wein <strong>{{ wine.name }}</strong> wirklich gelöscht werden?</h3>
+  <h3><strong>{{ wine.winename }}</strong> wirklich löschen?</h3>
 
   <form 
     method="post"
@@ -8,8 +8,8 @@
     up-layer="root">
     {% csrf_token %}
     <div class="mt-4 space-x-3">
-      <button type="submit" class="text-red-600">Ja, löschen</button>
-      <button type="button" up-dismiss>Abbrechen</button>
+      <button type="submit" class="btn btn-danger">Yes</button>
+      <button type="button" class="btn btn-secondary me-2" up-dismiss>No</button>
     </div>
   </form>
 </div>

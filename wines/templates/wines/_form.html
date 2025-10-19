@@ -2,8 +2,8 @@
   <form 
     method="post"
     up-submit
-    up-target="#list-content"
-    up-layer="parent">
+    up-target="body"
+    up-layer="root">
     {% csrf_token %}
          <div class="col-md-12">
             {{ form }}

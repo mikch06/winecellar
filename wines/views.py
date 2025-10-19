@@ -137,6 +137,11 @@ def WineLogDetail(request, pk):
 def index(request):
     return render(request, 'wines/home.html')
 
+# 'Info' page
+@login_required
+def info(request):
+    return render(request, 'wines/info.html')
+
 # Logout view
 def logout_view(request):
     logout(request)    

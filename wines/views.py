@@ -9,7 +9,7 @@ from django.views import generic
 from .forms import WineForm
 from django.http import HttpResponse
 
-class WineListView(ListView):
+class WineListView(LoginRequiredMixin, ListView):
     model = Wine
     template_name = "wines/list.html"
     context_object_name = "wines"
@@ -19,16 +19,14 @@ class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
     template_name = "wines/_detail.html"
     context_object_name = "wine"
-    login_url = "login"
-    redirect_field_name = "next"
 
-class WineCreateView(CreateView):
+class WineCreateView(LoginRequiredMixin, CreateView):
     model = Wine
     form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
 
-class WineUpdateView(UpdateView):
+class WineUpdateView(LoginRequiredMixin, UpdateView):
     model = Wine
     form_class = WineForm
     template_name = "wines/_form.html"

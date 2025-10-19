@@ -1,6 +1,6 @@
 <div up-main="modal" class="p-4">
+
   <h3>{{ wine.winename }} {{ wine.year|default_if_none:'' }}</h3>
-            <div class="modal-body">
             <h6>{{ wine.producer }}</h6>
             <b>Land:</b> {{ wine.country }}<br>
             <b>Region:</b> {{ wine.region }}<br>
@@ -20,10 +20,21 @@
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
 
   <button
-    up-target=".up-modal-content"
+    up-target="body"
+    up-layer="new modal"
     up-href="{% url 'wine_edit' wine.pk %}">
     ✏️ Bearbeiten
   </button>
+
+<button
+  class="btn btn-sm btn-primary"
+  up-layer="new modal"
+  up-target="body"
+  up-href="{% url 'wine_edit' wine.pk %}">
+  Bearbeiten
+</button>
+
+
 
   <button
     up-layer="new modal"
@@ -33,4 +44,3 @@
   </button>
 
   <button up-dismiss>Schließen</button>
-</div>

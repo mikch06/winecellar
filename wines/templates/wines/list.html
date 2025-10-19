@@ -44,7 +44,11 @@
           {% for wine in wines %}
  <tr class="trlist">
     <td scope="row">
-      <button class="btn btn-sm btn-link" up-layer="new modal" type="button" up-href="{% url 'wine_detail' wine.pk %}">
+      <button class="btn btn-sm btn-link" 
+        up-layer="new modal" 
+        up-target="body"
+        type="button" 
+        up-href="{% url 'wine_detail' wine.pk %}">
         <img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail">
       </button>
    </td>        
@@ -68,4 +72,12 @@
         </tbody>
       </table>
     </main>
+<script>
+document.addEventListener('up:fragment:loaded', function(event) {
+  // Wenn Unpoly ein wine:changed Event bekommt, Seite neu laden
+  if (event.renderOptions?.event === 'wine:changed') {
+    up.reload();
+  }
+});
+</script>    
 {% endblock %}

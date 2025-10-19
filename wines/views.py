@@ -27,8 +27,7 @@ class WineCreateView(CreateView):
 
 class WineUpdateView(UpdateView):
     model = Wine
-    fields = ['winename', 'producer', 'country', 'region', 'year', 'winetype', 'grapes', 'purchase', 'dealer',
-            'price', 'drinkfrom', 'drinkto', 'warehouse', 'notes', 'nmbrbottles']    
+    form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
 

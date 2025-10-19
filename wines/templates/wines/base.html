@@ -30,11 +30,7 @@
 {% block head %}{% endblock %}
 </head>
 <body>
-
-  <main up-main id="main-content">
-    {% block content %}{% endblock %}
-  </main>
-
+<!-- Header and navigation -->
   <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
       <div class="container-fluid">
@@ -82,6 +78,10 @@
       </div>
     </nav>
 
+    <!-- Main content table-->
+    <main up-main id="main-content">
+    {% block content %}{% endblock %}
+    </main>
 
   </div>
       <footer class="mt-8 text-center text-sm text-gray-500">

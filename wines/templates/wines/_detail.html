@@ -18,29 +18,23 @@
             {{ wine.notes|linebreaksbr }}
             <br><br>
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-
-  <button
+  <br><br>
+  <button 
+    class="btn btn-success"
     up-target="body"
     up-layer="new modal"
     up-href="{% url 'wine_edit' wine.pk %}">
-    ✏️ Bearbeiten
+    ✏️
   </button>
-
-<button
-  class="btn btn-sm btn-primary"
-  up-layer="new modal"
-  up-target="body"
-  up-href="{% url 'wine_edit' wine.pk %}">
-  Bearbeiten
-</button>
-
-
+  <button
+    class="btn btn-success"
+    up-layer="new modal"
+    up-href="{% url 'wine_delete' wine.pk %}">
+    🗑️
+  </button>
 
   <button
-    up-layer="new modal"
-    up-href="{% url 'wine_delete' wine.pk %}"
-    class="text-red-600">
-    🗑️ Löschen
+    class="btn btn-success"
+    up-dismiss>
+    ❌
   </button>
-
-  <button up-dismiss>Schließen</button>

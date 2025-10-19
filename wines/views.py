@@ -31,11 +31,6 @@ class WineUpdateView(UpdateView):
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
 
-    def form_valid(self, form):
-        form.save()
-        # Event an Unpoly → Liste reloaden
-        return HttpResponse(status=204, headers={"X-Up-Events": "wine:changed"})
-
 def wine_delete(request, pk):
     wine = get_object_or_404(Wine, pk=pk)
     if request.method == "POST":

@@ -142,6 +142,10 @@ def index(request):
 def info(request):
     return render(request, 'wines/info.html')
 
+# 'About' page
+def about(request):
+    return render(request, 'wines/about.html')
+
 # Logout view
 def logout_view(request):
     logout(request)    

@@ -1,6 +1,8 @@
 Winecellar2.0 Migration
 
-## 
+## Database
+
+    Rename table wine_ to wines_
 
 
 

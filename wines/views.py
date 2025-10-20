@@ -40,6 +40,18 @@ def wine_delete(request, pk):
         return render(request, "wines/list.html", {"wines": wines})
     return render(request, "wines/_delete_confirm.html", {"wine": wine})
 
+# Winelog, show last changes for users wines.
+class WineLog(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wines/log.html'
+
+    # Show number of bottles and different wines for each user
+    def get_context_data(self, *args, **kwargs):
+        context = super(WineLog, self).get_context_data(*args, **kwargs)
+        context['bottles_sum'] = Wine.objects.filter(owner=self.request.user).aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
+        context['wines_sum'] = Wine.objects.filter(owner=self.request.user).count()
+        return context
+
 # 'About' page
 def about(request):
     return render(request, 'wine/about.html')
@@ -145,6 +157,10 @@ def info(request):
 # 'About' page
 def about(request):
     return render(request, 'wines/about.html')
+
+class WineLog(LoginRequiredMixin, generic.ListView):
+    model = Wine
+    template_name = 'wines/log.html'
 
 # Logout view
 def logout_view(request):

@@ -14,6 +14,9 @@ class WineListView(LoginRequiredMixin, ListView):
     template_name = "wines/list.html"
     context_object_name = "wines"
 
+    def get_queryset(self):
+        return Wine.objects.filter(owner=self.request.user)
+
 
 class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
@@ -25,6 +28,10 @@ class WineCreateView(LoginRequiredMixin, CreateView):
     form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
+
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
 
 class WineUpdateView(LoginRequiredMixin, UpdateView):
     model = Wine

@@ -1,0 +1,19 @@
+{% extends "./base.html" %}
+{% block content %}
+{% load static %}
+<div class="container">
+  <div class="text-center">
+    <br>
+    <a href="/wine">
+      <img src="{% static 'images/front_collage.jpg' %}" class="img-fluid mx-auto">
+    </a>
+    <br>
+      {% if user.is_authenticated %}
+    <b>Du bist bereits eingeloggt!</b>
+      {% else %}
+      Du musst eingeloggt sein, um Deinen Weinkeller zu sehen.
+      {% endif %}
+      <div align="center">mybottles.ch &copy; 2020 – {% now 'Y' %}</div
+  </div>
+</div>
+{% endblock %}

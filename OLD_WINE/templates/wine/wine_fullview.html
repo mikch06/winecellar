@@ -1,0 +1,15 @@
+{% extends "./base.html" %}
+{% block content %}
+<div class="container">
+<table id="wineTable" >
+{% load static %}
+    {% for wine in object_list %}
+        <tr>
+        {% load static %}
+            <td>{{ wine.winename }}  {{ wine.producer }}  {{ wine.year }}  {{ wine.grapes }}  {{ wine.country }}  {{ wine.region }}  {{ wine.nmbrbottles }}  {{ wine.purchase|default_if_none:''|date:'d.m.Y'}} 
+                {{ wine.drinkfrom|default_if_none:'' }}  {{ wine.drinkto|default_if_none:'' }}  {{ wine.dealer }}  {{ wine.price }}  {{ wine.notes }}  {{ wine.editdate|date:"d.m.Y"}}</td>
+            </tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}

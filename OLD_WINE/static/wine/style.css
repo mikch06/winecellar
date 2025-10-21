@@ -1,0 +1,94 @@
+body    {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.container {
+max-width: 1400px;
+margin: auto;
+padding-bottom: 50px;
+}
+
+.login {
+max-width: 400px;
+margin: auto;
+}
+
+.content    {
+margin: 20px;
+}
+
+.top-bar, .top-bar ul {
+background-color: #f8f9fa;
+line-height: 1.5;
+font-size: 1.25rem;
+}
+
+.bootstrap-table.bootstrap5 .float-right {
+float: left;
+margin-left: 5px;
+}
+
+thead {
+  border-bottom: 1px solid;
+}
+
+th, td   {
+font-size: 14px;
+}
+
+table.hover tbody tr:hover {
+}
+
+.trlist {
+  border-bottom: 1px solid #ccc;
+}
+
+a {
+    text-decoration: none;
+}
+
+a, a:link, visited {
+    text-decoration: none;
+}
+
+label {
+font-size: 1rem;
+}
+
+/* input, select, textarea   {
+width: 100%;
+} */
+
+input[type="search"] {
+	max-width: 300px;
+}
+
+.reveal {
+    top: 100px !important;
+}
+
+#id_purchase_year,
+#id_purchase_month,
+#id_purchase_day    {
+    max-width: 180px;
+}
+
+.dates {
+font-size: 10px;
+}
+
+.winelog {
+font-size: 14px;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+    border: none;
+}
+
+mark {
+    background-color: pink;
+    border: 1px solid red;
+    border-radius: 90px;
+    padding:4px
+}

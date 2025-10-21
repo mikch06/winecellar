@@ -40,6 +40,7 @@ class WineUpdateView(LoginRequiredMixin, UpdateView):
     form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
+    
 
 def wine_delete(request, pk):
     wine = get_object_or_404(Wine, pk=pk)
@@ -53,6 +54,7 @@ def wine_delete(request, pk):
 class WineLog(LoginRequiredMixin, generic.ListView):
     model = Wine
     template_name = 'wines/log.html'
+    context_object_name = 'wines'  # <-- hier vergeben
 
     # Show number of bottles and different wines for each user
     def get_context_data(self, *args, **kwargs):

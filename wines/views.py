@@ -1,6 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from httpx import request
 from .models import Wine
+from django.db.models import Sum
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -59,6 +61,21 @@ class WineLog(LoginRequiredMixin, generic.ListView):
         context['wines_sum'] = Wine.objects.filter(owner=self.request.user).count()
         return context
 
+    # Filter user data only
+    def get_queryset(self):
+        query_set = super().get_queryset()
+        return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
+
+
+    def get_queryset(self):
+        qs = Wine.objects.filter(owner=self.request.user).order_by('-editdate')[:30]
+        print("DEBUG queryset count:", qs.count())
+        print("DEBUG user:", self.request.user)
+        return qs
+
+
+
+    
 # 'About' page
 def about(request):
     return render(request, 'wine/about.html')
@@ -128,21 +145,6 @@ class FullView(LoginRequiredMixin, generic.ListView):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
 
-class WineLog(LoginRequiredMixin, generic.ListView):
-    model = Wine
-    template_name = 'wine/wine_log.html'
-
-    # Show number of bottles and different wines for each user
-    def get_context_data(self, *args, **kwargs):
-        context = super(WineLog, self).get_context_data(*args, **kwargs)
-        context['bottles_sum'] = Wine.objects.filter(owner=self.request.user).aggregate(Sum('nmbrbottles'))['nmbrbottles__sum']
-        context['wines_sum'] = Wine.objects.filter(owner=self.request.user).count()
-        return context
-
-    # Filter user data only
-    def get_queryset(self):
-        query_set = super().get_queryset()
-        return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]        
 
 #TODO: Maybe not used anymore with new modal
 # Detail view in 'Last changes'
@@ -164,10 +166,6 @@ def info(request):
 # 'About' page
 def about(request):
     return render(request, 'wines/about.html')
-
-class WineLog(LoginRequiredMixin, generic.ListView):
-    model = Wine
-    template_name = 'wines/log.html'
 
 # Logout view
 def logout_view(request):

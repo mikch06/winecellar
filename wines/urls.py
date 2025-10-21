@@ -4,6 +4,9 @@ from .views import *
 from django.contrib.auth import views as auth_views
 
 # App Namespace for app 'wine'
+
+
+
 # !remove this namespace
 urlpatterns = [
     #TODO: copy View
@@ -14,7 +17,7 @@ urlpatterns = [
     path('wine/export_xls/', views.export_xls),
     #TODO: Fix as_view
     #path('wine/full/', views.FullView.as_view(), name='wine_fullview'),
-    path('wines/log/', views.WineLog.as_view(), name='wine_log'),
+    path('wines/log/', views.WineLog.as_view(), name='log'),
     path('wine/detail/<int:pk>', views.WineLogDetail, name='wine_log_detail'),
     path('logout/', views.logout_view),
 
@@ -26,4 +29,5 @@ urlpatterns = [
     path("<int:pk>/edit/", WineUpdateView.as_view(), name="wine_edit"),
     path("new/", WineCreateView.as_view(), name="wine_new"),
     path("wines/<int:pk>/delete/", wine_delete, name="wine_delete"),
+    path('wines/debug/', lambda request: HttpResponse("DEBUG OK")),
 ]

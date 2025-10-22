@@ -32,9 +32,20 @@
     up-href="{% url 'wine_delete' wine.pk %}">
     🗑️
   </button>
+  
+  <button
+    class="btn btn-success"
+    title="Copy"
+    up-target="body"
+    up-layer="new modal"
+    up-href="{% url 'wine_copy' wine.pk %}">
+    📋 
+  </button>
 
+<!-- disable close button
   <button
     class="btn btn-success"
     up-dismiss>
     ❌
   </button>
+-->

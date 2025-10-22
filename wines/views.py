@@ -55,6 +55,28 @@ def wine_delete(request, pk):
 
     return render(request, "wines/_delete_confirm.html", {"wine": wine})
 
+@login_required
+def copyWine(request, pk):
+    original = get_object_or_404(Wine, pk=pk, owner=request.user)
+
+    if request.method == "POST":
+        form = WineForm(request.POST)
+        if form.is_valid():
+            new_wine = form.save(commit=False)
+            new_wine.owner = request.user
+            new_wine.pk = None  # wichtig: neuer Eintrag!
+            new_wine.save()
+            return HttpResponse(status=204)  # für Unpoly
+    else:
+        # Formular wird mit Kopie der Daten befüllt
+        data = original.__dict__.copy()
+        data.pop('id', None)
+        data.pop('pk', None)
+        data.pop('_state', None)
+        form = WineForm(initial=data)
+
+    return render(request, "wines/_form.html", {"form": form, "is_copy": True})
+
 # Winelog, show last changes for users wines.
 class WineLog(LoginRequiredMixin, generic.ListView):
     model = Wine

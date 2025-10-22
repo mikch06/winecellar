@@ -9,8 +9,6 @@ from django.contrib.auth import views as auth_views
 
 # !remove this namespace
 urlpatterns = [
-    #TODO: copy View
-    #path('wine/copy/<int:pk>', views.copyWine, name='copy_wine'),
     path('about/', views.about),
     path('info/', views.info),
     path('wine/export/', views.export_csv),
@@ -29,5 +27,6 @@ urlpatterns = [
     path("<int:pk>/edit/", WineUpdateView.as_view(), name="wine_edit"),
     path("new/", WineCreateView.as_view(), name="wine_new"),
     path("wines/<int:pk>/delete/", wine_delete, name="wine_delete"),
+    path('wines/<int:pk>/copy/', views.copyWine, name='wine_copy'),
     path('wines/debug/', lambda request: HttpResponse("DEBUG OK")),
 ]

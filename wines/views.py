@@ -11,6 +11,7 @@ from django.views import generic
 from .forms import WineForm
 from django.http import HttpResponse
 
+# Wine List View
 class WineListView(LoginRequiredMixin, ListView):
     model = Wine
     template_name = "wines/list.html"
@@ -19,12 +20,13 @@ class WineListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return Wine.objects.filter(owner=self.request.user)
 
-
+# Wine Detail View
 class WineDetailView(LoginRequiredMixin, DetailView):
     model = Wine
     template_name = "wines/_detail.html"
     context_object_name = "wine"
 
+# Wine Create View
 class WineCreateView(LoginRequiredMixin, CreateView):
     model = Wine
     form_class = WineForm
@@ -35,19 +37,22 @@ class WineCreateView(LoginRequiredMixin, CreateView):
         form.instance.owner = self.request.user
         return super().form_valid(form)
 
+# Wine Update View
 class WineUpdateView(LoginRequiredMixin, UpdateView):
     model = Wine
     form_class = WineForm
     template_name = "wines/_form.html"
     success_url = reverse_lazy("wine_list")
     
-
+# Delete view
 def wine_delete(request, pk):
-    wine = get_object_or_404(Wine, pk=pk)
+    wine = get_object_or_404(Wine, pk=pk, owner=request.user)
+
     if request.method == "POST":
         wine.delete()
-        wines = Wine.objects.all()
+        wines = Wine.objects.filter(owner=request.user)
         return render(request, "wines/list.html", {"wines": wines})
+
     return render(request, "wines/_delete_confirm.html", {"wine": wine})
 
 # Winelog, show last changes for users wines.
@@ -67,16 +72,6 @@ class WineLog(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
-
-
-    def get_queryset(self):
-        qs = Wine.objects.filter(owner=self.request.user).order_by('-editdate')[:30]
-        print("DEBUG queryset count:", qs.count())
-        print("DEBUG user:", self.request.user)
-        return qs
-
-
-
     
 # 'About' page
 def about(request):

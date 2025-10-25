@@ -5,9 +5,84 @@
     up-target="body"
     up-layer="root">
     {% csrf_token %}
-         <div class="col-md-12">
-            {{ form }}
+
+<div class="modal-header">
+  <h5 class="modal-title">
+    {% if is_copy %}📋 Wein kopieren{% elif form.instance.pk %}🍷 Wein bearbeiten{% else %}➕ Neuer Wein{% endif %}
+  </h5>
+  <button type="button" class="btn-close" up-dismiss aria-label="Close"></button>
 </div>
+
+<form method="post" up-submit up-target="body">
+  {% csrf_token %}
+
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <!-- Linke Spalte -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            {{ form.winename.label_tag }}
+            {{ form.winename }}
+          </div>
+          <div class="mb-3">
+            {{ form.producer.label_tag }}
+            {{ form.producer }}
+          </div>
+          <div class="mb-3">
+            {{ form.country.label_tag }}
+            {{ form.country }}
+          </div>
+          <div class="mb-3">
+            {{ form.region.label_tag }}
+            {{ form.region }}
+          </div>
+          <div class="mb-3">
+            {{ form.year.label_tag }}
+            {{ form.year }}
+          </div>
+          <div class="mb-3">
+            {{ form.winetype.label_tag }}
+            {{ form.winetype }}
+          </div>
+        </div>
+
+        <!-- Rechte Spalte -->
+        <div class="col-md-6">
+          <div class="mb-3">
+            {{ form.grapes.label_tag }}
+            {{ form.grapes }}
+          </div>
+          <div class="mb-3">
+            {{ form.purchase.label_tag }}
+            {{ form.purchase }}
+          </div>
+          <div class="mb-3">
+            {{ form.dealer.label_tag }}
+            {{ form.dealer }}
+          </div>
+          <div class="mb-3">
+            {{ form.price.label_tag }}
+            {{ form.price }}
+          </div>
+          <div class="mb-3">
+            {{ form.nmbrbottles.label_tag }}
+            {{ form.nmbrbottles }}
+              <!-- nmbrbottles Slider mit Live-Update -->
+  <div class="mb-3">
+    <label class="form-label">
+      <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
+    </label>
+  </div>
+          </div>
+          <div class="mb-3">
+            {{ form.notes.label_tag }}
+            {{ form.notes }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- nmbrbottles Slider mit Live-Update -->
   <div class="mb-3">

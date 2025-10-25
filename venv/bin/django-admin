@@ -1,8 +1,7 @@
-#!/home/mik/VisualCode/winecellar/venv/bin/python
-# -*- coding: utf-8 -*-
-import re
+#!/home/mik/VisualCode/winecellar/venv/bin/python3
 import sys
 from django.core.management import execute_from_command_line
 if __name__ == '__main__':
-    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
     sys.exit(execute_from_command_line())

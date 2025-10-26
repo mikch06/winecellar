@@ -30,7 +30,10 @@
             up-target="body">
             {{ wine.winename }}
           </a> -
-          {{ wine.producer }}<br></div>
+          {{ wine.producer }}
+          {{ wine.year }}
+          ({{ wine.nmbrbottles }})
+        </div>
         {% empty %}
         <li>Keine Weine gefunden.</li>  
         {% endfor %}

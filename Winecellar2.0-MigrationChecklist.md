@@ -14,3 +14,8 @@ Winecellar2.0 Migration
     LOGIN_REDIRECT_URL = '/wines'
     LOGOUT_REDIRECT_URL = '/'
     LOGIN_URL = '/login/'
+
+
+Disable:
+    #'django.contrib.admin',
+in apps

@@ -1,6 +1,6 @@
 ### Changes in der Webapp:
 
-### Oktober 2025
+#### October 2025
 - New Winecellar 2.0 ;-)
 - New forms and detail views with unpoly framework
 - List in Winelog without form link

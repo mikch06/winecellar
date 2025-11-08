@@ -17,5 +17,8 @@ Winecellar2.0 Migration
 
 
 Disable:
- ~~   #'django.contrib.admin', ~~
+
+     ~~   #'django.contrib.admin', ~~
+
 in apps
+(not sure anymore)

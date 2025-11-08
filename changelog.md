@@ -1,5 +1,12 @@
 ### Changes in der Webapp:
 
+#### October 2025
+- New Winecellar 2.0 ;-)
+- New forms and detail views with unpoly framework
+- List in Winelog without form link
+- Redesigned form.py for easier form handling
+- Redesigned view.py -> more clear code
+
 #### 04.06.2025
 - Fix Logout process
 

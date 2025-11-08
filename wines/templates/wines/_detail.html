@@ -1,0 +1,51 @@
+<div up-main="modal" class="p-4">
+
+  <h3>{{ wine.winename }} {{ wine.year|default_if_none:'' }}</h3>
+            <h6>{{ wine.producer }}</h6>
+            <b>Land:</b> {{ wine.country }}<br>
+            <b>Region:</b> {{ wine.region }}<br>
+            <b>Typ:</b> {{ wine.get_winetype_display }}<br>
+            <b>Trauben:</b> {{ wine.grapes }}<br>
+            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
+            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
+            <b>Händler:</b> {{ wine.dealer }}<br>
+            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
+            <b>Preis:</b> {{ wine.price }}<br>
+            <b>Lagerort:</b> {{ wine.warehouse }}<br>
+            <b>Jahrgang:</b> {{ wine.year }}<br>
+            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
+            <b>Notiz:</b><br>
+            {{ wine.notes|linebreaksbr }}
+            <br>
+            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
+  <br>
+  <button 
+    class="btn btn-success"
+    up-target="body"
+    up-layer="new modal"
+    up-href="{% url 'wine_edit' wine.pk %}">
+    ✏️
+  </button>
+  <button
+    class="btn btn-success"
+    up-layer="new modal"
+    up-href="{% url 'wine_delete' wine.pk %}">
+    🗑️
+  </button>
+  
+  <button
+    class="btn btn-success"
+    title="Copy"
+    up-target="body"
+    up-layer="new modal"
+    up-href="{% url 'wine_copy' wine.pk %}">
+    📋 
+  </button>
+
+<!-- disable close button
+  <button
+    class="btn btn-success"
+    up-dismiss>
+    ❌
+  </button>
+-->

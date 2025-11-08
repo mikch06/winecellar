@@ -107,8 +107,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 #STATIC
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/wines'
 LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
 
 DEBUG = True
 

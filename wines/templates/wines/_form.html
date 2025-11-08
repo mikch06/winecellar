@@ -1,0 +1,100 @@
+<div up-main="modal" class="p-4">
+  <form 
+    method="post"
+    up-submit
+    up-target="body"
+    up-layer="root"
+  >
+    {% csrf_token %}
+
+    <div class="modal-header">
+      <h5 class="modal-title">
+        {% if is_copy %}
+          📋 Wein kopieren
+        {% elif form.instance.pk %}
+          🍷 Wein bearbeiten
+        {% else %}
+          ➕ Neuer Wein
+        {% endif %}
+      </h5>
+    </div>
+
+    <div class="modal-body">
+      <div class="container-fluid">
+        <br>
+        <!-- Flaschenanzahl -->
+        <div class="mb-3">
+          {{ form.nmbrbottles.label_tag }}
+          {{ form.nmbrbottles }}
+          <div class="mt-1">
+            <label class="form-label">
+              <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Name, Produzent, Rebsorte -->
+        <div class="mb-3">
+          {{ form.winename.label_tag }}
+          {{ form.winename }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.producer.label_tag }}
+          {{ form.producer }}
+        </div>
+
+        <div class="mb-3">
+          {{ form.grapes.label_tag }}
+          {{ form.grapes }}
+        </div>
+
+        <!-- Zweispaltiges Layout -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">{{ form.country.label_tag }}{{ form.country }}</div>
+            <div class="mb-3">{{ form.purchase.label_tag }}{{ form.purchase }}</div>
+            <div class="mb-3">{{ form.drinkfrom.label_tag }}{{ form.drinkfrom }}</div>
+            <div class="mb-3">{{ form.year.label_tag }}{{ form.year }}</div>
+            <div class="mb-3">{{ form.warehouse.label_tag }}{{ form.warehouse }}</div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="mb-3">{{ form.region.label_tag }}{{ form.region }}</div>
+            <div class="mb-3">{{ form.dealer.label_tag }}{{ form.dealer }}</div>
+            <div class="mb-3">{{ form.drinkto.label_tag }}{{ form.drinkto }}</div>
+            <div class="mb-3">{{ form.price.label_tag }}{{ form.price }}</div>
+            <div class="mb-3">{{ form.winetype.label_tag }}{{ form.winetype }}</div>
+          </div>
+        </div>
+
+        <!-- Notizen -->
+        <div class="mb-3">
+          {{ form.notes.label_tag }}
+          {{ form.notes }}
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success me-2">💾 Speichern</button>
+      <button type="button" class="btn btn-secondary" up-dismiss>Abbrechen</button>
+    </div>
+  </form>
+
+  <script>
+    function initNmbrBottles() {
+      const slider = document.getElementById('id_nmbrbottles');
+      const display = document.getElementById('nmbrbottles-value');
+      if (!slider || !display) return;
+      display.textContent = slider.value;
+      slider.addEventListener('input', () => {
+        display.textContent = slider.value;
+      });
+    }
+
+    document.addEventListener('up:fragment:inserted', initNmbrBottles);
+    document.addEventListener('DOMContentLoaded', initNmbrBottles);
+  </script>
+</div>

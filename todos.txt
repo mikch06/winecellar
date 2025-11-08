@@ -1,2 +1,6 @@
 Todos:
 ======
+
+- modal: slow open/close
+- modal: rounded corner -> fine view
+- wine: copy -> reload list

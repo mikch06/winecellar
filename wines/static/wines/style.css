@@ -93,12 +93,6 @@ mark {
     padding:4px
 }
 
-.modal-box  {
-    padding: 0px;
-
-}
-
-
 up-popup, up-cover-box, up-drawer-box, up-modal-box {
 	position: relative;
 	box-sizing: border-box;

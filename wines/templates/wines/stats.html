@@ -1,0 +1,43 @@
+{% extends "wines/base.html" %}
+{% block content %}
+<div class="container py-4">
+  <h3 class="mb-4">🍷 Wein-Statistik nach Ländern</h3>
+
+  <canvas id="countryChart" height="200"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch("{% url 'wine_stats' %}", { headers: { 'X-Requested-With': 'XMLHttpRequest' } })
+    .then(response => response.json())
+    .then(data => {
+      const ctx = document.getElementById("countryChart");
+      new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: data.labels,
+          datasets: [{
+            label: "Anzahl Flaschen",
+            data: data.bottles,
+            borderWidth: 1,
+            backgroundColor: [
+              "#C0392B", "#8E44AD", "#3498DB", "#1ABC9C", "#F1C40F", "#E67E22", "#2ECC71"
+            ]
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { position: 'bottom' },
+            title: {
+              display: true,
+              text: 'Flaschen pro Land'
+            }
+          }
+        }
+      });
+    });
+});
+</script>
+{% endblock %}

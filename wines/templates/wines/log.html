@@ -37,6 +37,16 @@
         {% empty %}
         <li>Keine Weine gefunden.</li>  
         {% endfor %}
+
+
+<a up-layer="new modal"
+   up-size="large"
+   up-href="{% url 'wine_stats' %}"
+   class="btn btn-outline-primary">
+   📊 Statistik
+</a>
+
+
         {% endblock %}
     </div>
     <div class="col">

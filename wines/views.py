@@ -167,3 +167,31 @@ def about(request):
 # Logout view
 def logout_view(request):
     logout(request)    
+
+
+from django.db.models import Count, Sum
+from django.http import JsonResponse
+
+@login_required
+def wine_stats(request):
+    # Gruppiere nach Land und zähle Weine & Flaschen
+    stats = (
+        Wine.objects.filter(owner=request.user)
+        .values('country')
+        .annotate(
+            wine_count=Count('id'),
+            bottle_sum=Sum('nmbrbottles'),
+        )
+        .order_by('-bottle_sum')
+    )
+
+    # Wenn per AJAX/JSON (z. B. für Chart.js)
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            'labels': [s['country'] or 'Unbekannt' for s in stats],
+            'wines': [s['wine_count'] for s in stats],
+            'bottles': [s['bottle_sum'] or 0 for s in stats],
+        })
+
+    # Normales Rendering (z. B. als Seite oder Modal)
+    return render(request, 'wines/stats.html', {'stats': stats})

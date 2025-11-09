@@ -92,3 +92,19 @@ mark {
     border-radius: 90px;
     padding:4px
 }
+
+.modal-box  {
+    padding: 0px;
+
+}
+
+
+up-popup, up-cover-box, up-drawer-box, up-modal-box {
+	position: relative;
+	box-sizing: border-box;
+	max-width: 100%;
+	background-color: #fff;
+	padding: 0px;
+	overflow-x: hidden;
+    border-radius: 10px;
+}

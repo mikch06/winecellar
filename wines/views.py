@@ -10,6 +10,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from .forms import WineForm
 from django.http import HttpResponse
+from datetime import datetime
+from openpyxl import Workbook
+from openpyxl.styles import Font
 
 # Wine List View
 class WineListView(LoginRequiredMixin, ListView):
@@ -45,6 +48,7 @@ class WineUpdateView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy("wine_list")
     
 # Delete view
+@login_required
 def wine_delete(request, pk):
     wine = get_object_or_404(Wine, pk=pk, owner=request.user)
 
@@ -95,15 +99,6 @@ class WineLog(LoginRequiredMixin, generic.ListView):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user).order_by('-editdate')[:30]
     
-# 'About' page
-def about(request):
-    return render(request, 'wine/about.html')
-
-# 'Info' page
-@login_required
-def info(request):
-    return render(request, 'wine/info.html')
-
 # Data export
 @login_required
 def export_csv(request):
@@ -121,36 +116,28 @@ def export_csv(request):
     return response    
 
 @login_required
-def export_xls(request):
-    response = HttpResponse(content_type='application/ms-excel')
-    response['Content-Disposition'] = 'attachment; filename="wine_export.xls"'
+def export_xlsx(request):
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="wine_export.xlsx"'
 
-    wb = xlwt.Workbook(encoding='utf-8')
-    ws = wb.add_sheet('MyBottles', cell_overwrite_ok=True)
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "MyBottles"
 
-    # Sheet header, first row
-    row_num = 0
+    headers = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region',
+               'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
 
-    font_style = xlwt.XFStyle()
-    font_style.font.bold = True
-    date_style = xlwt.XFStyle()
+    ws.append(headers)
+    for cell in ws[1]:
+        cell.font = Font(bold=True)
 
-    columns = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region', 'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+    wines = Wine.objects.filter(owner=request.user).values_list(
+        'winename','producer','grapes','year','country','region',
+        'purchase','price','dealer','drinkfrom','drinkto','warehouse','nmbrbottles'
+    )
 
-    for col_num in range(len(columns)):
-        ws.write(row_num, col_num, columns[col_num], font_style)
-
-    # Sheet body, remaining rows
-    font_style = xlwt.XFStyle()
-    date_style.num_format_str = "dd.mm.YYYY"
-
-    rows = Wine.objects.filter(owner=request.user).values_list('winename','producer', 'grapes', 'year', 'country', 'region', 'purchase', 'price', 'dealer', 'drinkfrom', 'drinkto', 'warehouse', 'nmbrbottles')
-    for row in rows:
-        row_num += 1
-        for col_num in range(len(row)):
-
-            ws.write(row_num, col_num, row[col_num], font_style)
-            ws.write(row_num, 6, datetime.now(), date_style)
+    for wine in wines:
+        ws.append(wine)
 
     wb.save(response)
     return response
@@ -163,15 +150,6 @@ class FullView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         query_set = super().get_queryset()
         return query_set.filter(owner=self.request.user)
-
-
-#TODO: Maybe not used anymore with new modal
-# Detail view in 'Last changes'
-@login_required
-def WineLogDetail(request, pk):
-    wine = Wine.objects.get(id=pk)
-
-    return render(request, 'wine/wine_log_detail.html', {'wine': wine})        
 
 # Homepage
 def index(request):

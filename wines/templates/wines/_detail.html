@@ -20,7 +20,7 @@
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
             </p>
   <button 
-    class="btn btn-info"
+    class="btn btn-basic"
     title="Edit"
     up-target="body"
     up-layer="new modal"
@@ -28,7 +28,7 @@
     ✏️
   </button>
   <button
-    class="btn btn-warning"
+    class="btn btn-basic"
     title="Delete"
     up-layer="new modal"
     up-href="{% url 'wine_delete' wine.pk %}">
@@ -36,7 +36,7 @@
   </button>
   
   <button
-    class="btn btn-info"
+    class="btn btn-basic"
     title="Copy"
     up-target="body"
     up-layer="new modal"
@@ -45,7 +45,7 @@
   </button>
 
   <button
-    class="btn btn-info"
+    class="btn btn-basic"
     up-dismiss>
     ❌
   </button>

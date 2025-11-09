@@ -16,9 +16,10 @@
             <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
             <b>Notiz:</b><br>
             {{ wine.notes|linebreaksbr }}
-            <br>
+            <p>
             <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-  <br>
+            </p>
+            <br>
   <button 
     class="btn btn-success"
     up-target="body"

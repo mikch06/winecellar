@@ -4,3 +4,5 @@ Todos:
 - modal: slow open/close
 - modal: rounded corner -> fine view
 - wine: copy -> reload list
+
+- unpoly: framework data local -> not linked via cdn

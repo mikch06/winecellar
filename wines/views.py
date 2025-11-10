@@ -194,4 +194,4 @@ def wine_stats(request):
         })
 
     # Normales Rendering (z. B. als Seite oder Modal)
-    return render(request, 'wines/_stats.html', {'stats': stats})
+    return render(request, 'wines/stats.html', {'stats': stats})

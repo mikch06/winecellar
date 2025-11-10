@@ -4,9 +4,9 @@
 <div class="container py-4">
   <h3 class="mb-4">🍷 Wein-Statistik nach Ländern</h3>
 
-  <canvas id="countryChart" height="2000"></canvas>
+  <canvas id="countryChart" width="300" height="300"></canvas>
+
 </div>
-TEST
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -23,14 +23,14 @@ document.addEventListener("DOMContentLoaded", function() {
             data: data.bottles,
             borderWidth: 1,
             backgroundColor: [
-              "#C0392B", "#8E44AD", "#3498DB", "#1ABC9C", "#F1C40F", "#E67E22", "#2ECC71"
+              "#C0392B", "#8E44AD", "#3498DB", "#1ABC9C", "#F1C40F", "#E67E22", "#2ECC71", "#09c"
             ]
           }]
         },
         options: {
           responsive: true,
           plugins: {
-            legend: { position: 'bottom' },
+            legend: { position: 'top' },
             title: {
               display: true,
               text: 'Flaschen pro Land'

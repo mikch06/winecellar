@@ -4,7 +4,10 @@
 <div class="container py-4">
   <h3 class="mb-4">🍷 Wein-Statistik nach Ländern</h3>
 
-  <canvas id="countryChart" width="300" height="300"></canvas>
+  <div style="max-width: 600px; max-height: 600px; margin: 0 auto;">
+    <canvas id="countryChart"></canvas>
+  </div>
+</div>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -23,8 +26,19 @@ document.addEventListener("DOMContentLoaded", function() {
             data: data.bottles,
             borderWidth: 1,
             backgroundColor: [
-              "#C0392B", "#8E44AD", "#3498DB", "#1ABC9C", "#F1C40F", "#E67E22", "#2ECC71", "#09c"
-            ]
+                '#7B1E24', // dunkles Rot (Cabernet)
+                '#C0392B', // Bordeaux
+                '#D98880', // Rosé
+                '#F5CBA7', // Chardonnay
+                '#F9E79F', // Riesling
+                '#A9CCE3', // Blau-Ton als Kontrast
+                '#4A235A', // Traube
+                '#78281F', // Rotwein
+                '#7D6608', // Holzfass
+                '#117864', // Weinblatt
+                '#B9770E', // Korken
+                '#5D6D7E', // Schiefer
+              ]
           }]
         },
         options: {

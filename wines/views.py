@@ -185,13 +185,31 @@ def wine_stats(request):
         .order_by('-bottle_sum')
     )
 
-    # Wenn per AJAX/JSON (z. B. für Chart.js)
+    # Gesamtsummen berechnen (wie in WineLog)
+    total_bottles = (
+        Wine.objects.filter(owner=request.user)
+        .aggregate(total=Sum('nmbrbottles'))
+        ['total'] or 0
+    )
+
+    total_wines = (
+        Wine.objects.filter(owner=request.user)
+        .count()
+    )
+
+    # AJAX / JSON für Chart.js
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return JsonResponse({
             'labels': [s['country'] or 'Unbekannt' for s in stats],
             'wines': [s['wine_count'] for s in stats],
             'bottles': [s['bottle_sum'] or 0 for s in stats],
+            'total_wines': total_wines,
+            'total_bottles': total_bottles,
         })
 
-    # Normales Rendering (z. B. als Seite oder Modal)
-    return render(request, 'wines/stats.html', {'stats': stats})
+    # Normales Rendering (z. B. Seite oder Modal)
+    return render(request, 'wines/stats.html', {
+        'stats': stats,
+        'total_bottles': total_bottles,
+        'total_wines': total_wines,
+    })

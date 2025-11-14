@@ -1,8 +1,21 @@
 {% extends "wines/base.html" %}
 {% block content %}
-<div up-main class="p-4"></div>
-<div class="container py-4">
-  <h3 class="mb-4">🍷 Wein-Statistik nach Ländern</h3>
+<div class="container">
+    <div class="content">
+    {% load static %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+
+
+
+  <h3>🍷 Wein-Statistik nach Ländern</h3>
+<p>
+MyBottles: <b>{{ total_bottles }}</b> Flaschen,
+{{ total_wines }} Positionen.
+    </p>
+
 
   <div style="max-width: 600px; max-height: 600px; margin: 0 auto;">
     <canvas id="countryChart"></canvas>

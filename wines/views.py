@@ -174,7 +174,7 @@ from django.http import JsonResponse
 
 @login_required
 def wine_stats(request):
-    # Gruppiere nach Land und zähle Weine & Flaschen
+    # group and count
     stats = (
         Wine.objects.filter(owner=request.user)
         .values('country')
@@ -185,7 +185,7 @@ def wine_stats(request):
         .order_by('-bottle_sum')
     )
 
-    # Gesamtsummen berechnen (wie in WineLog)
+    # sum
     total_bottles = (
         Wine.objects.filter(owner=request.user)
         .aggregate(total=Sum('nmbrbottles'))
@@ -207,7 +207,7 @@ def wine_stats(request):
             'total_bottles': total_bottles,
         })
 
-    # Normales Rendering (z. B. Seite oder Modal)
+    # default rendering
     return render(request, 'wines/stats.html', {
         'stats': stats,
         'total_bottles': total_bottles,

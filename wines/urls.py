@@ -15,8 +15,10 @@ urlpatterns = [
     path('wines/debug/', lambda request: HttpResponse("DEBUG OK")),
     path('about/', views.about),
     path('info/', views.info),
-    path('wines/export/', views.export_csv),
+    path('wines/export_csv/', views.export_csv),
     path('wines/export_xls/', views.export_xlsx),
     path('wines/log/', views.WineLog.as_view(), name='wine_log'),
     path('logout/', views.logout_view),
+    path('wines/stats/', views.wine_stats, name='wine_stats'),
+
 ]

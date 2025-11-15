@@ -13,6 +13,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from openpyxl import Workbook
 from openpyxl.styles import Font
+import csv
 
 # Wine List View
 class WineListView(LoginRequiredMixin, ListView):
@@ -167,3 +168,49 @@ def about(request):
 # Logout view
 def logout_view(request):
     logout(request)    
+
+
+from django.db.models import Count, Sum
+from django.http import JsonResponse
+
+@login_required
+def wine_stats(request):
+    # group and count
+    stats = (
+        Wine.objects.filter(owner=request.user)
+        .values('country')
+        .annotate(
+            wine_count=Count('id'),
+            bottle_sum=Sum('nmbrbottles'),
+        )
+        .order_by('-bottle_sum')
+    )
+
+    # sum
+    total_bottles = (
+        Wine.objects.filter(owner=request.user)
+        .aggregate(total=Sum('nmbrbottles'))
+        ['total'] or 0
+    )
+
+    total_wines = (
+        Wine.objects.filter(owner=request.user)
+        .count()
+    )
+
+    # AJAX / JSON für Chart.js
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            'labels': [s['country'] or 'Unbekannt' for s in stats],
+            'wines': [s['wine_count'] for s in stats],
+            'bottles': [s['bottle_sum'] or 0 for s in stats],
+            'total_wines': total_wines,
+            'total_bottles': total_bottles,
+        })
+
+    # default rendering
+    return render(request, 'wines/stats.html', {
+        'stats': stats,
+        'total_bottles': total_bottles,
+        'total_wines': total_wines,
+    })

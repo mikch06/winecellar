@@ -1,24 +1,29 @@
-{% extends "./base.html" %}
+{% extends "wines/base.html" %}
 {% block content %}
 <div class="container">
     <div class="content">
     {% load static %}
-<div class="container">
-  <div class="row">
-    <div class="col">
-      MyBottles: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} Positionen.
+    <div class="row">
+      <div class="col">
+        <p>
+          MyBottles: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} Positionen.
+        </p>
+          <a href="{% url 'wine_stats' %}"
+            class="btn btn-outline-primary">
+            📊
+          </a>
+          Stats
+        </p>
+      </div>
+      <div class="col">
+        <p>
+          <a class="btn btn-success" href="/wines/export_xls"><i class="bi bi-filetype-xls" style="color: black;"></i></a> Excel Export
+          <a class="btn btn-danger" href="/wines/export_csv"><i class="bi bi-filetype-csv" style="color: black;"></i></a> CSV Export
+        </p>
+      </div>
     </div>
-    <div class="col">
-    <p>
-      <a class="btn btn-success btn-sm" href="/wines/export_xls"><i class="bi bi-filetype-xls" style="color: black;"></i></a> Excel Export
-    </p>
-    <p>
-      <a class="btn btn-danger btn-sm" href="/wines/export"><i class="bi bi-filetype-csv" style="color: black;"></i></a> CSV Export
-    </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
+    <div class="row">
+      <div class="col">
         <b>Letzte 30 Veränderungen im Keller:</b>
         <br><br>
         {% load static %}
@@ -38,9 +43,7 @@
         <li>Keine Weine gefunden.</li>  
         {% endfor %}
         {% endblock %}
-    </div>
-    <div class="col">
-    </div>
+      </div>
   </div>
 </div>
 

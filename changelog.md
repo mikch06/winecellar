@@ -1,5 +1,10 @@
 ### Changes in der Webapp:
 
+#### 15.11.2025
+- New stats moudule
+- Stats for countries and bottles of country
+- Pie chart
+
 #### October 2025
 - New Winecellar 2.0 ;-)
 - New forms and detail views with unpoly framework

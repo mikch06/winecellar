@@ -16,6 +16,7 @@ COUNTRY = [
     ('Spanien', 'Spanien'),
     ('Südafrika', 'Südafrika'),
     ('USA', 'USA'),
+    ('Argentinien', 'Argentinien'),    
 ]
 
 WINETYPE = {

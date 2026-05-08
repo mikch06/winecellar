@@ -126,7 +126,7 @@ def export_xlsx(request):
     ws.title = "MyBottles"
 
     headers = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region',
-               'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl']
+               'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl','Notizen']
 
     ws.append(headers)
     for cell in ws[1]:
@@ -134,7 +134,7 @@ def export_xlsx(request):
 
     wines = Wine.objects.filter(owner=request.user).values_list(
         'winename','producer','grapes','year','country','region',
-        'purchase','price','dealer','drinkfrom','drinkto','warehouse','nmbrbottles'
+        'purchase','price','dealer','drinkfrom','drinkto','warehouse','nmbrbottles','notes'
     )
 
     for wine in wines:

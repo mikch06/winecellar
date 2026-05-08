@@ -126,7 +126,7 @@ def export_xlsx(request):
     ws.title = "MyBottles"
 
     headers = ['Wein', 'Produzent', 'Trauben', 'Jahrgang', 'Land', 'Region',
-               'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl','Notizen']
+               'Kaufdatum', 'Preis/Fl.', 'Dealer', 'von', 'bis', 'Lagerort', 'Anz.Fl', 'Notizen']
 
     ws.append(headers)
     for cell in ws[1]:

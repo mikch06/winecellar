@@ -15,6 +15,32 @@ from openpyxl import Workbook
 from openpyxl.styles import Font
 import csv
 
+def wine_list(request):
+    qs = Wine.objects.all()
+
+    search = request.GET.get("search")
+    wine_type = request.GET.get("type")
+    sort = request.GET.get("sort")
+
+    if search:
+        qs = qs.filter(name__icontains=search)
+
+    if wine_type:
+        qs = qs.filter(type=wine_type)
+
+    if sort:
+        qs = qs.order_by(sort)
+
+    paginator = Paginator(qs, 25)
+    page = request.GET.get("page")
+
+    wines = paginator.get_page(page)
+
+    return render(request, "wines/list.html", {
+        "wines": wines
+    })
+
+
 # Wine List View
 class WineListView(LoginRequiredMixin, ListView):
     model = Wine

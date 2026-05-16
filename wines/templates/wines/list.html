@@ -2,9 +2,8 @@
 {% block content %}
 
 {% load static %}
-<div class="table-responsive">
-
-<table
+<div class="bg-white rounded-2xl shadow overflow-hidden">
+  <table class="table"
     class="table"
     data-toggle="table"
     data-classes="table table-borderless table-hover"
@@ -19,8 +18,8 @@
     data-filter-control-visible="false"
     data-show-search-clear-button="true"
     data-show-filter-control-switch="true">
-  <thead>
-    <tr>
+<thead class="bg-gray-50 text-xs uppercase text-gray-500">
+      <tr class="hover:bg-gray-50">
       <th width="50"><img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail" width="16" height="16" title="Details"></th>
       <th data-sortable="true" data-field="winetype" data-visible="false" data-filter-control="select">Weintyp</th>
       <th data-sortable="true" data-field="winename" data-filter-control="input">Wein</th>
@@ -39,8 +38,8 @@
   </thead>
         <tbody>
           {% for wine in wines %}
- <tr class="trlist">
-    <td scope="row">
+ <tr class="hover:bg-gray-50" class="trlist">
+    <td class="p-3" scope="row">
       <button class="btn btn-sm btn-link" 
         up-layer="new modal" 
         up-target="body"
@@ -49,25 +48,26 @@
         <img src="{% static "wines/bootstrap/icons/search.svg" %}" alt="Detail">
       </button>
    </td>        
-    <td>{{ wine.get_winetype_display }}</td>
-    <td>{{ wine.winename }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.producer }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.country }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.region }}</td>
-    <td>{{ wine.year|default_if_none:'' }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
-    <td class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
-    <td>{% if wine.nmbrbottles == 0 %} <b style="color:red">{{ wine.nmbrbottles }}</b>{% elif wine.nmbrbottles %}{{ wine.nmbrbottles }}{% endif %}</td>
-    <td>{{ wine.notes }}</td>
-    <td>{{ wine.dealer }}</td>
-    <td>{{ wine.warehouse }}</td>
+    <td class="p-3">{{ wine.get_winetype_display }}</td>
+    <td class="p-3 font-medium text-gray-900">{{ wine.winename }}</td>
+    <td class="p-3 text-gray-400 text-sm">{{ wine.producer }}</td>
+    <td class="p-3" class="d-none d-sm-table-cell">{{ wine.country }}</td>
+    <td class="p-3 text-gray-400 text-sm">{{ wine.region }}</td>
+    <td class="p-3">{{ wine.year|default_if_none:'' }}</td>
+    <td class="p-3" class="d-none d-sm-table-cell">{{ wine.grapes }}</td>
+    <td class="p-3" class="d-none d-sm-table-cell">{{ wine.drinkfrom|default_if_none:''}}</td>
+    <td class="p-3" class="d-none d-sm-table-cell">{{ wine.drinkto|default_if_none:'' }}</td>
+    <td class="p-3">{% if wine.nmbrbottles == 0 %} <b style="color:red">{{ wine.nmbrbottles }}</b>{% elif wine.nmbrbottles %}{{ wine.nmbrbottles }}{% endif %}</td>
+    <td class="p-3">{{ wine.notes }}</td>
+    <td class="p-3">{{ wine.dealer }}</td>
+    <td class="p-3">{{ wine.warehouse }}</td>
   </tr>
           {% empty %}
-          <tr><td colspan="5">Keine Weine vorhanden.</td></tr>
+          <tr class="hover:bg-gray-50"><td class="p-3"> colspan="5">Keine Weine vorhanden.</td></tr>
           {% endfor %}
         </tbody>
       </table>
+</div>
     </main>
 <script>
 document.addEventListener('up:fragment:loaded', function(event) {

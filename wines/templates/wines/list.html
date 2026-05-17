@@ -1,22 +1,22 @@
 {% extends "./base.html" %}
 {% block content %}
 
-<div class="space-y-5">
+<div class="space-y-6">
 
-  <!-- TOOLBAR -->
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+  <!-- TOP BAR -->
+  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
 
     <form
       id="filters"
       up-target="#wine-table"
       up-autosubmit
-      class="flex flex-col md:flex-row gap-3 md:items-center">
+      class="flex flex-col md:flex-row md:items-center gap-3">
 
       <input
         type="text"
         name="q"
         value="{{ q }}"
-        placeholder="🔍 Suche Wein, Produzent..."
+        placeholder="🔍 Search wines, producers..."
         class="w-full md:w-96 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 outline-none"
       >
 
@@ -24,7 +24,7 @@
         name="country"
         class="px-3 py-3 rounded-xl border border-gray-200">
 
-        <option value="">🌍 Alle Länder</option>
+        <option value="">🌍 All countries</option>
 
         {% for c in countries %}
           <option value="{{ c }}" {% if country == c %}selected{% endif %}>
@@ -35,27 +35,40 @@
       </select>
 
       <a href="{% url 'wine_list' %}"
-        class="text-sm text-gray-400 hover:text-gray-700 ml-auto">
-        Reset filters
+         class="text-sm text-gray-400 hover:text-gray-700 ml-auto">
+        Reset
       </a>
 
     </form>
 
   </div>
 
+  <!-- ACTIVE FILTERS -->
+  {% if q or country %}
+  <div class="flex flex-wrap gap-2 text-sm">
 
-  <!-- META BAR (Airtable feeling) -->
-  <div class="flex items-center justify-between text-sm text-gray-500 px-1">
+    {% if q %}
+      <div class="bg-gray-100 px-3 py-1 rounded-full flex items-center gap-2">
+        🔍 {{ q }}
+      </div>
+    {% endif %}
 
-    <div>
-      {{ wines|length }} Weine
-    </div>
+    {% if country %}
+      <div class="bg-gray-100 px-3 py-1 rounded-full flex items-center gap-2">
+        🌍 {{ country }}
+      </div>
+    {% endif %}
 
   </div>
+  {% endif %}
 
+  <!-- META -->
+  <div class="flex justify-between text-sm text-gray-500 px-1">
+    <div>{{ wines|length }} wines</div>
+  </div>
 
-  <!-- TABLE CARD -->
-  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+  <!-- TABLE -->
+  <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
 
     <div id="wine-table">
       {% include "wines/_table.html" %}
@@ -64,8 +77,5 @@
   </div>
 
 </div>
-
-
-
 
 {% endblock %}

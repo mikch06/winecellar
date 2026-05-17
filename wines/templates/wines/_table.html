@@ -45,8 +45,7 @@
   <tbody class="divide-y divide-gray-100">
 
     {% for wine in wines %}
-
-    <tr class="hover:bg-gray-50 group transition">
+    <tr class="group hover:bg-gray-50 transition">
       <!-- ACTION -->
       <td class="px-4 py-3">
         <button up-layer="new modal"
@@ -89,6 +88,16 @@
         {% endif %}
       </td>
 
+    </tr>
+
+    {% empty %}
+    <tr>
+      <td colspan="10" class="text-center py-10 text-gray-400">
+        🍷 Keine Weine gefunden
+        <div class="text-sm mt-1">
+          Versuche einen anderen Suchbegriff
+        </div>
+      </td>
     </tr>
 
     {% endfor %}

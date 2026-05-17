@@ -15,14 +15,74 @@ from openpyxl import Workbook
 from openpyxl.styles import Font
 import csv
 
+# new-ui-step1 branch
+from .filters import WineFilter
+from django.db.models import Q
+
+
 # Wine List View
+from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from .models import Wine
+
+
 class WineListView(LoginRequiredMixin, ListView):
     model = Wine
     template_name = "wines/list.html"
     context_object_name = "wines"
 
     def get_queryset(self):
-        return Wine.objects.filter(owner=self.request.user)
+        qs = Wine.objects.filter(owner=self.request.user)
+
+        # --- GET PARAMS ---
+        q = self.request.GET.get("q", "")
+        country = self.request.GET.get("country", "")
+        sort = self.request.GET.get("sort", "winename")
+
+        # --- SEARCH ---
+        if q:
+            qs = qs.filter(
+                Q(winename__icontains=q) |
+                Q(producer__icontains=q) |
+                Q(country__icontains=q)
+            )
+
+        # --- FILTER ---
+        if country:
+            qs = qs.filter(country=country)
+
+        # --- SORT ---
+        allowed = {
+            "winename",
+            "producer",
+            "country",
+            "year",
+            "drinkfrom",
+            "drinkto",
+            "nmbrbottles",
+        }
+
+        if sort.lstrip("-") not in allowed:
+            sort = "winename"
+
+        return qs.order_by(sort)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+
+        ctx["q"] = self.request.GET.get("q", "")
+        ctx["country"] = self.request.GET.get("country", "")
+        ctx["sort"] = self.request.GET.get("sort", "winename")
+
+        ctx["countries"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("country", flat=True)
+            .distinct()
+            .order_by("country")
+        )
+
+        return ctx
 
 # Wine Detail View
 class WineDetailView(LoginRequiredMixin, DetailView):
@@ -214,3 +274,17 @@ def wine_stats(request):
         'total_bottles': total_bottles,
         'total_wines': total_wines,
     })
+
+
+# Filter, weiss nicht ob gebraucht
+def wine_list(request):
+    qs = Wine.objects.all()
+
+    filterset = WineFilter(request.GET, qs)
+
+    return render(request, "weine/list.html", {
+        "wines": filterset.qs,
+        "filters": request.GET,
+    })
+
+

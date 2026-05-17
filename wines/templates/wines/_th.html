@@ -1,0 +1,17 @@
+<th class="px-4 py-3 {% if sort == field or sort == '-'|add:field %}bg-gray-100{% endif %}">
+  <a
+    up-target="#wine-table"
+    href="?sort={% if sort == field %}-{{ field }}{% else %}{{ field }}{% endif %}&q={{ q }}&country={{ country }}"
+    class="flex items-center gap-1 hover:text-gray-900">
+
+    {{ label }}
+
+    {% if sort == field %}
+      <span>▲</span>
+    {% elif sort == "-"|add:field %}
+      <span>▼</span>
+    {% endif %}
+
+  </a>
+
+</th>

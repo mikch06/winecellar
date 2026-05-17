@@ -41,11 +41,20 @@ class WineListView(LoginRequiredMixin, ListView):
         sort = self.request.GET.get("sort", "winename")
 
         # --- SEARCH ---
+        q = self.request.GET.get("q", "").strip()
+
         if q:
             qs = qs.filter(
                 Q(winename__icontains=q) |
                 Q(producer__icontains=q) |
-                Q(country__icontains=q)
+                Q(country__icontains=q) |
+                Q(notes__icontains=q) |
+                Q(dealer__icontains=q) |
+                Q(warehouse__icontains=q) |
+                Q(year__icontains=q) |
+                Q(drinkfrom__icontains=q) |
+                Q(drinkto__icontains=q) |
+                Q(nmbrbottles__icontains=q)
             )
 
         # --- FILTER ---

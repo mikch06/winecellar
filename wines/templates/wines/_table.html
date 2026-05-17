@@ -48,15 +48,15 @@
       </td>
 
       <td class="px-4 py-3">
-        {{ wine.year }}
+        {{ wine.year |default_if_none:''}}
       </td>
 
       <td class="px-4 py-3 text-gray-500">
-        {{ wine.drinkfrom }}
+        {{ wine.drinkfrom |default_if_none:''}}
       </td>
 
       <td class="px-4 py-3 text-gray-500">
-        {{ wine.drinkto }}
+        {{ wine.drinkto |default_if_none:''}}
       </td>
 
       <td class="px-4 py-3 text-center">

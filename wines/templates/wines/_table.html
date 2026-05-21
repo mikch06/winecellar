@@ -1,18 +1,22 @@
 {% if q or country %}
 
-<div class="flex flex-wrap gap-2 mb-3">
+<div class="flex flex-wrap gap-2 mb-4">
 
   {% if q %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-sm flex items-center gap-2">
+    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
       🔍 {{ q }}
-      <a href="?country={{ country }}" class="text-gray-400 hover:text-gray-700">×</a>
+      <a href="?country={{ country }}" class="text-gray-400 hover:text-gray-700">
+        ×
+      </a>
     </div>
   {% endif %}
 
   {% if country %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-sm flex items-center gap-2">
+    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
       🌍 {{ country }}
-      <a href="?q={{ q }}" class="text-gray-400 hover:text-gray-700">×</a>
+      <a href="?q={{ q }}" class="text-gray-400 hover:text-gray-700">
+        ×
+      </a>
     </div>
   {% endif %}
 
@@ -20,84 +24,163 @@
 
 {% endif %}
 
+
+<div class="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+
 <table class="min-w-full text-sm">
 
-   <thead class="sticky top-0 bg-gray-50 border-b border-gray-200 z-10">
+  <!-- HEADER -->
+  <thead class="sticky top-0 z-10 bg-gray-50 border-b border-gray-200">
 
-    <tr class="text-left text-xs uppercase tracking-wide text-gray-500">
+    <!-- SORT HEADER -->
+    <tr class="text-left text-[11px] uppercase tracking-wider text-gray-500">
 
-      <th class="px-4 py-3 w-10"></th>
+      <th class="w-10 px-3 py-2"></th>
 
       {% include "wines/_th.html" with label="Wein" field="winename" %}
       {% include "wines/_th.html" with label="Produzent" field="producer" %}
       {% include "wines/_th.html" with label="Land" field="country" %}
       {% include "wines/_th.html" with label="Jg." field="year" %}
-
       {% include "wines/_th.html" with label="Von" field="drinkfrom" %}
       {% include "wines/_th.html" with label="Bis" field="drinkto" %}
+      {% include "wines/_th.html" with label="Flaschen" field="nmbrbottles" %}
 
-      {% include "wines/_th.html" with label="Flaschen" field="nmbrbottles center" %}
+    </tr>
+
+    <!-- FILTER ROW -->
+    <tr class="border-t border-gray-100 bg-gray-50">
+
+      <th class="px-2 py-2"></th>
+
+      <th class="px-2 py-2">
+        <input
+          type="text"
+          placeholder="Filter..."
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-gray-300">
+      </th>
+
+      <th class="px-2 py-2">
+        <input
+          type="text"
+          placeholder="Filter..."
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-gray-300">
+      </th>
+
+      <th class="px-2 py-2">
+        <select
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-gray-300">
+
+          <option>Alle</option>
+
+          {% for c in countries %}
+            <option>{{ c }}</option>
+          {% endfor %}
+
+        </select>
+      </th>
+
+      <th class="px-2 py-2">
+        <input
+          type="text"
+          placeholder="Jahr"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-gray-300">
+      </th>
+
+      <th class="px-2 py-2"></th>
+      <th class="px-2 py-2"></th>
+      <th class="px-2 py-2"></th>
 
     </tr>
 
   </thead>
 
+
+  <!-- BODY -->
   <tbody class="divide-y divide-gray-100">
 
     {% for wine in wines %}
-<tr class="hover:bg-gray-50 transition-colors">
-        <!-- ACTION -->
-      <td class="px-4 py-2 whitespace-nowrap">
-          <button up-layer="new modal"
-                up-href="{% url 'wine_detail' wine.pk %}"
-                class="text-gray-400 hover:text-gray-700 transition">
+
+    <tr class="hover:bg-gray-50 transition-colors">
+
+      <!-- ACTION -->
+      <td class="px-3 py-2 whitespace-nowrap">
+
+        <button
+          up-layer="new modal"
+          up-href="{% url 'wine_detail' wine.pk %}"
+          class="text-gray-400 hover:text-gray-700 transition">
+
           🔍
+
         </button>
+
       </td>
 
-      <!-- DATA CELLS -->
-      <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+      <!-- WINE -->
+      <td class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap">
         {{ wine.winename }}
       </td>
 
-      <td class="px-4 py-3 text-gray-600">
+      <!-- PRODUCER -->
+      <td class="px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.producer }}
       </td>
 
-      <td class="px-4 py-3 text-gray-600">
+      <!-- COUNTRY -->
+      <td class="px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.country }}
       </td>
 
-      <td class="px-4 py-3">
-        {{ wine.year |default_if_none:''}}
+      <!-- YEAR -->
+      <td class="px-3 py-2 whitespace-nowrap">
+        {{ wine.year|default_if_none:'' }}
       </td>
 
-      <td class="px-4 py-3 text-gray-500">
-        {{ wine.drinkfrom |default_if_none:''}}
+      <!-- DRINK FROM -->
+      <td class="px-3 py-2 text-gray-500 whitespace-nowrap">
+        {{ wine.drinkfrom|default_if_none:'' }}
       </td>
 
-      <td class="px-4 py-3 text-gray-500">
-        {{ wine.drinkto |default_if_none:''}}
+      <!-- DRINK TO -->
+      <td class="px-3 py-2 text-gray-500 whitespace-nowrap">
+        {{ wine.drinkto|default_if_none:'' }}
       </td>
 
-      <td class="px-4 py-3 text-center">
+      <!-- BOTTLES -->
+      <td class="px-3 py-2 text-right whitespace-nowrap">
+
         {% if wine.nmbrbottles == 0 %}
-          <span class="text-red-500 font-semibold">{{ wine.nmbrbottles }}</span>
+          <span class="font-semibold text-red-500">
+            {{ wine.nmbrbottles }}
+          </span>
         {% else %}
           {{ wine.nmbrbottles }}
         {% endif %}
+
       </td>
 
     </tr>
 
     {% empty %}
+
     <tr>
-      <td colspan="10" class="text-center py-10 text-gray-400">
-        🍷 Keine Weine gefunden
-        <div class="text-sm mt-1">
+
+      <td colspan="8" class="py-12 text-center text-gray-400">
+
+        <div class="text-3xl mb-2">
+          🍷
+        </div>
+
+        <div class="font-medium">
+          Keine Weine gefunden
+        </div>
+
+        <div class="mt-1 text-sm">
           Versuche einen anderen Suchbegriff
         </div>
+
       </td>
+
     </tr>
 
     {% endfor %}
@@ -105,3 +188,5 @@
   </tbody>
 
 </table>
+
+</div>

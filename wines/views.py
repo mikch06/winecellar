@@ -27,6 +27,12 @@ from django.views.generic import ListView
 from .models import Wine
 
 
+from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from .models import Wine
+
+
 class WineListView(LoginRequiredMixin, ListView):
     model = Wine
     template_name = "wines/list.html"
@@ -35,14 +41,23 @@ class WineListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         qs = Wine.objects.filter(owner=self.request.user)
 
-        # --- GET PARAMS ---
-        q = self.request.GET.get("q", "")
+        # -------------------
+        # GET PARAMS
+        # -------------------
+        q = self.request.GET.get("q", "").strip()
         country = self.request.GET.get("country", "")
         sort = self.request.GET.get("sort", "winename")
 
-        # --- SEARCH ---
-        q = self.request.GET.get("q", "").strip()
+        winename = self.request.GET.get("winename", "")
+        producer = self.request.GET.get("producer", "")
+        year = self.request.GET.get("year", "")
+        drinkfrom = self.request.GET.get("drinkfrom", "")
+        drinkto = self.request.GET.get("drinkto", "")
+        nmbrbottles = self.request.GET.get("nmbrbottles", "")
 
+        # -------------------
+        # GLOBAL SEARCH
+        # -------------------
         if q:
             qs = qs.filter(
                 Q(winename__icontains=q) |
@@ -51,17 +66,36 @@ class WineListView(LoginRequiredMixin, ListView):
                 Q(notes__icontains=q) |
                 Q(dealer__icontains=q) |
                 Q(warehouse__icontains=q) |
-                Q(year__icontains=q) |
-                Q(drinkfrom__icontains=q) |
-                Q(drinkto__icontains=q) |
-                Q(nmbrbottles__icontains=q)
+                Q(year__icontains=q)
             )
 
-        # --- FILTER ---
+        # -------------------
+        # COLUMN FILTERS
+        # -------------------
+        if winename:
+            qs = qs.filter(winename__icontains=winename)
+
+        if producer:
+            qs = qs.filter(producer__icontains=producer)
+
         if country:
             qs = qs.filter(country=country)
 
-        # --- SORT ---
+        if year:
+            qs = qs.filter(year=year)
+
+        if drinkfrom:
+            qs = qs.filter(drinkfrom__gte=drinkfrom)
+
+        if drinkto:
+            qs = qs.filter(drinkto__lte=drinkto)
+
+        if nmbrbottles:
+            qs = qs.filter(nmbrbottles=nmbrbottles)
+
+        # -------------------
+        # SORTING (safe)
+        # -------------------
         allowed = {
             "winename",
             "producer",

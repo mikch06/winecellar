@@ -1,15 +1,17 @@
 {% extends "./base.html" %}
 {% block content %}
 
-<div class="min-h-screen bg-gray-100 p-6">
+<div class="min-h-screen bg-gray-100">
+  <div class="mx-auto max-w-7xl p-6 space-y-6">
   <!-- TOP BAR -->
   <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
+    
 
     <form
       id="filters"
       up-target="#wine-table"
       up-autosubmit
-      class="flex flex-col md:flex-row md:items-center gap-3">
+      class="h-10 w-80 rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none focus:ring-2 focus:ring-gray-200">
 
       <input
         type="text"
@@ -125,3 +127,6 @@
       </div>
       </div>
       {% endblock %}
+
+</div>
+</div>

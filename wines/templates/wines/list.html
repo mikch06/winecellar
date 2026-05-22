@@ -53,6 +53,7 @@
 
     <form up-autosubmit up-target="#wine-table" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
+      <!-- winename -->
         <input
           type="text"
           name="winename"
@@ -60,7 +61,7 @@
           placeholder="Weinname"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <!-- PRODUCER -->
+      <!-- producer -->
         <input
           type="text"
           name="producer"
@@ -68,7 +69,7 @@
           placeholder="Produzent"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <!-- COUNTRY -->
+      <!-- country -->
         <select
           name="country"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
@@ -80,7 +81,7 @@
           {% endfor %}
         </select>
 
-      <!-- YEAR -->
+      <!-- year -->
         <select
           type="number"
           name="year"
@@ -95,23 +96,23 @@
           {% endfor %}
         </select>          
 
-      <!-- DRINK FROM -->
+      <!-- drinkfrom -->
         <input
           type="number"
           name="drinkfrom"
           value="{{ request.GET.drinkfrom }}"
-          placeholder="From"
+          placeholder="trinkbar von"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <!-- DRINK TO -->
+      <!-- drinkto -->
         <input
           type="number"
           name="drinkto"
           value="{{ request.GET.drinkto }}"
-          placeholder="To"
+          placeholder="trinkbar bis"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <!-- BOTTLES -->
+      <!-- nmbrbottles -->
         <input
           type="number"
           name="nmbrbottles"
@@ -120,14 +121,9 @@
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
     </form>
-
-
-    <div id="wine-table">
-      {% include "wines/_table.html" %}
-    </div>
-
-  </div>
-
-</div>
-
-{% endblock %}
+  <div id="wine-table">
+    {% include "wines/_table.html" %}
+      </div>
+      </div>
+      </div>
+      {% endblock %}

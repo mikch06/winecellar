@@ -53,19 +53,11 @@
 
     <form up-autosubmit up-target="#wine-table" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <input name="winename" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      <input name="producer">
-      <input name="country">
-      <input name="year">
-      <input name="drinkfrom">
-      <input name="drinkto">
-      <input name="nmbrbottles">
-
         <input
           type="text"
           name="winename"
           value="{{ request.GET.winename }}"
-          placeholder="Filter..."
+          placeholder="Weinname"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
       <!-- PRODUCER -->
@@ -73,31 +65,35 @@
           type="text"
           name="producer"
           value="{{ request.GET.producer }}"
-          placeholder="Filter..."
+          placeholder="Produzent"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
       <!-- COUNTRY -->
         <select
           name="country"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-
-          <option value="">Alle</option>
-
+          <option value="">Land</option>
           {% for c in countries %}
             <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>
               {{ c }}
             </option>
           {% endfor %}
-
         </select>
 
       <!-- YEAR -->
-        <input
+        <select
           type="number"
           name="year"
           value="{{ request.GET.year }}"
           placeholder="Jahr"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          <option value="">Jahrgang</option>
+          {% for c in years %}
+            <option value="{{ c }}" {% if request.GET.year == c %}selected{% endif %}>
+              {{ c }}
+            </option>
+          {% endfor %}
+        </select>          
 
       <!-- DRINK FROM -->
         <input

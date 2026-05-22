@@ -109,12 +109,14 @@ class WineListView(LoginRequiredMixin, ListView):
         ctx["country"] = self.request.GET.get("country", "")
         ctx["sort"] = self.request.GET.get("sort", "winename")
 
+        # Country Dropdown filter
         ctx["countries"] = (
             Wine.objects.filter(owner=self.request.user)
             .values_list("country", flat=True)
             .distinct()
             .order_by("country")
         )
+
 
         return ctx
 

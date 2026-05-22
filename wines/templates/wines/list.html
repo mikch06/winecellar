@@ -83,18 +83,17 @@
 
       <!-- year -->
         <select
-          type="number"
           name="year"
-          value="{{ request.GET.year }}"
-          placeholder="Jahr"
           class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
           <option value="">Jahrgang</option>
           {% for c in years %}
-            <option value="{{ c }}" {% if request.GET.year == c %}selected{% endif %}>
+            <option
+              value="{{ c }}"
+              {% if request.GET.year == c|stringformat:"s" %}selected{% endif %}>
               {{ c }}
             </option>
           {% endfor %}
-        </select>          
+        </select>         
 
       <!-- drinkfrom -->
         <input

@@ -31,18 +31,12 @@
   </div>
 
   <!-- ACTIVE FILTERS -->
-  {% if q or country %}
+  {% if q %}
   <div class="flex flex-wrap gap-2 text-sm">
 
     {% if q %}
       <div class="bg-gray-100 px-3 py-1 rounded-full flex items-center gap-2">
         🔍 {{ q }}
-      </div>
-    {% endif %}
-
-    {% if country %}
-      <div class="bg-gray-100 px-3 py-1 rounded-full flex items-center gap-2">
-        🌍 {{ country }}
       </div>
     {% endif %}
 
@@ -59,10 +53,75 @@
 
     <form up-autosubmit up-target="#wine-table" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
-      <input name="q">
+      <input name="winename" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+      <input name="producer">
+      <input name="country">
+      <input name="year">
       <input name="drinkfrom">
       <input name="drinkto">
       <input name="nmbrbottles">
+
+        <input
+          type="text"
+          name="winename"
+          value="{{ request.GET.winename }}"
+          placeholder="Filter..."
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+      <!-- PRODUCER -->
+        <input
+          type="text"
+          name="producer"
+          value="{{ request.GET.producer }}"
+          placeholder="Filter..."
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+      <!-- COUNTRY -->
+        <select
+          name="country"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+          <option value="">Alle</option>
+
+          {% for c in countries %}
+            <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>
+              {{ c }}
+            </option>
+          {% endfor %}
+
+        </select>
+
+      <!-- YEAR -->
+        <input
+          type="number"
+          name="year"
+          value="{{ request.GET.year }}"
+          placeholder="Jahr"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+      <!-- DRINK FROM -->
+        <input
+          type="number"
+          name="drinkfrom"
+          value="{{ request.GET.drinkfrom }}"
+          placeholder="From"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+      <!-- DRINK TO -->
+        <input
+          type="number"
+          name="drinkto"
+          value="{{ request.GET.drinkto }}"
+          placeholder="To"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+
+      <!-- BOTTLES -->
+        <input
+          type="number"
+          name="nmbrbottles"
+          value="{{ request.GET.nmbrbottles }}"
+          placeholder="Flacon"
+          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
     </form>
 

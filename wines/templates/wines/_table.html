@@ -3,43 +3,7 @@
 
 <div class="flex flex-wrap gap-2 mb-4">
 
-  {% if q %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      🔍 {{ q }}
-    </div>
-  {% endif %}
 
-  {% if country %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      🌍 {{ country }}
-    </div>
-  {% endif %}
-
-  {% if request.GET.year %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      📅 {{ request.GET.year }}
-    </div>
-  {% endif %}
-
-  {% if request.GET.drinkfrom %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      🍷 From {{ request.GET.drinkfrom }}
-    </div>
-  {% endif %}
-
-  {% if request.GET.drinkto %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      🍷 To {{ request.GET.drinkto }}
-    </div>
-  {% endif %}
-
-  {% if request.GET.nmbrbottles %}
-    <div class="bg-gray-100 px-3 py-1 rounded-full text-xs flex items-center gap-2">
-      🍾 {{ request.GET.nmbrbottles }}
-    </div>
-  {% endif %}
-
-</div>
 
 {% endif %}
 
@@ -68,88 +32,8 @@
     <!-- FILTER ROW -->
     <tr class="border-t border-gray-100 bg-gray-50">
 
-      <th class="px-2 py-2"></th>
 
-      <!-- WINENAME -->
-      <th class="px-2 py-2">
-        <input
-          type="text"
-          name="winename"
-          value="{{ request.GET.winename }}"
-          placeholder="Filter..."
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
 
-      <!-- PRODUCER -->
-      <th class="px-2 py-2">
-        <input
-          type="text"
-          name="producer"
-          value="{{ request.GET.producer }}"
-          placeholder="Filter..."
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
-
-      <!-- COUNTRY -->
-      <th class="px-2 py-2">
-        <select
-          name="country"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-
-          <option value="">Alle</option>
-
-          {% for c in countries %}
-            <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>
-              {{ c }}
-            </option>
-          {% endfor %}
-
-        </select>
-      </th>
-
-      <!-- YEAR -->
-      <th class="px-2 py-2">
-        <input
-          type="number"
-          name="year"
-          value="{{ request.GET.year }}"
-          placeholder="Jahr"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
-
-      <!-- DRINK FROM -->
-      <th class="px-2 py-2">
-        <input
-          type="number"
-          name="drinkfrom"
-          value="{{ request.GET.drinkfrom }}"
-          placeholder="From"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
-
-      <!-- DRINK TO -->
-      <th class="px-2 py-2">
-        <input
-          type="number"
-          name="drinkto"
-          value="{{ request.GET.drinkto }}"
-          placeholder="To"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
-
-      <!-- BOTTLES -->
-      <th class="px-2 py-2">
-        <input
-          type="number"
-          name="nmbrbottles"
-          value="{{ request.GET.nmbrbottles }}"
-          placeholder="Flacon"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
-      </th>
-
-    </tr>
-
-  </thead>
 
   <!-- BODY -->
   <tbody class="divide-y divide-gray-100">

@@ -15,18 +15,8 @@ from openpyxl import Workbook
 from openpyxl.styles import Font
 import csv
 
-# new-ui-step1 branch
-from .filters import WineFilter
-from django.db.models import Q
-
 
 # Wine List View
-from django.db.models import Q
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import ListView
-from .models import Wine
-
-
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
@@ -63,6 +53,7 @@ class WineListView(LoginRequiredMixin, ListView):
                 Q(winename__icontains=q) |
                 Q(producer__icontains=q) |
                 Q(country__icontains=q) |
+                Q(grapes__icontains=q) |
                 Q(notes__icontains=q) |
                 Q(dealer__icontains=q) |
                 Q(warehouse__icontains=q) |
@@ -316,18 +307,6 @@ def wine_stats(request):
         'stats': stats,
         'total_bottles': total_bottles,
         'total_wines': total_wines,
-    })
-
-
-# Filter, weiss nicht ob gebraucht
-def wine_list(request):
-    qs = Wine.objects.all()
-
-    filterset = WineFilter(request.GET, qs)
-
-    return render(request, "weine/list.html", {
-        "wines": filterset.qs,
-        "filters": request.GET,
     })
 
 

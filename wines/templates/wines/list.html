@@ -59,13 +59,25 @@
 
     <form up-autosubmit up-target="#wine-table" class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
 
+      <!-- winetype -->
+      <select
+        name="winetype"
+        class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          <option value="">Typ</option>
+          {% for c in winetypes %}
+           <option value="{{ c }}" {% if request.GET.winetype == c %}selected{% endif %}>
+            {{ c }}
+          </option>
+        {% endfor %}
+      </select>
+
       <!-- winename -->
         <input
           type="text"
           name="winename"
           value="{{ request.GET.winename }}"
           placeholder="Weinname"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- producer -->
         <input
@@ -73,12 +85,12 @@
           name="producer"
           value="{{ request.GET.producer }}"
           placeholder="Produzent"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- country -->
         <select
           name="country"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
           <option value="">Land</option>
           {% for c in countries %}
             <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>
@@ -90,7 +102,7 @@
       <!-- year -->
         <select
           name="year"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
           <option value="">Jahrgang</option>
           {% for c in years %}
             <option
@@ -107,7 +119,7 @@
           name="drinkfrom"
           value="{{ request.GET.drinkfrom }}"
           placeholder="trinkbar von"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- drinkto -->
         <input
@@ -115,17 +127,18 @@
           name="drinkto"
           value="{{ request.GET.drinkto }}"
           placeholder="trinkbar bis"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- nmbrbottles -->
         <input
           type="number"
           name="nmbrbottles"
           value="{{ request.GET.nmbrbottles }}"
-          placeholder="Flacon"
-          class="w-full rounded-md border border-gray-200 px-2 py-1 text-xs">
+          placeholder="Flaschen"
+          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
     </form>
+    
   <div id="wine-table">
     {% include "wines/_table.html" %}
       </div>

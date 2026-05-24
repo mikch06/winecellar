@@ -35,6 +35,7 @@ class WineListView(LoginRequiredMixin, ListView):
         # GET PARAMS
         # -------------------
         q = self.request.GET.get("q", "").strip()
+        winetype = self.request.GET.get("winetype", "")
         country = self.request.GET.get("country", "")
         sort = self.request.GET.get("sort", "winename")
 
@@ -50,6 +51,7 @@ class WineListView(LoginRequiredMixin, ListView):
         # -------------------
         if q:
             qs = qs.filter(
+                Q(winetype__icontains=q) |
                 Q(winename__icontains=q) |
                 Q(producer__icontains=q) |
                 Q(country__icontains=q) |
@@ -63,6 +65,9 @@ class WineListView(LoginRequiredMixin, ListView):
         # -------------------
         # COLUMN FILTERS
         # -------------------
+        if winetype:
+            qs = qs.filter(winetype__icontains=winetype)
+            
         if winename:
             qs = qs.filter(winename__icontains=winename)
 
@@ -88,6 +93,7 @@ class WineListView(LoginRequiredMixin, ListView):
         # SORTING (safe)
         # -------------------
         allowed = {
+            "winetype",
             "winename",
             "producer",
             "country",
@@ -106,10 +112,19 @@ class WineListView(LoginRequiredMixin, ListView):
         ctx = super().get_context_data(**kwargs)
 
         ctx["q"] = self.request.GET.get("q", "")
+        ctx["winetype"] = self.request.GET.get("winetype", "")
         ctx["country"] = self.request.GET.get("country", "")
         ctx["year"] = self.request.GET.get("year", "")
 
         ctx["sort"] = self.request.GET.get("sort", "winename")
+
+        # Winetype Dropdown filter
+        ctx["winetypes"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("winetype", flat=True)
+            .distinct()
+            .order_by("winetype")
+        )
 
         # Country Dropdown filter
         ctx["countries"] = (

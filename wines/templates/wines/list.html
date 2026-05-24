@@ -5,54 +5,36 @@
   <div class="mx-auto max-w-7xl p-6 space-y-6">
   <!-- TOP BAR -->
   <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
-    
-
     <form
-      id="filters"
-      up-target="#wine-table"
-      up-autosubmit
-      >
-      
-      <input
-        type="text"
-        name="q"
-        value="{{ q }}"
-        placeholder="🔍 Search wines, producers..."
-        class="w-full md:w-96 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 outline-none"
-      >
-
+    id="filters"
+    up-target="#wine-table"
+    up-autosubmit
+    class="flex gap-2 items-stretch"
+  >
+    <input
+      type="text"
+      name="q"
+      value="{{ q }}"
+      placeholder="🔍 Search wines, producers..."
+      class="w-full md:w-96 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 outline-none"
+    >
     <a href="{% url 'wine_list' %}"
-      class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50 hover:text-red-600 transition">
-
+      class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm hover:bg-gray-50 hover:text-red-600 transition">
+      
       <svg xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
           stroke-width="1.5">
-
         <path stroke-linecap="round"
               stroke-linejoin="round"
               d="M6 7h12M10 11v6m4-6v6M9 7V5a3 3 0 0 1 6 0v2m3 0-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 7" />
-
       </svg>
-
       Reset
     </a>
-
-    </form>
-
+  </form>
   </div>
-
-    <a href="/wines/log"
-    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-
-    STATS
-
-  </a>
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-   A TEST Button
-  </button>
 
   <!-- ACTIVE FILTERS -->
   {% if q %}
@@ -69,7 +51,7 @@
 
   <!-- META -->
   <div class="flex justify-between text-sm text-gray-500 px-1">
-    <div>{{ wines|length }} wines</div>
+    <div>{{ wines|length }} Weine</div>
   </div>
 
   <!-- TABLE -->

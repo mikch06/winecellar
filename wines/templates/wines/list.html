@@ -11,8 +11,8 @@
       id="filters"
       up-target="#wine-table"
       up-autosubmit
-      class="h-10 w-80 rounded-xl border border-gray-200 bg-white px-4 text-sm outline-none focus:ring-2 focus:ring-gray-200">
-
+      >
+      
       <input
         type="text"
         name="q"
@@ -21,15 +21,38 @@
         class="w-full md:w-96 px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-gray-200 outline-none"
       >
 
+    <a href="{% url 'wine_list' %}"
+      class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-700 shadow-sm hover:bg-gray-50 hover:text-red-600 transition">
 
-      <a href="{% url 'wine_list' %}"
-         class="text-sm text-gray-400 hover:text-gray-700 ml-auto">
-        Reset
-      </a>
+      <svg xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.5">
+
+        <path stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 7h12M10 11v6m4-6v6M9 7V5a3 3 0 0 1 6 0v2m3 0-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 7" />
+
+      </svg>
+
+      Reset
+    </a>
 
     </form>
 
   </div>
+
+    <a href="/wines/log"
+    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+
+    STATS
+
+  </a>
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+   A TEST Button
+  </button>
 
   <!-- ACTIVE FILTERS -->
   {% if q %}

@@ -42,10 +42,10 @@
     </div>
 
     <div class="flex gap-4 text-sm text-gray-600">
-      <a href="/wines/log" class="hover:text-gray-900">Stats</a>
-      {% if user.is_authenticated %}
-        <a class="hover:text-gray-900" aria-current="page" up-layer="new modal" up-href="{% url 'wine_new' %}">➕ </a>
       
+      {% if user.is_authenticated %}
+        <a href="/wines/log" class="hover:text-gray-900">Stats</a>
+        <a class="hover:text-gray-900" aria-current="page" up-layer="new modal" up-href="{% url 'wine_new' %}">➕ </a>
       {% endif %}
       <a href="/info" class="hover:text-gray-900">Info</a>
       <a href="/about" class="hover:text-gray-900">About</a>

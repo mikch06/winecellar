@@ -1,0 +1,34 @@
+python manage.py shell
+
+from wines.models import Wine
+from django.contrib.auth.models import User
+import random
+
+user = User.objects.first()
+
+countries = ["France", "Italy", "Spain", "Switzerland"]
+producers = ["Domaine Test", "Chateau AI", "Wine Bros", "Cantina X"]
+
+for i in range(200):
+    Wine.objects.create(
+        owner=user,
+        winename=f"Wine {i}",
+        producer=random.choice(producers),
+        country=random.choice(countries),
+        year=random.randint(1990, 2022),
+        drinkfrom=random.randint(2020, 2028),
+        drinkto=random.randint(2025, 2035),
+        nmbrbottles=random.randint(0, 24),
+    )
+
+print("done")
+
+
+Maybe fix:
+def __str__(self):
+    return self.text
+
+    -->>>>>
+
+def __str__(self):
+    return f"{self.winename} ({self.year})"    

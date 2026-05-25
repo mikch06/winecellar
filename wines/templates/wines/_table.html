@@ -20,11 +20,11 @@
       <th class="w-10 px-3 py-2"></th>
 
       {% include "wines/_th.html" with label="Wein" field="winename" %}
-      {% include "wines/_th.html" with label="Produzent" field="producer" %}
-      {% include "wines/_th.html" with label="Land" field="country" %}
+      {% include "wines/_th.html" with label="Produzent" field="producer" th_class="hidden lg:table-cell" %}
+      {% include "wines/_th.html" with label="Land" field="country" th_class="hidden lg:table-cell" %}
       {% include "wines/_th.html" with label="Jg." field="year" %}
-      {% include "wines/_th.html" with label="Von" field="drinkfrom" %}
-      {% include "wines/_th.html" with label="Bis" field="drinkto" %}
+      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden lg:table-cell" %}
+      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden lg:table-cell" %}
       {% include "wines/_th.html" with label="Flaschen" field="nmbrbottles" %}
 
     </tr>
@@ -63,7 +63,7 @@
       </td>
 
       <!-- COUNTRY -->
-      <td class="px-3 py-2 text-gray-600 whitespace-nowrap">
+      <td class="hidden lg:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.country }}
       </td>
 
@@ -73,12 +73,12 @@
       </td>
 
       <!-- DRINK FROM -->
-      <td class="px-3 py-2 text-gray-500 whitespace-nowrap">
+      <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkfrom|default_if_none:'' }}
       </td>
 
       <!-- DRINK TO -->
-      <td class="px-3 py-2 text-gray-500 whitespace-nowrap">
+      <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkto|default_if_none:'' }}
       </td>
 

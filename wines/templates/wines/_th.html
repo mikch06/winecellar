@@ -1,4 +1,4 @@
-<th class="px-4 py-3 {% if sort == field or sort == '-'|add:field %}bg-gray-100{% endif %}">
+<th class="px-3 py-2 {{ th_class }} px-4 py-3 {% if sort == field or sort == '-'|add:field %}bg-gray-100{% endif %}">
   <a
     up-target="#wine-table"
     href="?sort={% if sort == field %}-{{ field }}{% else %}{{ field }}{% endif %}&q={{ q }}&country={{ country }}"

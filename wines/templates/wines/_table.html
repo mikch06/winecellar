@@ -83,18 +83,17 @@
       </td>
 
       <!-- BOTTLES -->
-      <td class="px-3 py-2 text-right whitespace-nowrap">
-
+      <td class="w-16 px-3 py-2 text-center whitespace-nowrap">
         {% if wine.nmbrbottles == 0 %}
-          <span class="font-semibold text-red-500">
+          <span class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
             {{ wine.nmbrbottles }}
           </span>
         {% else %}
-          {{ wine.nmbrbottles }}
+          <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">
+            {{ wine.nmbrbottles }}
+          </span>
         {% endif %}
-
       </td>
-
     </tr>
 
     {% empty %}

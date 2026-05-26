@@ -37,7 +37,7 @@ class WineListView(LoginRequiredMixin, ListView):
         q = self.request.GET.get("q", "").strip()
         winetype = self.request.GET.get("winetype", "")
         country = self.request.GET.get("country", "")
-        sort = self.request.GET.get("sort", "winename")
+        sort = self.request.GET.get("sort", "drinkto")
 
         winename = self.request.GET.get("winename", "")
         producer = self.request.GET.get("producer", "")

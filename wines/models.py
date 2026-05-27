@@ -48,7 +48,7 @@ class Wine(models.Model):
     notes = models.CharField(max_length=400, blank=True)
     editdate = models.DateField(auto_now=True)
 
-
+    # Default order (sort) class, overruled by sort function in views.py
     class Meta:
         ordering = ["drinkto", "country", "region", "year"]
 

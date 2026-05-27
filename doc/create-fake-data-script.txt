@@ -6,8 +6,8 @@ import random
 
 user = User.objects.first()
 
-countries = ["France", "Italy", "Spain", "Switzerland"]
-producers = ["Domaine Test", "Chateau AI", "Wine Bros", "Cantina X"]
+countries = ["Frankreich", "Italien", "Spanien", "Schweiz", "Deutschland", "Österreich", "Australien"]
+producers = ["Cheateau Meyney", "Chateau Laroque", "Tenuta San Guido", "Montecastro", "Delea", "Tamborini", "Tement"]
 
 for i in range(200):
     Wine.objects.create(
@@ -23,6 +23,8 @@ for i in range(200):
 
 print("done")
 
+# ================
+In models.py:
 
 Maybe fix:
 def __str__(self):

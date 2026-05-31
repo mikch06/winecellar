@@ -112,19 +112,19 @@ class WineListView(LoginRequiredMixin, ListView):
         ctx = super().get_context_data(**kwargs)
 
         ctx["q"] = self.request.GET.get("q", "")
-        ctx["winetype"] = self.request.GET.get("winetype", "")
+        ctx["winetypes"] = Wine.WINETYPE
         ctx["country"] = self.request.GET.get("country", "")
         ctx["year"] = self.request.GET.get("year", "")
-
         ctx["sort"] = self.request.GET.get("sort", "winename")
 
         # Winetype Dropdown filter
-        ctx["winetypes"] = (
-            Wine.objects.filter(owner=self.request.user)
-            .values_list("winetype", flat=True)
-            .distinct()
-            .order_by("winetype")
-        )
+        # TODO: Seems not to be used anymore
+        # ctx["winetypes"] = (
+        #     Wine.objects.filter(owner=self.request.user)
+        #     .values_list("winetype", flat=True)
+        #     .distinct()
+        #     .order_by("winetype")
+        # )
 
         # Country Dropdown filter
         ctx["countries"] = (

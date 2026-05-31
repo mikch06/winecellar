@@ -95,13 +95,14 @@
         name="winetype"
         class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
           <option value="">Typ</option>
-          {% for c in winetypes %}
-           <option value="{{ c }}" {% if request.GET.winetype == c %}selected{% endif %}>
-            {{ c }}
+          {% for value, label in winetypes %}
+          <option value="{{ value }}"
+          {% if request.GET.winetype == value %}selected{% endif %}>
+          {{ label }}
           </option>
-        {% endfor %}
+          {% endfor %}
       </select>
-
+      
       <!-- winename -->
         <input
           type="text"

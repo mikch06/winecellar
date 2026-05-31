@@ -116,12 +116,12 @@
           name="producer"
           value="{{ request.GET.producer }}"
           placeholder="Produzent"
-          class="hidden lg:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- country -->
         <select
           name="country"
-          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
           <option value="">Land</option>
           {% for c in countries %}
             <option value="{{ c }}" {% if request.GET.country == c %}selected{% endif %}>
@@ -150,7 +150,7 @@
           name="drinkfrom"
           value="{{ request.GET.drinkfrom }}"
           placeholder="trinkbar von"
-          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- drinkto -->
         <input
@@ -158,7 +158,7 @@
           name="drinkto"
           value="{{ request.GET.drinkto }}"
           placeholder="trinkbar bis"
-          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
 
       <!-- nmbrbottles -->
         <input
@@ -166,8 +166,7 @@
           name="nmbrbottles"
           value="{{ request.GET.nmbrbottles }}"
           placeholder="Flaschen"
-          class="h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
-
+          class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
     </form>
     
   <div id="wine-table">

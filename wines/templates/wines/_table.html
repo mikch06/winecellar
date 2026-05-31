@@ -20,16 +20,16 @@
       <th class="w-10 px-3 py-2"></th>
 
       {% include "wines/_th.html" with label="Wein" field="winename" %}
-      {% include "wines/_th.html" with label="Produzent" field="producer" th_class="hidden lg:table-cell" %}
-      {% include "wines/_th.html" with label="Land" field="country" th_class="hidden lg:table-cell" %}
+      {% include "wines/_th.html" with label="Produzent" field="producer" th_class="hidden sm:table-cell" %}
+      {% include "wines/_th.html" with label="Land" field="country" th_class="hidden sm:table-cell" %}
       {% include "wines/_th.html" with label="Jg." field="year" %}
-      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden lg:table-cell" %}
-      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden lg:table-cell" %}
+      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden sm:table-cell" %}
+      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden sm:table-cell" %}
       {% include "wines/_th.html" with label="🍾" field="nmbrbottles" th_class="w-10 text-xl text-center" %}
 
     </tr>
 
-    <!-- Filter row -->
+    <!-- Table -->
     <tr class="border-t border-gray-100 bg-gray-50">
 
   <tbody class="divide-y divide-gray-100">
@@ -53,12 +53,12 @@
       </td>
 
       <!-- producer -->
-      <td class="hidden lg:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.producer }}
       </td>
 
       <!-- country -->
-      <td class="hidden lg:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.country }}
       </td>
 
@@ -68,12 +68,12 @@
       </td>
 
       <!-- drinkfrom -->
-      <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkfrom|default_if_none:'' }}
       </td>
 
       <!-- drinkto -->
-      <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkto|default_if_none:'' }}
       </td>
 

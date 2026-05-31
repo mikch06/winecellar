@@ -29,20 +29,15 @@
 
     </tr>
 
-    <!-- FILTER ROW -->
+    <!-- Filter row -->
     <tr class="border-t border-gray-100 bg-gray-50">
 
-
-
-
-  <!-- BODY -->
   <tbody class="divide-y divide-gray-100">
 
     {% for wine in wines %}
 
     <tr class="hover:bg-gray-50 transition-colors">
 
-      <!-- ACTION -->
       <td class="px-3 py-2 whitespace-nowrap">
         <button
           up-layer="new modal"
@@ -52,37 +47,37 @@
         </button>
       </td>
 
-      <!-- WINENAME -->
+      <!-- winename -->
       <td class="px-3 py-2 font-medium text-gray-900 whitespace-nowrap">
         {{ wine.winename }}
       </td>
 
-      <!-- PRODUCER -->
+      <!-- producer -->
       <td class="hidden lg:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.producer }}
       </td>
 
-      <!-- COUNTRY -->
+      <!-- country -->
       <td class="hidden lg:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
         {{ wine.country }}
       </td>
 
-      <!-- YEAR -->
+      <!-- year -->
       <td class="px-3 py-2 whitespace-nowrap">
         {{ wine.year|default_if_none:'' }}
       </td>
 
-      <!-- DRINK FROM -->
+      <!-- drinkfrom -->
       <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkfrom|default_if_none:'' }}
       </td>
 
-      <!-- DRINK TO -->
+      <!-- drinkto -->
       <td class="hidden lg:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
         {{ wine.drinkto|default_if_none:'' }}
       </td>
 
-      <!-- BOTTLES -->
+      <!-- nmbrbottles -->
       <td class="w-16 px-3 py-2 text-center whitespace-nowrap">
         {% if wine.nmbrbottles == 0 %}
           <span class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">

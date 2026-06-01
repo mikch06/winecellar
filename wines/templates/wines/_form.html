@@ -24,7 +24,8 @@
         <br>
         <!-- Flaschenanzahl -->
         <div class="mb-3">
-          {{ form.nmbrbottles.label_tag }}
+          {{ form.nmbrbottles.label_tag }}  <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
+          <br>
           {{ form.nmbrbottles }}
           <div class="mt-1">
             <label class="form-label">
@@ -32,6 +33,8 @@
             </label>
           </div>
         </div>
+
+
 
         <!-- Name, Produzent, Rebsorte -->
         <div class="mb-3">

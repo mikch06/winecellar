@@ -4,41 +4,15 @@
     <div class="mx-auto max-w-7xl p-6 space-y-6">
     {% load static %}
     <div class="row">
-      <div class="col">
         <p>
           MyBottles: <b>{{bottles_sum|default:"0"}}</b> Flaschen, {{wines_sum|default:"0"}} Positionen.
-        </p>
-          <a href="{% url 'wine_stats' %}"
-            class="btn btn-outline-primary">
-            📊
-          </a>
-          Stats
-        </p>
-      </div>
-      <div class="col">
+              </div>
         <p>
           <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-            <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
             <span><a href="/wines/stats"> 📊 Stats!</a></span>
           </button>
-
-
-          <a href="/wines/stats"
-   class="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-700 shadow-sm hover:bg-gray-50">
-
-  <svg class="w-4 h-4 fill-current"
-       xmlns="http://www.w3.org/2000/svg"
-       viewBox="0 0 20 20">
-    <path d="M11 2.05V10h7.95A8 8 0 0 0 11 2.05z"/>
-    <path d="M9 2.05A8 8 0 1 0 17.95 11H9V2.05z"/>
-  </svg>
-
-  <span>Stats</span>
-</a>
-
-
-
-
+        </p>
+        <p>
           <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
             <span><a href="/wines/export_xls">Excel Export</a></span>
@@ -48,16 +22,13 @@
             <span><a href="/wines/export_csv">CSV Export  </a></span>
           </button>     
         </p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <b>Letzte 30 Veränderungen im Keller:</b>
-        <br><br>
-        {% load static %}
-        {% for wine in wines %}
-        {% load static %}
-        <div class="winelog">{{ wine.editdate|date:"d.m.Y"}}, 
+        <div class="row">
+          <b>Letzte 30 Veränderungen im Keller:</b>
+          <br><br>
+          {% load static %}
+          {% for wine in wines %}
+          {% load static %}
+          <div class="winelog">{{ wine.editdate|date:"d.m.Y"}}, 
           <a href="{% url 'wine_detail' wine.pk %}"
             up-layer="new modal"
             up-target="body">
@@ -67,10 +38,10 @@
           {{ wine.year }}
           ({{ wine.nmbrbottles }})
         </div>
-        {% empty %}
-        <li>Keine Weine gefunden.</li>  
-        {% endfor %}
-        {% endblock %}
+          {% empty %}
+          <li>Keine Weine gefunden.</li>  
+          {% endfor %}
+          {% endblock %}
       </div>
   </div>
 </div>

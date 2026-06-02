@@ -44,6 +44,11 @@
     <div class="flex gap-4 text-sm text-gray-600">
       <a href="/info" class="hover:text-gray-900">Info</a>
       <a href="/about" class="hover:text-gray-900">About</a>
+    <a href="{% url 'wine_new' %}"
+      up-layer="new modal"
+      >
+      +
+    </a>
       {% if user.is_authenticated %}
       {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp
       <form action="{% url 'logout' %}" method="post" style="display: inline;">

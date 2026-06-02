@@ -25,17 +25,9 @@
         <!-- Flaschenanzahl -->
         <div class="mb-3">
           {{ form.nmbrbottles.label_tag }}  <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
-          <br>
+          <br><br>
           {{ form.nmbrbottles }}
-          <div class="mt-1">
-            <label class="form-label">
-              <span id="nmbrbottles-value">{{ form.nmbrbottles.value|default:0 }}</span>
-            </label>
-          </div>
         </div>
-
-
-
         <!-- Name, Produzent, Rebsorte -->
         <div class="mb-3">
           {{ form.winename.label_tag }}
@@ -76,10 +68,8 @@
           {{ form.notes.label_tag }}
           {{ form.notes }}
         </div>
-
       </div>
     </div>
-
     <div class="modal-footer">
       <button type="submit" class="btn btn-success me-2">💾 Speichern</button>
       <button type="button" class="btn btn-secondary" up-dismiss>Abbrechen</button>
@@ -96,7 +86,6 @@
         display.textContent = slider.value;
       });
     }
-
     document.addEventListener('up:fragment:inserted', initNmbrBottles);
     document.addEventListener('DOMContentLoaded', initNmbrBottles);
   </script>

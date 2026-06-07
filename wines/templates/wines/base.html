@@ -3,87 +3,159 @@
 <head>
 {% load static %}
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% block title %}MyBottles{% endblock %}</title>
-<!-- <link rel="stylesheet" type="text/css" href="{% static 'wines/bootstrap/css/bootstrap.min.css' %}">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-<link rel="stylesheet" type="text/css" href="{% static 'wines/bootstrap-icons/bootstrap-icons.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'wines/bootstrap-table/css/bootstrap-table.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'wines/bootstrap-table/css/bootstrap-table-filter-control.css' %}"> -->
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 <link rel="stylesheet" href="https://unpkg.com/unpoly@3.6.0/unpoly.min.css">
 <script src="https://unpkg.com/unpoly@3.6.0/unpoly.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="{% static 'wines/style.css' %}">
-<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
-<link rel="apple-touch-icon" sizes="57x57" href="{% static 'apple-icon-57x57.png' %}">
-<link rel="apple-touch-icon" sizes="60x60" href="{% static 'apple-icon-60x60.png' %}">
-<link rel="apple-touch-icon" sizes="72x72" href="{% static 'apple-icon-72x72.png' %}">
-<link rel="apple-touch-icon" sizes="76x76" href="{% static 'apple-icon-76x76.png' %}">
-<link rel="apple-touch-icon" sizes="114x114" href="{% static 'apple-icon-114x114.png' %}">
-<link rel="apple-touch-icon" sizes="120x120" href="{% static 'apple-icon-120x120.png' %}">
-<link rel="apple-touch-icon" sizes="144x144" href="{% static 'apple-icon-144x144.png' %}">
-<link rel="apple-touch-icon" sizes="152x152" href="{% static 'apple-icon-152x152.png' %}">
-<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-icon-180x180.png' %}">
-<link rel="icon" type="image/png" sizes="192x192"  href="{% static 'android-icon-192x192.png' %}">
-<link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-<link rel="icon" type="image/png" sizes="96x96" href="{% static 'favicon-96x96.png' %}">
-<link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+
 {% block head %}{% endblock %}
 </head>
-<body>
-<!-- Header and navigation -->
 
-<!-- Tailwind nav-->
+<body class="bg-gray-50">
+
+<!-- NAV -->
 <nav class="bg-white border-b border-gray-200">
-  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
 
-    <div class="font-semibold text-gray-800">
-      <a href="/wines/"> 🍷 MyBottles</a>
-    </div>
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
 
-    <div class="flex gap-4 text-sm text-gray-600">
+    <!-- LEFT: Logo -->
+    <a href="/wines/" class="font-semibold text-gray-800">
+      🍷 MyBottles
+    </a>
+
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex items-center gap-4 text-sm text-gray-600">
+
       <a href="/info" class="hover:text-gray-900">Info</a>
       <a href="/about" class="hover:text-gray-900">About</a>
-    <a href="{% url 'wine_new' %}"
-      up-layer="new modal"
-      >
-      +
-    </a>
+
       {% if user.is_authenticated %}
-      {% if user.first_name %} {{ user.first_name }} {{ user.last_name }} {% else %} {{ user.username }} {% endif %} &nbsp&nbsp
-      <form action="{% url 'logout' %}" method="post" style="display: inline;">
-      {% csrf_token %}
-        <!-- Logout -->
-        <button type="submit" class="btn btn-success btn-sm"><img src="{% static "wines/bootstrap/icons/power.svg" %}" alt="Detail" width="16" height="16" title="Logout"></button>
-      </form>
+
+        <span class="text-gray-500">
+          {% if user.first_name %}
+            {{ user.first_name }} {{ user.last_name }}
+          {% else %}
+            {{ user.username }}
+          {% endif %}
+        </span>
+
+<form action="{% url 'logout' %}" method="post" class="px-4 py-3">
+  {% csrf_token %}
+
+  <button type="submit"
+          class="flex items-center gap-2 text-red-600 hover:text-red-800">
+
+    <!-- Power Icon -->
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-5 h-5"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+
+      <path d="M12 2v10" />
+      <path d="M7 7a8 8 0 1 0 10 0" />
+
+    </svg>
+  </button>
+</form>
 
       {% else %}
-        <!-- Login -->
-        <a href="/wines" class="btn btn-success btn-sm" role="button" aria-disabled="true">Login</a>
+        <a href="/wines" class="text-gray-700 hover:text-gray-900">
+          Login
+        </a>
       {% endif %}
+
+    </div>
+
+    <!-- MOBILE RIGHT SIDE -->
+    <div class="flex items-center gap-2 md:hidden">
+
+      <!-- NEW WINE -->
+      <a href="{% url 'wine_new' %}"
+         up-layer="new modal"
+         class="p-2 text-lg">
+        ➕
+      </a>
+
+      <!-- HAMBURGER -->
+      <button id="menu-button" class="p-2 text-xl">
+        ☰
+      </button>
+
     </div>
 
   </div>
-</nav>
 
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu"
+       class="hidden md:hidden border-t border-gray-100 bg-white">
 
+    <div class="flex flex-col text-sm text-gray-700">
 
+      <a href="/info" class="px-4 py-3 hover:bg-gray-50">Info</a>
+      <a href="/about" class="px-4 py-3 hover:bg-gray-50">About</a>
 
-    <!-- Main content table-->
-    <main up-main id="main-content">
-    {% block content %}{% endblock %}
-    </main>
+      {% if user.is_authenticated %}
 
+        <div class="px-4 py-3 text-gray-500 border-t border-gray-100">
+          {% if user.first_name %}
+            {{ user.first_name }}
+          {% else %}
+            {{ user.username }}
+          {% endif %}
+        </div>
+
+<form action="{% url 'logout' %}" method="post" class="px-4 py-3">
+  {% csrf_token %}
+  <button type="submit"
+    class="flex items-center gap-2 text-red-600 hover:text-red-800">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         class="w-5 h-5"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+      <path d="M12 2v10" />
+      <path d="M7 7a8 8 0 1 0 10 0" />
+    </svg>
+  </button>
+</form>
+      {% else %}
+        <a href="/wines" class="px-4 py-3 hover:bg-gray-50">
+          Login
+        </a>
+      {% endif %}
+    </div>
   </div>
-      <footer class="mt-8 text-center text-sm text-gray-500">
-            <div align="center">MyBottles.ch &copy; 2020 – {% now 'Y' %}</div
-      </footer>
-<!-- <script src="{% static 'wines/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+
+</nav>
+<!-- Content -->
+<main up-main id="main-content" class="max-w-7xl mx-auto p-4">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- Footer -->
+<footer class="mt-8 text-center text-sm text-gray-500">
+  MyBottles.ch © 2020 – {% now 'Y' %}
+</footer>
+
+<!-- Simple menu toggle -->
+<script>
+document.getElementById('menu-button').addEventListener('click', function () {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+});
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<script src="{% static 'wines/bootstrap-table/js/bootstrap-table.min.js' %}"></script>
-<script src="{% static 'wines/bootstrap-table/js/bootstrap-table-filter-control.js' %}"></script>
-<script src="{% static 'wines/bootstrap/js/bootstrap.bundle.js' %}"></script> -->
+
 </body>
 </html>

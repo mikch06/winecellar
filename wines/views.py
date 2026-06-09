@@ -59,6 +59,8 @@ class WineListView(LoginRequiredMixin, ListView):
                 Q(notes__icontains=q) |
                 Q(dealer__icontains=q) |
                 Q(warehouse__icontains=q) |
+                Q(drinkfrom__icontains=q) |
+                Q(drinkto__icontains=q) |
                 Q(year__icontains=q)
             )
 

@@ -81,7 +81,7 @@ class WineListView(LoginRequiredMixin, ListView):
             qs = qs.filter(year=year)
 
         if drinkfrom:
-            qs = qs.filter(drinkfrom__gte=drinkfrom)
+            qs = qs.filter(drinkfrom=drinkfrom)
 
         if drinkto:
             qs = qs.filter(drinkto=drinkto)
@@ -115,6 +115,7 @@ class WineListView(LoginRequiredMixin, ListView):
         ctx["winetypes"] = Wine.WINETYPE
         ctx["country"] = self.request.GET.get("country", "")
         ctx["year"] = self.request.GET.get("year", "")
+        ctx["drinkfrom"] = self.request.GET.get("drinkfrom", "")
         ctx["drinkto"] = self.request.GET.get("drinkto", "")
         ctx["sort"] = self.request.GET.get("sort", "winename")
 
@@ -140,6 +141,13 @@ class WineListView(LoginRequiredMixin, ListView):
             .values_list("year", flat=True)
             .distinct()
             .order_by("year")
+        )
+
+        ctx["drinkfrom"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("drinkfrom", flat=True)
+            .distinct()
+            .order_by("drinkfrom")
         )
 
         ctx["drinkto"] = (

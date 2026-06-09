@@ -59,12 +59,7 @@
       </svg>
     </a>        
   </form>
-
   </div>
-
-
-
-
 
   <!-- ACTIVE FILTERS -->
   {% if q %}
@@ -146,12 +141,18 @@
         </select>         
 
       <!-- drinkfrom -->
-        <input
-          type="number"
+        <select
           name="drinkfrom"
-          value="{{ request.GET.drinkfrom }}"
-          placeholder="trinkbar von"
           class="hidden sm:table-cell h-8 w-24 rounded-md border border-gray-200 bg-white px-2 text-xs text-gray-700 outline-none focus:ring-2 focus:ring-gray-200">
+          <option value="">trinkbar von</option>
+          {% for c in drinkfrom %}
+            <option
+              value="{{ c }}"
+              {% if request.GET.drinkfrom == c|stringformat:"s" %}selected{% endif %}>
+              {{ c }}
+            </option>
+          {% endfor %}
+        </select>  
 
       <!-- drinkto -->
         <select
@@ -161,7 +162,7 @@
           {% for c in drinkto %}
             <option
               value="{{ c }}"
-              {% if request.GET.year == c|stringformat:"s" %}selected{% endif %}>
+              {% if request.GET.drinkto == c|stringformat:"s" %}selected{% endif %}>
               {{ c }}
             </option>
           {% endfor %}

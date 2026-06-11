@@ -10,7 +10,7 @@
 
 <div class="overflow-x-auto bg-white border border-gray-200 rounded-xl -mx-2 md:mx-0">  
 
-<table class="min-w-full text-sm">
+<table class="min-w-full table-fixed text-sm">
 
   <!-- HEADER -->
   <thead class="sticky top-0 z-10 bg-gray-50 border-b border-gray-200">
@@ -22,9 +22,9 @@
       {% include "wines/_th.html" with label="Wein" field="winename" %}
       {% include "wines/_th.html" with label="Produzent" field="producer" th_class="hidden sm:table-cell" %}
       {% include "wines/_th.html" with label="Land" field="country" th_class="hidden sm:table-cell" %}
-      {% include "wines/_th.html" with label="Jg." field="year" %}
-      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden sm:table-cell" %}
-      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden sm:table-cell" %}
+      {% include "wines/_th.html" with label="Jg." field="year" th_class="w-20" %}
+      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden sm:table-cell w-20" %}
+      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden sm:table-cell w-20" %}
       {% include "wines/_th.html" with label="🍾" field="nmbrbottles" th_class="w-10 text-xl text-center" %}
 
     </tr>

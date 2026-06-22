@@ -79,6 +79,7 @@
     <!-- MOBILE RIGHT SIDE -->
     <div class="flex items-center gap-2 md:hidden">
 
+      {% if user.is_authenticated %}
       <!-- Stats -->
       <a href="/wines/log">
       <svg xmlns="http://www.w3.org/2000/svg"
@@ -102,14 +103,13 @@
          class="p-2 text-lg">
         ➕
       </a>
+      {% endif %}
 
       <!-- Hamburger menu -->
       <button id="menu-button" class="p-2 text-xl">
         ☰
       </button>
-
     </div>
-
   </div>
 
   <!-- MOBILE MENU -->

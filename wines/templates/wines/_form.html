@@ -1,4 +1,5 @@
-<div up-main="modal" class="p-4">
+<div up-main="modal"
+     class="max-w-3xl rounded-2xl border border-gray-200 bg-white shadow-xl p-6">
   <form 
     method="post"
     up-submit
@@ -45,8 +46,8 @@
         </div>
 
         <!-- Zweispaltiges Layout -->
-        <div class="row">
-          <div class="col-md-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="space-y-4">
             <div class="mb-3">{{ form.country.label_tag }}{{ form.country }}</div>
             <div class="mb-3">{{ form.purchase.label_tag }}{{ form.purchase }}</div>
             <div class="mb-3">{{ form.drinkfrom.label_tag }}{{ form.drinkfrom }}</div>
@@ -54,7 +55,7 @@
             <div class="mb-3">{{ form.warehouse.label_tag }}{{ form.warehouse }}</div>
           </div>
 
-          <div class="col-md-6">
+          <div class="space-y-4">
             <div class="mb-3">{{ form.region.label_tag }}{{ form.region }}</div>
             <div class="mb-3">{{ form.dealer.label_tag }}{{ form.dealer }}</div>
             <div class="mb-3">{{ form.drinkto.label_tag }}{{ form.drinkto }}</div>
@@ -70,9 +71,19 @@
         </div>
       </div>
     </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-success me-2">💾 Speichern</button>
-      <button type="button" class="btn btn-secondary" up-dismiss>Abbrechen</button>
+    <div class="mt-6 flex justify-end gap-3 border-t border-gray-200 pt-4">
+      <button
+        type="submit"
+        class="rounded-xl bg-green-600 px-4 py-2 text-white hover:bg-green-700">
+        💾 Speichern
+      </button>
+
+      <button
+        type="button"
+        up-dismiss
+        class="rounded-xl border border-gray-300 px-4 py-2 hover:bg-gray-50">
+        Abbrechen
+      </button>
     </div>
   </form>
 

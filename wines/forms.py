@@ -38,7 +38,7 @@ class WineForm(forms.ModelForm):
             'purchase': forms.DateInput(format=('%Y-%m-%d'), attrs={"type": "date", 'class': "form-control"}),
             'price': forms.TextInput(attrs={'class': "form-control"}),
             'dealer': forms.TextInput(attrs={'class': "form-control"}),
-            'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 5}),
+            'notes': forms.Textarea(attrs={'class': "form-control", 'cols': 100, 'rows': 15}),
             'drinkfrom': forms.NumberInput(attrs={'class': "form-control", 'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'class': "form-control", 'min': '2018', 'max': '2065', 'type': 'number'}),
             'warehouse': forms.TextInput(attrs={'class': "form-control"}),

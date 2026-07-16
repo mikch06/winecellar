@@ -78,7 +78,7 @@ class WineForm(forms.ModelForm):
                 })
 
         self.fields["purchase"].widget.attrs["class"] = (
-            "w-80 rounded-xl border border-gray-300 "
+            "w-full rounded-xl border border-gray-300 "
             "px-3 py-2 text-sm "
             "focus:outline-none focus:ring-2 focus:ring-gray-300"
         )

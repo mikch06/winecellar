@@ -49,7 +49,7 @@ class WineForm(forms.ModelForm):
             ),
             'price': forms.TextInput(),
             'dealer': forms.TextInput(),
-            'notes': forms.Textarea(attrs={'rows': 15}),
+            'notes': forms.Textarea(attrs={'rows': 8}),
             'drinkfrom': forms.NumberInput(attrs={'min': '2000', 'max': '2060'}),
             'drinkto': forms.NumberInput(attrs={'min': '2018', 'max': '2065'}),
             'warehouse': forms.TextInput(),

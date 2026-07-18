@@ -140,6 +140,7 @@ class WineListView(LoginRequiredMixin, ListView):
 
         ctx["years"] = (
             Wine.objects.filter(owner=self.request.user)
+            .exclude(year__isnull=True)
             .values_list("year", flat=True)
             .distinct()
             .order_by("year")
@@ -147,6 +148,7 @@ class WineListView(LoginRequiredMixin, ListView):
 
         ctx["drinkfrom"] = (
             Wine.objects.filter(owner=self.request.user)
+            .exclude(drinkfrom__isnull=True)
             .values_list("drinkfrom", flat=True)
             .distinct()
             .order_by("drinkfrom")
@@ -154,6 +156,7 @@ class WineListView(LoginRequiredMixin, ListView):
 
         ctx["drinkto"] = (
             Wine.objects.filter(owner=self.request.user)
+            .exclude(drinkto__isnull=True)
             .values_list("drinkto", flat=True)
             .distinct()
             .order_by("drinkto")

@@ -102,3 +102,20 @@ up-popup, up-cover-box, up-drawer-box, up-modal-box {
 	overflow-x: hidden;
     border-radius: 10px;
 }
+
+/* Tailwind redesign content */
+
+.input {
+  width: 100%;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #374151;
+}
+
+.input:focus-within {
+  outline: none;
+  border-color: #d1d5db;
+  box-shadow: 0 0 0 2px rgba(229, 231, 235, 0.8);
+}

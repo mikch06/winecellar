@@ -19,17 +19,18 @@ COUNTRY = [
     ('Argentinien', 'Argentinien'),    
 ]
 
-WINETYPE = {
-    "-": "-",
-    "red": "Rot",
-    "white": "Weiss",
-    "rose": "Rosé",
-    "bubbles": "Bubbles",
-    "sweet": "Süsswein",
-    "spirit": "Spirituosen",
-}
-
 class Wine(models.Model):
+
+    WINETYPE = [
+    ('-', '-'),
+    ('red', 'Rot'),
+    ('white', 'Weiss'),
+    ('rose', 'Rosé'),
+    ('bubbles', 'Bubbles'),
+    ('sweet', 'Süsswein'),
+    ('spirit', 'Spirituosen')
+    ]
+
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     winename = models.CharField(max_length=200)
     producer = models.CharField(max_length=200, blank=True)
@@ -48,7 +49,7 @@ class Wine(models.Model):
     notes = models.CharField(max_length=400, blank=True)
     editdate = models.DateField(auto_now=True)
 
-
+    # Default order (sort) class, overruled by sort function in views.py
     class Meta:
         ordering = ["drinkto", "country", "region", "year"]
 

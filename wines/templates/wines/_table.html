@@ -1,0 +1,108 @@
+
+{% if q or country or request.GET.year or request.GET.drinkfrom or request.GET.drinkto or request.GET.nmbrbottles %}
+
+<div class="flex flex-wrap gap-2 mb-4">
+
+
+
+{% endif %}
+
+
+<div class="overflow-x-auto bg-white border border-gray-200 rounded-xl -mx-2 md:mx-0">  
+
+<table class="min-w-full table-fixed text-sm">
+
+  <!-- HEADER -->
+  <thead class="sticky top-0 z-10 bg-gray-50 border-b border-gray-200">
+
+    <tr class="text-left text-[11px] tracking-wider text-gray-500">
+
+      <th class="w-10 px-3 py-2"></th>
+
+      {% include "wines/_th.html" with label="Wein" field="winename" %}
+      {% include "wines/_th.html" with label="Produzent" field="producer" th_class="hidden sm:table-cell" %}
+      {% include "wines/_th.html" with label="Land" field="country" th_class="hidden sm:table-cell" %}
+      {% include "wines/_th.html" with label="Jg." field="year" th_class="w-20" %}
+      {% include "wines/_th.html" with label="Von" field="drinkfrom" th_class="hidden sm:table-cell w-20" %}
+      {% include "wines/_th.html" with label="Bis" field="drinkto" th_class="hidden sm:table-cell w-20" %}
+      {% include "wines/_th.html" with label="🍾" field="nmbrbottles" th_class="w-10 text-xl text-center" %}
+
+    </tr>
+
+    <!-- Table -->
+    <tr class="border-t border-gray-100 bg-gray-50">
+
+  <tbody class="divide-y divide-gray-100">
+
+    {% for wine in wines %}
+
+    <tr class="hover:bg-gray-50 transition-colors">
+
+      <td class="px-3 py-2 whitespace-nowrap">
+        <button
+          up-layer="new modal"
+          up-href="{% url 'wine_detail' wine.pk %}"
+          class="text-gray-400 hover:text-gray-700 transition">
+          🔍
+        </button>
+      </td>
+
+      <!-- winename -->
+      <td class="px-3 py-2 font-medium text-gray-900 break-words">
+        {{ wine.winename }}
+      </td>
+
+      <!-- producer -->
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
+        {{ wine.producer }}
+      </td>
+
+      <!-- country -->
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-600 whitespace-nowrap">
+        {{ wine.country }}
+      </td>
+
+      <!-- year -->
+      <td class="px-3 py-2 whitespace-nowrap">
+        {{ wine.year|default_if_none:'' }}
+      </td>
+
+      <!-- drinkfrom -->
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
+        {{ wine.drinkfrom|default_if_none:'' }}
+      </td>
+
+      <!-- drinkto -->
+      <td class="hidden sm:table-cell px-3 py-2 text-gray-500 whitespace-nowrap">
+        {{ wine.drinkto|default_if_none:'' }}
+      </td>
+
+      <!-- nmbrbottles -->
+      <td class="w-16 px-3 py-2 text-center whitespace-nowrap">
+        {% if wine.nmbrbottles == 0 %}
+          <span class="inline-flex items-center justify-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">
+            {{ wine.nmbrbottles }}
+          </span>
+        {% else %}
+          <span class="inline-flex items-center justify-center rounded-full bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-700">
+            {{ wine.nmbrbottles }}
+          </span>
+        {% endif %}
+      </td>
+    </tr>
+
+    {% empty %}
+
+    <tr>
+      <td colspan="8" class="py-12 text-center text-gray-400">
+        🍷 Keine Weine gefunden
+      </td>
+    </tr>
+
+    {% endfor %}
+
+  </tbody>
+
+</table>
+
+</div>

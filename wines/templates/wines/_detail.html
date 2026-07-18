@@ -1,51 +1,86 @@
-<div up-main="modal" class="p-4">
+<div up-main="modal" class="p-6 space-y-4 bg-white rounded-2xl shadow-sm border border-gray-100">
 
-  <h3>{{ wine.winename }} {{ wine.year|default_if_none:'' }}</h3>
-            <h6>{{ wine.producer }}</h6>
-            <b>Land:</b> {{ wine.country }}<br>
-            <b>Region:</b> {{ wine.region }}<br>
-            <b>Typ:</b> {{ wine.get_winetype_display }}<br>
-            <b>Trauben:</b> {{ wine.grapes }}<br>
-            <b>Trinkreif von:</b> {{ wine.drinkfrom|default_if_none:'' }}<br>
-            <b>Trinkbar bis:</b> {{ wine.drinkto|default_if_none:'' }}<br>
-            <b>Händler:</b> {{ wine.dealer }}<br>
-            <b>Kaufdatum:</b> {{ wine.purchase|default_if_none:''|date:'d.m.Y' }}<br>
-            <b>Preis:</b> {{ wine.price }}<br>
-            <b>Lagerort:</b> {{ wine.warehouse }}<br>
-            <b>Jahrgang:</b> {{ wine.year }}<br>
-            <b>Anzahl Flaschen: {{ wine.nmbrbottles }}</b><br><br>
-            <b>Notiz:</b><br>
-            {{ wine.notes|linebreaksbr }}
-            <p>
-            <div class="dates">Update: {{ wine.editdate|date:"d.m.Y"}}</div>
-            </p>
-  <button 
-    class="btn btn-basic"
-    title="Edit"
-    up-target="body"
-    up-layer="new modal"
-    up-href="{% url 'wine_edit' wine.pk %}">
-    ✏️
-  </button>
-  <button
-    class="btn btn-basic"
-    title="Delete"
-    up-layer="new modal"
-    up-href="{% url 'wine_delete' wine.pk %}">
-    🗑️
-  </button>
-  
-  <button
-    class="btn btn-basic"
-    title="Copy"
-    up-target="body"
-    up-layer="new modal"
-    up-href="{% url 'wine_copy' wine.pk %}">
-    📋 
-  </button>
+  <!-- HEADER -->
+  <div class="space-y-1">
+    <h3 class="text-lg font-semibold text-gray-900">
+      {{ wine.winename }} {{ wine.year|default_if_none:'' }}
+    </h3>
+    <p class="text-sm text-gray-500">
+      {{ wine.producer }}
+    </p>
+  </div>
 
-  <button
-    class="btn btn-basic"
-    up-dismiss>
-    ❌
-  </button>
+  <!-- DETAILS -->
+  <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
+
+    <div><span class="text-gray-400">Land</span><br>{{ wine.country }}</div>
+    <div><span class="text-gray-400">Region</span><br>{{ wine.region }}</div>
+
+    <div><span class="text-gray-400">Typ</span><br>{{ wine.get_winetype_display }}</div>
+    <div><span class="text-gray-400">Trauben</span><br>{{ wine.grapes }}</div>
+
+    <div><span class="text-gray-400">Trinkfenster</span><br>
+      {{ wine.drinkfrom|default_if_none:'' }} – {{ wine.drinkto|default_if_none:'' }}
+    </div>
+
+    <div><span class="text-gray-400">Jahrgang</span><br>{{ wine.year }}</div>
+
+    <div><span class="text-gray-400">Flaschen</span><br>{{ wine.nmbrbottles }}</div>
+    <div><span class="text-gray-400">Preis</span><br>{{ wine.price }}</div>
+
+    <div><span class="text-gray-400">Händler</span><br>{{ wine.dealer }}</div>
+    <div><span class="text-gray-400">Lager</span><br>{{ wine.warehouse }}</div>
+
+  </div>
+
+  <!-- NOTES -->
+  {% if wine.notes %}
+  <div>
+    <p class="text-xs text-gray-400 mb-1">Notiz</p>
+    <p class="text-sm text-gray-700 leading-relaxed">
+      {{ wine.notes|linebreaksbr }}
+    </p>
+  </div>
+  {% endif %}
+
+  <!-- FOOTER -->
+  <div class="flex items-center justify-between pt-2 border-t border-gray-100 text-xs text-gray-400">
+    <span>Updated {{ wine.editdate|date:"d.m.Y" }}</span>
+
+    <!-- ACTIONS -->
+    <div class="flex gap-2">
+
+      <button
+        class="p-2 rounded-lg hover:bg-gray-100 transition"
+        title="Edit"
+        up-layer="new modal"
+        up-href="{% url 'wine_edit' wine.pk %}">
+        ✏️
+      </button>
+
+      <button
+        class="p-2 rounded-lg hover:bg-gray-100 transition"
+        title="Copy"
+        up-layer="new modal"
+        up-href="{% url 'wine_copy' wine.pk %}">
+        📋
+      </button>
+
+      <button
+        class="p-2 rounded-lg hover:bg-gray-100 transition text-red-500"
+        title="Delete"
+        up-layer="new modal"
+        up-href="{% url 'wine_delete' wine.pk %}">
+        🗑️
+      </button>
+
+      <button
+        class="p-2 rounded-lg hover:bg-gray-100 transition"
+        up-dismiss>
+        ✕
+      </button>
+
+    </div>
+  </div>
+
+</div>

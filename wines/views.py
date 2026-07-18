@@ -15,14 +15,151 @@ from openpyxl import Workbook
 from openpyxl.styles import Font
 import csv
 
+
 # Wine List View
+from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView
+from .models import Wine
+
+
 class WineListView(LoginRequiredMixin, ListView):
     model = Wine
     template_name = "wines/list.html"
     context_object_name = "wines"
 
     def get_queryset(self):
-        return Wine.objects.filter(owner=self.request.user)
+        qs = Wine.objects.filter(owner=self.request.user)
+
+        # -------------------
+        # GET PARAMS
+        # -------------------
+        q = self.request.GET.get("q", "").strip()
+        winetype = self.request.GET.get("winetype", "")
+        country = self.request.GET.get("country", "")
+        sort = self.request.GET.get("sort", "drinkto")
+
+        winename = self.request.GET.get("winename", "")
+        producer = self.request.GET.get("producer", "")
+        year = self.request.GET.get("year", "")
+        drinkfrom = self.request.GET.get("drinkfrom", "")
+        drinkto = self.request.GET.get("drinkto", "")
+        nmbrbottles = self.request.GET.get("nmbrbottles", "")
+
+        # -------------------
+        # GLOBAL SEARCH
+        # -------------------
+        if q:
+            qs = qs.filter(
+                Q(winetype__icontains=q) |
+                Q(winename__icontains=q) |
+                Q(producer__icontains=q) |
+                Q(country__icontains=q) |
+                Q(grapes__icontains=q) |
+                Q(notes__icontains=q) |
+                Q(dealer__icontains=q) |
+                Q(warehouse__icontains=q) |
+                Q(drinkfrom__icontains=q) |
+                Q(drinkto__icontains=q) |
+                Q(year__icontains=q)
+            )
+
+        # -------------------
+        # COLUMN FILTERS
+        # -------------------
+        if winetype:
+            qs = qs.filter(winetype__icontains=winetype)
+            
+        if winename:
+            qs = qs.filter(winename__icontains=winename)
+
+        if producer:
+            qs = qs.filter(producer__icontains=producer)
+
+        if country:
+            qs = qs.filter(country=country)
+
+        if year:
+            qs = qs.filter(year=year)
+
+        if drinkfrom:
+            qs = qs.filter(drinkfrom=drinkfrom)
+
+        if drinkto:
+            qs = qs.filter(drinkto=drinkto)
+
+        if nmbrbottles:
+            qs = qs.filter(nmbrbottles=nmbrbottles)
+
+        # -------------------
+        # SORTING (safe)
+        # -------------------
+        allowed = {
+            "winetype",
+            "winename",
+            "producer",
+            "country",
+            "year",
+            "drinkfrom",
+            "drinkto",
+            "nmbrbottles",
+        }
+
+        if sort.lstrip("-") not in allowed:
+            sort = "winename"
+
+        return qs.order_by(sort)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(**kwargs)
+
+        ctx["q"] = self.request.GET.get("q", "")
+        ctx["winetypes"] = Wine.WINETYPE
+        ctx["country"] = self.request.GET.get("country", "")
+        ctx["year"] = self.request.GET.get("year", "")
+        ctx["drinkfrom"] = self.request.GET.get("drinkfrom", "")
+        ctx["drinkto"] = self.request.GET.get("drinkto", "")
+        ctx["sort"] = self.request.GET.get("sort", "winename")
+
+        # Winetype Dropdown filter
+        # TODO: Seems not to be used anymore
+        # ctx["winetypes"] = (
+        #     Wine.objects.filter(owner=self.request.user)
+        #     .values_list("winetype", flat=True)
+        #     .distinct()
+        #     .order_by("winetype")
+        # )
+
+        # Country Dropdown filter
+        ctx["countries"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("country", flat=True)
+            .distinct()
+            .order_by("country")
+        )
+
+        ctx["years"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("year", flat=True)
+            .distinct()
+            .order_by("year")
+        )
+
+        ctx["drinkfrom"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("drinkfrom", flat=True)
+            .distinct()
+            .order_by("drinkfrom")
+        )
+
+        ctx["drinkto"] = (
+            Wine.objects.filter(owner=self.request.user)
+            .values_list("drinkto", flat=True)
+            .distinct()
+            .order_by("drinkto")
+        )
+
+        return ctx
 
 # Wine Detail View
 class WineDetailView(LoginRequiredMixin, DetailView):
@@ -214,3 +351,5 @@ def wine_stats(request):
         'total_bottles': total_bottles,
         'total_wines': total_wines,
     })
+
+

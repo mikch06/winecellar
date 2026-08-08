@@ -1,5 +1,11 @@
 ### Changes in der Webapp:
 
+#### 18.07.2026 - New UI
+- New UI - Totally rengineered UI
+- New Search, overall without space errors. Search all fields (configured)
+- New Stats build
+- Got rid of Bootstrap -> Mostly Tailwind CSS
+
 #### 15.11.2025
 - New stats moudule
 - Stats for countries and bottles of country
